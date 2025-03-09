@@ -40,8 +40,8 @@
     love # for balatro
 
     ## System
-    zed-editor
-    nixd
+    # zed-editor # vscode replacement missing git gui
+    nixd # nix-code interpiter
     neofetch
     micro
     librewolf
@@ -100,13 +100,13 @@
     ];
   };
 
-  services.tailscale = {
-    enable = true;
-    openFirewall = true;
-    authKeyFile = ./tailscaleauthkey.key;
-    extraSetFlags = [
-      "--advertise-exit-node"
-    ];
-  };
+  # services.tailscale = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   authKeyFile = ./tailscaleauthkey.key;
+  #   extraSetFlags = [
+  #     "--advertise-exit-node"
+  #   ];
+  # };
 
 }
