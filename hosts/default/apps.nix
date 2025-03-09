@@ -103,7 +103,7 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
-    authKeyFile = ./tailscaleauthkey;
+    authKeyFile = ./tailscaleauthkey.key;
     extraSetFlags = [
       "--advertise-exit-node"
     ];
