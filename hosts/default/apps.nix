@@ -54,6 +54,7 @@
     wayvnc
     blender
     overskride # bluetooth
+    baobab # disk wiztree
   ];
 
   ###########
@@ -61,7 +62,7 @@
   ###########
 
   programs.steam = {
-    enable = true;
+    enable = false;
     gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
@@ -82,7 +83,8 @@
     "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
-    # "net.lutris.Lutris"
+    "com.valvesoftware.Steam"
+    # "org.freedesktop.Platform.VulkanLayer.MangoHud"
   ];
 
   ####################
