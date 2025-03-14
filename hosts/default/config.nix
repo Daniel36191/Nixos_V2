@@ -13,7 +13,8 @@ in
   imports = [
     ./apps.nix
     ./sound.nix
-    ./vm.nix
+    # ./vm.nix
+    ./vr.nix
     ./hardware.nix
     ./users.nix
     ./theme.nix
