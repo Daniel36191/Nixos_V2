@@ -9,10 +9,11 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs =
-    { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs:
+    { self, nixpkgs, home-manager, nix-flatpak, nixpkgs-xr, ... }@inputs:
     let
       system = "x86_64-linux";
       host = "default";
@@ -32,6 +33,7 @@
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
+            nixpkgs-xr.nixosModules.nixpkgs-xr
             {
               home-manager.extraSpecialArgs = {
                 inherit username;

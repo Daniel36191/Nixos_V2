@@ -2,6 +2,10 @@
 
 {
 environment.systemPackages = with pkgs; [
+  monado-vulkan-layers
+  monado
+  wlx-overlay-s
+  lz4 # for Envision
 ];
 
 

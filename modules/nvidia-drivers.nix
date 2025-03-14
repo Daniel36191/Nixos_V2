@@ -14,9 +14,12 @@ in
   };
 
   config = mkIf cfg.enable {
+
+
 ##########
 # Nvidia #
 ##########
+
 hardware.graphics = {
   enable = true;
 };
