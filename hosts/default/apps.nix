@@ -27,11 +27,6 @@
     protonup-qt # Install proton-ge
     gamescope
     mangohud
-    (heroic.override {
-      extraPkgs = pkgs: [
-        pkgs.gamescope
-      ];
-    })
 
     ## Games
     prismlauncher
@@ -53,7 +48,6 @@
     waypipe
     wayvnc
     blender
-    overskride # bluetooth
     baobab # disk wiztree
   ];
 
@@ -62,7 +56,7 @@
   ###########
 
   programs.steam = {
-    enable = false;
+    enable = true;
     gamescopeSession.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
@@ -83,8 +77,7 @@
     "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
-    "com.valvesoftware.Steam"
-    # "org.freedesktop.Platform.VulkanLayer.MangoHud"
+    # "com.valvesoftware.Steam"
   ];
 
   ####################
