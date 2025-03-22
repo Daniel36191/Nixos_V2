@@ -44,7 +44,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.${username} = import ./config/hm/hm-main.nix;
+              users.${username} = import ./config/hm-main.nix;
               };
             }
           ];
