@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (import ./variables.nix) gitUsername gitEmail;
+  inherit (import ./nix-configs/variables.nix) gitUsername gitEmail;
 in
 {
   # Home Manager Settings
@@ -17,26 +17,26 @@ in
 
   # Import Program Configurations
   imports = [
-    ../../config/fastfetch
-    ../../config/hyprland/hyprland.nix
-    ../../config/rofi/rofi.nix
-    ../../config/rofi/config-emoji.nix
-    ../../config/rofi/config-long.nix
-    ../../config/swaync.nix
-    ../../config/waybar.nix
-    ../../config/wlogout.nix
-    ../../config/desktop-files.nix
+    ../../hm-configs/fastfetch
+    ../../hm-configs/hyprland/hyprland.nix
+    ../../hm-configs/rofi/rofi.nix
+    ../../hm-configs/rofi/config-emoji.nix
+    ../../hm-configs/rofi/config-long.nix
+    ../../hm-configs/swaync.nix
+    ../../hm-configs/waybar.nix
+    ../../hm-configs/wlogout.nix
+    ../../hm-configs/desktop-files.nix
   ];
 
 
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../../config/wallpapers;
+    source = ../../hm-configs/wallpapers;
     recursive = true;
   };
   home.file.".config/wlogout/icons" = {
-    source = ../../config/wlogout;
+    source = ../../hm-configs/wlogout;
     recursive = true;
   };
   home.file.".config/swappy/config".text = ''
@@ -94,13 +94,13 @@ in
 
   # Scripts
   home.packages = [
-    (import ../../scripts/task-waybar.nix { inherit pkgs; })
-    (import ../../scripts/squirtle.nix { inherit pkgs; })
-    (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../../scripts/web-search.nix { inherit pkgs; })
-    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
-    (import ../../scripts/screenshootin.nix { inherit pkgs; })
-    (import ../../scripts/list-hypr-bindings.nix {
+    (import ../scripts/task-waybar.nix { inherit pkgs; })
+    (import ../scripts/squirtle.nix { inherit pkgs; })
+    (import ../scripts/nvidia-offload.nix { inherit pkgs; })
+    (import ../scripts/web-search.nix { inherit pkgs; })
+    (import ../scripts/rofi-launcher.nix { inherit pkgs; })
+    (import ../scripts/screenshootin.nix { inherit pkgs; })
+    (import ../scripts/list-hypr-bindings.nix {
       inherit pkgs;
       inherit host;
     })
@@ -186,7 +186,7 @@ in
         fi
       '';
       shellAliases = {
-        vnc = "hyprctl output create headless vnc && wayvnc 192.168.8.194";
+        vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
         sudonix = "sudo nixos-rebuild switch --flake .#default";
         cat = "bat";
         mi = "micro";

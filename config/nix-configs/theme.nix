@@ -2,7 +2,7 @@
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../config/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
+    image = ../../hm-config/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
     base16Scheme = {
       base00 = "24273a"; # base
       base01 = "1e2030"; # mantle

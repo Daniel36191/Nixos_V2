@@ -3,9 +3,6 @@
   gitUsername = "dmoeller131";
   gitEmail = "danielmoeller01@gmail.com";
 
-  # Hyprland Settings
-  extraMonitorSettings = "";
-
   # Waybar Settings
   clock24h = false;
 
