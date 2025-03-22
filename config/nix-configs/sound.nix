@@ -53,6 +53,9 @@ environment.systemPackages = with pkgs; [
     #   };
     };
 
+  # Enable sound with pulse
+  services.pulseaudio.enable = false;
+
 ###############
 ## Spicetify ##
 ###############
@@ -101,7 +104,7 @@ in
 };
 
 
-##################  
+##################
 ## Audio Routes ##    Not working can't get systemd service to run them properly
 ##################
 

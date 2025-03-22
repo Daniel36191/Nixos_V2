@@ -1,11 +1,14 @@
-{pkgs, ...}: 
+{pkgs, ...}:
 let
   inherit (import ./variables.nix)
     wallpaper-ns
     ;
 in
 {
-  # Styling Options
+  ############
+  ## Stylix ##
+  ############
+
   stylix = {
     enable = true;
     image = wallpaper-ns;
@@ -54,5 +57,20 @@ in
         popups = 12;
       };
     };
+  };
+
+
+  ###########
+  ## Fonts ##
+  ###########
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+      font-awesome
+      symbola
+      material-icons
+    ];
   };
 }

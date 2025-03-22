@@ -28,6 +28,19 @@ in
     ./hm-configs/desktop-files.nix
   ];
 
+    # Scripts
+  home.packages = [
+    (import ../scripts/task-waybar.nix { inherit pkgs; })
+    (import ../scripts/nvidia-offload.nix { inherit pkgs; })
+    (import ../scripts/web-search.nix { inherit pkgs; })
+    (import ../scripts/rofi-launcher.nix { inherit pkgs; })
+    (import ../scripts/screenshootin.nix { inherit pkgs; })
+    (import ../scripts/list-hypr-bindings.nix {
+      inherit pkgs;
+      inherit host;
+    })
+  ];
+
 
 
   # Place Files Inside Home Directory
@@ -91,20 +104,6 @@ in
     platformTheme.name = lib.mkDefault "gtk3";
   };
 
-
-  # Scripts
-  home.packages = [
-    (import ../scripts/task-waybar.nix { inherit pkgs; })
-    (import ../scripts/squirtle.nix { inherit pkgs; })
-    (import ../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../scripts/web-search.nix { inherit pkgs; })
-    (import ../scripts/rofi-launcher.nix { inherit pkgs; })
-    (import ../scripts/screenshootin.nix { inherit pkgs; })
-    (import ../scripts/list-hypr-bindings.nix {
-      inherit pkgs;
-      inherit host;
-    })
-  ];
 
   # services = {
   #   hypridle = {

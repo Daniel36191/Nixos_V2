@@ -8,6 +8,11 @@ let
   inherit (import ./variables.nix) gitUsername;
 in
 {
+  ## Define users by nix
+  users = {
+    mutableUsers = true;
+  };
+
   users.users = {
     "${username}" = {
       homeMode = "755";
