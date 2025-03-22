@@ -14,4 +14,5 @@
 
   # Theme
   wallpaper = "../../hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
+  wallpaper-ns = ../../hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
 }
