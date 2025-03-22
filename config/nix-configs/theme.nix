@@ -1,8 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+let
+  inherit (import ./variables.nix)
+    wallpaper
+    ;
+in
+{
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../hm-config/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
+    image = wallpaper;
     base16Scheme = {
       base00 = "24273a"; # base
       base01 = "1e2030"; # mantle

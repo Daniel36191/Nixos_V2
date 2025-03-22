@@ -17,26 +17,26 @@ in
 
   # Import Program Configurations
   imports = [
-    ../../hm-configs/fastfetch
-    ../../hm-configs/hyprland/hyprland.nix
-    ../../hm-configs/rofi/rofi.nix
-    ../../hm-configs/rofi/config-emoji.nix
-    ../../hm-configs/rofi/config-long.nix
-    ../../hm-configs/swaync.nix
-    ../../hm-configs/waybar.nix
-    ../../hm-configs/wlogout.nix
-    ../../hm-configs/desktop-files.nix
+    ./hm-configs/fastfetch
+    ./hm-configs/hyprland/hyprland.nix
+    ./hm-configs/rofi/rofi.nix
+    ./hm-configs/rofi/config-emoji.nix
+    ./hm-configs/rofi/config-long.nix
+    ./hm-configs/swaync.nix
+    ./hm-configs/waybar.nix
+    ./hm-configs/wlogout.nix
+    ./hm-configs/desktop-files.nix
   ];
 
 
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../../hm-configs/wallpapers;
+    source = ./hm-configs/wallpapers;
     recursive = true;
   };
   home.file.".config/wlogout/icons" = {
-    source = ../../hm-configs/wlogout;
+    source = ./hm-configs/wlogout;
     recursive = true;
   };
   home.file.".config/swappy/config".text = ''

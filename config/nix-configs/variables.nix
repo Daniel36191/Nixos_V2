@@ -11,5 +11,7 @@
   terminal = "kitty"; # Set Default System Terminal
   keyboardLayout = "us";
   consoleKeyMap = "us";
-  wallpaper= "/home/daniel/Nixos/config/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
+
+  # Theme
+  wallpaper = "../../hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
 }

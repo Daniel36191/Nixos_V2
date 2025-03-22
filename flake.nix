@@ -35,17 +35,15 @@
             home-manager.nixosModules.home-manager
             nixpkgs-xr.nixosModules.nixpkgs-xr
             {
-              home-manager = {
-                extraSpecialArgs = {
+              home-manager.extraSpecialArgs = {
                 inherit username;
                 inherit inputs;
                 inherit host;
-                };
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.${username} = import ./config/hm-main.nix;
               };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} = import ./config/hm-main.nix;
             }
           ];
         };
