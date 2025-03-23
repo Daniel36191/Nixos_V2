@@ -20,7 +20,7 @@
 
   ## Core
   ./nix-configs/users.nix
-  ./nix-configs/code/devices.nix
+  ./nix-configs/core/devices.nix
   ./nix-configs/core/boot.nix
 
 
@@ -30,8 +30,11 @@
   ../modules/vm-guest-services.nix
   ../modules/local-hardware-clock.nix
 
+  ## WIP
+  ./nix-configs/config.nix
+
   ## No Touch
-  ./nix-configs./hardware.nix
+  ./nix-configs/hardware.nix
   ];
 
 

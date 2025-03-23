@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [
     # vesktop
     # (discord.override {
-    #   # withOpenASAR = true; # can do this here too
+    #   # withOpenASAR = true; ## can do this here too
     #   withVencord = true;
     # })
 
@@ -24,7 +24,7 @@
     protontricks
     wineWowPackages.waylandFull
     # wineWowPackages.stable
-    protonup-qt # Install proton-ge
+    protonup-qt ## Install proton-ge
     gamescope
     mangohud
 
@@ -35,8 +35,8 @@
     love # for balatro
 
     ## System
-    # zed-editor # vscode replacement missing git gui
-    nixd # nix-code interpiter
+    zed-editor ## Git is on newer version nixpkgs does not have
+    nixd ## nix-code interpiter
     neofetch
     nvitop
     micro
@@ -49,7 +49,7 @@
     waypipe
     wayvnc
     blender
-    baobab # disk wiztree.
+    baobab ## disk wiztree.
     obs-studio
   ];
 
