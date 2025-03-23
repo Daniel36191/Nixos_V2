@@ -28,7 +28,7 @@ in
     ./hm-configs/desktop-files.nix
   ];
 
-    # Scripts
+  # Scripts
   home.packages = [
     (import ../scripts/task-waybar.nix { inherit pkgs; })
     (import ../scripts/nvidia-offload.nix { inherit pkgs; })
@@ -40,8 +40,6 @@ in
       inherit host;
     })
   ];
-
-
 
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
@@ -104,7 +102,6 @@ in
     platformTheme.name = lib.mkDefault "gtk3";
   };
 
-
   # services = {
   #   hypridle = {
   #     enable = true;
@@ -133,21 +130,21 @@ in
     gh.enable = true;
     btop = {
       enable = true;
-     package = pkgs.btop.override {
-       rocmSupport = true;
-       cudaSupport = true;
-    };
-    settings = {
-      rounded_corners = true;
-      show_gpu_info = "on";
-      show_uptime = true;
-      show_coretemp = true;
-      cpu_sensor = "auto";
-      show_disks = true;
-      only_physical = true;
-      io_mode = true;
-      io_graph_combined = false;
-    };
+      package = pkgs.btop.override {
+        rocmSupport = true;
+        cudaSupport = true;
+      };
+      settings = {
+        rounded_corners = true;
+        show_gpu_info = "on";
+        show_uptime = true;
+        show_coretemp = true;
+        cpu_sensor = "auto";
+        show_disks = true;
+        only_physical = true;
+        io_mode = true;
+        io_graph_combined = false;
+      };
 
     };
     kitty = {
@@ -166,10 +163,10 @@ in
         inactive_tab_font_style bold
       '';
     };
-     starship = {
-            enable = true;
-            package = pkgs.starship;
-     };
+    starship = {
+      enable = true;
+      package = pkgs.starship;
+    };
     bash = {
       enable = true;
       enableCompletion = true;
@@ -187,6 +184,7 @@ in
       shellAliases = {
         vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
         sudonix = "sudo nixos-rebuild switch --flake .#default";
+        updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade";
         cat = "bat";
         mi = "micro";
         ls = "eza --icons";

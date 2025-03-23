@@ -24,7 +24,7 @@
     protontricks
     wineWowPackages.waylandFull
     # wineWowPackages.stable
-    protonup-qt ## Install proton-ge
+    protonup-qt # # Install proton-ge
     gamescope
     mangohud
 
@@ -35,8 +35,8 @@
     love # for balatro
 
     ## System
-    zed-editor ## Git is on newer version nixpkgs does not have
-    nixd ## nix-code interpiter
+    zed-editor
+    nixd # # nix-code interpiter
     neofetch
     nvitop
     micro
@@ -49,7 +49,7 @@
     waypipe
     wayvnc
     blender
-    baobab ## disk wiztree.
+    baobab # # disk wiztree.
     obs-studio
   ];
 
@@ -63,7 +63,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-
 
   ##############
   ## FlatPaks ##
@@ -107,13 +106,11 @@
   #   ];
   # };
 
-
   ######################
   ## Remote Managment ##
   ######################
 
   # services.teamviewer.enable = true; ## Does not stream
-
 
   ############
   ## Thunar ##
