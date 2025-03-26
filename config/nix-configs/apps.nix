@@ -37,6 +37,7 @@
     ## System
     zed-editor
     nixd # # nix-code interpiter
+    nil # # nix lang server
     neofetch
     nvitop
     micro
@@ -51,6 +52,7 @@
     blender
     baobab # # disk wiztree.
     obs-studio
+    prusa-slicer
   ];
 
   ###########

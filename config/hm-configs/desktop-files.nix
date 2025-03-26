@@ -8,4 +8,12 @@
     type = "Application";
     categories = ["Application"];
   };
+
+  xdg.desktopEntries.cardinal = {
+    name = "Cardinal";
+    exec = "Cardinal";
+    terminal = false;
+    type = "Application";
+    categories = ["Application"];
+  };
 }

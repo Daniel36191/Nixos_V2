@@ -27,15 +27,18 @@ imports = [
 ];
 
 environment.systemPackages = with pkgs; [
-  sendmidi
   spotify
   spicetify-cli
-  bespokesynth
-  qpwgraph
+  sendmidi
   pulseaudioFull
+  qpwgraph
+  bespokesynth
   rnnoise-plugin
+  lsp-plugins
   speech-denoiser
+  cardinal ##Custom .desktop file in desktop-files.nix
 ];
+
 
 #############
 ## Backend ##
@@ -55,6 +58,7 @@ environment.systemPackages = with pkgs; [
 
   # Enable sound with pulse
   services.pulseaudio.enable = false;
+
 
 ###############
 ## Spicetify ##
