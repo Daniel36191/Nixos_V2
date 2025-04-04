@@ -25,7 +25,7 @@ in
     ./hm-configs/swaync.nix
     ./hm-configs/waybar.nix
     ./hm-configs/wlogout.nix
-    ./hm-configs/desktop-files.nix
+    ./hm-configs/desktop-files/desktop-files.nix
   ];
 
   # Scripts

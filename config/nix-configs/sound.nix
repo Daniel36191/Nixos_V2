@@ -34,9 +34,9 @@ environment.systemPackages = with pkgs; [
   qpwgraph
   bespokesynth
   rnnoise-plugin
-  lsp-plugins
-  speech-denoiser
-  cardinal ##Custom .desktop file in desktop-files.nix
+  # lsp-plugins ## A lot of plugins
+  speech-denoiser ## rnnoise
+  cardinal ## Custom .desktop file in desktop-files.nix
 ];
 
 

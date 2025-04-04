@@ -18,10 +18,9 @@
     #   withVencord = true;
     # })
 
+
     ## Wine
     lutris
-    winetricks
-    protontricks
     wineWowPackages.waylandFull
     # wineWowPackages.stable
     protonup-qt # # Install proton-ge
@@ -55,6 +54,7 @@
     prusa-slicer
   ];
 
+
   ###########
   ## Steam ##
   ###########
@@ -62,9 +62,31 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
+    protontricks.enable = true;
+    extest.enable = true; ## For wayland
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = false;
+    package = pkgs.steam.override {
+      extraEnv = {
+        MANGOHUD = true;
+        OBS_VKCAPTURE = true;
+        RADV_TEX_ANISO = 16;
+      };
+      extraLibraries = p: with p; [
+        atk
+      ];
+    };
+    extraPackages = with pkgs; [
+      gamescope
+      mangohud
+    ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
   };
+  hardware.steam-hardware.enable = true;
+
 
   ##############
   ## FlatPaks ##
@@ -81,7 +103,7 @@
     "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
-    # "com.valvesoftware.Steam"
+    "com.valvesoftware.Steam"
   ];
 
   ####################
@@ -114,6 +136,7 @@
 
   # services.teamviewer.enable = true; ## Does not stream
 
+
   ############
   ## Thunar ##
   ############
@@ -126,5 +149,13 @@
   };
   ## Thunbnails
   services.tumbler.enable = true;
+
+
+  #################
+  ## Thunderbird ## (E-Mail)
+  #################
+  programs.thunderbird = {
+    enable = true;
+  };
 
 }
