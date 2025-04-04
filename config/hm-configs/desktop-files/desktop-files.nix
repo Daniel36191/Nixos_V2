@@ -19,7 +19,7 @@
 
   xdg.desktopEntries.windows = {
     name = "Windows";
-    icon = "./windows.png";
+    icon = "/home/daniel/Nixos/config/hm-configs/desktop-files/windows.png"; ## Can't be releative??? WHY
     exec = ''pkexec env "DISPLAY=\\$DISPLAY" "XAUTHORITY=\\$XAUTHORITY" sh -c "grub-reboot \\"Windows Boot Manager (on /dev/sdb1)\\"; reboot"'';
     terminal = false;
     type = "Application";
