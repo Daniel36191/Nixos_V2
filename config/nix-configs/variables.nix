@@ -1,7 +1,7 @@
 {
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "dmoeller131";
-  gitEmail = "danielmoeller01@gmail.com";
+  gitEmail = "dmoeller38@outlook.com";
 
   # Waybar Settings
   clock24h = false;
