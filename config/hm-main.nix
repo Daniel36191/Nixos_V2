@@ -10,7 +10,7 @@ let
   inherit (import ./nix-configs/variables.nix) gitUsername gitEmail;
 in
 {
-  # Home Manager Settings
+  ## Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "23.11";
