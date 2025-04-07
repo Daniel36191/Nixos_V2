@@ -1,6 +1,6 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "dmoeller131";
+  gitUsername = "Daniel36191";
   gitEmail = "dmoeller38@outlook.com";
 
   # Waybar Settings

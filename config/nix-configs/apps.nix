@@ -103,7 +103,8 @@
     "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
-    "com.valvesoftware.Steam"
+    # "com.valvesoftware.Steam"
+    # "com.tdameritrade.ThinkOrSwim"
   ];
 
   ####################
