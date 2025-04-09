@@ -22,19 +22,21 @@ in
 
 hardware.graphics = {
   enable = true;
+  enable32Bit = true;
 };
 services.xserver.videoDrivers = ["nvidia"];
 
 hardware.nvidia = {
   modesetting.enable = true;
+  forceFullCompositionPipeline = true;
   powerManagement = {
     enable = false;
     finegrained = false;
   };
   open = false;
   nvidiaSettings = true;
-  package = config.boot.kernelPackages.nvidiaPackages.latest;
-  # package = config.boot.kernelPackages.nvidiaPackages.beta;
+  # package = config.boot.kernelPackages.nvidiaPackages.latest;
+  package = config.boot.kernelPackages.nvidiaPackages.beta;
   # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
   #   version = "555.58";
   #   sha256_64bit = "sha256-bXvcXkg2kQZuCNKRZM5QoTaTjF4l2TtrsKUvyicj5ew=";

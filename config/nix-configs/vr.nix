@@ -8,6 +8,32 @@ environment.systemPackages = with pkgs; [
   wlx-overlay-s # To See Monitor
   wayvr-dashboard # App Launcher
   opencomposite # Translation Layer
+
+
+  ## Resolute, Resonite Mod Manager
+  (pkgs.appimageTools.wrapType2 {
+    name = "resolute";
+    pname = "resolute";
+    version = "0.8.3";
+    src = pkgs.fetchurl {
+      url = "https://github.com/Gawdl3y/Resolute/releases/download/v0.8.3/resolute_0.8.3_amd64.AppImage";
+      sha256 = "f41Cm3k+FvNPBSVc9qphF3r9Os5FOKK//bqH/fIukhY="; # replace with actual hash
+    };
+    extraPkgs = pkgs: with pkgs; [ libglvnd ];
+    # Add desktop file generation
+    extraInstallCommands = ''
+      mkdir -p $out/share/applications
+      cat > $out/share/applications/resolute.desktop <<EOF
+      [Desktop Entry]
+      Name=Resolute
+      Exec=resolute
+      Icon=resolute
+      Type=Application
+      Categories=Development;
+      EOF
+    '';
+  })
+
 ];
 
 ##############

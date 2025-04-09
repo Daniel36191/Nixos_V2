@@ -34,6 +34,7 @@
     love # for balatro
 
     ## System
+    gimp
     lazygit
     zed-editor
     nixd # # nix-code interpiter
@@ -81,13 +82,13 @@
     extraPackages = with pkgs; [
       gamescope
       mangohud
-      (pkgs.glibc.overrideAttrs (old: {
-                version = "2.35";
-                src = pkgs.fetchurl {
-                  url = "mirror://gnu/glibc/glibc-2.35.tar.gz";
-                  sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Update with actual hash
-                };
-              }))
+      # (pkgs.glibc.overrideAttrs (old: {
+      #           version = "2.35";
+      #           src = pkgs.fetchurl {
+      #             url = "mirror://gnu/glibc/glibc-2.35.tar.gz";
+      #             sha256 = "sha256-Po4MYZXajfvTHXfFb7jZlXb7hV+v1HqeColeUf1ZQtQ="; # Update with actual hash
+      #           };
+      #         }))
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
@@ -111,7 +112,7 @@
     "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
-    # "com.valvesoftware.Steam"
+    "com.valvesoftware.Steam"
     # "com.tdameritrade.ThinkOrSwim"
   ];
 

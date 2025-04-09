@@ -25,6 +25,7 @@ in
         "scanner"
         "lp"
         "docker"
+        "video"
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
