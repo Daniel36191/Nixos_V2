@@ -1,4 +1,4 @@
-{
+8520{
   config,
   pkgs,
   host,
@@ -113,7 +113,7 @@
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
     "com.valvesoftware.Steam"
-    # "com.tdameritrade.ThinkOrSwim"
+    "com.tdameritrade.ThinkOrSwim"
   ];
 
   ####################
