@@ -1,4 +1,4 @@
-# NixOS Configuration - Hyprland & Catppuccin
+# NixOS Configuration - Hyprland
 
 ![NixOS](https://img.shields.io/badge/NixOS-23.11-blue.svg?logo=nixos&logoColor=white)
 ![Hyprland](https://img.shields.io/badge/Window_Manager-Hyprland-blueviolet)
@@ -14,14 +14,14 @@ My personal NixOS configuration for a home PC featuring:
 
 ### Desktop Environment
 - 🖼️ **Hyprland** - Dynamic tiling Wayland compositor
+- 🖥️ **Waybar** - Customizable status bar
+- 🔍 **Rofi** - Application launcher with Catppuccin skin
 - 🎨 **Catppuccin** - Soothing pastel theme for:
   - GTK apps
   - Qt apps
   - Alacritty terminal
   - Waybar
   - Rofi
-- 🖥️ **Waybar** - Customizable status bar
-- 🔍 **Rofi** - Application launcher with Catppuccin skin
 
 ### System Configuration
 - 📦 **Nix Flakes** - For reproducible builds
