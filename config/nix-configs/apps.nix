@@ -34,11 +34,11 @@
     love # for balatro
 
     ## System
-    gimp
+    # gimp
     lazygit
     zed-editor
-    nixd # # nix-code interpiter
-    nil # # nix lang server
+    nixd ## nix-code interpiter
+    nil ## nix lang server
     neofetch
     nvitop
     micro
@@ -50,7 +50,6 @@
     obsidian
     waypipe
     wayvnc
-    blender
     baobab # # disk wiztree.
     obs-studio
     prusa-slicer
@@ -114,6 +113,8 @@
     "com.github.tchx84.Flatseal"
     "com.valvesoftware.Steam"
     "com.tdameritrade.ThinkOrSwim"
+    "org.gimp.GIMP"
+    "io.github.nate_xyz.Paleta"
   ];
 
   ####################
