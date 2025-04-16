@@ -28,7 +28,7 @@ services.xserver.videoDrivers = ["nvidia"];
 
 hardware.nvidia = {
   modesetting.enable = true;
-  forceFullCompositionPipeline = true;
+  forceFullCompositionPipeline = false;
   powerManagement = {
     enable = false;
     finegrained = false;

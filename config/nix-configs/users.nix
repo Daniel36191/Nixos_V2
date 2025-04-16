@@ -26,6 +26,7 @@ in
         "lp"
         "docker"
         "video"
+        "dialout"
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;

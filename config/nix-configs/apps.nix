@@ -14,9 +14,10 @@
   environment.systemPackages = with pkgs; [
     # vesktop
     # (discord.override {
-    #   # withOpenASAR = true; ## can do this here too
+    #   withOpenASAR = true; ## can do this here too
     #   withVencord = true;
     # })
+    equibop ## this works??
 
 
     ## Wine
@@ -32,6 +33,7 @@
     glfw3-minecraft
     jdk17
     love # for balatro
+    slimevr ## slime vr :)
 
     ## System
     # gimp
@@ -50,10 +52,17 @@
     obsidian
     waypipe
     wayvnc
-    baobab # # disk wiztree.
+    baobab ## disk wiztree.
     obs-studio
-    prusa-slicer
+    # prusa-slicer ## segmentation fault core dumped, error no idea installed flatpak
+
+    inputs.blender-cuda.packages.${pkgs.system}.default
   ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    # cudaSupport = true;
+    # cudnnSupport = true;
+  };
 
 
   ###########
@@ -108,13 +117,14 @@
     }
   ];
   services.flatpak.packages = [
-    "dev.vencord.Vesktop"
+    # "dev.vencord.Vesktop"
     "com.core447.StreamController"
     "com.github.tchx84.Flatseal"
     "com.valvesoftware.Steam"
     "com.tdameritrade.ThinkOrSwim"
     "org.gimp.GIMP"
     "io.github.nate_xyz.Paleta"
+    "com.prusa3d.PrusaSlicer"
   ];
 
   ####################

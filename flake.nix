@@ -10,10 +10,18 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
   };
 
-  outputs =
-    { self, nixpkgs, home-manager, nix-flatpak, nixpkgs-xr, ... }@inputs:
+  outputs = {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-flatpak,
+      nixpkgs-xr,
+      blender-cuda,
+      ...
+  }@inputs:
     let
       system = "x86_64-linux";
       host = "default";

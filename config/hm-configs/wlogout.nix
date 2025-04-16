@@ -1,9 +1,22 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   programs.wlogout = {
     enable = true;
     layout = [
+      {
+        "label" = "windows";
+        "action" =
+          let
+            windowsboot = builtins.readFile ./windows.sh;
+          in
+          windowsboot;
+          # concatStrings [
+          #   windowsboot
+          # ];
+        "text" = "Windows";
+        "keybind" = "w";
+      }
       {
         label = "shutdown";
         action = "sleep 1; systemctl poweroff";
@@ -61,6 +74,11 @@
         color: #${config.lib.stylix.colors.base0B};
         background-color: rgba(12, 12, 12, 0.5);
         border: 3px solid #${config.lib.stylix.colors.base0B};
+      }
+      #windows {
+      	margin: 10px;
+      	border-radius: 20px;
+      	background-image: image(url("icons/lock.png"));
       }
       #logout {
       	margin: 10px;
