@@ -12,8 +12,16 @@
 #Custom SendMidi
 let
   sendmidi = import (pkgs.fetchFromGitHub {
-    owner = "dmoeller131";
+    owner = "Daniel36191";
     repo = "SendMIDI";
+    rev = "main"; # Replace with a specific tag or commit hash
+    sha256 = "BIl2KON5I5hDWZJb0wrm25lCuX+/zJF/34SKnUrvcqU="; # Replace with the actual hash
+  }) {
+    inherit (pkgs) stdenv lib fetchFromGitHub alsa-lib pkg-config; # Pass all required arguments
+  };
+  receivemidi = import (pkgs.fetchFromGitHub {
+    owner = "Daniel36191";
+    repo = "ReceiveMIDI";
     rev = "main"; # Replace with a specific tag or commit hash
     sha256 = "BIl2KON5I5hDWZJb0wrm25lCuX+/zJF/34SKnUrvcqU="; # Replace with the actual hash
   }) {
@@ -30,6 +38,7 @@ environment.systemPackages = with pkgs; [
   spotify
   spicetify-cli
   sendmidi
+  receivemidi
   pulseaudioFull
   qpwgraph
   bespokesynth
