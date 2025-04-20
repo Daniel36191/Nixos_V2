@@ -88,6 +88,7 @@
       "org.gimp.GIMP"
       "io.github.nate_xyz.Paleta"
       "com.prusa3d.PrusaSlicer"
+      "org.vinegarhq.Sober"
     ];
     overrides = {
       "com.valvesoftware.Steam".Context = {
@@ -128,6 +129,7 @@
     extraPackages = with pkgs; [
       gamescope
       mangohud
+      glibc_multi
       # (pkgs.glibc.overrideAttrs (old: {
       #           version = "2.35";
       #           src = pkgs.fetchurl {

@@ -45,10 +45,10 @@ environment.systemPackages = with pkgs; [
 ##############
 ## Envision ## Should just work // Eh
 ##############
-programs.envision = {
-  enable = true;
-  openFirewall = true;
-};
+# programs.envision = {
+#   enable = true;
+#   openFirewall = true;
+# };
 
 
 ############
@@ -71,7 +71,7 @@ systemd.user.services.monado.environment = {
 
 services.wivrn = {
   enable = true;
-  autoStart = false;
+  autoStart = true;
   defaultRuntime = true;
   openFirewall = true;
   package = (inputs.lemonake.packages.${pkgs.system}.wivrn.override {
@@ -104,6 +104,30 @@ services.wivrn = {
   #     ];
   #   };
   # };
+  #
+  #  ## to be made into nix code this is correct config
+  # {
+  #   "application": [
+  #     "/run/current-system/sw/bin/wlx-overlay-s"
+  #   ],
+  #   "bitrate": 100000000,
+  #   "encoders": [
+  #     {
+  #       "encoder": "nvenc",
+  #       "height": 1.0,
+  #       "offset_x": 0.0,
+  #       "offset_y": 0.0,
+  #       "width": 0.5
+  #     },
+  #     {
+  #       "encoder": "nvenc",
+  #       "height": 1.0,
+  #       "offset_x": 0.5,
+  #       "offset_y": 0.0,
+  #       "width": 0.5
+  #     }
+  #   ]
+  # }
 };
 
 ## To deal with flatpak steam
