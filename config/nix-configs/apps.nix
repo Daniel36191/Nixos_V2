@@ -67,6 +67,42 @@
   };
 
 
+  ##############
+  ## FlatPaks ##
+  ##############
+
+  services.flatpak = {
+    enable = true;
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
+    packages = [
+      # "dev.vencord.Vesktop"
+      "com.core447.StreamController"
+      "com.github.tchx84.Flatseal"
+      "com.valvesoftware.Steam"
+      "com.tdameritrade.ThinkOrSwim"
+      "org.gimp.GIMP"
+      "io.github.nate_xyz.Paleta"
+      "com.prusa3d.PrusaSlicer"
+    ];
+    overrides = {
+      "com.valvesoftware.Steam".Context = {
+        filesystems = [
+          ## For Wivrn to work
+          "xdg-run/wivrn:ro"
+          "xdg-data/flatpak/app/io.github.wivrn.wivrn:ro"
+          "xdg-config/openxr:ro"
+          "xdg-config/openvr:ro"
+        ];
+      };
+    };
+  };
+
+
   ###########
   ## Steam ##
   ###########
@@ -108,27 +144,6 @@
   hardware.steam-hardware.enable = true;
 
 
-  ##############
-  ## FlatPaks ##
-  ##############
-
-  services.flatpak.enable = true;
-  services.flatpak.remotes = [
-    {
-      name = "flathub";
-      location = "https://flathub.org/repo/flathub.flatpakrepo";
-    }
-  ];
-  services.flatpak.packages = [
-    # "dev.vencord.Vesktop"
-    "com.core447.StreamController"
-    "com.github.tchx84.Flatseal"
-    "com.valvesoftware.Steam"
-    "com.tdameritrade.ThinkOrSwim"
-    "org.gimp.GIMP"
-    "io.github.nate_xyz.Paleta"
-    "com.prusa3d.PrusaSlicer"
-  ];
 
   ####################
   ## Port Forwading ##

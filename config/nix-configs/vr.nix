@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
-
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 environment.systemPackages = with pkgs; [
   monado-vulkan-layers
@@ -68,6 +71,8 @@ systemd.user.services.monado.environment = {
 
 services.wivrn = {
   enable = true;
+  autoStart = false;
+  defaultRuntime = true;
   openFirewall = true;
   package = (inputs.lemonake.packages.${pkgs.system}.wivrn.override {
     cudaSupport = true; });
@@ -77,14 +82,6 @@ services.wivrn = {
   #   (pkgs.wivrn.override {
   #     cudaSupport = true;
   #   });
-
-  # Write information to /etc/xdg/openxr/1/active_runtime.json, VR applications
-  # will automatically read this and work with WiVRn (Note: This does not currently
-  # apply for games run in Valve's Proton)
-  defaultRuntime = true;
-
-  # Run WiVRn as a systemd service on startup
-  autoStart = false;
 
   # Config for WiVRn (https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
   # config = {
@@ -108,5 +105,22 @@ services.wivrn = {
   #   };
   # };
 };
+
+## To deal with flatpak steam
+services.flatpak.overrides = {
+  "com.valvesoftware.Steam".Context = {
+    filesystems = [
+      ## For Wivrn to work
+      "xdg-run/wivrn:ro"
+      "xdg-data/flatpak/app/io.github.wivrn.wivrn:ro"
+      "xdg-config/openxr:ro"
+      "xdg-config/openvr:ro"
+    ];
+  };
+};
+system.activationScripts.steamflatpak-openxr = ''
+    mkdir -p ~/.var/app/com.valvesoftware.Steam/.config/openxr
+    ln -sf ~/.config/openxr/1 ~/.var/app/com.valvesoftware.Steam/.config/openxr/1
+  '';
 
 }
