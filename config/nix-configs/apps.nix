@@ -24,7 +24,7 @@
     lutris
     wineWowPackages.waylandFull
     # wineWowPackages.stable
-    protonup-qt # # Install proton-ge
+    # protonup-qt # # Install proton-ge
     gamescope
     mangohud
 
@@ -55,6 +55,8 @@
     baobab ## disk wiztree.
     obs-studio
     # prusa-slicer ## segmentation fault core dumped, error no idea installed flatpak
+    gnome-disk-utility ## for editing disks
+    nautilus
 
     inputs.blender-cuda.packages.${pkgs.system}.default
   ];
@@ -100,6 +102,7 @@
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
+      proton-ge-rtsp-bin
     ];
   };
   hardware.steam-hardware.enable = true;
@@ -159,17 +162,45 @@
 
 
   ############
-  ## Thunar ##
+  ## Thunar ## File Man
   ############
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
+  # programs.thunar = {
+  #   enable = true;
+  #   plugins = with pkgs.xfce; [
+  #     thunar-archive-plugin
+  #     thunar-volman
+  #   ];
+  # };
+  # ## Thunbnails
+  # services.tumbler.enable = true;
+
+
+  ##############
+  ## Nautilus ## File Man
+  ##############
+  services = {
+    gnome.sushi.enable = true;
+    gvfs.enable = true;
   };
-  ## Thunbnails
-  services.tumbler.enable = true;
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "kitty";
+  };
+  nixpkgs.overlays = [
+    (final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (nprev: {
+        buildInputs =
+          nprev.buildInputs
+          ++ (with pkgs.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+      });
+    })
+  ];
+
+
+
 
 
   #################

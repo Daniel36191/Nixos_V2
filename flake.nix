@@ -11,6 +11,7 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
+    lemonake.url = "github:passivelemon/lemonake";
   };
 
   outputs = {
@@ -20,6 +21,7 @@
       nix-flatpak,
       nixpkgs-xr,
       blender-cuda,
+      lemonake,
       ...
   }@inputs:
     let

@@ -23,7 +23,7 @@ let
     owner = "Daniel36191";
     repo = "ReceiveMIDI";
     rev = "main"; # Replace with a specific tag or commit hash
-    sha256 = "BIl2KON5I5hDWZJb0wrm25lCuX+/zJF/34SKnUrvcqU="; # Replace with the actual hash
+    sha256 = "s60O/ypv5iXxMvJ+sIna+WrtpHC5xChV4ci1yIOIbK8="; # Replace with the actual hash
   }) {
     inherit (pkgs) stdenv lib fetchFromGitHub alsa-lib pkg-config; # Pass all required arguments
   };
@@ -37,15 +37,18 @@ imports = [
 environment.systemPackages = with pkgs; [
   spotify
   spicetify-cli
+  bespokesynth
   sendmidi
   receivemidi
-  pulseaudioFull
   qpwgraph
-  bespokesynth
+  pulseaudioFull
+
+  ## Plugins
   rnnoise-plugin
   # lsp-plugins ## A lot of plugins
   speech-denoiser ## rnnoise
   cardinal ## Custom .desktop file in desktop-files.nix
+  rPackages.sparta
 ];
 
 
