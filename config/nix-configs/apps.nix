@@ -38,6 +38,7 @@
     ## System
     # gimp
     lazygit
+    # vscode
     zed-editor
     nixd ## nix-code interpiter
     nil ## nix lang server
@@ -45,10 +46,9 @@
     nvitop
     micro
     librewolf
-    vscode
     cliphist
     wl-clipboard
-    pinta
+    # pinta
     obsidian
     waypipe
     wayvnc
@@ -83,24 +83,12 @@
       # "dev.vencord.Vesktop"
       "com.core447.StreamController"
       "com.github.tchx84.Flatseal"
-      "com.valvesoftware.Steam"
       "com.tdameritrade.ThinkOrSwim"
       "org.gimp.GIMP"
       "io.github.nate_xyz.Paleta"
       "com.prusa3d.PrusaSlicer"
       "org.vinegarhq.Sober"
     ];
-    overrides = {
-      "com.valvesoftware.Steam".Context = {
-        filesystems = [
-          ## For Wivrn to work
-          "xdg-run/wivrn:ro"
-          "xdg-data/flatpak/app/io.github.wivrn.wivrn:ro"
-          "xdg-config/openxr:ro"
-          "xdg-config/openvr:ro"
-        ];
-      };
-    };
   };
 
 
@@ -129,7 +117,7 @@
     extraPackages = with pkgs; [
       gamescope
       mangohud
-      glibc_multi
+      # glibc_multi
       # (pkgs.glibc.overrideAttrs (old: {
       #           version = "2.35";
       #           src = pkgs.fetchurl {

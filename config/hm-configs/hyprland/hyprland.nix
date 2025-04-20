@@ -38,7 +38,7 @@ with lib;
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    extraConfig = 
+    extraConfig =
       let
         hyprlandconf = builtins.readFile ./hyprland.conf;
       in
