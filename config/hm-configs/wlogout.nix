@@ -6,14 +6,7 @@
     layout = [
       {
         "label" = "windows";
-        "action" =
-          let
-            windowsboot = builtins.readFile ./windows.sh;
-          in
-          windowsboot;
-          # concatStrings [
-          #   windowsboot
-          # ];
+        "action" = "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY grub-reboot 'Windows' && reboot";
         "text" = "Windows";
         "keybind" = "w";
       }

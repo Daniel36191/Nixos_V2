@@ -26,6 +26,7 @@ environment.systemPackages = with pkgs; [
 
     ## Bootloader.
     loader = {
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         useOSProber = true;
@@ -43,8 +44,19 @@ environment.systemPackages = with pkgs; [
           };
           installPhase = "cp -r customize/nixos $out";
         });
+        extraEntries =
+        let ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep PARTUUID
+            partuuid = "1375c5c6-218b-4d2d-b0e5-26a698a62e5c";
+        in
+        ''
+          menuentry "Windows" {
+              insmod part_gpt
+              insmod fat
+              search --no-floppy --set=root --part-uuid ${partuuid}
+              chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+          }
+        '';
       };
-      efi.canTouchEfiVariables = true;
     };
 
     ## Make /tmp a tmpfs
