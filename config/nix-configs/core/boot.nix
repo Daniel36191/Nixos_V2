@@ -45,17 +45,38 @@ environment.systemPackages = with pkgs; [
           installPhase = "cp -r customize/nixos $out";
         });
         extraEntries =
-        let ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep PARTUUID
-            partuuid = "1375c5c6-218b-4d2d-b0e5-26a698a62e5c";
+        let
+            ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep UUID
+            uuid = "CCF02DC0F02DB19E";
+
+            ## lsblk, sda->hd0, sda1->gpt1
+            drive = "hd1,gpt1";
         in
         ''
-          menuentry "Windows" {
-              insmod part_gpt
-              insmod fat
-              search --no-floppy --set=root --part-uuid ${partuuid}
-              chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-          }
+        menuentry "Windows" {
+          insmod part_gpt
+          insmod fat
+          set root='hd0,gpt1'
+          if [ x$feature_platform_search_hint = xy ]; then
+           search --no-floppy --fs-uuid --set=root --hint-bios=${drive} --hint-efi=${drive} --hint-baremetal=ahci0,gpt1  ${uuid}
+          else
+           search --no-floppy --fs-uuid --set=root ${uuid}
+          fi
+          chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        }
         '';
+
+        # let ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep PARTUUID
+        #     partuuid = "1375c5c6-218b-4d2d-b0e5-26a698a62e5c";
+        # in
+        # ''
+        #   menuentry "Windows" {
+        #       insmod part_gpt
+        #       insmod fat
+        #       search --no-floppy --set=root --part-uuid ${partuuid}
+        #       chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        #   }
+        # '';
       };
     };
 

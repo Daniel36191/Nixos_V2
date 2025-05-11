@@ -19,6 +19,7 @@ let
   }) {
     inherit (pkgs) stdenv lib fetchFromGitHub alsa-lib pkg-config; # Pass all required arguments
   };
+
   receivemidi = import (pkgs.fetchFromGitHub {
     owner = "Daniel36191";
     repo = "ReceiveMIDI";
@@ -35,8 +36,6 @@ imports = [
 ];
 
 environment.systemPackages = with pkgs; [
-  spotify
-  spicetify-cli
   bespokesynth
   sendmidi
   receivemidi
@@ -48,7 +47,7 @@ environment.systemPackages = with pkgs; [
   # lsp-plugins ## A lot of plugins
   speech-denoiser ## rnnoise
   cardinal ## Custom .desktop file in desktop-files.nix
-  rPackages.sparta
+  # rPackages.sparta
 ];
 
 
@@ -78,15 +77,17 @@ environment.systemPackages = with pkgs; [
 
 programs.spicetify =
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = pkgs.spotify;
 in
 {
   enable = true;
+  # spotifyPackage = inputs.nixpkgs-spotifyOld.legacyPackages.${pkgs.system}.spotify;
+  spotifyPackage = inputs.nixpkgs-spotifyOld.legacyPackages.${pkgs.system}.spotify;
 
   enabledExtensions = with spicePkgs.extensions; [
     shuffle # shuffle+ (special characters are sanitized out of extension names)
     adblock
-    # hidepodcasts
+    # hidePodcasts
     bookmark
     trashbin
     powerBar

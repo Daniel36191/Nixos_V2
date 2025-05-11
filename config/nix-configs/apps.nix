@@ -17,16 +17,22 @@
     #   withOpenASAR = true; ## can do this here too
     #   withVencord = true;
     # })
+
     equibop ## this works??
+    nheko
+    cinny-desktop
+
 
 
     ## Wine
     lutris
     wineWowPackages.waylandFull
+    winetricks
     # wineWowPackages.stable
     # protonup-qt # # Install proton-ge
     gamescope
     mangohud
+    steamtinkerlaunch
 
     ## Games
     prismlauncher
@@ -34,6 +40,7 @@
     jdk17
     love # for balatro
     slimevr ## slime vr :)
+    bs-manager ## Beatsaber Modding
 
     ## System
     # gimp
@@ -57,13 +64,16 @@
     # prusa-slicer ## segmentation fault core dumped, error no idea installed flatpak
     gnome-disk-utility ## for editing disks
     nautilus
+    mission-center
 
     inputs.blender-cuda.packages.${pkgs.system}.default
   ];
   nixpkgs.config = {
-    allowUnfree = true;
     # cudaSupport = true;
     # cudnnSupport = true;
+    permittedInsecurePackages = [
+      "olm-3.2.16"
+    ];
   };
 
 
@@ -117,6 +127,7 @@
     extraPackages = with pkgs; [
       gamescope
       mangohud
+      gamemode
       # glibc_multi
       # (pkgs.glibc.overrideAttrs (old: {
       #           version = "2.35";
@@ -129,6 +140,8 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       proton-ge-rtsp-bin
+      luxtorpeda
+      steamtinkerlaunch
     ];
   };
   hardware.steam-hardware.enable = true;
@@ -205,9 +218,6 @@
   ];
 
 
-
-
-
   #################
   ## Thunderbird ## (E-Mail)
   #################
@@ -215,4 +225,11 @@
     enable = true;
   };
 
+
+  ################
+  ## KdeConnect ## (Connect Phone)
+  ################
+  programs.kdeconnect = {
+    enable = true;
+  };
 }
