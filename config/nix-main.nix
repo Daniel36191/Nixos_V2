@@ -38,13 +38,6 @@
   ./nix-configs/hardware.nix
   ];
 
-  assertions = [
-      {
-        assertion = config.nixpkgs.config.allowUnfree or true;
-        message = "allowUnfree is not enabled! Check your configuration.";
-      }
-    ];
-
   #########
   ## SSH ##
   #########

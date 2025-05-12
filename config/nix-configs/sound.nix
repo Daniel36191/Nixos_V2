@@ -6,6 +6,7 @@
   options,
   inputs,
   lib,
+  pkgs-spotifyOld,
   ...
 }:
 
@@ -75,19 +76,20 @@ environment.systemPackages = with pkgs; [
 ## Spicetify ##
 ###############
 
+
 programs.spicetify =
 let
-  spicePkgs = pkgs.spotify;
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
   enable = true;
   # spotifyPackage = inputs.nixpkgs-spotifyOld.legacyPackages.${pkgs.system}.spotify;
-  spotifyPackage = inputs.nixpkgs-spotifyOld.legacyPackages.${pkgs.system}.spotify;
+  spotifyPackage = pkgs-spotifyOld.spotify;
 
-  enabledExtensions = with spicePkgs.extensions; [
+    enabledExtensions = with spicePkgs.extensions; [
     shuffle # shuffle+ (special characters are sanitized out of extension names)
     adblock
-    # hidePodcasts
+    hidePodcasts
     bookmark
     trashbin
     powerBar
@@ -111,7 +113,7 @@ in
     newReleases
     # marketplace # Broken
   ];
-  enabledSnippets = with spicePkgs.snippets; [
+  enabledSnippets = with spicePkgs.snippets; [  ## Broken??
     pointer
     oneko
   ];

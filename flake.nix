@@ -32,6 +32,13 @@
       system = "x86_64-linux";
       host = "default";
       username = "daniel";
+
+      # overlay-nixpkgs-spotifyOld = final: prev: {
+      #   nixpkgs-spotifyOld = import nixpkgs-spotifyOld {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   };
+      # };
     in
     {
       nixosConfigurations = {
@@ -41,12 +48,14 @@
             inherit inputs;
             inherit username;
             inherit host;
+
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
               inherit system;
               config.allowUnfree = true;
             };
           };
           modules = [
+            # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs-spotifyOld ]; })
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = {
