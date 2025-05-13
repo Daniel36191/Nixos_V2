@@ -5,11 +5,7 @@
   username,
   options,
   ...
-}:
-let
-  inherit (import ./variables.nix) keyboardLayout consoleKeyMap;
-in
-{
+}:{
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "nixos";
@@ -48,46 +44,6 @@ in
     tree
 
   ];
-
-  # Services to start
-  services = {
-    xserver = {
-      enable = false;
-      xkb = {
-        layout = "${keyboardLayout}";
-        variant = "";
-      };
-    };
-    smartd = {
-      enable = false;
-      autodetect = true;
-    };
-    libinput.enable = true;
-    fstrim.enable = true;
-    gvfs.enable = true;
-    printing = {
-      enable = true;
-      drivers = [
-        # pkgs.hplipWithPlugin
-      ];
-    };
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-    ipp-usb.enable = true;
-    syncthing = {
-      enable = false;
-      user = "${username}";
-      dataDir = "/home/${username}";
-      configDir = "/home/${username}/.config/syncthing";
-    };
-    rpcbind.enable = false;
-    nfs.server.enable = false;
-  };
-
-  console.keyMap = "${consoleKeyMap}";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

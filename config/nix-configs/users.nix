@@ -1,16 +1,45 @@
 {
   pkgs,
   username,
+  options,
   ...
 }:
 
 let
-  inherit (import ./variables.nix) gitUsername;
+  inherit (import ../variables.nix)
+  consoleKeyMap
+  gitUsername
+  timeZone
+  shell
+  ;
 in
 {
   ## Define users by nix
   users = {
     mutableUsers = true;
+  };
+
+  ## Locale Settings
+  console.keyMap = consoleKeyMap;
+  ## Set your time zone
+  time.timeZone = timeZone;
+  ## Set time server
+  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+
+  ## Select internationalisation properties
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
   users.users = {
@@ -28,19 +57,8 @@ in
         "video"
         "dialout"
       ];
-      shell = pkgs.bash;
+      shell = with pkgs; shell;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [
-      ];
     };
-    # "newuser" = {
-    #   homeMode = "755";
-    #   isNormalUser = true;
-    #   description = "New user account";
-    #   extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    #   shell = pkgs.bash;
-    #   ignoreShellProgramCheck = true;
-    #   packages = with pkgs; [];
-    # };
   };
 }

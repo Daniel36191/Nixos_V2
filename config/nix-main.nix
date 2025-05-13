@@ -26,19 +26,17 @@
   ./nix-configs/users.nix
   ./nix-configs/core/devices.nix
   ./nix-configs/core/boot.nix
+  ./nix-configs/core/core-services.nix
 
 
   ## To Be Cleaned
   ../modules/nvidia-drivers.nix
-  ../modules/nvidia-prime-drivers.nix
-  ../modules/vm-guest-services.nix
-  ../modules/local-hardware-clock.nix
 
   ## WIP
   ./nix-configs/config.nix
 
   ## No Touch
-  ./nix-configs/hardware.nix
+  ./nix-configs/core/hardware-configuration.nix
   ];
 
   #########
@@ -62,27 +60,6 @@
   ############
   ## Locale ##
   ############
-
-  ## Set your time zone
-  time.timeZone = "America/New_York";
-  ## Set time server
-  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
-
-  ## Select internationalisation properties
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
-    };
-  };
 
   ## Rebind CapsLock to Super
   services.keyd = {

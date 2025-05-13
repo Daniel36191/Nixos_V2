@@ -100,6 +100,7 @@
   ## Steam ##
   ###########
 
+  hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
@@ -138,7 +139,6 @@
       steamtinkerlaunch
     ];
   };
-  hardware.steam-hardware.enable = true;
 
 
 
@@ -165,12 +165,6 @@
   #     "--advertise-exit-node"
   #   ];
   # };
-
-  ######################
-  ## Remote Managment ##
-  ######################
-
-  # services.teamviewer.enable = true; ## Does not stream
 
 
   ############

@@ -8,7 +8,7 @@
 }:
 
 let
-  inherit (import ../../nix-configs/variables.nix)
+  inherit (import ../../variables.nix)
     browser
     terminal
     extraMonitorSettings

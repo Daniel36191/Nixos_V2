@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (import ./nix-configs/variables.nix) gitUsername gitEmail;
+  inherit (import ./variables.nix) gitUsername gitEmail;
 in
 {
   ## Home Manager Settings
@@ -35,10 +35,6 @@ in
     (import ../scripts/web-search.nix { inherit pkgs; })
     (import ../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../scripts/screenshootin.nix { inherit pkgs; })
-    (import ../scripts/list-hypr-bindings.nix {
-      inherit pkgs;
-      inherit host;
-    })
   ];
 
   # Place Files Inside Home Directory

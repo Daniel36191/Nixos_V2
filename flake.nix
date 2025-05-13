@@ -29,9 +29,11 @@
       ...
   }@inputs:
     let
-      system = "x86_64-linux";
-      host = "default";
-      username = "daniel";
+        inherit (import ./config/variables.nix)
+            system
+            host
+            username
+            ;
 
       # overlay-nixpkgs-spotifyOld = final: prev: {
       #   nixpkgs-spotifyOld = import nixpkgs-spotifyOld {
@@ -49,6 +51,7 @@
             inherit username;
             inherit host;
 
+            ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
               inherit system;
               config.allowUnfree = true;
