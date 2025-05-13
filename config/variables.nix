@@ -10,9 +10,8 @@
   keyboardLayout = "us";
   consoleKeyMap = "us";
   timeZone = "America/New_York";
-  shell = "pkgs.bash";
 
   ## Theme
-  wallpaper = "../hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
-  wallpaper-ns = ../hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
+  wallpaper = "./hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
+  wallpaper-ns = ./hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
 }

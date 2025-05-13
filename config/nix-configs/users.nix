@@ -10,7 +10,6 @@ let
   consoleKeyMap
   gitUsername
   timeZone
-  shell
   ;
 in
 {
@@ -57,7 +56,7 @@ in
         "video"
         "dialout"
       ];
-      shell = with pkgs; shell;
+      shell = pkgs.bash;
       ignoreShellProgramCheck = true;
     };
   };

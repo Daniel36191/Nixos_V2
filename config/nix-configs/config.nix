@@ -1,9 +1,5 @@
 {
-  config,
   pkgs,
-  host,
-  username,
-  options,
   ...
 }:{
   # Enable networking

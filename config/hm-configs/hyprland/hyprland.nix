@@ -1,18 +1,11 @@
 {
   lib,
-  username,
-  host,
-  config,
   pkgs,
   ...
 }:
 
 let
   inherit (import ../../variables.nix)
-    browser
-    terminal
-    extraMonitorSettings
-    keyboardLayout
     wallpaper
     ;
 in
