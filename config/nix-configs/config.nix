@@ -10,19 +10,6 @@ let
   inherit (import ./variables.nix) keyboardLayout consoleKeyMap;
 in
 {
-
-  # Extra Module Options
-  # drivers.amdgpu.enable = false;
-  drivers.nvidia.enable = true;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
-  };
-  # drivers.intel.enable = false;
-  vm.guest-services.enable = false;
-  local.hardware-clock.enable = false;
-
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "nixos";

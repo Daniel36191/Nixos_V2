@@ -1,21 +1,7 @@
 {
-  lib,
-  pkgs,
   config,
   ...
-}:
-with lib;
-let
-  cfg = config.drivers.nvidia;
-in
-{
-  options.drivers.nvidia = {
-    enable = mkEnableOption "Enable Nvidia Drivers";
-  };
-
-  config = mkIf cfg.enable {
-
-
+}:{
 ##########
 # Nvidia #
 ##########
@@ -45,6 +31,5 @@ hardware.nvidia = {
   #   settingsSha256 = "sha256-vWnrXlBCb3K5uVkDFmJDVq51wrCoqgPF03lSjZOuU8M="; #"sha256-m2rNASJp0i0Ez2OuqL+JpgEF0Yd8sYVCyrOoo/ln2a4=";
   #   persistencedSha256 = lib.fakeHash; #"sha256-XaPN8jVTjdag9frLPgBtqvO/goB5zxeGzaTU0CdL6C4=";
   # };
-};
 };
 }

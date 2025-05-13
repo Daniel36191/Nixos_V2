@@ -55,7 +55,6 @@
             };
           };
           modules = [
-            # ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-nixpkgs-spotifyOld ]; })
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = {
