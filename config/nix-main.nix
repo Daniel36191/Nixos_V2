@@ -14,6 +14,9 @@
   ./nix-configs/vr.nix
   ./nix-configs/apps.nix
 
+  ## App Configs
+  ./nix-configs/app-configs/starship.nix
+
   ## Theme
   ./nix-configs/theme.nix
   ./nix-configs/sound.nix

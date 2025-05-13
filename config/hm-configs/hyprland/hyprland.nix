@@ -3,6 +3,7 @@
   username,
   host,
   config,
+  pkgs,
   ...
 }:
 
@@ -38,6 +39,9 @@ with lib;
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
+    plugins = with pkgs.hyprlandPlugins; [
+      # hycov ## alt tab like funftion ## Broken in Nixpkgs
+    ];
     extraConfig =
       let
         hyprlandconf = builtins.readFile ./hyprland.conf;

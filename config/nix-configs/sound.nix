@@ -1,9 +1,5 @@
 {
-  config,
   pkgs,
-  host,
-  username,
-  options,
   inputs,
   lib,
   pkgs-spotifyOld,
@@ -83,7 +79,6 @@ let
 in
 {
   enable = true;
-  # spotifyPackage = inputs.nixpkgs-spotifyOld.legacyPackages.${pkgs.system}.spotify;
   spotifyPackage = pkgs-spotifyOld.spotify;
 
     enabledExtensions = with spicePkgs.extensions; [

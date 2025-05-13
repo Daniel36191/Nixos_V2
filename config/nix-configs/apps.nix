@@ -1,11 +1,5 @@
 {
-  config,
   pkgs,
-  host,
-  username,
-  options,
-  inputs,
-  lib,
   ...
 }:
 {
@@ -66,7 +60,7 @@
     nautilus
     mission-center
 
-    inputs.blender-cuda.packages.${pkgs.system}.default
+    # inputs.blender-cuda.packages.${pkgs.system}.default
   ];
   nixpkgs.config = {
     # cudaSupport = true;
