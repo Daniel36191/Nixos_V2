@@ -1,17 +1,26 @@
 {
-  ## Git Configuration
+  ##########
+  ## User ##
+  ##########
+
   gitUsername = "Daniel36191";
   gitEmail = "dmoeller38@outlook.com";
-
-  ## User
-  system = "x86_64-linux";
-  host = "default";
   username = "daniel";
-  keyboardLayout = "us";
-  consoleKeyMap = "us";
-  timeZone = "America/New_York";
 
   ## Theme
-  wallpaper = "./hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png";
-  wallpaper-ns = ./hm-configs/wallpapers/nixos-wallpaper-catppuccin-macchiato.png;
+  wallpaper = "nixos-wallpaper-catppuccin-macchiato.png";
+
+
+  ############
+  ## System ##
+  ############
+
+  host = "default";
+  system = "x86_64-linux";
+  keyboardLayout = "us";
+  consoleKeyMap = "us";
+  locale = "en_US.UTF-8";
+  timeZone = "America/New_York";
+  hostName = "nixos";
+  firewall = false;
 }

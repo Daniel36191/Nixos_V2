@@ -1,7 +1,7 @@
 {pkgs, ...}:
 let
   inherit (import ../variables.nix)
-    wallpaper-ns
+    wallpaper
     ;
 in
 {
@@ -11,7 +11,7 @@ in
 
   stylix = {
     enable = true;
-    image = wallpaper-ns;
+    image = ../hm-configs/wallpapers/${wallpaper};
     base16Scheme = {
       base00 = "24273a"; # base
       base01 = "1e2030"; # mantle

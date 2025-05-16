@@ -18,11 +18,11 @@ with lib;
       ipc = "off";
       splash = false;
       preload = [
-        (builtins.toString wallpaper)
+        ",../wallpapers/${wallpaper}"
       ];
 
       wallpapers = [
-        ",${builtins.toString wallpaper}"
+        ",../wallpapers/${wallpaper}"
       ];
     };
   };

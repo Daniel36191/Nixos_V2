@@ -2,35 +2,30 @@
   pkgs,
   ...
 }:{
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixos";
 
   environment.systemPackages = with pkgs; [
+
+    ## Cli
     wget
     killall
-    docker-compose
-    eza
     git
-    htop
-    lxqt.lxqt-policykit
-    lm_sensors
+    ncdu ## wiztree
+    ## Alternitives
+    eza ## ls
+    bat ## cat
+    nh ## better nixos ...
+
+    ## Core system utils
     unzip
     unrar
+    lxqt.lxqt-policykit
     libnotify
-    v4l-utils
-    ncdu
-    pciutils
+    v4l-utils ## obs virtual cam
     ffmpeg
-    bat
+
+
     pkg-config
-    brightnessctl
-    swappy
     appimage-run
-    networkmanagerapplet
-    yad
-    playerctl
-    nh
     nixfmt-rfc-style
     file-roller
     swaynotificationcenter
@@ -40,12 +35,6 @@
     tree
 
   ];
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

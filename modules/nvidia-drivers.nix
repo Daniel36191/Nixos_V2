@@ -2,9 +2,9 @@
   config,
   ...
 }:{
-##########
-# Nvidia #
-##########
+############
+## Nvidia ##
+############
 
 hardware.graphics = {
   enable = true;
@@ -32,4 +32,13 @@ hardware.nvidia = {
   #   persistencedSha256 = lib.fakeHash; #"sha256-XaPN8jVTjdag9frLPgBtqvO/goB5zxeGzaTU0CdL6C4=";
   # };
 };
+
+nix.settings = {
+    substituters = [
+        "https://cuda-maintainers.cachix.org"
+      ];
+      trusted-public-keys = [
+        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      ];
+  };
 }

@@ -12,9 +12,12 @@
     #   withVencord = true;
     # })
 
-    equibop ## this works??
-    nheko
-    cinny-desktop
+    equibop
+    # equicord ## no execuatable out
+
+    ## Matrix Clients
+    # nheko
+    # cinny-desktop
 
 
 

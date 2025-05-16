@@ -1,9 +1,7 @@
 {
   pkgs,
   username,
-  host,
   lib,
-  inputs,
   ...
 }:
 let
@@ -220,7 +218,7 @@ in
     #     };
     #     lib.mkPrio.background = [
     #       {
-    #         path = "/home/${username}/Pictures/Wallpapers/zaney-wallpaper.jpg";
+    #         path = "wallpaper";
     #         blur_passes = 3;
     #         blur_size = 8;
     #       }

@@ -1,9 +1,5 @@
 {
-  config,
   pkgs,
-  host,
-  username,
-  options,
   ...
 }:
 {
@@ -32,8 +28,10 @@
   '';
 
   ## Extra Logitech
-  hardware.logitech.wireless.enable = false;
-  hardware.logitech.wireless.enableGraphical = false;
+  hardware.logitech.wireless = {
+    enable = false;
+    enableGraphical = false;
+  };
 
   ## Adb
   programs.adb.enable = true;
@@ -46,8 +44,27 @@
   };
 
   ## Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+  };
   services.blueman.enable = true;
+
+  ## Rebind CapsLock to Super
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            capslock = "leftmeta";
+          };
+        };
+      };
+    };
+  };
 
 }
