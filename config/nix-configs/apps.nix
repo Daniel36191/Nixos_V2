@@ -132,6 +132,7 @@
       proton-ge-rtsp-bin
       luxtorpeda
       steamtinkerlaunch
+      (callPackage ../../custom-apps/proton-vkvr.nix {})
     ];
   };
 

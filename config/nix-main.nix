@@ -26,9 +26,6 @@
   ## To Be Cleaned
   ../modules/nvidia-drivers.nix
 
-  ## WIP
-  ./nix-configs/config.nix
-
   ## No Touch
   ./nix-configs/core/hardware-configuration.nix
   ];
