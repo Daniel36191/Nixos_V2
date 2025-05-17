@@ -4,72 +4,72 @@
 }:
 {
   imports = [
+    ./sys-apps.nix
   ];
   environment.systemPackages = with pkgs; [
+
+    ###############
+    ## User apps ##
+    ###############
+
+    librewolf
+    obsidian ## Notes
+    obs-studio
+    # inputs.blender-cuda.packages.${pkgs.system}.default
+    # gimp ## Image editing
+    # pinta ## Image editing
+    # prusa-slicer ## Segmentation fault core dumped, error
+
+    ## System apps
+    baobab ## Disk usage analyzer
+    gnome-disk-utility ## Disk manager
+    mission-center ## Task manager
+    nvitop ## btop for gpu
+    ncdu ## wiztree
+
+    ## Discord clients
     # vesktop
     # (discord.override {
     #   withOpenASAR = true; ## can do this here too
     #   withVencord = true;
     # })
-
     equibop
-    # equicord ## no execuatable out
 
     ## Matrix Clients
     # nheko
     # cinny-desktop
 
-
-
-    ## Wine
-    lutris
-    wineWowPackages.waylandFull
-    winetricks
-    # wineWowPackages.stable
-    # protonup-qt # # Install proton-ge
-    gamescope
-    mangohud
-    steamtinkerlaunch
-
     ## Games
     prismlauncher
     glfw3-minecraft
     jdk17
-    love # for balatro
     slimevr ## slime vr :)
-    bs-manager ## Beatsaber Modding
+    # bs-manager ## Beatsaber Modding
 
-    ## System
-    # gimp
+    ############
+    ## Coding ##
+    ############
+
+    ## Git tools
     lazygit
+    git
+
+    ## Code editors
     # vscode
     zed-editor
-    nixd ## nix-code interpiter
-    nil ## nix lang server
-    neofetch
-    nvitop
     micro
-    librewolf
-    cliphist
-    wl-clipboard
-    # pinta
-    obsidian
-    waypipe
-    wayvnc
-    baobab ## disk wiztree.
-    obs-studio
-    # prusa-slicer ## segmentation fault core dumped, error no idea installed flatpak
-    gnome-disk-utility ## for editing disks
-    nautilus
-    mission-center
 
-    # inputs.blender-cuda.packages.${pkgs.system}.default
+    ## Language servers
+    nixd ## Nix-lang interpiter
+    nil ## Nix-lang server
+    nixfmt-rfc-style ## Nix-lang formattor
+
   ];
   nixpkgs.config = {
     # cudaSupport = true;
     # cudnnSupport = true;
     permittedInsecurePackages = [
-      "olm-3.2.16"
+      "olm-3.2.16" ## For matrix clients
     ];
   };
 
@@ -126,14 +126,6 @@
       gamescope
       mangohud
       gamemode
-      # glibc_multi
-      # (pkgs.glibc.overrideAttrs (old: {
-      #           version = "2.35";
-      #           src = pkgs.fetchurl {
-      #             url = "mirror://gnu/glibc/glibc-2.35.tar.gz";
-      #             sha256 = "sha256-Po4MYZXajfvTHXfFb7jZlXb7hV+v1HqeColeUf1ZQtQ="; # Update with actual hash
-      #           };
-      #         }))
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
@@ -142,32 +134,6 @@
       steamtinkerlaunch
     ];
   };
-
-
-
-  ####################
-  ## Port Forwading ##
-  ####################
-
-  networking.firewall = {
-    allowedTCPPorts = [
-      5900
-      25565
-    ];
-    allowedUDPPorts = [
-      5900
-      25565
-    ];
-  };
-
-  # services.tailscale = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   authKeyFile = ./tailscaleauthkey.key;
-  #   extraSetFlags = [
-  #     "--advertise-exit-node"
-  #   ];
-  # };
 
 
   ############

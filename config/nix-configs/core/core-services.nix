@@ -3,7 +3,7 @@
   ...
 }:
 let
-  inherit (import ../variables.nix)
+  inherit (import ../../variables.nix)
   hostName
   firewall
   ;

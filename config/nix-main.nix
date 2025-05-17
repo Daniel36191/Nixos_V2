@@ -50,9 +50,29 @@
     };
   };
 
+  ####################
+  ## Port Forwading ##
+  ####################
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      5900
+      25565
+    ];
+    allowedUDPPorts = [
+      5900
+      25565
+    ];
+  };
 
-
+  # services.tailscale = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   authKeyFile = ./tailscaleauthkey.key;
+  #   extraSetFlags = [
+  #     "--advertise-exit-node"
+  #   ];
+  # };
 
   ###########
   ## Nixos ##
@@ -78,4 +98,12 @@
       options = "--delete-older-than 7d";
     };
   };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11";
 }

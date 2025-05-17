@@ -38,6 +38,7 @@ environment.systemPackages = with pkgs; [
   receivemidi
   qpwgraph
   pulseaudioFull
+  pavucontrol
 
   ## Plugins
   rnnoise-plugin
