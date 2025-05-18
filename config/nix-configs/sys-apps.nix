@@ -10,7 +10,6 @@
     ###########
 
     ## Wine
-    lutris
     wineWowPackages.waylandFull ## wine for wayland
     # wineWowPackages.stable ## wine
     winetricks

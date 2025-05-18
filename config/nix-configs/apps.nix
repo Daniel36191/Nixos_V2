@@ -17,10 +17,11 @@
     obs-studio
     # inputs.blender-cuda.packages.${pkgs.system}.default
     # gimp ## Image editing
-    # pinta ## Image editing
+    pinta ## Image editing
     # prusa-slicer ## Segmentation fault core dumped, error
 
     ## System apps
+    nautilus ## File man
     baobab ## Disk usage analyzer
     gnome-disk-utility ## Disk manager
     mission-center ## Task manager
@@ -45,6 +46,7 @@
     jdk17
     slimevr ## slime vr :)
     # bs-manager ## Beatsaber Modding
+    lutris
 
     ############
     ## Coding ##
@@ -132,7 +134,7 @@
       proton-ge-rtsp-bin
       luxtorpeda
       steamtinkerlaunch
-      (callPackage ../../custom-apps/proton-vkvr.nix {})
+      # (callPackage ../../custom-apps/proton-vkvr.nix {})
     ];
   };
 

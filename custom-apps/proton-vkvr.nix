@@ -3,73 +3,8 @@
   stdenv,
   fetchFromGitHub,
   fetchpatch,
-  cmake,
-  ninja,
-  python3,
-  perl,
-  pkg-config,
-  flex,
-  bison,
-  gettext,
-  freetype,
-  fontconfig,
-  libX11,
-  libXi,
-  libXcursor,
-  libXrandr,
-  libXinerama,
-  libXcomposite,
-  libXext,
-  libXxf86vm,
-  libXrender,
-  libXft,
-  libxkbcommon,
-  libpthreadstubs,
-  libxshmfence,
-  libGL,
-  libGLU,
-  libosmesa,
-  libpng,
-  libjpeg,
-  libtiff,
-  giflib,
-  libxml2,
-  libxslt,
-  lcms2,
-  openal,
-  libpulseaudio,
-  dbus,
-  gst_all_1,
-  samba,
-  cups,
-  sane-backends,
-  libgphoto2,
-  v4l-utils,
-  alsa-lib,
-  libkrb5,
-  gnutls,
-  mpg123,
-  openldap,
-  libusb1,
-  libgcrypt,
-  libgpg-error,
-  ocl-icd,
-  vulkan-loader,
-  libvdpau,
-  libva,
-  libdrm,
-  wayland,
-  libunwind,
-  libcap,
-  utillinux,
-  gtk3,
-  mesa,
-  moltenvk,
-  darwin,
-  writeScript,
   makeWrapper,
-  wineUnstable,
-  autoreconfHook,
+
 }:
 
 let
@@ -96,75 +31,10 @@ in stdenv.mkDerivation rec {
   src = protonSrc;
 
   nativeBuildInputs = [
-    cmake
-    ninja
-    python3
-    perl
-    pkg-config
-    flex
-    bison
-    gettext
     makeWrapper
   ];
 
   buildInputs = [
-    freetype
-    fontconfig
-    libX11
-    libXi
-    libXcursor
-    libXrandr
-    libXinerama
-    libXcomposite
-    libXext
-    libXxf86vm
-    libXrender
-    libXft
-    libxkbcommon
-    libpthreadstubs
-    libxshmfence
-    libGL
-    libGLU
-    libosmesa
-    libpng
-    libjpeg
-    libtiff
-    giflib
-    libxml2
-    libxslt
-    lcms2
-    openal
-    libpulseaudio
-    dbus
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    samba
-    cups
-    sane-backends
-    libgphoto2
-    v4l-utils
-    alsa-lib
-    libkrb5
-    gnutls
-    mpg123
-    openldap
-    libusb1
-    libgcrypt
-    libgpg-error
-    ocl-icd
-    vulkan-loader
-    libvdpau
-    libva
-    libdrm
-    wayland
-    libunwind
-    libcap
-    utillinux
-    gtk3
-    mesa
-  ] ++ lib.optionals stdenv.isDarwin [
-    moltenvk
-    darwin.apple_sdk.frameworks.Cocoa
   ];
 
   # You'll need to adjust the build process based on Proton's actual build system
