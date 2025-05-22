@@ -4,8 +4,8 @@
 {
   imports = [
   ## Apps
-  # ./nix-configs/vm.nix
-  ./nix-configs/containers.nix
+  ./nix-configs/vm.nix
+  # ./nix-configs/containers.nix
   ./nix-configs/vr.nix
   ./nix-configs/apps.nix
 
@@ -96,6 +96,11 @@
       options = "--delete-older-than 7d";
     };
   };
+
+  ## Compatibility
+  system.activationScripts.binBash = ''
+    ln -sf /run/current-system/sw/bin/bash /bin/bash
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

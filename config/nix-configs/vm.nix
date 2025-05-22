@@ -1,16 +1,27 @@
-{ config, pkgs, ... }:
-
+{
+  pkgs,
+  ...
+}:
+let
+  inherit (import ../variables.nix)
+  username
+  ;
+in
 {
 environment.systemPackages = with pkgs; [
 libvirt
 qemu
-virt-manager # optional for GUI
-gnome-boxes
 virt-viewer
-libglvnd #??? for gl acc
+libglvnd
 ];
 
-# enable libvirt
+## Virt-manager GUI
+programs.virt-manager.enable = true;
+
+## Spice interface
+virtualisation.spiceUSBRedirection.enable = true;
+
+## Enable Libvirt
 virtualisation.libvirtd = {
   enable = true;
   onBoot = "ignore";
@@ -21,8 +32,9 @@ virtualisation.libvirtd = {
   runAsRoot = true; # ths does noting
   };
 };
+users.groups.libvirtd.members = ["${username}"];
 
-# Enables VM connection
+## Enables VM connection
 programs.dconf.profiles.user.databases = [
   { lockAll = true;
 

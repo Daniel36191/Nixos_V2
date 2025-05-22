@@ -11,6 +11,7 @@
     hyprpaper
     swaynotificationcenter
     libnotify
+    playerctl ## Media keys
 
     ## Clipboard
     grimblast

@@ -55,6 +55,7 @@
     ## Git tools
     lazygit
     git
+    github-desktop
 
     ## Code editors
     # vscode

@@ -1,6 +1,5 @@
 {
   pkgs,
-  username,
   options,
   ...
 }:
@@ -11,6 +10,7 @@ let
   gitUsername
   timeZone
   locale
+  username
   ;
 in
 {
@@ -51,9 +51,14 @@ in
         "networkmanager"
         "wheel"
         "libvirtd"
+        "libvirt-qemu"
+        "kvm"
+        "input"
+        "disk"
         "scanner"
         "lp"
         "docker"
+        "podman"
         "video"
         "dialout"
       ];
