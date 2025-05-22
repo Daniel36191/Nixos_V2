@@ -11,6 +11,7 @@
 
   ## App Configs
   ./nix-configs/app-configs/starship.nix
+  ./nix-configs/app-configs/fish.nix
 
   ## Theme
   ./nix-configs/theme.nix
