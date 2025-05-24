@@ -12,7 +12,7 @@
   ## App Configs
   ./nix-configs/app-configs/starship.nix
   ./nix-configs/app-configs/fish.nix
-  ./nix-configs/app-congigs/shell.nix
+  ./nix-configs/app-configs/shell.nix
 
   ## Theme
   ./nix-configs/theme.nix
