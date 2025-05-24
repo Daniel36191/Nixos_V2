@@ -66,5 +66,4 @@ in
       ignoreShellProgramCheck = true;
     };
   };
-  programs.fish.enable = true;
 }

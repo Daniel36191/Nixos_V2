@@ -159,7 +159,6 @@ in
         io_mode = true;
         io_graph_combined = false;
       };
-
     };
     kitty = {
       enable = true;
@@ -177,35 +176,7 @@ in
         inactive_tab_font_style bold
       '';
     };
-    starship = {
-      enable = true;
-      package = pkgs.starship;
-    };
-    bash = {
-      enable = true;
-      enableCompletion = true;
-      profileExtra = ''
-        #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        #  exec Hyprland
-        #fi
-      '';
-      initExtra = ''
-        fastfetch
-        if [ -f $HOME/.bashrc-personal ]; then
-          source $HOME/.bashrc-personal
-        fi
-      '';
-      shellAliases = {
-        vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
-        sudonix = "sudo nixos-rebuild switch --flake .#default";
-        updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
-        cat = "bat";
-        mi = "micro";
-        ls = "eza --icons";
-        ll = "eza -lh --icons --grid --group-directories-first";
-        la = "eza -lah --icons --grid --group-directories-first";
-      };
-    };
+
     home-manager.enable = true;
     # hyprlock = {
     #   enable = true;
