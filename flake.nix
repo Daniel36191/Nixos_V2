@@ -14,6 +14,10 @@
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
     lemonake.url = "github:passivelemon/lemonake";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
+    split-monitor-workspaces.url = "github:Duckonaut/split-monitor-workspaces";
+    split-monitor-workspaces.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = {
@@ -26,6 +30,7 @@
       lemonake,
       chaotic,
       nixpkgs-spotifyOld,
+      split-monitor-workspaces,
       ...
   }@inputs:
     let
@@ -34,13 +39,6 @@
             host
             username
             ;
-
-      # overlay-nixpkgs-spotifyOld = final: prev: {
-      #   nixpkgs-spotifyOld = import nixpkgs-spotifyOld {
-      #   inherit system;
-      #   config.allowUnfree = true;
-      #   };
-      # };
     in
     {
       nixosConfigurations = {
@@ -65,10 +63,12 @@
                 inherit inputs;
                 inherit host;
               };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} = import ./config/hm-main.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${username} = import ./config/hm-main.nix;
+              };
             }
             ./config/nix-main.nix
             inputs.stylix.nixosModules.stylix

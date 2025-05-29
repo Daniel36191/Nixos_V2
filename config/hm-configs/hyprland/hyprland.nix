@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -32,8 +33,9 @@ with lib;
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    plugins = with pkgs.hyprlandPlugins; [
-      # hycov ## alt tab like funftion ## Broken in Nixpkgs
+    plugins = [
+      # pkgs.hyprlandPlugins.hycov ## alt tab like function ## Broken in Nixpkgs
+      inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
     ];
     extraConfig =
       let

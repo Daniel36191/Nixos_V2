@@ -8,14 +8,14 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
+    shellAliases = {
+      # nix-shell = "nix-shell --run fish"; ## Breaks package autocompleate
+    };
   };
 
   ## Plugins
   environment.systemPackages = with pkgs; [
     fishPlugins.done
-    fishPlugins.grc
-    grc
-    fishPlugins.forgit
   ];
 
   ## Set as default

@@ -19,6 +19,8 @@
     # gimp ## Image editing
     pinta ## Image editing
     # prusa-slicer ## Segmentation fault core dumped, error
+    libreoffice-qt6-fresh
+    rustdesk-flutter
 
     ## System apps
     nautilus ## File man
@@ -193,4 +195,5 @@
   programs.kdeconnect = {
     enable = true;
   };
+
 }

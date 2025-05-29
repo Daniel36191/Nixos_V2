@@ -62,8 +62,6 @@ in
         "video"
         "dialout"
       ];
-      shell = pkgs.fish; ## bash is default
-      ignoreShellProgramCheck = true;
     };
   };
 }

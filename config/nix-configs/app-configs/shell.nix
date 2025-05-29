@@ -2,7 +2,17 @@
   pkgs,
   ...
 }:
+let
+  inherit (import ../../variables.nix)
+  username
+  ;
+in
 {
+
+users.users."${username}" = {
+    shell = pkgs.fish; ## bash is default
+    ignoreShellProgramCheck = true;
+};
 
   environment = {
     shells = with pkgs; [
@@ -26,6 +36,8 @@
     ls = "eza --icons";
     ll = "eza -lh --icons --grid --group-directories-first";
     la = "eza -lah --icons --grid --group-directories-first";
+    grep = "rg";
+    find = "fd";
   };
 
 

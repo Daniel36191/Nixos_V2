@@ -32,7 +32,11 @@
     ## Alternitives
     eza ## ls
     bat ## cat
-    nh ## better nixos ...
+    nh ## nixos ...
+    ripgrep ## grep
+    fd ## find
+    uutils-coreutils-noprefix ## most coreutils
+
 
 
     ###################
