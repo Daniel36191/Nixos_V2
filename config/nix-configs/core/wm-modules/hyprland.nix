@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  inputs,
   ...
 }:
 {
@@ -51,7 +52,7 @@
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
         };
         initial_session = {
-          command = "${pkgs.hyprland}/bin/hyprland";
+          command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/hyprland";
           user = username;
         };
       };

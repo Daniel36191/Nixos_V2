@@ -16,8 +16,8 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    split-monitor-workspaces.url = "github:Duckonaut/split-monitor-workspaces";
-    split-monitor-workspaces.inputs.hyprland.follows = "hyprland";
+    hyprsplit.url = "github:shezdy/hyprsplit";
+    hyprsplit.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = {
@@ -30,7 +30,7 @@
       lemonake,
       chaotic,
       nixpkgs-spotifyOld,
-      split-monitor-workspaces,
+      hyprsplit,
       ...
   }@inputs:
     let

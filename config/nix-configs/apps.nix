@@ -99,7 +99,7 @@
       "org.gimp.GIMP"
       "io.github.nate_xyz.Paleta"
       "com.prusa3d.PrusaSlicer"
-      "org.vinegarhq.Sober"
+      # "org.vinegarhq.Sober" ## roblox
     ];
   };
 

@@ -31,11 +31,12 @@ with lib;
   ## Hyprland Conf
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
       # pkgs.hyprlandPlugins.hycov ## alt tab like function ## Broken in Nixpkgs
-      inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
     ];
     extraConfig =
       let

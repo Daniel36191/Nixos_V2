@@ -6,14 +6,13 @@
       enable = true;
       package = pkgs.rofi-wayland;
       extraConfig = {
-        modi = "drun,filebrowser,run";
+        modi = "drun,filebrowser";
         show-icons = true;
         icon-theme = "Papirus";
         location = 0;
         font = "JetBrainsMono Nerd Font Mono 12";
         drun-display-format = "{icon} {name}";
-        display-drun = " Apps";
-        display-run = " Run";
+        display-drun  = " Apps";
         display-filebrowser = " File";
       };
       theme =
@@ -25,7 +24,7 @@
             bg = mkLiteral "#${config.stylix.base16Scheme.base00}";
             bg-alt = mkLiteral "#${config.stylix.base16Scheme.base09}";
             foreground = mkLiteral "#${config.stylix.base16Scheme.base01}";
-            selected = mkLiteral "#${config.stylix.base16Scheme.base08}";
+            selected = mkLiteral "#${config.stylix.base16Scheme.base0D}";
             active = mkLiteral "#${config.stylix.base16Scheme.base0B}";
             text-selected = mkLiteral "#${config.stylix.base16Scheme.base00}";
             text-color = mkLiteral "#${config.stylix.base16Scheme.base05}";
@@ -55,7 +54,7 @@
           };
           "inputbar" = {
             enabled = true;
-            padding = mkLiteral "10px 10px 200px 10px";
+            padding = mkLiteral "10px 10px 10px 10px";
             margin = mkLiteral "10px";
             background-color = mkLiteral "transparent";
             border-radius = "25px";
@@ -65,7 +64,7 @@
               "dummy"
               "mode-switcher"
             ];
-            background-image = mkLiteral ''url("~/Pictures/Wallpapers/beautifulmountainscape.jpg", width)'';
+            # background-image = mkLiteral ''url("~/Pictures/Wallpapers/beautifulmountainscape.jpg", width)'';
           };
           "entry" = {
             enabled = true;
