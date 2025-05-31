@@ -135,7 +135,7 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       proton-ge-rtsp-bin
-      luxtorpeda
+      # luxtorpeda ## gone?
       steamtinkerlaunch
       # (callPackage ../../custom-apps/proton-vkvr.nix {})
     ];

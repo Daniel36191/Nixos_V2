@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
+    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/d1578f3c7e7480195903f533322e49d3fc77c22a";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
     home-manager.url = "github:nix-community/home-manager/master";
