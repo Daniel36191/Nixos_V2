@@ -33,7 +33,7 @@
     eza ## ls
     bat ## cat
     nh ## nixos ...
-    ripgrep ## grep
+    # ripgrep ## grep ## not great
     fd ## find
     uutils-coreutils-noprefix ## most coreutils
 
