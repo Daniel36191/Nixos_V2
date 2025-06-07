@@ -7,6 +7,7 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+      fastfetch
     '';
     shellAliases = {
       # nix-shell = "nix-shell --run fish"; ## Breaks package autocompleate

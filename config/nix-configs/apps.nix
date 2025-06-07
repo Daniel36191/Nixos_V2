@@ -29,6 +29,7 @@
     mission-center ## Task manager
     nvitop ## btop for gpu
     ncdu ## wiztree
+    xarchiver
 
     ## Discord clients
     # vesktop

@@ -13,6 +13,8 @@ libvirt
 qemu
 virt-viewer
 libglvnd
+virtio-win
+virtiofsd
 ];
 
 ## Virt-manager GUI
@@ -26,6 +28,7 @@ virtualisation.libvirtd = {
   enable = true;
   onBoot = "ignore";
   onShutdown = "shutdown";
+
 
   qemu = {
   ovmf.enable = true;
@@ -46,4 +49,5 @@ programs.dconf.profiles.user.databases = [
     };
   }
 ];
+hardware.enableRedistributableFirmware = true;
 }

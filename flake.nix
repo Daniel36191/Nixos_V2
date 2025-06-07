@@ -3,9 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/d1578f3c7e7480195903f533322e49d3fc77c22a";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
+    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
+    # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
@@ -17,6 +17,10 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprsplit.url = "github:shezdy/hyprsplit";
     hyprsplit.inputs.hyprland.follows = "hyprland";
+    quickshell = {
+          url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+          inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -29,6 +33,7 @@
       lemonake,
       nixpkgs-spotifyOld,
       hyprsplit,
+      quickshell,
       ...
   }@inputs:
     let

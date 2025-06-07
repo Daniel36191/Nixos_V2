@@ -16,4 +16,13 @@
     type = "Application";
     categories = ["Application"];
   };
+
+  # xdg.desktopEntries.blender = {
+  #   name = "Blender";
+  #   exec = "steam steam://rungameid/365670";
+  #   terminal = false;
+  #   icon = "steam_icon_365670";
+  #   type = "Application";
+  #   categories = ["Application"];
+  # };
 }

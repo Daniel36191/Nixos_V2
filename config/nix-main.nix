@@ -5,7 +5,7 @@
   imports = [
   ## Apps
   ./nix-configs/vm.nix
-  # ./nix-configs/containers.nix
+  ./nix-configs/containers.nix
   ./nix-configs/vr.nix
   ./nix-configs/apps.nix
 
@@ -73,6 +73,22 @@
   #     "--advertise-exit-node"
   #   ];
   # };
+
+
+  ################
+  ## Networking ##
+  ################
+
+  networking = {
+    nameservers = [ "192.168.0.141" ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    networkmanager.dns = "none";
+  };
+  environment.etc = {
+  "resolv.conf".text = "\nnameserver 192.168.0.141\noptions enp5s0\n
+  ";
+  };
+
 
   ###########
   ## Nixos ##

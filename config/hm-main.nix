@@ -22,6 +22,7 @@ in
     ./hm-configs/rofi/config-long.nix
     ./hm-configs/swaync.nix
     ./hm-configs/waybar.nix
+    ./hm-configs/quickshell.nix
     ./hm-configs/wlogout.nix
     ./hm-configs/desktop-files/desktop-files.nix
   ];
