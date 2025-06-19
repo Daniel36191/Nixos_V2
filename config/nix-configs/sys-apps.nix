@@ -58,6 +58,8 @@
     unzip
     unrar
     # file-roller ## Only for thunar
+    #
+    webkitgtk_4_0 ## for orca
 
   ];
 }

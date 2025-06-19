@@ -1,5 +1,6 @@
-{ config, pkgs, ... }:
-
+{
+  ...
+}:
 {
   xdg.desktopEntries.balatro = {
     name = "Balatro";
@@ -17,12 +18,11 @@
     categories = ["Application"];
   };
 
-  # xdg.desktopEntries.blender = {
-  #   name = "Blender";
-  #   exec = "steam steam://rungameid/365670";
-  #   terminal = false;
-  #   icon = "steam_icon_365670";
-  #   type = "Application";
-  #   categories = ["Application"];
-  # };
+  xdg.desktopEntries.Orca = {
+    name = "Slicer Orca Fixed";
+    exec = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json orca-slicer";
+    terminal = false;
+    type = "Application";
+    categories = ["Application"];
+  };
 }

@@ -15,15 +15,15 @@ in
 
   # Import Program Configurations
   imports = [
-    ./hm-configs/fastfetch
+    ./hm-configs/app-configs/fastfetch/fastfetch.nix
     ./hm-configs/hyprland/hyprland.nix
-    ./hm-configs/rofi/rofi.nix
-    ./hm-configs/rofi/config-emoji.nix
-    ./hm-configs/rofi/config-long.nix
-    ./hm-configs/swaync.nix
-    ./hm-configs/waybar.nix
-    ./hm-configs/quickshell.nix
-    ./hm-configs/wlogout.nix
+    ./hm-configs/app-configs/rofi/rofi.nix
+    ./hm-configs/app-configs/rofi/config-emoji.nix
+    ./hm-configs/app-configs/rofi/config-long.nix
+    ./hm-configs/app-configs/swaync.nix
+    ./hm-configs/app-configs/waybar.nix
+    ./hm-configs/app-configs/quickshell.nix
+    ./hm-configs/app-configs/wlogout.nix
     ./hm-configs/desktop-files/desktop-files.nix
   ];
 

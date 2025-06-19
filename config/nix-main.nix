@@ -85,7 +85,7 @@
     networkmanager.dns = "none";
   };
   environment.etc = {
-  "resolv.conf".text = "\nnameserver 192.168.0.141\noptions enp5s0\n
+  "resolv.conf".text = "\nnameserver 192.168.0.141\n
   ";
   };
 

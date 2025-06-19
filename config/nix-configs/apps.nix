@@ -21,6 +21,8 @@
     # prusa-slicer ## Segmentation fault core dumped, error
     libreoffice-qt6-fresh
     rustdesk-flutter
+    orca-slicer ## Crashes on opening webgui
+    lan-mouse ## Software KVM
 
     ## System apps
     nautilus ## File man
@@ -30,6 +32,7 @@
     nvitop ## btop for gpu
     ncdu ## wiztree
     xarchiver
+    gparted
 
     ## Discord clients
     # vesktop
@@ -100,7 +103,8 @@
       "org.gimp.GIMP"
       "io.github.nate_xyz.Paleta"
       "com.prusa3d.PrusaSlicer"
-      # "org.vinegarhq.Sober" ## roblox
+      "org.vinegarhq.Sober" ## roblox
+      "com.usebottles.bottles"
     ];
   };
 
