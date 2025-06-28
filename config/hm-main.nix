@@ -96,6 +96,7 @@ in
   # Styling Options
   stylix.targets = {
     waybar.enable = false;
+    gnome.enable = false;
     rofi.enable = false;
     hyprland.enable = false;
   };

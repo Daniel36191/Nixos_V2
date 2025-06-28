@@ -26,6 +26,8 @@ users.users."${username}" = {
     #############
     shellAliases = {
     vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
+    windows = "bash --norc ( trap 'hyprctl reload;' INT
+          hyprctl keyword monitor \"DP-2, disable\" && lan-mouse -f cli )";
     sudonix = "sudo nixos-rebuild switch --flake .#default";
     updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
     cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";

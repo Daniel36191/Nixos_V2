@@ -8,6 +8,7 @@
     containers.enable = true;
     docker = {
       enable = true;
+      daemon.settings.features.cdi = true;
     };
 
     # podman = {
@@ -21,5 +22,6 @@
     # podman-desktop
     # podman-compose
     docker-compose
+    nvidia-container-toolkit
   ];
 }

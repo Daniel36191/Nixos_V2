@@ -2,7 +2,7 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/25.05";
     nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
     # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
@@ -11,19 +11,20 @@
     stylix.url = "github:danth/stylix";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; # # Blender-bin (now with cuda)
     lemonake.url = "github:passivelemon/lemonake";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     hyprsplit.url = "github:shezdy/hyprsplit";
     hyprsplit.inputs.hyprland.follows = "hyprland";
     quickshell = {
-          url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-          inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {
+  outputs =
+    {
       self,
       nixpkgs,
       home-manager,
@@ -35,19 +36,19 @@
       hyprsplit,
       quickshell,
       ...
-  }@inputs:
+    }@inputs:
     let
-        inherit (import ./config/variables.nix)
-            system
-            host
-            username
-            ;
+      inherit (import ./config/variables.nix)
+        system
+        host
+        username
+        ;
     in
     {
       nixosConfigurations = {
         "${host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-	          inherit system;
+            inherit system;
             inherit inputs;
             inherit username;
             inherit host;
