@@ -4,10 +4,10 @@
 {
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
     settings = {
       global = {
+        securityType = "user";
         "workgroup" = "WORKGROUP";
         "server string" = "smbnix";
         "netbios name" = "smbnix";

@@ -3,6 +3,12 @@
   ...
 }:
 {
+  ## Custom icons
+  home.file.".config/wlogout/icons" = {
+    source = ./wlogout-icons;
+    recursive = true;
+  };
+
   programs.wlogout = {
     enable = true;
     layout = [
