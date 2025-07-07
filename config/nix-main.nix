@@ -3,34 +3,34 @@
 }:
 {
   imports = [
-  ## Apps
-  ./nix-configs/vm.nix
-  ./nix-configs/containers.nix
-  ./nix-configs/vr.nix
-  ./nix-configs/apps.nix
+    ## Apps
+    ./nix-configs/vm.nix
+    ./nix-configs/containers.nix
+    ./nix-configs/vr.nix
+    ./nix-configs/apps.nix
+    ./nix-configs/samba.nix
 
-  ## App Configs
-  ./nix-configs/app-configs/starship.nix
-  ./nix-configs/app-configs/fish.nix
-  ./nix-configs/app-configs/shell.nix
+    ## App Configs
+    ./nix-configs/app-configs/starship.nix
+    ./nix-configs/app-configs/fish.nix
+    ./nix-configs/app-configs/shell.nix
 
-  ## Theme
-  ./nix-configs/theme.nix
-  ./nix-configs/sound.nix
-  ./nix-configs/core/wm-modules/hyprland.nix
+    ## Theme
+    ./nix-configs/theme.nix
+    ./nix-configs/sound.nix
+    ./nix-configs/core/wm-modules/hyprland.nix
 
-  ## Core
-  ./nix-configs/users.nix
-  ./nix-configs/core/devices.nix
-  ./nix-configs/core/boot.nix
-  ./nix-configs/core/core-services.nix
+    ## Core
+    ./nix-configs/users.nix
+    ./nix-configs/core/devices.nix
+    ./nix-configs/core/boot.nix
+    ./nix-configs/core/core-services.nix
 
+    ## To Be Cleaned
+    ../modules/nvidia-drivers.nix
 
-  ## To Be Cleaned
-  ../modules/nvidia-drivers.nix
-
-  ## No Touch
-  ./nix-configs/core/hardware-configuration.nix
+    ## No Touch
+    ./nix-configs/core/hardware-configuration.nix
   ];
 
   #########
@@ -38,14 +38,14 @@
   #########
   services.openssh = {
     enable = true;
-    # ports = [ 54321 ];
+    ports = [ 54321 ];
     authorizedKeysInHomedir = true;
     settings = {
       PasswordAuthentication = true;
       AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
-      PermitRootLogin = "yes"; ## "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "yes"; # # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       PubkeyAuthentication = "yes";
     };
   };
@@ -74,7 +74,6 @@
   #   ];
   # };
 
-
   ################
   ## Networking ##
   ################
@@ -85,10 +84,9 @@
     networkmanager.dns = "none";
   };
   environment.etc = {
-  "resolv.conf".text = "\nnameserver 192.168.0.141\n
+    "resolv.conf".text = "\nnameserver 192.168.0.141\n
   ";
   };
-
 
   ###########
   ## Nixos ##
@@ -102,11 +100,11 @@
         "flakes"
       ];
       substituters = [
-          "https://nix-community.cachix.org"
-        ];
-        trusted-public-keys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        ];
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
     };
     gc = {
       automatic = true;

@@ -2,7 +2,7 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
     # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
@@ -55,6 +55,10 @@
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
+              inherit system;
+              config.allowUnfree = true;
+            };
+            pkgs-nixpkgs-xr = import nixpkgs-xr {
               inherit system;
               config.allowUnfree = true;
             };

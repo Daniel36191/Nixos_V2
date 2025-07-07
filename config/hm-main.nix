@@ -11,7 +11,7 @@ in
   ## Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "23.11";
+  home.stateVersion = "25.05";
 
   # Import Program Configurations
   imports = [
@@ -25,6 +25,7 @@ in
     ./hm-configs/app-configs/quickshell.nix
     ./hm-configs/app-configs/wlogout.nix
     ./hm-configs/desktop-files/desktop-files.nix
+    ./hm-congfigs/defaults.nix
   ];
 
   # Scripts
@@ -96,7 +97,6 @@ in
   # Styling Options
   stylix.targets = {
     waybar.enable = false;
-    gnome.enable = false;
     rofi.enable = false;
     hyprland.enable = false;
   };

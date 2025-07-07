@@ -7,7 +7,7 @@
     exec = "love /home/daniel/Desktop/Games/Balatro_Love/Balatro.love";
     terminal = false;
     type = "Application";
-    categories = ["Application"];
+    categories = [ "Application" ];
   };
 
   xdg.desktopEntries.cardinal = {
@@ -15,7 +15,7 @@
     exec = "Cardinal";
     terminal = false;
     type = "Application";
-    categories = ["Application"];
+    categories = [ "Application" ];
   };
 
   xdg.desktopEntries.Orca = {
@@ -23,6 +23,14 @@
     exec = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json orca-slicer";
     terminal = false;
     type = "Application";
-    categories = ["Application"];
+    categories = [ "Application" ];
+  };
+
+  xdg.desktopEntries.Freecad = {
+    name = "FreeCad Fixed";
+    exec = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json freecad";
+    terminal = false;
+    type = "Application";
+    categories = [ "Application" ];
   };
 }

@@ -4,15 +4,15 @@
 }:
 let
   inherit (import ../../variables.nix)
-  username
-  ;
+    username
+    ;
 in
 {
 
-users.users."${username}" = {
-    shell = pkgs.fish; ## pkgs.bash is default
+  users.users."${username}" = {
+    shell = pkgs.fish; # # pkgs.bash is default
     ignoreShellProgramCheck = true;
-};
+  };
 
   environment = {
     shells = with pkgs; [
@@ -20,38 +20,34 @@ users.users."${username}" = {
       fish
     ];
 
-
     #############
     ## Aliases ##
     #############
     shellAliases = {
-    vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
-    windows = "bash --norc ( trap 'hyprctl reload;' INT
-          hyprctl keyword monitor \"DP-2, disable\" && lan-mouse -f cli )";
-    sudonix = "sudo nixos-rebuild switch --flake .#default";
-    updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
-    cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
-    mi = "micro";
+      vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
+      windows = "bash --norc ( trap 'hyprctl reload;' INT
+          hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
+      sudonix = "sudo nixos-rebuild switch --flake .#default";
+      updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
+      cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
+      mi = "micro";
 
-    ## Alterntives
-    cat = "bat";
-    ls = "eza --icons";
-    ll = "eza -lh --icons --grid --group-directories-first";
-    la = "eza -lah --icons --grid --group-directories-first";
-    # grep = "rg"; ## not great
-    find = "fd";
+      ## Alterntives
+      cat = "bat";
+      ls = "eza --icons";
+      ll = "eza -lh --icons --grid --group-directories-first";
+      la = "eza -lah --icons --grid --group-directories-first";
+      # grep = "rg"; ## not great
+      find = "fd";
+    };
+
+    ###############
+    ## ShellInit ##
+    ###############
+
+    shellInit = ''
+      fastfetch
+    '';
+
   };
-
-
-  ###############
-  ## ShellInit ##
-  ###############
-
-  shellInit = ''
-    fastfetch
-  '';
-
-
-
-};
 }

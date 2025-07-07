@@ -3,7 +3,7 @@
 }:
 {
   home.file.".config/lan-mouse/config.toml".text = ''
-    [left]
+    [right]
     # hostname = "Windows"
     hostname = "192.168.0.189"
     activate_on_startup = true

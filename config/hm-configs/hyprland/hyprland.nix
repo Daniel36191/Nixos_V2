@@ -13,7 +13,7 @@ in
 with lib;
 {
   ## Wallpaper
-   services.hyprpaper = {
+  services.hyprpaper = {
     enable = true;
     settings = {
       ipc = "off";

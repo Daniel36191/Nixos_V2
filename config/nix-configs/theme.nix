@@ -10,10 +10,6 @@ in
   ############
 
   stylix = {
-    waybar.enable = false;
-    gnome.enable = false;
-    rofi.enable = false;
-    hyprland.enable = false;
     enable = true;
     image = ../hm-configs/wallpapers/${wallpaper};
     base16Scheme = {

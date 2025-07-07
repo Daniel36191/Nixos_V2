@@ -23,7 +23,7 @@
     ###################
 
     # waypipe
-    # wayvnc
+    wayvnc
     neofetch
     wget
     tree

@@ -22,6 +22,7 @@
     libreoffice-qt6-fresh
     rustdesk-flutter
     orca-slicer # # Crashes on opening webgui
+    freecad-wayland
     lan-mouse # # Software KVM
 
     ## System apps
@@ -30,6 +31,7 @@
     gnome-disk-utility # # Disk manager
     mission-center # # Task manager
     nvitop # # btop for gpu
+    lact # # Gpu Overclocking
     ncdu # # wiztree
     xarchiver
     losslesscut-bin # # video editor
@@ -108,6 +110,7 @@
       "org.vinegarhq.Sober" # # roblox
       "com.usebottles.bottles"
       "fr.handbrake.ghb"
+      "io.github.Soundux"
     ];
   };
 
@@ -200,4 +203,13 @@
     enable = true;
   };
 
+  ###############
+  ## Zero Tier ##
+  ###############
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [
+      "17d709436c7a554e"
+    ];
+  };
 }
