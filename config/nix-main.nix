@@ -22,6 +22,7 @@
 
     ## Core
     ./nix-configs/users.nix
+    ./nix-configs/defaults.nix
     ./nix-configs/core/devices.nix
     ./nix-configs/core/boot.nix
     ./nix-configs/core/core-services.nix

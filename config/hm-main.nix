@@ -24,8 +24,7 @@ in
     ./hm-configs/app-configs/waybar.nix
     ./hm-configs/app-configs/quickshell.nix
     ./hm-configs/app-configs/wlogout.nix
-    ./hm-configs/desktop-files/desktop-files.nix
-    ./hm-congfigs/defaults.nix
+    ./hm-configs/desktop-files.nix
   ];
 
   # Scripts
