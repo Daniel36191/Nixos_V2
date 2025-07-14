@@ -9,6 +9,7 @@
     ./nix-configs/vr.nix
     ./nix-configs/apps.nix
     ./nix-configs/samba.nix
+    ./nix-config/tailscale.nix
 
     ## App Configs
     ./nix-configs/app-configs/starship.nix

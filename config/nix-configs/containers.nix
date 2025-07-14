@@ -9,6 +9,7 @@
     docker = {
       enable = true;
       daemon.settings.features.cdi = true;
+      rootless.daemon.settings.features.cdi = true;
     };
 
     # podman = {
@@ -23,5 +24,6 @@
     # podman-compose
     docker-compose
     nvidia-container-toolkit
+    docker-buildx
   ];
 }

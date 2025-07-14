@@ -25,6 +25,7 @@ in
     ./hm-configs/app-configs/btop.nix
     ./hm-configs/app-configs/swappy.nix
     ./hm-configs/app-configs/github.nix
+    ./hm-configs/app-configs/kitty.nix
 
   ];
 
