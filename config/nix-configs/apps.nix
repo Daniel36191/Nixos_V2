@@ -2,6 +2,9 @@
   pkgs,
   ...
 }:
+let
+  glfw-minecraft-wayland = pkgs.callPackage ../../custom-apps/glfw-minecraft-wayland/package.nix { };
+in
 {
   imports = [
     ./sys-apps.nix
@@ -37,6 +40,7 @@
     losslesscut-bin # # video editor
     # handbrake # # video parser ## fails to build
     gparted
+    gnome-calculator
 
     ## Discord clients
     # vesktop
@@ -52,7 +56,8 @@
 
     ## Games
     prismlauncher
-    glfw3-minecraft
+    # glfw3-minecraft
+    glfw-minecraft-wayland
     jdk17
     slimevr # # slime vr :)
     # bs-manager ## Beatsaber Modding
@@ -208,6 +213,8 @@
   ###############
   services.zerotierone = {
     enable = true;
+    port = 12345;
+
     joinNetworks = [
       "17d709436c7a554e"
     ];

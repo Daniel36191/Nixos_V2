@@ -9,6 +9,7 @@
 let
   sendmidi = pkgs.callPackage ../../custom-apps/send-midi.nix { };
   receivemidi = pkgs.callPackage ../../custom-apps/receive-midi.nix { };
+  bespokesynth = pkgs.callPackage ../../custom-apps/bespoke-synth/package.nix { };
   chataigne = pkgs.callPackage ../../custom-apps/chataigne.nix { };
 in
 
@@ -18,6 +19,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
+    #bespokesynth
     bespokesynth
     # chataigne
     sendmidi

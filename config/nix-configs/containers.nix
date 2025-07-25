@@ -8,7 +8,9 @@
     containers.enable = true;
     docker = {
       enable = true;
-      daemon.settings.features.cdi = true;
+      daemon.settings = {
+        features.cdi = true;
+      };
       rootless.daemon.settings.features.cdi = true;
     };
 
