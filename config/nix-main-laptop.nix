@@ -14,6 +14,7 @@
     ./nix-configs/apps.nix
     # ./nix-configs/samba.nix
     ./nix-configs/tailscale.nix ##Encript with sops nix
+    ./nix-configs/syncthing.nix
     ./nix-configs/games.nix
     ./nix-configs/creative.nix
     ./nix-configs/coding.nix
