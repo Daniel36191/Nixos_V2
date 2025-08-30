@@ -31,6 +31,7 @@ in
 
   ];
 
+
   ## Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";

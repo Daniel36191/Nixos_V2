@@ -29,12 +29,9 @@ in
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
       # sudonix = "sudo nixos-rebuild switch --flake .#default";
       # updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
-      sudonix-pc = "nh os switch -H pc ./";
-      updatenix-pc = "nh os switch -H pc ./ --update";
-      updateinput-pc = "nh os switch -H pc ./ --update-input";
-      sudonix-laptop = "nh os switch -H laptop ./";
-      updatenix-laptop = "nh os switch -H laptop ./ --update";
-      updateinput-laptop = "nh os switch -H laptop ./ --update-input";
+      sudonix = "nh os switch -H $NIXOSUSER ./";
+      updatenix = "nh os switch -H $NIXOSUSER ./ --update";
+      updateinput = "nh os switch -H $NIXOSUSER ./ --update-input";
       cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
       mi = "micro";
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
@@ -53,6 +50,7 @@ in
     ###############
 
     shellInit = ''
+      NIX_HOST
       fastfetch
     '';
 

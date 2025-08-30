@@ -13,7 +13,7 @@
     ./nix-configs/vr.nix
     ./nix-configs/apps.nix
     ./nix-configs/samba.nix
-    ./nix-configs/tailscale.nix ##Encript with sops nix
+    # ./nix-configs/tailscale.nix ##Encript with sops nix
     ./nix-configs/syncthing.nix
     ./nix-configs/games.nix
     ./nix-configs/creative.nix
@@ -46,6 +46,14 @@
     ## No Touch
     ./nix-configs/core/hardware-pc.nix
   ];
+
+  ####################
+  ## Profile Config ##
+  ####################
+  environment.shellAliases = {
+      NIX_HOST = "export NIX_HOST=pc";
+    };
+
 
   #########
   ## SSH ##

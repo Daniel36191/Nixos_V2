@@ -47,6 +47,13 @@
     ./nix-configs/core/hardware-laptop.nix
   ];
 
+  ####################
+  ## Profile Config ##
+  ####################
+    environment.shellAliases = {
+      NIX_HOST = "export NIX_HOST=laptop";
+    };
+
 
   #########
   ## SSH ##

@@ -8,39 +8,48 @@
     services = {
       syncthing = {
         enable = true;
-        systemService = true;
+        systemService = false; ## Ran as user service below
+        openDefaultPorts = true;
+        # extraFlags = [ "--no-default-folder" ]; # Don't create default ~/Sync folder
         group = "Personal";
         user = "Nixos";
-        dataDir = "/home/myusername/Documents";
-        configDir = "/home/myusername/Documents/.config/syncthing";
+        dataDir = "/home/${username}/Documents";
+        configDir = "/home/${username}/.config/syncthing";
         overrideDevices = true;
         overrideFolders = true;
         settings = {
           devices = {
-            "pc" = { id = "DEVICE-ID-GOES-HERE"; };
-            "laptop" = { id = "DEVICE-ID-GOES-HERE"; };
+            "pc" = { id = "D5L3MPA-SM6HLEH-K2ZZJ5Q-DPH5PKZ-7Z37JGK-XJNFH3V-THMAKM7-Y3BF4AG"; };
+            # "laptop" = { id = "DEVICE-ID-GOES-HERE"; };
           };
           folders = {
             "Documents" = {
               path = "/home/${username}/Documents";
               devices = [
                 "pc"
-                "laptop"
+                # "laptop"
                 ];
             };
             "Desktop" = {
               path = "/home/${username}/Desktop";
               devices = [
                 "pc"
-                "laptop"
+                # "laptop"
                 ];
             };
           };
         };
       };
     };
-    networking.firewall = {
-        allowedTCPPorts = [ 8384 22000 ];
-        allowedUDPPorts = [ 22000 21027 ];
-    };
+
+  systemd.user.services.syncthing-user = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "default.target" ];
+    description = "File sync service";
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = ''/run/current-system/sw/bin/syncthing -no-browser --no-default-folder'';
+  };
+};
 }
