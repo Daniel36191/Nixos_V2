@@ -1,0 +1,220 @@
+# looking to make changes?
+# drop me in ~/.config/wlxoverlay/watch.yaml
+#
+
+width: 0.115
+
+size: [420, 300]
+
+elements:
+  # background panel
+  - type: Panel
+    rect: [0, 30, 400, 130]
+    corner_radius: 20
+    bg_color: "#24273a"
+
+  - type: Button
+    rect: [2, 162, 26, 36]
+    corner_radius: 4
+    font_size: 15
+    bg_color: "#c6a0f6"
+    fg_color: "#24273a"
+    text: " ⚙ "
+    click_up: # destroy if exists, otherwise create
+      - type: Window
+        target: settings
+        action: ShowUi # only triggers if not exists
+      - type: Window
+        target: settings
+        action: Destroy # only triggers if exists since before current frame
+
+  # Dashboard toggle button
+  # - type: Button
+  #   rect: [32, 162, 48, 36]
+  #   corner_radius: 4
+  #   font_size: 15
+  #   bg_color: "#1e2030"
+  #   fg_color: "#cad3f5"
+  #   text: "󰹑"
+  #   click_up:
+  #     - type: WayVR
+  #       action: ToggleDashboard
+
+  # Keyboard button
+  - type: Button
+    rect: [34, 162, 48, 36]
+    corner_radius: 4
+    font_size: 15
+    fg_color: "#cad3f5"
+    bg_color: "#1e2030"
+    text: "󰧹"
+    click_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleVisible
+    long_click_up:
+      - type: Overlay
+        target: "kbd"
+        action: Reset
+    right_up:
+      - type: Overlay
+        target: "kbd" 
+        action: ToggleImmovable
+    middle_up:
+      - type: Overlay
+        target: "kbd"
+        action: ToggleInteraction
+    scroll_up:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: 0.025 }
+    scroll_down:
+      - type: Overlay
+        target: "kbd"
+        action:
+          Opacity: { delta: -0.025 }
+
+  # bottom row, of keyboard + overlays
+  - type: OverlayList
+    rect: [84, 160, 266, 40]
+    corner_radius: 4
+    font_size: 15
+    fg_color: "#cad3f5"
+    bg_color: "#1e2030"
+    layout: Horizontal
+    click_up: ToggleVisible
+    long_click_up: Reset
+    right_up: ToggleImmovable
+    middle_up: ToggleInteraction
+    scroll_up:
+      Opacity: { delta: 0.025 }
+    scroll_down:
+      Opacity: { delta: -0.025 }
+
+  # local clock
+  - type: Label
+    rect: [19, 90, 200, 50]
+    corner_radius: 4
+    font_size: 32 # Use 32 for 12-hour time
+    fg_color: "#cad3f5"
+    source: Clock
+    #format: "%H:%M" # 23:59
+    format: "%I:%M %p" # 11:59 PM
+
+  # local date
+  - type: Label
+    rect: [20, 117, 200, 20]
+    corner_radius: 4
+    font_size: 14
+    fg_color: "#cad3f5"
+    source: Clock
+    format: "%x" # local date representation
+
+  # local day-of-week
+  - type: Label
+    rect: [20, 137, 200, 50]
+    corner_radius: 4
+    font_size: 14
+    fg_color: "#cad3f5"
+    source: Clock
+    format: "%A" # Tuesday
+    #format: "%a" # Tue
+
+  # alt clock 1
+  # - type: Label
+  #   rect: [210, 90, 200, 50]
+  #   corner_radius: 4
+  #   font_size: 24 # Use 18 for 12-hour time
+  #   fg_color: "#8bd5ca"
+  #   source: Clock
+  #   timezone: 0
+  #   # format: "%H:%M" # 23:59
+  #   format: "%I:%M %p" # 11:59 PM
+  # - type: Label
+  #   rect: [210, 60, 200, 50]
+  #   corner_radius: 4
+  #   font_size: 14
+  #   fg_color: "#8bd5ca"
+  #   source: Timezone
+  #   timezone: 0
+
+  # alt clock 2
+  # - type: Label
+  #   rect: [210, 150, 200, 50]
+  #   corner_radius: 4
+  #   font_size: 24 # Use 18 for 12-hour time
+  #   fg_color: "#b7bdf8"
+  #   source: Clock
+  #   timezone: 1
+  #   format: "%H:%M" # 23:59
+  #   #format: "%I:%M %p" # 11:59 PM
+  # - type: Label
+  #   rect: [210, 120, 200, 50]
+  #   corner_radius: 4
+  #   font_size: 14
+  #   fg_color: "#b7bdf8"
+  #   source: Timezone
+  #   timezone: 1
+
+  # batteries
+  - type: BatteryList
+    rect: [0, 5, 400, 30]
+    corner_radius: 4
+    font_size: 16
+    fg_color: "#8bd5ca"
+    fg_color_low: "#B06060"
+    fg_color_charging: "#6080A0"
+    num_devices: 9
+    layout: Horizontal
+    low_threshold: 15
+
+  # Media Controls
+  - type: Button
+    rect: [146, 105, 36, 38]
+    corner_radius: 4
+    font_size: 18
+    fg_color: "#cad3f5"
+    bg_color: "#5b6078"
+    text: "󰝝"
+    click_down:
+      - type: Exec
+        command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%"]
+  - type: Button
+    rect: [107, 105, 36, 38]
+    corner_radius: 4
+    font_size: 18
+    fg_color: "#cad3f5"
+    bg_color: "#5b6078"
+    text: "󰝞"
+    click_down:
+      - type: Exec
+        command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%"]
+  - type: Button
+    rect: [224, 105, 36, 38]
+    corner_radius: 4
+    font_size: 18
+    fg_color: "#cad3f5"
+    bg_color: "#5b6078"
+    text: "⏭"
+    click_down:
+      - type: Exec
+        command: ["bash", "-c", "playerctl next"]
+  - type: Button
+    rect: [185, 105, 36, 38]
+    corner_radius: 4
+    font_size: 18
+    fg_color: "#cad3f5"
+    bg_color: "#5b6078"
+    text: "⏯"
+    click_down:
+      - type: Exec
+        command: ["bash", "-c", "playerctl play-pause"]
+  - type: Label
+    rect: [4, 50, 400, 130]
+    font_size: 16
+    fg_color: "#88c0d0"
+    source: Exec
+    command: [ "bash", "-c", "echo $(playerctl -s metadata artist) - $(playerctl -s metadata title)"]
+    interval: 1.0
+

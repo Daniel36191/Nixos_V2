@@ -1,30 +1,31 @@
 {
+  pkgs,
   lib,
   stdenv,
   fetchFromGitHub,
   fetchpatch,
   makeWrapper,
-
 }:
 
 let
   protonSrc = fetchFromGitHub {
     owner = "ValveSoftware";
     repo = "Proton";
-    rev = "proton_9.0-4e";
-    sha256 = "sha256-05yi6iz94c40c7049dj4dgv0r2dkkkczsapig7ridibyn14ikfgf"; # You'll need to replace this
+    rev = "proton_9.0-3e";
+    sha256 = "05yi6iz94c40c7049dj4dgv0r2dkkkczsapig7ridibyn14ikfgf"; # You'll need to replace this
   };
 
   wineOpenXRPatch = fetchpatch {
     url = "https://gist.githubusercontent.com/gotzl/294c849af4b497f537a2904eeff73140/raw/73ad92c885b11ab75886a30c9b60d4f5442e72be/wineopenxr_vulkan.patch";
-    sha256 = "sha256-1v2d3gzv30n54ff075g28spsrvdrilkbn5dcmcqm97hkqblm6jcp"; # You'll need to replace this
+    sha256 = "1v2d3gzv30n54ff075g28spsrvdrilkbn5dcmcqm97hkqblm6jcp"; # You'll need to replace this
   };
 
-  winePatched = wineUnstable.overrideAttrs (old: {
-    patches = (old.patches or []) ++ [ wineOpenXRPatch ];
+  winePatched = pkgs.wineWowPackages.unstable.overrideAttrs (old: {
+    patches = (old.patches or [ ]) ++ [ wineOpenXRPatch ];
   });
 
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "proton";
   version = "9.0";
 

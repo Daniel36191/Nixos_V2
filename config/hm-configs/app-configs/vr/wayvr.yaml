@@ -1,0 +1,4 @@
+dashboard:
+  exec: "/run/current-system/sw/bin/wayvr-dashboard"
+  args: ""
+  env: ["GDK_BACKEND=wayland"]

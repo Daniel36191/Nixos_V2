@@ -33,9 +33,6 @@
     enableGraphical = false;
   };
 
-  ## Adb
-  programs.adb.enable = true;
-
   ## Scanners
   hardware.sane = {
     enable = true;

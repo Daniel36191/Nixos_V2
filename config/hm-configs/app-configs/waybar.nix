@@ -20,17 +20,16 @@ with lib;
         modules-center = [ "hyprland/workspaces" ];
         modules-left = [
           "pulseaudio"
-          # "custom/startmenu"
           "hyprland/window"
-          "cpu"
-          "memory"
-          "idle_inhibitor"
+          # "cpu"
+          # "memory"
+          # "idle_inhibitor"
         ];
         modules-right = [
           # "custom/hyprbindings"
           "custom/notification"
           "custom/exit"
-          "battery"
+          # "battery"
           "tray"
           "clock"
         ];
@@ -42,8 +41,7 @@ with lib;
             active = " ";
             urgent = " ";
           };
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
+          on-click-middle = "${pkgs.bash} -c pkill waybar && hyprctl dispatch exec waybar";
         };
         "clock" = {
           format = '' {:L%I:%M %p}'';

@@ -8,46 +8,51 @@ let
   ;
 in
 {
-environment.systemPackages = with pkgs; [
-libvirt
-qemu
-virt-viewer
-libglvnd
-virtio-win
-virtiofsd
-];
-
-## Virt-manager GUI
-programs.virt-manager.enable = true;
-
-## Spice interface
-virtualisation.spiceUSBRedirection.enable = true;
-
-## Enable Libvirt
-virtualisation.libvirtd = {
-  enable = true;
-  onBoot = "ignore";
-  onShutdown = "shutdown";
-
-
-  qemu = {
-  ovmf.enable = true;
-  runAsRoot = true; # ths does noting
+  environment.systemPackages = with pkgs; [
+  libvirt
+  qemu
+  virt-viewer
+  libglvnd
+  virtio-win
+  virtiofsd
+  ];
+  services.flatpak = {
+    packages = [
+      "com.usebottles.bottles"
+    ];
   };
-};
-users.groups.libvirtd.members = ["${username}"];
-
-## Enables VM connection
-programs.dconf.profiles.user.databases = [
-  { lockAll = true;
-
-    settings = {
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
-      };
+  
+  ## Virt-manager GUI
+  programs.virt-manager.enable = true;
+  
+  ## Spice interface
+  virtualisation.spiceUSBRedirection.enable = true;
+  
+  ## Enable Libvirt
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+  
+  
+    qemu = {
+    ovmf.enable = true;
+    runAsRoot = true; # ths does noting
     };
-  }
-];
-hardware.enableRedistributableFirmware = true;
+  };
+  users.groups.libvirtd.members = ["${username}"];
+  
+  ## Enables VM connection
+  programs.dconf.profiles.user.databases = [
+    { lockAll = true;
+  
+      settings = {
+        "org/virt-manager/virt-manager/connections" = {
+          autoconnect = [ "qemu:///system" ];
+          uris = [ "qemu:///system" ];
+        };
+      };
+    }
+  ];
+  hardware.enableRedistributableFirmware = true;
 }

@@ -15,7 +15,6 @@
   ## System ##
   ############
 
-  host = "default";
   system = "x86_64-linux";
   keyboardLayout = "us";
   consoleKeyMap = "us";

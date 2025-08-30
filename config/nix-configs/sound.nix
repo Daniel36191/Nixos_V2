@@ -36,6 +36,12 @@ in
     # rPackages.sparta
   ];
 
+  services.flatpak = {
+  packages = [
+    "io.github.Soundux"
+  ];
+  };
+
   #############
   ## Backend ##
   #############

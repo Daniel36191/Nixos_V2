@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  pkgs-old,
   ...
 }:
 {
@@ -12,51 +13,47 @@
     opencomposite # # Translation Layer
 
     inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
-    # inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
+    inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
+
+    slimevr # # slime vr :)
 
   ];
 
   ##############
-  ## Envision ## Should just work // Eh
+  ## Envision ## NO, DO NOT USE SEE = https://lvra.gitlab.io/docs/distros/nixos/#envision
   ##############
-  programs.envision = {
-    enable = true;
-    openFirewall = true;
-  };
+  # programs.envision = {
+  #   enable = true;
+  #   openFirewall = true;
+  # };
 
   ############
   ## Monado ##
   ############
 
-  # services.monado = {
-  #   enable = true;
-  #   defaultRuntime = false; # Register as default OpenXR runtime
-  # };
-  # systemd.user.services.monado.environment = {
-  #   STEAMVR_LH_ENABLE = "1";
-  #   XRT_COMPOSITOR_COMPUTE = "1";
-  # };
+  services.monado = {
+    enable = true;
+    defaultRuntime = false; # Register as default OpenXR runtime
+  };
+  systemd.user.services.monado.environment = {
+    STEAMVR_LH_ENABLE = "1";
+    XRT_COMPOSITOR_COMPUTE = "1";
+  };
 
   ###########
   ## WiVRn ## Wireless
   ###########
 
-  # services.wivrn = {
-  #   enable = true;
-  #   autoStart = true;
-  #   defaultRuntime = true;
-  #   openFirewall = true;
-  #   package = (
-  #     pkgs.wivrn.override {
-  #       cudaSupport = true;
-  #     }
-  #   );
-
-  #   ## Old version
-  #   # package =
-  #   #   (pkgs.wivrn.override {
-  #   #     cudaSupport = true;
-  #   #   });
+  services.wivrn = {
+    enable = true;
+    autoStart = true;
+    defaultRuntime = true;
+    openFirewall = true;
+    package = (
+      pkgs-old.wivrn.override {
+        cudaSupport = true;
+      }
+    );
 
   #   # Config for WiVRn (https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
   #   # config = {
@@ -103,7 +100,7 @@
   #   #     }
   #   #   ]
   #   # }
-  # };
+  };
 
   ## To deal with flatpak steam
   services.flatpak.overrides = {
@@ -121,5 +118,4 @@
     mkdir -p ~/.var/app/com.valvesoftware.Steam/.config/openxr
     ln -sf ~/.config/openxr/1 ~/.var/app/com.valvesoftware.Steam/.config/openxr/1
   '';
-
 }

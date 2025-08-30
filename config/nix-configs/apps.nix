@@ -1,46 +1,33 @@
 {
   pkgs,
+  inputs,
+  pkgs-stable,
   ...
 }:
 let
-  glfw-minecraft-wayland = pkgs.callPackage ../../custom-apps/glfw-minecraft-wayland/package.nix { };
+  
 in
 {
   imports = [
     ./sys-apps.nix
   ];
   environment.systemPackages = with pkgs; [
-
     ###############
     ## User apps ##
     ###############
 
     librewolf
-    obsidian # # Notes
-    obs-studio
-    # inputs.blender-cuda.packages.${pkgs.system}.default
-    # gimp ## Image editing
-    pinta # # Image editing
-    # prusa-slicer ## Segmentation fault core dumped, error
-    libreoffice-qt6-fresh
     rustdesk-flutter
-    orca-slicer # # Crashes on opening webgui
-    freecad-wayland
-    lan-mouse # # Software KVM
-
-    ## System apps
     nautilus # # File man
+    gnome-calculator
     baobab # # Disk usage analyzer
-    gnome-disk-utility # # Disk manager
+    # gnome-disk-utility
+    gparted
     mission-center # # Task manager
     nvitop # # btop for gpu
     lact # # Gpu Overclocking
     ncdu # # wiztree
     xarchiver
-    losslesscut-bin # # video editor
-    # handbrake # # video parser ## fails to build
-    gparted
-    gnome-calculator
 
     ## Discord clients
     # vesktop
@@ -54,43 +41,15 @@ in
     # nheko
     # cinny-desktop
 
-    ## Games
-    prismlauncher
-    # glfw3-minecraft
-    glfw-minecraft-wayland
-    jdk17
-    slimevr # # slime vr :)
-    # bs-manager ## Beatsaber Modding
-    lutris
-
-    ############
-    ## Coding ##
-    ############
-
-    ## Git tools
-    lazygit
-    git
-    github-desktop
-
-    ## Code editors
-    # vscode
-    zed-editor
-    micro
-
-    ## Language servers
-    nixd # # Nix-lang interpiter
-    nil # # Nix-lang server
-    nixfmt-rfc-style # # Nix-lang formattor
-    streamcontroller
-
   ];
   nixpkgs.config = {
     # cudaSupport = true;
     # cudnnSupport = true;
     permittedInsecurePackages = [
-      "olm-3.2.16" # # For matrix clients
+      # "olm-3.2.16" # # For matrix clients
     ];
   };
+
 
   ##############
   ## FlatPaks ##
@@ -106,60 +65,15 @@ in
     ];
     packages = [
       # "dev.vencord.Vesktop"
-      # "com.core447.StreamController"
       "com.github.tchx84.Flatseal"
-      "com.tdameritrade.ThinkOrSwim"
-      "org.gimp.GIMP"
-      "io.github.nate_xyz.Paleta"
-      "com.prusa3d.PrusaSlicer"
-      "org.vinegarhq.Sober" # # roblox
-      "com.usebottles.bottles"
-      "fr.handbrake.ghb"
-      "io.github.Soundux"
     ];
   };
 
-  ###########
-  ## Steam ##
-  ###########
-
-  hardware.steam-hardware.enable = true;
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-    protontricks.enable = true;
-    extest.enable = true; # # For wayland
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = false;
-    package = pkgs.steam.override {
-      extraEnv = {
-        MANGOHUD = true;
-        OBS_VKCAPTURE = true;
-        RADV_TEX_ANISO = 16;
-      };
-      extraLibraries =
-        p: with p; [
-          atk
-        ];
-    };
-    extraPackages = with pkgs; [
-      gamescope
-      mangohud
-      gamemode
-    ];
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-      proton-ge-rtsp-bin
-      # luxtorpeda ## gone?
-      steamtinkerlaunch
-      # (callPackage ../../custom-apps/proton-vkvr.nix {})
-    ];
-  };
 
   ############
   ## Thunar ## File Man
   ############
+
   # programs.thunar = {
   #   enable = true;
   #   plugins = with pkgs.xfce; [
@@ -170,9 +84,11 @@ in
   # ## Thunbnails
   # services.tumbler.enable = true;
 
+
   ##############
   ## Nautilus ## File Man
   ##############
+
   services = {
     gnome.sushi.enable = true;
     gvfs.enable = true;
@@ -194,12 +110,7 @@ in
     })
   ];
 
-  #################
-  ## Thunderbird ## (E-Mail)
-  #################
-  programs.thunderbird = {
-    enable = true;
-  };
+
 
   ################
   ## KdeConnect ## (Connect Phone)
@@ -208,15 +119,4 @@ in
     enable = true;
   };
 
-  ###############
-  ## Zero Tier ##
-  ###############
-  services.zerotierone = {
-    enable = true;
-    port = 12345;
-
-    joinNetworks = [
-      "17d709436c7a554e"
-    ];
-  };
 }

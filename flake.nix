@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/25.05";
+    nixpkgs-old.url = "github:nixos/nixpkgs/24.11";
+    # nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
+    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
     # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
     home-manager.url = "github:nix-community/home-manager/master";
@@ -27,6 +30,8 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-old,
       home-manager,
       nix-flatpak,
       nixpkgs-xr,
@@ -40,25 +45,35 @@
     let
       inherit (import ./config/variables.nix)
         system
-        host
         username
         ;
     in
     {
+      ########
+      ## Pc ##
+      ########
+
       nixosConfigurations = {
-        "${host}" = nixpkgs.lib.nixosSystem {
+        "pc" = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system;
             inherit inputs;
             inherit username;
-            inherit host;
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
               inherit system;
               config.allowUnfree = true;
             };
+            pkgs-old = import nixpkgs-old {
+              inherit system;
+              config.allowUnfree = true;
+            };
             pkgs-nixpkgs-xr = import nixpkgs-xr {
+              inherit system;
+              config.allowUnfree = true;
+            };
+            pkgs-stable = import nixpkgs-stable {
               inherit system;
               config.allowUnfree = true;
             };
@@ -69,17 +84,69 @@
               home-manager.extraSpecialArgs = {
                 inherit username;
                 inherit inputs;
-                inherit host;
               };
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${username} = import ./config/hm-main.nix;
+                users.${username} = import ./config/hm-main-pc.nix;
               };
             }
             nixpkgs-xr.nixosModules.nixpkgs-xr
-            ./config/nix-main.nix
+            ./config/nix-main-pc.nix
+            inputs.stylix.nixosModules.stylix
+            nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+          ];
+        };
+      };
+
+
+      ############
+      ## Laptop ##
+      ############
+
+      nixosConfigurations = {
+        "laptop" = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit inputs;
+            inherit username;
+
+            ## Pinning Nixpkgs versions
+            pkgs-spotifyOld = import nixpkgs-spotifyOld {
+              inherit system;
+              config.allowUnfree = true;
+            };
+            pkgs-old = import nixpkgs-old {
+              inherit system;
+              config.allowUnfree = true;
+            };
+            pkgs-nixpkgs-xr = import nixpkgs-xr {
+              inherit system;
+              config.allowUnfree = true;
+            };
+            pkgs-stable = import nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
+          modules = [
+            {
+              nixpkgs.config.allowUnfree = true;
+              home-manager.extraSpecialArgs = {
+                inherit username;
+                inherit inputs;
+              };
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${username} = import ./config/hm-main-laptop.nix;
+              };
+            }
+            nixpkgs-xr.nixosModules.nixpkgs-xr
+            ./config/nix-main-laptop.nix
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager

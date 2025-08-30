@@ -2,6 +2,10 @@
   ...
 }:
 {
+## Temporary this is from gnome
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+  ];
   imports = [
     ## Apps
     ./nix-configs/vm.nix
@@ -9,17 +13,24 @@
     ./nix-configs/vr.nix
     ./nix-configs/apps.nix
     ./nix-configs/samba.nix
-    # ./nix-configs/tailscale.nix
+    ./nix-configs/tailscale.nix ##Encript with sops nix
+    ./nix-configs/games.nix
+    ./nix-configs/creative.nix
+    ./nix-configs/coding.nix
+    ./nix-configs/apps-pc.nix
+    # ./nix-configs/apps-laptop.nix
+    ./nix-configs/zerotier.nix
+    ./nix-configs/office.nix
 
     ## App Configs
     ./nix-configs/app-configs/starship.nix
     ./nix-configs/app-configs/fish.nix
-    ./nix-configs/app-configs/shell.nix
+    ./nix-configs/app-configs/shell.nix ## fix the cleannix command to use nh
 
     ## Theme
-    ./nix-configs/theme.nix
+    ./nix-configs/theme.nix ##blacklist libreofficr from stylix
     ./nix-configs/sound.nix
-    ./nix-configs/core/wm-modules/hyprland.nix
+    ./nix-configs/wm-modules/hyprland.nix
 
     ## Core
     ./nix-configs/users.nix
@@ -32,7 +43,7 @@
     ../modules/nvidia-drivers.nix
 
     ## No Touch
-    ./nix-configs/core/hardware-configuration.nix
+    ./nix-configs/core/hardware-pc.nix
   ];
 
   #########
@@ -47,7 +58,7 @@
       AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
-      PermitRootLogin = "yes"; # # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "yes"; ## "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       PubkeyAuthentication = "yes";
     };
   };
@@ -60,21 +71,14 @@
     allowedTCPPorts = [
       5900
       25565
+      54321
     ];
     allowedUDPPorts = [
       5900
       25565
+      54321
     ];
   };
-
-  # services.tailscale = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   authKeyFile = ./tailscaleauthkey.key;
-  #   extraSetFlags = [
-  #     "--advertise-exit-node"
-  #   ];
-  # };
 
   ################
   ## Networking ##
@@ -89,6 +93,33 @@
     "resolv.conf".text = "\nnameserver 192.168.0.141\n
   ";
   };
+
+
+  ##################
+  ## Boot Entries ##
+  ##################
+  boot.loader.grub.extraEntries =
+    let
+        ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep UUID
+        uuid = "CCF02DC0F02DB19E";
+
+        ## lsblk, sda->hd0, sda1->gpt1
+        drive = "hd1,gpt1";
+    in
+    ''
+    menuentry "Windows" {
+      insmod part_gpt
+      insmod fat
+      set root='hd0,gpt1'
+      if [ x$feature_platform_search_hint = xy ]; then
+       search --no-floppy --fs-uuid --set=root --hint-bios=${drive} --hint-efi=${drive} --hint-baremetal=ahci0,gpt1  ${uuid}
+      else
+       search --no-floppy --fs-uuid --set=root ${uuid}
+      fi
+      chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+    }
+    '';
+
 
   ###########
   ## Nixos ##

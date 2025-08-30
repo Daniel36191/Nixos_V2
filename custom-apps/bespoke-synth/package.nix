@@ -42,13 +42,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "bespokesynth";
-  version = "75a0040ca3c96ba93079560c47a42ba5de97a827";
+  version = "e4ac1c8f023b7dcd59ceab964a83353e648bd416";
 
   src = fetchFromGitHub {
     owner = "BespokeSynth";
     repo = "bespokesynth";
     rev = "${finalAttrs.version}";
-    hash = "sha256-22jeXTal3tHNGcj2PLwQFtvmVmHDLuOQcQ3v8ChlvXA=";
+    hash = "sha256-BwmI7UEMFMvsUXX7kxIRv6M6Mn5+xKpL+SYXpvAswTg=";
     fetchSubmodules = true;
   };
 
