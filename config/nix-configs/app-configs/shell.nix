@@ -29,9 +29,9 @@ in
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
       # sudonix = "sudo nixos-rebuild switch --flake .#default";
       # updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
-      sudonix = "nh os switch -H $NIXOSUSER ./";
-      updatenix = "nh os switch -H $NIXOSUSER ./ --update";
-      updateinput = "nh os switch -H $NIXOSUSER ./ --update-input";
+      sudonix = "nh os switch -H $NIX_HOST ./";
+      updatenix = "nh os switch -H $NIX_HOST ./ --update";
+      updateinput = "nh os switch -H $NIX_HOST ./ --update-input";
       cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
       mi = "micro";
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
