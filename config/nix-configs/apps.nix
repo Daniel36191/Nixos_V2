@@ -28,6 +28,7 @@ in
     lact # # Gpu Overclocking
     ncdu # # wiztree
     xarchiver
+    chachix
 
     ## Discord clients
     # vesktop
