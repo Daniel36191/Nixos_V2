@@ -11,6 +11,7 @@
     hyprpicker
     hyprpaper
     swaynotificationcenter
+    
     libnotify
     playerctl # # Media keys
 

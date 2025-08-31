@@ -22,6 +22,7 @@
     # ./nix-configs/apps-laptop.nix
     ./nix-configs/zerotier.nix
     ./nix-configs/office.nix
+    ./nix-configs/brightness.nix
 
     ## App Configs
     ./nix-configs/app-configs/starship.nix

@@ -42,14 +42,15 @@ with lib;
     extraConfig =
       let
         hyprland-main = builtins.readFile ./hyprland-main.conf;
-        hyprland-monitors = if nix-host == "pc"
+        hyprland-machine = if nix-host == "pc"
           then
-             builtins.readFile ./hyprland-pc.conf;
+             builtins.readFile ./hyprland-pc.conf
           else
             builtins.readFile ./hyprland-laptop.conf;
       in
       concatStrings [
         hyprland-main
+        hyprland-machine
       ];
 
   };
