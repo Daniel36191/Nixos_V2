@@ -46,9 +46,11 @@
       inherit (import ./config/variables.nix)
         system
         username
+        wallpaper
         ;
     in
     {
+
       ########
       ## Pc ##
       ########
@@ -59,6 +61,7 @@
             inherit system;
             inherit inputs;
             inherit username;
+            inherit wallpaper;
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
@@ -112,6 +115,7 @@
             inherit system;
             inherit inputs;
             inherit username;
+            inherit wallpaper;
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {

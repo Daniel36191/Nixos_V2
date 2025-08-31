@@ -20,21 +20,21 @@
         settings = {
           devices = {
             "pc" = { id = "D5L3MPA-SM6HLEH-K2ZZJ5Q-DPH5PKZ-7Z37JGK-XJNFH3V-THMAKM7-Y3BF4AG"; };
-            # "laptop" = { id = "DEVICE-ID-GOES-HERE"; };
+            "laptop" = { id = "FBWUU27-IKUMHSD-S2Z4QJM-NWZUFDV-YJ3UI42-QBE4U5L-RK2QKFN-HEFN7AX"; };
           };
           folders = {
             "Documents" = {
               path = "/home/${username}/Documents";
               devices = [
                 "pc"
-                # "laptop"
+                "laptop"
                 ];
             };
             "Desktop" = {
               path = "/home/${username}/Desktop";
               devices = [
                 "pc"
-                # "laptop"
+                "laptop"
                 ];
             };
           };

@@ -21,6 +21,7 @@
     ./nix-configs/apps-laptop.nix
     # ./nix-configs/zerotier.nix
     ./nix-configs/office.nix
+    ./nix-configs/syncthing.nix
 
     ## App Configs
     ./nix-configs/app-configs/starship.nix

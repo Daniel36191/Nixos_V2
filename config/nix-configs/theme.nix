@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-let
-  inherit (import ../variables.nix)
-    wallpaper
-    ;
-in
+{
+  pkgs,
+  wallpaper,
+  ...
+}:
 {
   ############
   ## Stylix ##
