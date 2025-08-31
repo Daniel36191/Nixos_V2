@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  nix-host,
   ...
 }:
 
@@ -40,10 +41,15 @@ with lib;
     ];
     extraConfig =
       let
-        hyprlandconf = builtins.readFile ./hyprland.conf;
+        hyprland-main = builtins.readFile ./hyprland-main.conf;
+        hyprland-monitors = if nix-host == "pc"
+          then
+             builtins.readFile ./hyprland-pc.conf;
+          else
+            builtins.readFile ./hyprland-laptop.conf;
       in
       concatStrings [
-        hyprlandconf
+        hyprland-main
       ];
 
   };
