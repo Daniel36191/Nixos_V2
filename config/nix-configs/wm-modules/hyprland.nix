@@ -6,12 +6,12 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    greetd.tuigreet
+    tuigreet
     lxqt.lxqt-policykit
     hyprpicker
     hyprpaper
     swaynotificationcenter
-    
+
     libnotify
     playerctl # # Media keys
 
