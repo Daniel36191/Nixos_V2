@@ -8,6 +8,9 @@ let
   flavor = builtins.readFile ./flavor.css;
 in
 {
+  home.package = with pkgs; [
+    swaynotificationcenter
+  ];
   programs.waybar = {
     enable = true;
   };

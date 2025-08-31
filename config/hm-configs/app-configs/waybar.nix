@@ -9,6 +9,9 @@ let
 in
 with lib;
 {
+  home.package = with pkgs; [
+    swaynotificationcenter
+  ];
   # Configure & Theme Waybar
   programs.waybar = {
     enable = true;

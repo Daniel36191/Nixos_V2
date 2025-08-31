@@ -10,7 +10,6 @@
     lxqt.lxqt-policykit
     hyprpicker
     hyprpaper
-    swaynotificationcenter
 
     libnotify
     playerctl # # Media keys
