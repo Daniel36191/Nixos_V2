@@ -3,15 +3,9 @@
   pkgs,
   inputs,
   nix-host,
+  wallpaper,
   ...
 }:
-
-let
-  inherit (import ../../variables.nix)
-    wallpaper
-    ;
-in
-with lib;
 {
   ## Wallpaper
   services.hyprpaper = {
@@ -48,7 +42,7 @@ with lib;
           else
             builtins.readFile ./hyprland-laptop.conf;
       in
-      concatStrings [
+      lib.strings.concatStrings [
         hyprland-main
         hyprland-machine
       ];

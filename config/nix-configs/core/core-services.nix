@@ -1,18 +1,14 @@
 {
   pkgs,
+  hostname,
+  firewall,
   ...
 }:
-let
-  inherit (import ../../variables.nix)
-  hostName
-  firewall
-  ;
-in
 {
   ## Networking
   networking = {
-  networkmanager.enable = true;
-  hostName = "${hostName}";
+   networkmanager.enable = true;
+   hostName = "nixos";
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -57,5 +53,8 @@ environment.systemPackages = with pkgs; [
       openFirewall = true;
     };
   };
+
+  ## Location
+  location.provider = "geoclue2"; ## Auto
 
 }

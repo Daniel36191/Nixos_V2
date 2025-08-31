@@ -9,7 +9,7 @@ let
 in
 with lib;
 {
-  home.package = with pkgs; [
+  home.packages = with pkgs; [
     swaynotificationcenter
   ];
   # Configure & Theme Waybar

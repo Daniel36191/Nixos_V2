@@ -20,6 +20,6 @@
   consoleKeyMap = "us";
   locale = "en_US.UTF-8";
   timeZone = "America/New_York";
-  hostName = "nixos";
+  hostname = "nixos";
   firewall = false;
 }

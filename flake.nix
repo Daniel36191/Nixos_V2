@@ -5,8 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.05";
     nixpkgs-old.url = "github:nixos/nixpkgs/24.11";
-    # nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
-    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb
+    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
+    # nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb
     spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
     # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
     home-manager.url = "github:nix-community/home-manager/master";
@@ -44,9 +44,17 @@
     }@inputs:
     let
       inherit (import ./config/variables.nix)
-        system
+        gitUsername
+        gitEmail
         username
         wallpaper
+        system
+        keyboardLayout
+        consoleKeyMap
+        locale
+        timeZone
+        hostname
+        firewall
         ;
     in
     {
@@ -58,10 +66,19 @@
       nixosConfigurations = {
         "pc" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system;
-            inherit inputs;
+            nix-host = "pc";
+            inherit gitUsername;
+            inherit gitEmail;
             inherit username;
             inherit wallpaper;
+            inherit system;
+            inherit keyboardLayout;
+            inherit consoleKeyMap;
+            inherit locale;
+            inherit timeZone;
+            inherit hostname;
+            inherit firewall;
+            inherit inputs;
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
@@ -85,7 +102,18 @@
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = {
+                nix-host = "pc";
+                inherit gitUsername;
+                inherit gitEmail;
                 inherit username;
+                inherit wallpaper;
+                inherit system;
+                inherit keyboardLayout;
+                inherit consoleKeyMap;
+                inherit locale;
+                inherit timeZone;
+                inherit hostname;
+                inherit firewall;
                 inherit inputs;
               };
               home-manager = {
@@ -112,10 +140,19 @@
       nixosConfigurations = {
         "laptop" = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit system;
-            inherit inputs;
+            nix-host = "laptop";
+            inherit gitUsername;
+            inherit gitEmail;
             inherit username;
             inherit wallpaper;
+            inherit system;
+            inherit keyboardLayout;
+            inherit consoleKeyMap;
+            inherit locale;
+            inherit timeZone;
+            inherit hostname;
+            inherit firewall;
+            inherit inputs;
 
             ## Pinning Nixpkgs versions
             pkgs-spotifyOld = import nixpkgs-spotifyOld {
@@ -139,7 +176,18 @@
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = {
+                nix-host = "laptop";
+                inherit gitUsername;
+                inherit gitEmail;
                 inherit username;
+                inherit wallpaper;
+                inherit system;
+                inherit keyboardLayout;
+                inherit consoleKeyMap;
+                inherit locale;
+                inherit timeZone;
+                inherit hostname;
+                inherit firewall;
                 inherit inputs;
               };
               home-manager = {
