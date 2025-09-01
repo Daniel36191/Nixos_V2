@@ -13,7 +13,6 @@
     wayvnc
     neofetch
     wget
-    tree
     appimage-run
 
     ## Alternitives
