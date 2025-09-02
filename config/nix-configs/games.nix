@@ -25,6 +25,10 @@ in
     mangohud
     steamtinkerlaunch
 
+    ## Lossless Scaling on linux (only for vulkan)
+    # lsfg-vk
+    # lsfg-vk-ui
+
     ## Modding
     r2modman
     gale ## R2 but better

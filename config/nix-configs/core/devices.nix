@@ -41,13 +41,12 @@
   };
 
   ## Bluetooth
-  hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+  hardware.bluetooth = {
+    ## Enable Backend
+    enable = true;
+    powerOnBoot = true;
   };
-  services.blueman.enable = true;
+  services.blueman.enable = true; ## Gui
 
   ## Rebind CapsLock to Super
   services.keyd = {
