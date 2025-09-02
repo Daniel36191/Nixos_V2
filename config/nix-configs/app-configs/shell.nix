@@ -56,7 +56,6 @@ in
 
     shellInit = ''
       NIX_HOST
-      fastfetch
     '';
 
   };

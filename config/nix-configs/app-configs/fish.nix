@@ -8,7 +8,6 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       NIX_HOST
-      fastfetch
     '';
   };
 
