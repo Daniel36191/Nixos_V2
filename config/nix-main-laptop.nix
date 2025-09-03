@@ -8,7 +8,7 @@
   ];
   imports = [
     ## Apps
-    # ./nix-configs/vm.nix
+    ./nix-configs/vm.nix
     # ./nix-configs/containers.nix
     # ./nix-configs/vr.nix
     ./nix-configs/apps.nix
