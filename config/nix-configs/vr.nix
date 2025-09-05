@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  pkgs-old,
+  pkgs-stable,
   ...
 }:
 {
@@ -50,7 +50,7 @@
     defaultRuntime = true;
     openFirewall = true;
     package = (
-      pkgs-old.wivrn.override {
+      pkgs-stable.wivrn.override {
         cudaSupport = true;
       }
     );
