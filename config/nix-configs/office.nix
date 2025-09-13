@@ -12,6 +12,10 @@ in
         obsidian ## Notes
     ];
 
+    fonts.packages = with pkgs; [
+      corefonts
+    ];
+
     services.flatpak = {
     packages = [
         "com.tdameritrade.ThinkOrSwim"
