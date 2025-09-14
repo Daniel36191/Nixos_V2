@@ -5,6 +5,8 @@
     ./framework/amd.nix
     ./framework/workarounds.nix
   ];
+  ## To update bios and hardware controlers
+    services.fwupd.enable = true;
 
   ## For fingerprint support
   services.fprintd.enable = true;

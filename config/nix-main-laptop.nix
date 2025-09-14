@@ -39,6 +39,7 @@
     ./nix-configs/users.nix
     ./nix-configs/defaults.nix
     ./nix-configs/core/devices.nix
+    ./nix-configs/core/devices-laptop.nix
     ./nix-configs/core/boot.nix
     ./nix-configs/core/core-services.nix
 
@@ -49,24 +50,20 @@
     ./nix-configs/core/hardware-laptop.nix
   ];
 
+
   ####################
   ## Profile Config ##
   ####################
+
     environment.shellAliases = {
       NIX_HOST = "export NIX_HOST=laptop";
     };
-
-
-  ##############
-  ## hardware ##
-  ##############
-
-  services.fwupd.enable = true;
 
   
   ##################
   ## Boot Entries ##
   ##################
+
   boot.loader.grub.extraEntries =
     let
         ##run: sudo blkid -o export /dev/sd(xy of main windwos part(largest)) | grep UUID
