@@ -12,7 +12,7 @@
   ## Devices ##
   #############
 
-  # Logitech wheel in pc mode
+  ## Logitech wheel in pc mode
   services.udev.extraRules = ''
     # Logitech G920 Racing Wheel
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c261", RUN+="${pkgs.usb-modeswitch}/bin/usb_modeswitch -v 046d -p c261 -c /etc/usb_modeswitch.d/046d:c261"
@@ -62,22 +62,4 @@
       };
     };
   };
-
-
-  ## Cpu
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
-  };
-
-
 }

@@ -14,7 +14,7 @@
     stylix.url = "github:danth/stylix";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; # # Blender-bin (now with cuda)
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
     lemonake.url = "github:passivelemon/lemonake";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +24,7 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
   };
 
   outputs =
@@ -40,6 +41,7 @@
       nixpkgs-spotifyOld,
       hyprsplit,
       quickshell,
+      nixos-hardware,
       ...
     }@inputs:
     let
@@ -197,6 +199,7 @@
                 users.${username} = import ./config/hm-main-laptop.nix;
               };
             }
+            # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             nixpkgs-xr.nixosModules.nixpkgs-xr
             ./config/nix-main-laptop.nix
             inputs.stylix.nixosModules.stylix
