@@ -62,7 +62,7 @@ in
   ## Rewrite the hard links from nix/store to the new ones in /usr/share/qemu
   system.activationScripts.qemu = ''
       mkdir -p /usr/share/qemu
-      ln -sf ${pkgs.qemu}/share/qemu/edk2-i386-vars.fd /usr/share/qemu/edk2-i386-vars.fd
-      ln -sf ${pkgs.qemu}/share/qemu/edk2-x86_64-secure-code.fd /usr/share/qemu/edk2-x86_64-secure-code.fd
+      cp -n ${pkgs.qemu}/share/qemu/edk2-i386-vars.fd /usr/share/qemu/edk2-i386-vars.fd
+      cp -n ${pkgs.qemu}/share/qemu/edk2-x86_64-secure-code.fd /usr/share/qemu/edk2-x86_64-secure-code.fd
   '';
 }
