@@ -21,4 +21,8 @@
     nixfmt-rfc-style # # Nix-lang formattor
     ];
 
+    environment.variables = {
+        EDITOR = "${pkgs.micro}";
+    };
+
 }

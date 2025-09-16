@@ -37,6 +37,7 @@ in
   
     qemu = {
     ovmf.enable = true;
+    ovmf.packages = [ pkgs.OVMFFull.fd ];
     runAsRoot = true; # ths does noting
     };
   };
@@ -55,4 +56,13 @@ in
     }
   ];
   hardware.enableRedistributableFirmware = true;
+
+
+  ## Fix for https://github.com/nixos/nixpkgs/issues/378894
+  ## Rewrite the hard links from nix/store to the new ones in /usr/share/qemu
+  system.activationScripts.qemu = ''
+      mkdir -p /usr/share/qemu
+      cp -n ${pkgs.qemu}/share/qemu/edk2-i386-vars.fd /usr/share/qemu/edk2-i386-vars.fd
+      cp -n ${pkgs.qemu}/share/qemu/edk2-x86_64-secure-code.fd /usr/share/qemu/edk2-x86_64-secure-code.fd
+  '';
 }
