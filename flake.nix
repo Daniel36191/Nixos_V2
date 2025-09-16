@@ -41,7 +41,7 @@
       nixpkgs-spotifyOld,
       hyprsplit,
       quickshell,
-      nixos-hardware,
+      # nixos-hardware,
       ...
     }@inputs:
     let

@@ -1,6 +1,9 @@
 {
-    ...
-}:{
+  config,
+  lib,
+  ...
+}:
+{
   ############################
   ## Hardware Optomisations ##
   ############################
@@ -11,7 +14,7 @@
 
   ## Enables the amd cpu scaling https://www.kernel.org/doc/html/latest/admin-guide/pm/amd-pstate.html
   ## On recent AMD CPUs this can be more energy efficient.
-  imports = [ ./. ];
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   boot = let
       kver = config.boot.kernelPackages.kernel.version;
   in
