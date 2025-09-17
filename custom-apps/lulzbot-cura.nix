@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchurl {
     url = "https://software.lulzbot.com/Cura_LulzBot_Edition/Linux/${version}/Cura_LulzBot_Edition-${version}.AppImage";
-    hash = "sha256-1dqrmkn39a17s081vq9p4sdkysc4xb4h71v551x3bdfl1dcccl3z";
+    sha256 = "1dqrmkn39a17s081vq9p4sdkysc4xb4h71v551x3bdfl1dcccl3z";
   };
 
   appimageContents = appimageTools.extract {
@@ -45,9 +45,6 @@ stdenvNoCC.mkDerivation rec {
     # So we convert each of the files passed as argument to an absolute path.
     # This fixes use cases like `cd /path/to/my/files; cura mymodel.stl anothermodel.stl`.
 
-    echo script
-    ls -al
-
     args=()
     for a in "$@"; do
       if [ -e "$a" ]; then
@@ -69,7 +66,7 @@ stdenvNoCC.mkDerivation rec {
     # https://github.com/Ultimaker/Cura/blob/382b98e8b0c910fdf8b1509557ae8afab38f1817/packaging/AppImage/cura.desktop.jinja
     (makeDesktopItem {
       name = "cura";
-      desktopName = "UltiMaker Cura";
+      desktopName = "Lulzbot Cura";
       genericName = "3D Printing Software";
       comment = meta.longDescription;
       exec = "cura";
@@ -102,9 +99,7 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   installPhase = ''
-    echo install
-    ls -al
-    s
+  
     runHook preInstall
 
     mkdir -p $out/bin

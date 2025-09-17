@@ -8,11 +8,11 @@
   ];
   imports = [
     ## Apps
-    ./nix-configs/vm.nix
-    ./nix-configs/containers.nix
+    # ./nix-configs/vm.nix
+    # ./nix-configs/containers.nix
     ./nix-configs/vr.nix
     ./nix-configs/apps.nix
-    ./nix-configs/samba.nix
+    # ./nix-configs/samba.nix
     # ./nix-configs/tailscale.nix ##Encript with sops nix
     ./nix-configs/syncthing.nix
     ./nix-configs/games.nix
