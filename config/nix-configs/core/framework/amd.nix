@@ -10,7 +10,7 @@
 
   ## AMD has better battery life with PPD over TLP:
   ## https://community.frame.work/t/responded-amd-7040-sleep-states/38101/13
-  services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = false;
 
   ## Enables the amd cpu scaling https://www.kernel.org/doc/html/latest/admin-guide/pm/amd-pstate.html
   ## On recent AMD CPUs this can be more energy efficient.

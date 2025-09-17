@@ -23,7 +23,7 @@
   };
 
   ## Needed for desktop environments to detect/manage display brightness
-  hardware.sensor.iio.enable = true;
+  hardware.sensor.iio.enable = false; ## this should be true
 
   boot = {
   extraModulePackages = with config.boot.kernelPackages; [ framework-laptop-kmod ];
