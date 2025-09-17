@@ -47,15 +47,15 @@
   ################
 
   ## Was for pihole
-  # networking = {
-  #   # nameservers = [ "192.168.0.141" ];
-  #   dhcpcd.extraConfig = "nohook resolv.conf";
-  #   networkmanager.dns = "none";
-  # };
-  # environment.etc = {
-  #   "resolv.conf".text = "\nnameserver 192.168.0.141\n
-  # ";
-  # };
+  networking = {
+    nameservers = [ "192.168.0.141" ];
+    dhcpcd.extraConfig = "nohook resolv.conf";
+    networkmanager.dns = "none";
+  };
+  environment.etc = {
+    "resolv.conf".text = "\nnameserver 192.168.0.141\n
+  ";
+  };
 
 
   ###########
@@ -73,6 +73,7 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
         "https://devenv.cachix.org"
+        "https://192.168.8.171:5000"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
