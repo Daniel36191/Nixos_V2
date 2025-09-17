@@ -46,6 +46,8 @@
         hyprland-main
         hyprland-machine
       ];
-
   };
+
+  ## Volume script for config
+  home.file.".config/hypr/scripts/volume.sh".text = lib.strings.concatStrings [ builtins.readFile ./volume.sh ];
 }
