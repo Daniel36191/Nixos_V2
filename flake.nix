@@ -45,19 +45,41 @@
       ...
     }@inputs:
     let
-      inherit (import ./config/variables.nix)
+      inherit (import ./config/variables-global.nix)
         gitUsername
         gitEmail
-        username
-        wallpaper
         system
         keyboardLayout
         consoleKeyMap
         locale
         timeZone
-        hostname
-        firewall
         ;
+      
+      # Common function to create arguments for both systems
+      makeCommonArgs = host: hostVars: {
+        nix-host = host;
+        inherit gitUsername gitEmail system keyboardLayout;
+        inherit consoleKeyMap locale timeZone inputs;
+        inherit (hostVars) username hostname wallpaper firewall;
+        
+        ## Pinning Nixpkgs versions
+        pkgs-spotifyOld = import nixpkgs-spotifyOld {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-old = import nixpkgs-old {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-nixpkgs-xr = import nixpkgs-xr {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        pkgs-stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
     in
     {
 
@@ -67,66 +89,24 @@
 
       nixosConfigurations = {
         "pc" = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            nix-host = "pc";
-            inherit gitUsername;
-            inherit gitEmail;
-            inherit username;
-            inherit wallpaper;
-            inherit system;
-            inherit keyboardLayout;
-            inherit consoleKeyMap;
-            inherit locale;
-            inherit timeZone;
-            inherit hostname;
-            inherit firewall;
-            inherit inputs;
-
-            ## Pinning Nixpkgs versions
-            pkgs-spotifyOld = import nixpkgs-spotifyOld {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-old = import nixpkgs-old {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-nixpkgs-xr = import nixpkgs-xr {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          };
+          specialArgs = let
+            pcVars = import ./config/pc/variables-pc.nix;
+          in makeCommonArgs "pc" pcVars;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = {
-                nix-host = "pc";
-                inherit gitUsername;
-                inherit gitEmail;
-                inherit username;
-                inherit wallpaper;
-                inherit system;
-                inherit keyboardLayout;
-                inherit consoleKeyMap;
-                inherit locale;
-                inherit timeZone;
-                inherit hostname;
-                inherit firewall;
-                inherit inputs;
-              };
+              home-manager.extraSpecialArgs = let
+                pcVars = import ./config/pc/variables-pc.nix;
+              in makeCommonArgs "pc" pcVars;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${username} = import ./config/hm-main-pc.nix;
+                users.${(import ./config/pc/variables-pc.nix).username} = import ./config/pc/hm-main-pc.nix;
               };
             }
             nixpkgs-xr.nixosModules.nixpkgs-xr
-            ./config/nix-main-pc.nix
+            ./config/pc/nix-main-pc.nix
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
@@ -141,67 +121,25 @@
 
       nixosConfigurations = {
         "laptop" = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            nix-host = "laptop";
-            inherit gitUsername;
-            inherit gitEmail;
-            inherit username;
-            inherit wallpaper;
-            inherit system;
-            inherit keyboardLayout;
-            inherit consoleKeyMap;
-            inherit locale;
-            inherit timeZone;
-            inherit hostname;
-            inherit firewall;
-            inherit inputs;
-
-            ## Pinning Nixpkgs versions
-            pkgs-spotifyOld = import nixpkgs-spotifyOld {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-old = import nixpkgs-old {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-nixpkgs-xr = import nixpkgs-xr {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            pkgs-stable = import nixpkgs-stable {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          };
+          specialArgs = let
+            laptopVars = import ./config/laptop/variables-laptop.nix;
+          in makeCommonArgs "laptop" laptopVars;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = {
-                nix-host = "laptop";
-                inherit gitUsername;
-                inherit gitEmail;
-                inherit username;
-                inherit wallpaper;
-                inherit system;
-                inherit keyboardLayout;
-                inherit consoleKeyMap;
-                inherit locale;
-                inherit timeZone;
-                inherit hostname;
-                inherit firewall;
-                inherit inputs;
-              };
+              home-manager.extraSpecialArgs = let
+                laptopVars = import ./config/laptop/variables-laptop.nix;
+              in makeCommonArgs "laptop" laptopVars;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${username} = import ./config/hm-main-laptop.nix;
+                users.${(import ./config/laptop/variables-laptopaa.nix).username} = import ./config/laptop/hm-main-laptop.nix;
               };
             }
             # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             nixpkgs-xr.nixosModules.nixpkgs-xr
-            ./config/nix-main-laptop.nix
+            ./config/laptop/nix-main-laptop.nix
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager

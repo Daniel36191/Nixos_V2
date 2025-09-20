@@ -49,5 +49,10 @@
   };
 
   ## Volume script for config
-  home.file.".config/hypr/scripts/volume.sh".text = lib.strings.concatStrings [ builtins.readFile ./volume.sh ];
+  home.file.".config/hypr/scripts/volume.sh" = {
+    text = let
+    volume-sh = builtins.readFile ./volume.sh;
+  in lib.strings.concatStrings [ volume-sh ];
+  executable = true;
+  };
 }
