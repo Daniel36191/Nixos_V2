@@ -1,18 +1,13 @@
 {
   pkgs,
   options,
+  consoleKeyMap,
+  gitUsername,
+  timeZone,
+  locale,
+  username,
   ...
 }:
-
-let
-  inherit (import ../variables.nix)
-  consoleKeyMap
-  gitUsername
-  timeZone
-  locale
-  username
-  ;
-in
 {
   ## Define users by nix
   users = {

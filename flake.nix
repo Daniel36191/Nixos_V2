@@ -42,6 +42,7 @@
       hyprsplit,
       quickshell,
       # nixos-hardware,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -134,7 +135,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${(import ./config/laptop/variables-laptopaa.nix).username} = import ./config/laptop/hm-main-laptop.nix;
+                users.${(import ./config/laptop/variables-laptop.nix).username} = import ./config/laptop/hm-main-laptop.nix;
               };
             }
             # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
