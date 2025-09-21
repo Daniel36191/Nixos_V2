@@ -1,11 +1,6 @@
 {
-  config,
   pkgs,
   lib,
-  host,
-  username,
-  options,
-  pkgs-old,
   ...
 }:
 {
