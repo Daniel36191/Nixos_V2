@@ -1,28 +1,52 @@
 {
   description = "NixOS";
-
   inputs = {
+    #############
+    ## Nixpkgs ##
+    #############
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.05";
     nixpkgs-old.url = "github:nixos/nixpkgs/24.11";
-    nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
-    # nixpkgs-spotifyOld.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix/24.11";
-    # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs-spotifyOld";
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
+
+
+    ##########
+    ## Pins ##
+    ##########
+
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
+    # nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb ## Now playing bugged 
+
+
+    ############
+    ## Inputs ##
+    ############
+
+    ## Apps ##
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
-    lemonake.url = "github:passivelemon/lemonake";
+    lemonake.url = "github:passivelemon/lemonake"; ## For vr apps
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
+    
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    hyprsplit.url = "github:shezdy/hyprsplit";
-    hyprsplit.inputs.hyprland.follows = "hyprland";
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+    inputs.hyprland.follows = "hyprland";
+    };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ## System ##
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+    inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
   };
@@ -35,10 +59,10 @@
       nixpkgs-old,
       home-manager,
       nix-flatpak,
-      nixpkgs-xr,
       blender-cuda,
       lemonake,
-      nixpkgs-spotifyOld,
+      nixpkgs-xr,
+      nixpkgs-spotifyPin,
       hyprsplit,
       quickshell,
       # nixos-hardware,
@@ -56,23 +80,23 @@
         timeZone
         ;
       
-      # Common function to create arguments for both systems
-      makeCommonArgs = host: hostVars: {
+      ## Common function to create arguments for systems
+      commonArgs = host: hostVars: {
         nix-host = host;
         inherit gitUsername gitEmail system keyboardLayout;
         inherit consoleKeyMap locale timeZone inputs;
         inherit (hostVars) username hostname wallpaper firewall;
         
         ## Pinning Nixpkgs versions
-        pkgs-spotifyOld = import nixpkgs-spotifyOld {
+        pkgs-spotifyPin = import nixpkgs-spotifyPin {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        nixpkgs-xr = import nixpkgs-xr {
           inherit system;
           config.allowUnfree = true;
         };
         pkgs-old = import nixpkgs-old {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-nixpkgs-xr = import nixpkgs-xr {
           inherit system;
           config.allowUnfree = true;
         };
@@ -92,13 +116,13 @@
         "pc" = nixpkgs.lib.nixosSystem {
           specialArgs = let
             pcVars = import ./config/pc/variables-pc.nix;
-          in makeCommonArgs "pc" pcVars;
+          in commonArgs "pc" pcVars;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = let
                 pcVars = import ./config/pc/variables-pc.nix;
-              in makeCommonArgs "pc" pcVars;
+              in commonArgs "pc" pcVars;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -106,8 +130,8 @@
                 users.${(import ./config/pc/variables-pc.nix).username} = import ./config/pc/hm-main-pc.nix;
               };
             }
-            nixpkgs-xr.nixosModules.nixpkgs-xr
             ./config/pc/nix-main-pc.nix
+            nixpkgs-xr.nixosModules.nixpkgs-xr
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
@@ -124,13 +148,13 @@
         "laptop" = nixpkgs.lib.nixosSystem {
           specialArgs = let
             laptopVars = import ./config/laptop/variables-laptop.nix;
-          in makeCommonArgs "laptop" laptopVars;
+          in commonArgs "laptop" laptopVars;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
               home-manager.extraSpecialArgs = let
                 laptopVars = import ./config/laptop/variables-laptop.nix;
-              in makeCommonArgs "laptop" laptopVars;
+              in commonArgs "laptop" laptopVars;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -139,8 +163,8 @@
               };
             }
             # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
-            nixpkgs-xr.nixosModules.nixpkgs-xr
             ./config/laptop/nix-main-laptop.nix
+            nixpkgs-xr.nixosModules.nixpkgs-xr
             inputs.stylix.nixosModules.stylix
             nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
