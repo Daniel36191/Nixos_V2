@@ -6,7 +6,6 @@ declare -A APP_RULES=(
     ["discord"]="source:Discord-Volume:5"
     ["webcord"]="source:Discord-Volume:5"
     ["vesktop"]="source:Discord-Volume:5"
-
     ["spotify"]="sink:Spotify-Volume:5"
 )
 
@@ -14,7 +13,7 @@ DEFAULT_ACTION="sink:Main-Output:5"  # Default action for all other apps
 
 # Get the active window class
 ACTIVE_WINDOW=$(hyprctl activewindow -j 2>/dev/null)
-WINDOW_CLASS=$(echo "$ACTIVE_WINDOW" | jq -r '.class' | tr '[:upper:]' '[:lower:]')
+WINDOW_CLASS=$(echo "$(hyprctl activewindow -j 2>/dev/null)" | jq -r '.class' | tr '[:upper:]' '[:lower:]')
 
 # Check if script was called with valid argument
 if [[ "$1" != "up" && "$1" != "down" && "$1" != "mute" ]]; then
