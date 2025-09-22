@@ -66,7 +66,6 @@
       hyprsplit,
       quickshell,
       # nixos-hardware,
-      sops-nix,
       ...
     }@inputs:
     let
@@ -105,6 +104,12 @@
           config.allowUnfree = true;
         };
       };
+      commonModules = [
+        nixpkgs-xr.nixosModules.nixpkgs-xr 
+        inputs.stylix.nixosModules.stylix
+        nix-flatpak.nixosModules.nix-flatpak
+        home-manager.nixosModules.home-manager
+      ];
     in
     {
 
@@ -131,11 +136,7 @@
               };
             }
             ./config/pc/nix-main-pc.nix
-            nixpkgs-xr.nixosModules.nixpkgs-xr
-            inputs.stylix.nixosModules.stylix
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-          ];
+          ] ++ commonModules;
         };
       };
 
@@ -164,11 +165,7 @@
             }
             # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             ./config/laptop/nix-main-laptop.nix
-            nixpkgs-xr.nixosModules.nixpkgs-xr
-            inputs.stylix.nixosModules.stylix
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-          ];
+          ] ++ commonModules;
         };
       };
     };
