@@ -18,6 +18,7 @@
         # handbrake # # video parser ## fails to build
         soundconverter # # gnome sound transcoder
         yt-dlg ## yt dl
+        godot
 
         ## VRC Creator
         pkgs-stable.unityhub

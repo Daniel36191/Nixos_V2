@@ -2,7 +2,7 @@
   pkgs,
   inputs,
   lib,
-  pkgs-spotifyOld,
+  pkgs-spotifyPin,
   ...
 }:
 let
@@ -36,7 +36,7 @@ in
 
   services.flatpak = {
   packages = [
-    "io.github.Soundux"
+    # "io.github.Soundux"
   ];
   };
 
@@ -69,7 +69,7 @@ in
     in
     {
       enable = true;
-      spotifyPackage = pkgs-spotifyOld.spotify;
+      spotifyPackage = pkgs-spotifyPin.spotify;
 
       enabledExtensions = with spicePkgs.extensions; [
         shuffle # shuffle+ (special characters are sanitized out of extension names)
@@ -78,6 +78,8 @@ in
         bookmark
         trashbin
         powerBar
+        playNext ## Add to queue
+        # addToQueueTop  ## Also add to queue
 
         # # Not working as of this time builds but no output
         #   ({
@@ -95,16 +97,12 @@ in
       ];
       enabledCustomApps = with spicePkgs.apps; [
         newReleases
-        # marketplace # Broken
       ];
       enabledSnippets = with spicePkgs.snippets; [
-        # # Broken??
         pointer
         oneko
       ];
-
       theme = lib.mkDefault spicePkgs.themes.comfy;
-      # colorScheme = lib.mkDefault "Macchiato";
     };
 
   ##################

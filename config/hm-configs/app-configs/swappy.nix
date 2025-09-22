@@ -1,11 +1,7 @@
 {
+  username,
   ...
 }:
-let
-  inherit (import ../../variables.nix)
-    username
-    ;
-in
 {
   home.file.".config/swappy/config".text = ''
     [Default]

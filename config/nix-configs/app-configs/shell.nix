@@ -1,12 +1,8 @@
 {
   pkgs,
+  username,
   ...
 }:
-let
-  inherit (import ../../variables.nix)
-    username
-    ;
-in
 {
 
   users.users."${username}" = {

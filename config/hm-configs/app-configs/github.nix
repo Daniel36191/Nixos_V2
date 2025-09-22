@@ -1,12 +1,8 @@
 {
+  gitUsername,
+  gitEmail,
   ...
 }:
-let
-  inherit (import ../../variables.nix)
-    gitUsername
-    gitEmail
-    ;
-in
 {
   # Install & Configure Git
   programs.git = {

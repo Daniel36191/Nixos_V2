@@ -8,7 +8,7 @@
   ## Networking
   networking = {
    networkmanager.enable = true;
-   hostName = "nixos";
+   hostName = hostname;
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
