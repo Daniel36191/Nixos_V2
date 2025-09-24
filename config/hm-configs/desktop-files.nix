@@ -56,4 +56,11 @@
     type = "Application";
     categories = [ "Application" ];
   };
+    xdg.desktopEntries.google-home = {
+    name = "Google Home";
+    exec = "librewolf --kiosk --new-window https://home.google.com/";
+    terminal = false;
+    type = "Application";
+    categories = [ "Application" ];
+  };
 }
