@@ -1,6 +1,5 @@
 {
     pkgs,
-    inputs,
     ...
 }:
 {
@@ -16,8 +15,8 @@
     micro
 
     ## Language servers
-    nixd # # Nix-lang interpiter
-    nil # # Nix-lang server
+    nixd ## Nix-lang interpiter
+    nil ## Nix-lang server
     nixfmt-rfc-style # # Nix-lang formattor
     ];
 
