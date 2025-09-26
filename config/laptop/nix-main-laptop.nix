@@ -42,6 +42,7 @@
     ../nix-configs/core/devices-laptop.nix
     ../nix-configs/core/boot.nix
     ../nix-configs/core/core-services.nix
+    ../../secrets/secrets-nix.nix
 
     ## To Be Cleaned
     # ../../modules/nvidia-drivers.nix

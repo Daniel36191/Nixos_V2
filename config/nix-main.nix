@@ -1,5 +1,6 @@
 {
-    ...
+  pkgs,
+  ...
 }:
 {
   #########
@@ -87,7 +88,7 @@
 
   ## Compatibility
   system.activationScripts.binBash = ''
-    ln -sf /run/current-system/sw/bin/bash /bin/bash
+    ln -sf ${pkgs.bash}/bin/bash /bin/bash
   '';
 
   # This value determines the NixOS release from which the default

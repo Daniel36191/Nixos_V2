@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -9,6 +10,6 @@
     extraUpFlags = [
       "--advertise-exit-node"
     ];
-    authKeyFile = ../../extra-files/tailscale.key;
+    authKeyFile = config.age.secrets.tailscale.path;
   };
 }

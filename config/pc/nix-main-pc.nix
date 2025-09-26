@@ -13,7 +13,7 @@
     ../nix-configs/vr.nix
     ../nix-configs/apps.nix
     # ../nix-configs/samba.nix
-    # ../nix-configs/tailscale.nix ##Encript with sops nix
+    ../nix-configs/tailscale.nix ##Encript with sops nix
     ../nix-configs/syncthing.nix
     ../nix-configs/games.nix
     ../nix-configs/creative.nix
@@ -30,7 +30,7 @@
     ../nix-configs/app-configs/shell.nix ## fix the cleannix command to use nh
 
     ## Theme
-    ../nix-configs/theme.nix ##blacklist libreofficr from stylix
+    ../nix-configs/theme.nix ## blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
 
@@ -42,6 +42,7 @@
     ../nix-configs/core/devices-pc.nix
     ../nix-configs/core/boot.nix
     ../nix-configs/core/core-services.nix
+    ../../secrets/secrets-nix.nix
 
     ## To Be Cleaned
     ../../modules/nvidia-drivers.nix

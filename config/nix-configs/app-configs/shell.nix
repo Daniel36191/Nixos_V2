@@ -23,6 +23,7 @@
       vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
       windows = "bash --norc ( trap 'hyprctl reload;' INT
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
+      agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
 
       
       # sudonix = "sudo nixos-rebuild switch --flake .#default";

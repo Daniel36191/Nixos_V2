@@ -17,8 +17,9 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    #bespokesynth
+    # bespokesynth
     bespokesynth
+    yt-dlp
     # chataigne
     sendmidi
     receivemidi
@@ -29,16 +30,21 @@ in
     ## Plugins
     rnnoise-plugin
     # lsp-plugins ## A lot of plugins
-    speech-denoiser # # rnnoise
-    cardinal # # Custom .desktop file in desktop-files.nix
+    speech-denoiser ## rnnoise
+    cardinal ## Custom .desktop file in desktop-files.nix
     # rPackages.sparta
   ];
 
   services.flatpak = {
-  packages = [
-    # "io.github.Soundux"
-  ];
+    packages = [
+      # "io.github.Soundux"
+    ];
   };
+
+  ## ytdl
+  system.activationScripts.yt-dlp = ''
+    ln -sf ${pkgs.yt-dlp}/bin/yt-dlg /usr/bin/youtube-dl
+  '';
 
   #############
   ## Backend ##
@@ -72,7 +78,7 @@ in
       spotifyPackage = pkgs-spotifyPin.spotify;
 
       enabledExtensions = with spicePkgs.extensions; [
-        shuffle # shuffle+ (special characters are sanitized out of extension names)
+        shuffle ## shuffle+ (special characters are sanitized out of extension names)
         adblock
         hidePodcasts
         bookmark

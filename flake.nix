@@ -49,6 +49,10 @@
     inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs =
@@ -65,6 +69,7 @@
       nixpkgs-spotifyPin,
       hyprsplit,
       quickshell,
+      agenix,
       # nixos-hardware,
       ...
     }@inputs:
@@ -109,6 +114,7 @@
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
+        agenix.nixosModules.default
       ];
     in
     {
