@@ -6,12 +6,10 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    inputs.agenix.packages.${system}.default
+    inputs.agenix.packages.${system}.default ## Cli tool
   ];
 
-  age.secrets = let
-    tailscale-host = "tailscale-${nix-host}";
-    in {
-    tailscale-host.file = ./tailscale-${nix-host}.age;
+  age.secrets = {
+    "tailscale-${nix-host}".file = ./tailscale-${nix-host}.age;
   };
 }
