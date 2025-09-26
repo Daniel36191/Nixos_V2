@@ -9,7 +9,9 @@
     inputs.agenix.packages.${system}.default
   ];
 
-  age.secrets = {
-    tailscale.file = ./tailscale${nix-host}.age;
+  age.secrets = let
+    tailscale-host = "tailscale-${nix-host}";
+    in {
+    tailscale-host.file = ./tailscale-${nix-host}.age;
   };
 }

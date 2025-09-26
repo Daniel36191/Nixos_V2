@@ -4,7 +4,7 @@
   ...
 }:
 let
-  tailscale-key = "tailscale-${nix-host}";
+  tailscale-host = "tailscale-${nix-host}";
 in
 {
   services.tailscale = {
@@ -14,6 +14,6 @@ in
     extraUpFlags = [
       "--advertise-exit-node"
     ];
-    authKeyFile = config.age.secrets.${tailscale-key}.path;
+    authKeyFile = config.age.secrets.tailscale-pc.path;
   };
 }
