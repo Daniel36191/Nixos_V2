@@ -30,7 +30,7 @@
     ../nix-configs/app-configs/shell.nix ## fix the cleannix command to use nh
 
     ## Theme
-    ../nix-configs/theme.nix ##blacklist libreofficr from stylix
+    ../nix-configs/theme.nix ## blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
 
