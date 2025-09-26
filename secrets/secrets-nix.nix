@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  nix-host,
   ...
 }:
 {
@@ -9,6 +10,6 @@
   ];
 
   age.secrets = {
-    tailscale.file = ./tailscale.age;
+    tailscale.file = ./tailscale${nix-host}.age;
   };
 }

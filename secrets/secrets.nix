@@ -8,6 +8,7 @@ let
   ];
 in
 {
-  ## make new files/edit with agenixedit -e file.age
-  "tailscale.age".publicKeys = systems;
+  ## make new files/edit with agenixedit file.age
+  "tailscale-pc.age".publicKeys = systems;
+  "tailscale-laptop.age".publicKeys = systems;
 }
