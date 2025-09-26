@@ -43,8 +43,6 @@
       tree = "eza --icons -T";
       ll = "eza -lh --icons --grid --group-directories-first";
       la = "eza -lah --icons --grid --group-directories-first";
-      # grep = "rg"; ## not great
-      find = "fd";
     };
 
     ###############
