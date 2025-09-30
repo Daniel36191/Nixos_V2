@@ -9,7 +9,7 @@ let
   sendmidi = pkgs.callPackage ../../custom-apps/send-midi.nix { };
   receivemidi = pkgs.callPackage ../../custom-apps/receive-midi.nix { };
   bespokesynth = pkgs.callPackage ../../custom-apps/bespoke-synth/package.nix { };
-  chataigne = pkgs.callPackage ../../custom-apps/chataigne.nix { };
+  chataigne = pkgs.callPackage ../../custom-apps/chataigne/chataigne.nix { };
 in
 {
   imports = [
@@ -20,7 +20,7 @@ in
     # bespokesynth
     bespokesynth
     yt-dlp
-    # chataigne
+    chataigne
     sendmidi
     receivemidi
     qpwgraph
