@@ -19,8 +19,7 @@ in
   environment.systemPackages = with pkgs; [
     # bespokesynth
     bespokesynth
-    yt-dlp
-    chataigne
+    # chataigne
     sendmidi
     receivemidi
     qpwgraph
@@ -40,11 +39,6 @@ in
       # "io.github.Soundux"
     ];
   };
-
-  ## ytdl
-  system.activationScripts.yt-dlp = ''
-    ln -sf ${pkgs.yt-dlp}/bin/yt-dlg /usr/bin/youtube-dl
-  '';
 
   #############
   ## Backend ##
