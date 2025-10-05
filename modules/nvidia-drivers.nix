@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }:
@@ -11,9 +12,12 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
   };
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia-container-toolkit.enable = true; # # For Containers to use gpu
+  hardware.nvidia-container-toolkit.enable = true; ## For Containers to use gpu
   hardware.nvidia = {
     modesetting.enable = true;
     forceFullCompositionPipeline = false;
@@ -21,8 +25,8 @@
       enable = false;
       finegrained = false;
     };
-    open = true;
     nvidiaSettings = true;
+    open = true;
     # package = config.boot.kernelPackages.nvidiaPackages.latest;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     # package = config.boot.kernelPackages.nvidiaPackages.stable;

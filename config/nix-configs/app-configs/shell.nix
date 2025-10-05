@@ -6,7 +6,7 @@
 {
 
   users.users."${username}" = {
-    shell = pkgs.fish; # # pkgs.bash is default
+    shell = pkgs.fish; ## pkgs.bash is default
     ignoreShellProgramCheck = true;
   };
 
@@ -24,6 +24,7 @@
       windows = "bash --norc ( trap 'hyprctl reload;' INT
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
+      hyprpicker = "hyprpicker -a";
 
       
       # sudonix = "sudo nixos-rebuild switch --flake .#default";

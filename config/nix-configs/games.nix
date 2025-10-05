@@ -47,7 +47,7 @@ in
 
     services.flatpak = {
       packages = [
-        "org.vinegarhq.Sober" # # roblox
+        "org.vinegarhq.Sober" ## roblox
       ];
     };
 
@@ -61,13 +61,13 @@ in
     enable = true;
     gamescopeSession.enable = true;
     protontricks.enable = true;
-    extest.enable = true; # # For wayland
+    extest.enable = true; ## For wayland and controlers
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = false;
     package = pkgs.steam.override {
       extraEnv = {
-        MANGOHUD = true;
+        MANGOHUD = true; ## Defaults mangohud on for every game
         OBS_VKCAPTURE = true;
         RADV_TEX_ANISO = 16;
       };
@@ -83,7 +83,7 @@ in
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      proton-ge-rtsp-bin
+      proton-ge-rtsp-bin ## for VRC
       steamtinkerlaunch
       # proton-vkvr
     ];
