@@ -9,7 +9,7 @@ environment.systemPackages = with pkgs; [
 ];
  boot = {
     ## Kernel
-    kernelPackages = pkgs.linuxPackages_zen; ##broken with working nvidia drivers
+    kernelPackages = pkgs.linuxPackages_zen;
 
     ## Bootloader.
     loader = {

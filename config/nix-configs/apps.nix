@@ -28,7 +28,6 @@ in
     lact # # Gpu Overclocking
     ncdu # # wiztree
     xarchiver
-    cachix
 
     ## Discord clients
     # vesktop
@@ -98,6 +97,9 @@ in
     enable = true;
     terminal = "kitty";
   };
+  # environment.variables = {
+  #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
+  # };
   nixpkgs.overlays = [
     (final: prev: {
       nautilus = prev.nautilus.overrideAttrs (nprev: {

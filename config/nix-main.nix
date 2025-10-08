@@ -44,16 +44,20 @@
   ## Networking ##
   ################
 
-  ## Was for pihole
-  # networking = {
-  #   nameservers = [ "192.168.0.141" ];
-  #   dhcpcd.extraConfig = "nohook resolv.conf";
-  #   networkmanager.dns = "none";
-  # };
-  # environment.etc = {
-  #   "resolv.conf".text = "\nnameserver 192.168.0.141\n
-  # ";
-  # };
+  networking = { 
+    networkmanager = {
+      enable = true;
+      dns = "none"; ## Disable NetworkManager's DNS resolution
+    };
+    ## Don't get from router
+    useDHCP = false;
+    dhcpcd.enable = false;
+
+    nameservers = [
+      "192.168.0.141"
+      "9.9.9.9"
+    ];
+  };
 
 
   ###########

@@ -4,6 +4,8 @@
   pkgs-stable,
   ...
 }:
+let
+in
 {
   environment.systemPackages = with pkgs; [
     monado-vulkan-layers
