@@ -13,7 +13,7 @@
     authorizedKeysInHomedir = true;
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      AllowUsers = null; ## Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "yes"; ## "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
@@ -47,16 +47,11 @@
   networking = { 
     networkmanager = {
       enable = true;
-      dns = "none"; ## Disable NetworkManager's DNS resolution
+      insertNameservers = [
+        "192.168.0.141"
+      ];
     };
-    ## Don't get from router
-    useDHCP = false;
-    dhcpcd.enable = false;
-
-    nameservers = [
-      "192.168.0.141"
-      "9.9.9.9"
-    ];
+    resolvconf.enable = false; ## Needed for insertNameservers to work
   };
 
 
