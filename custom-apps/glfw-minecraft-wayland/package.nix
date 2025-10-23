@@ -39,6 +39,7 @@ stdenv.mkDerivation {
     ./x11.patch
     ./0009-Defer-setting-cursor-position-until-the-cursor-is-lo.patch
     ./0001-Don-t-crash-on-calls-to-icon.patch
+    ./waywall.patch
   ];
 
   propagatedBuildInputs = lib.optionals (!stdenv.hostPlatform.isWindows) [ libGL ];
