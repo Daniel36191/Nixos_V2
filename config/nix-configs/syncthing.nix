@@ -7,7 +7,7 @@
 {
   services = {
     syncthing = {
-      enable = false;
+      enable = true;
       systemService = false; ## Ran as user service below
       openDefaultPorts = true;
       # extraFlags = [ "--no-default-folder" ]; # Don't create default ~/Sync folder
@@ -25,7 +25,7 @@
     description = "File sync service";
     serviceConfig = {
         Type = "simple";
-        ExecStart = "${pkgs.syncthing}bin/syncthing";
+        ExecStart = "${pkgs.syncthing}/bin/syncthing";
         Restart = "on-failure";
     };
   };
