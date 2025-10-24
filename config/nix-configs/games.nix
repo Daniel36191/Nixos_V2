@@ -1,11 +1,10 @@
 {
     pkgs,
-    inputs,
     ...
 }:
 let
     glfw-minecraft-wayland = pkgs.callPackage ../../custom-apps/glfw-minecraft-wayland/package.nix { };
-    proton-vkvr = pkgs.callPackage ../../custom-apps/proton-vkvr.nix { };
+    # proton-vkvr = pkgs.callPackage ../../custom-apps/proton-vkvr.nix { };
 in
 {
     environment.systemPackages = with pkgs; [
