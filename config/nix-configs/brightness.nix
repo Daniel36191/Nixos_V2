@@ -1,17 +1,16 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
-  services.clight = {
-    enable = true;
-    settings = {
-      backlight.no_auto_calibration = true; ## Dissables autodim??
-    };
-  };
+  # services.clight = {
+  #   enable = true;
+  #   settings = {
+  #     backlight.no_auto_calibration = true; ## Should dissable autodim but doesn't
+  #   };
+  # };
   environment.systemPackages = with pkgs; [
-    clight-gui
+    # clight-gui
     brightnessctl
   ];
 }
