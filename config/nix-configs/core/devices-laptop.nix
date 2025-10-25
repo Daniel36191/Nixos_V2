@@ -12,6 +12,9 @@
   ## To update bios and hardware controlers
   fwupd.enable = true;
 
+  ## Let user apps acess battery settings and %
+  upower.enable = true;
+
   ## For fingerprint support
   fprintd.enable = true;
 
