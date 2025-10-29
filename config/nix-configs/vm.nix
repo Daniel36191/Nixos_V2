@@ -32,8 +32,6 @@
   
   
     qemu = {
-    ovmf.enable = true;
-    ovmf.packages = [ pkgs.OVMFFull.fd ];
     runAsRoot = true; # ths does noting
     };
   };
