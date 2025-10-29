@@ -49,6 +49,7 @@
     type = "Application";
     categories = [ "Application" ];
   };
+
   xdg.desktopEntries.gale = {
     name = "Gale Fixed";
     exec = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json gale";
@@ -56,11 +57,21 @@
     type = "Application";
     categories = [ "Application" ];
   };
-    xdg.desktopEntries.google-home = {
+
+  xdg.desktopEntries.google-home = {
     name = "Google Home";
     exec = "librewolf --kiosk --new-window https://home.google.com/";
     terminal = false;
     type = "Application";
     categories = [ "Application" ];
   };
+
+  xdg.desktopEntries.assetto-corsa = {
+    name = "Assetto Corsa";
+    exec = "steam steam://rungameid/244210 %u";
+    icon = "steam_icon_244210";
+    comment = "Assetto Corsa Racing Simulator";
+    categories = [ "Game" "Simulation" ];
+    mimeType = [ "x-scheme-handler/acmanager" ];
+    };
 }

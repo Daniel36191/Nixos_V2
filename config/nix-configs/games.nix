@@ -19,6 +19,7 @@ in
     ## Wine
     wineWowPackages.waylandFull ## wine for wayland
     # wineWowPackages.stable ## wine
+    wine64
     winetricks
     gamescope
     mangohud

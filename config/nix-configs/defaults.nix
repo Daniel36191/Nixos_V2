@@ -12,6 +12,7 @@
       "x-scheme-handler/about" = "librewolf.desktop";
       "x-scheme-handler/unknown" = "librewolf.desktop";
       "inode/directory" = "org.gnome.Nautilus.desktop";
+      "x-scheme-handler/acmanager" = "assetto-corsa.desktop";
     };
   };
 }
