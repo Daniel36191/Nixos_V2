@@ -46,12 +46,11 @@
 
   networking = { 
     networkmanager = {
-      enable = true;
-      insertNameservers = [
-        "192.168.0.141"
-      ];
+      # insertNameservers = [
+      #   "192.168.0.141"
+      # ];
     };
-    resolvconf.enable = false; ## Needed for insertNameservers to work?
+    # resolvconf.enable = false; ## Needed for insertNameservers to work?
   };
 
 

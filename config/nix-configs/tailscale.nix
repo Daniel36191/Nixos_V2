@@ -9,7 +9,7 @@
     openFirewall = true;
     useRoutingFeatures = "both";
     extraUpFlags = [
-      "--advertise-exit-node"
+      # "--advertise-exit-node"
     ];
     authKeyFile = config.age.secrets."tailscale-${nix-host}".path;
   };
