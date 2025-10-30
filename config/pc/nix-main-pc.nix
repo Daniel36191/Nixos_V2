@@ -13,16 +13,17 @@
     ../nix-configs/vr.nix
     ../nix-configs/apps.nix
     # ../nix-configs/samba.nix
-    ../nix-configs/tailscale.nix ##Encript with sops nix
+    ../nix-configs/tailscale.nix
     ../nix-configs/syncthing.nix
     ../nix-configs/games.nix
     ../nix-configs/creative.nix
     ../nix-configs/coding.nix
     ../nix-configs/apps-pc.nix
     # ../nix-configs/apps-laptop.nix
-    ../nix-configs/zerotier.nix
+    # ../nix-configs/zerotier.nix
     ../nix-configs/office.nix
     # ../nix-configs/brightness.nix
+    ../nix-configs/clam-av.nix
 
     ## App Configs
     ../nix-configs/app-configs/starship.nix
