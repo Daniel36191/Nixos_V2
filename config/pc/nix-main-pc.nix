@@ -23,7 +23,7 @@
     # ../nix-configs/zerotier.nix
     ../nix-configs/office.nix
     # ../nix-configs/brightness.nix
-    ../nix-configs/clam-av.nix
+    # ../nix-configs/clam-av.nix
 
     ## App Configs
     ../nix-configs/app-configs/starship.nix

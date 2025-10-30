@@ -7,8 +7,10 @@
   # Install & Configure Git
   programs.git = {
     enable = true;
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
+    settings.user = {
+      Name = "${gitUsername}";
+      Email = "${gitEmail}";
+    };
   };
   programs = {
     gh.enable = true;

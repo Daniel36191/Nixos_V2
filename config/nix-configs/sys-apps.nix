@@ -42,8 +42,5 @@
     unrar
     # file-roller ## Only for thunar
 
-    ## Apps
-    webkitgtk_4_0 ## for orca
-
   ];
 }
