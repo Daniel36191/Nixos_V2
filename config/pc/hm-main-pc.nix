@@ -6,6 +6,7 @@
   imports = [
     ../hm-main.nix
     ../hm-configs/desktop-files.nix
+    ../hm-configs/webapps.nix
     ../hm-configs/theme.nix
     ../hm-configs/hyprland/hyprland.nix
     ../hm-configs/hyprland/wlogout.nix

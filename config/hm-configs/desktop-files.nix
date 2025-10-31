@@ -75,11 +75,11 @@
     mimeType = [ "x-scheme-handler/acmanager" ];
     };
 
-  xdg.desktopEntries.soundcloud = {
-    name = "Soundcloud";
-    exec = "qutebrowser soundcloud.com";
-    terminal = false;
-    comment = "Music Player";
-    categories = [ "Music" ];
-    };
+  # xdg.desktopEntries.soundcloud = {
+  #   name = "Soundcloud";
+  #   exec = "qutebrowser soundcloud.com";
+  #   terminal = false;
+  #   comment = "Music Player";
+  #   categories = [ "Music" ];
+  #   };
 }
