@@ -58,14 +58,6 @@
     categories = [ "Application" ];
   };
 
-  xdg.desktopEntries.google-home = {
-    name = "Google Home";
-    exec = "qutebrowser home.google.com";
-    terminal = false;
-    type = "Application";
-    categories = [ "Application" ];
-  };
-
   xdg.desktopEntries.assetto-corsa = {
     name = "Assetto Corsa";
     exec = "steam steam://rungameid/244210 %u";
@@ -74,12 +66,4 @@
     categories = [ "Game" "Simulation" ];
     mimeType = [ "x-scheme-handler/acmanager" ];
     };
-
-  # xdg.desktopEntries.soundcloud = {
-  #   name = "Soundcloud";
-  #   exec = "qutebrowser soundcloud.com";
-  #   terminal = false;
-  #   comment = "Music Player";
-  #   categories = [ "Music" ];
-  #   };
 }
