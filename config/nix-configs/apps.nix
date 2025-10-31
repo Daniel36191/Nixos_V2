@@ -27,6 +27,7 @@ in
     lact # # Gpu Overclocking
     ncdu # # wiztree
     xarchiver
+    qutebrowser ## For Webapps
 
     ## Discord clients
     # vesktop

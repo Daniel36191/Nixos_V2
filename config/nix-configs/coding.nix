@@ -9,6 +9,8 @@
     git
     github-desktop
 
+    mkcert ##Https Cert Maker for local addrs
+
     ## Code editors
     vscode
     # zed-editor

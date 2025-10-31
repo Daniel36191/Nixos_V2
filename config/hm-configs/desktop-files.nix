@@ -60,7 +60,7 @@
 
   xdg.desktopEntries.google-home = {
     name = "Google Home";
-    exec = "librewolf --kiosk --new-window https://home.google.com/";
+    exec = "qutebrowser home.google.com";
     terminal = false;
     type = "Application";
     categories = [ "Application" ];
@@ -73,5 +73,13 @@
     comment = "Assetto Corsa Racing Simulator";
     categories = [ "Game" "Simulation" ];
     mimeType = [ "x-scheme-handler/acmanager" ];
+    };
+
+  xdg.desktopEntries.soundcloud = {
+    name = "Soundcloud";
+    exec = "qutebrowser soundcloud.com";
+    terminal = false;
+    comment = "Music Player";
+    categories = [ "Music" ];
     };
 }
