@@ -10,6 +10,7 @@
     lxqt.lxqt-policykit
     hyprpicker
     hyprpaper
+    hyprsunset ## Orange Wash Screen
 
     libnotify
     playerctl ## Media keys

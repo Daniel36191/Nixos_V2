@@ -32,7 +32,7 @@ with lib;
           # "custom/hyprbindings"
           "custom/notification"
           "custom/exit"
-          # "battery"
+          "battery"
           "tray"
           "clock"
         ];

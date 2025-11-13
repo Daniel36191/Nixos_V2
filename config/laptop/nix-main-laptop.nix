@@ -33,6 +33,8 @@
     ../nix-configs/theme.nix ## blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
+    ../nix-configs/wm-modules/hyprdynamicmonitors/monitors.nix
+    
 
     ## Core
     ../nix-main.nix
@@ -43,6 +45,7 @@
     ../nix-configs/core/boot.nix
     ../nix-configs/core/core-services.nix
     ../../secrets/secrets-nix.nix
+    ../../modules/amd-drivers.nix
 
     ## To Be Cleaned
     # ../../modules/nvidia-drivers.nix

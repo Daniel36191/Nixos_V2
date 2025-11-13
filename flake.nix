@@ -35,7 +35,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
-    inputs.hyprland.follows = "hyprland";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprdynamicmonitors = {
+      url = "github:fiffeek/hyprdynamicmonitors";
+      # inputs.nixpkgs.follows = "hyprland";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -46,7 +50,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
       url = "github:nix-community/home-manager/master";
-    inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
     agenix = {
@@ -68,6 +72,7 @@
       nixpkgs-xr,
       nixpkgs-spotifyPin,
       hyprsplit,
+      hyprdynamicmonitors,
       quickshell,
       agenix,
       # nixos-hardware,
@@ -115,6 +120,7 @@
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
+        hyprdynamicmonitors.nixosModules.default
       ];
     in
     {

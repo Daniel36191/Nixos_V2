@@ -46,12 +46,12 @@
 
   networking = { 
     networkmanager = {
-      insertNameservers = [
-        "192.168.0.141"
-        "9.9.9.9"
-      ];
+      # insertNameservers = [
+      #   # "192.168.0.141"
+      #   "9.9.9.9"
+      # ];
     };
-    resolvconf.enable = false; ## Needed for insertNameservers to work?
+    # resolvconf.enable = false; ## Needed for insertNameservers to work?
   };
 
 
@@ -70,7 +70,7 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
         "https://devenv.cachix.org"
-        # "https://192.168.8.184:5000"
+        # "https://192.168.8.194:5000"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
