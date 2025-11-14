@@ -1,0 +1,68 @@
+  "controlCenterWidgets": [
+    {
+      "id": "wifi",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "builtin_vpn",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "bluetooth",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "nightMode",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "doNotDisturb",
+      "enabled": true,
+      "width": 50
+    }
+  ],
+  "dankBarLeftWidgets": [
+    "workspaceSwitcher",
+    "focusedWindow"
+  ],
+  "dankBarCenterWidgets": [
+    "music",
+    "clock",
+    "weather"
+  ],
+  "dankBarRightWidgets": [
+    {
+      "id": "systemTray",
+      "enabled": true
+    },
+    {
+      "id": "clipboard",
+      "enabled": true
+    },
+    {
+      "id": "cpuUsage",
+      "enabled": true
+    },
+    {
+      "id": "memUsage",
+      "enabled": true
+    },
+    {
+      "id": "notificationButton",
+      "enabled": true
+    },
+    {
+      "id": "controlCenterButton",
+      "enabled": true
+    }
+  ]
+}
