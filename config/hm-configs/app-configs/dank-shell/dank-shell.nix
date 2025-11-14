@@ -17,12 +17,12 @@
 
   ## Place Settings File
   home.file.".config/DankMaterialShell/settings.json".text = let
-  main = builtins.readFile ./main.conf;
+  main = builtins.readFile ./main.json;
   machine = if nix-host == "pc"
     then
-       builtins.readFile ./pc.conf
+       builtins.readFile ./pc.json
     else
-      builtins.readFile ./laptop.conf;
+      builtins.readFile ./laptop.json;
   in
   lib.strings.concatStrings [
     main
