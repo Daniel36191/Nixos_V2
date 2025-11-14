@@ -30,9 +30,8 @@
     xwayland.enable = true;
     systemd.enable = true;
     plugins = [
-      # pkgs.hyprlandPlugins.hycov ## alt tab like function ## Broken in Nixpkgs
-      
-    ] ++ (lib.optionals (nix-host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ]);
+      inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
+    ]; # ++ (lib.optionals (nix-host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ]);
     extraConfig =
       let
         hyprland-main = builtins.readFile ./hyprland-main.conf;

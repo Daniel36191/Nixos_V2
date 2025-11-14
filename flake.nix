@@ -45,6 +45,7 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms.url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
 
     ## System ##
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -74,6 +75,7 @@
       hyprsplit,
       hyprdynamicmonitors,
       quickshell,
+      dms,
       agenix,
       # nixos-hardware,
       ...
