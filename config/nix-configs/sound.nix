@@ -57,6 +57,9 @@ in
     #   extraConfig = {
     #   };
   };
+  boot = {
+    kernelModules = [ "snd-seq-dummy" ]; ## Alsa Midi-Through-Port-0
+  };
 
   # Enable sound with pulse
   services.pulseaudio.enable = false;
