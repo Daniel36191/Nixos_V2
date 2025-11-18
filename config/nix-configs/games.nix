@@ -33,6 +33,7 @@ in
     r2modman
     gale ## R2 but better
     # bs-manager ## Beatsaber Modding
+    satisfactorymodmanager
 
     ## Games
     techmino # # tetris

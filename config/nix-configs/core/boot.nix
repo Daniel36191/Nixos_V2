@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -10,6 +11,9 @@ environment.systemPackages = with pkgs; [
  boot = {
     ## Kernel
     kernelPackages = pkgs.linuxPackages_zen;
+    extraModulePackages = with config.boot.kernelPackages; [ ];
+    kernelModules = [ "snd-seq-dummy" ];
+
 
     ## Bootloader.
     loader = {

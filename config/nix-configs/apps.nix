@@ -37,6 +37,8 @@ in
     # })
     equibop
 
+    teamspeak6-client
+
     ## Matrix Clients
     # nheko
     # cinny-desktop
