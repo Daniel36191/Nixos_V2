@@ -6,6 +6,7 @@
   timeZone,
   locale,
   username,
+  nix-host,
   ...
 }:
 {

@@ -6,7 +6,7 @@
 }:
 {
 environment.systemPackages = with pkgs; [
-  grub2_full
+  grub2
 ];
  boot = {
     ## Kernel

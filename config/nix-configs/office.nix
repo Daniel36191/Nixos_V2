@@ -8,7 +8,7 @@ in
 {
     environment.systemPackages = with pkgs; [
         pdfarranger
-        onlyoffice-bin
+        onlyoffice-desktopeditors
         obsidian ## Notes
     ];
 

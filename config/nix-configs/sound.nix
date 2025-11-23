@@ -116,22 +116,25 @@ in
 
   # systemd.user.services.loadAudioModules = {
   #   description = "Load custom PulseAudio modules";
-  #   wants = ["pulseaudio.service"];
+  #   requisite = ["pulseaudio.service"];
+  #   wantedBy = ["pulseaudio.service"];
+  # 
   #   script = "
-  #     pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=fake-bespoke-source channels=16\n
-  #     pactl load-module module-null-sink media.class=Audio/Sink sink_name=fake-bespoke-output channels=16\n
-  # \n
-  #     pactl load-module module-null-sink media.class=Audio/Sink sink_name=Spotify-Input channels=2\n
-  #     pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Mic-Output channels=1\n
-  # \n
-  #     # pactl load-module module-null-sink media.class=Audio/Sink sink_name=Sonobus-Input channels=2\n
-  #     # pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Sonobus-Output channels=1\n
-  # \n
-  #     pactl load-module module-null-sink media.class=Audio/Sink sink_name=Discord-Input channels=2\n
-  #     pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Discord-Output channels=1\n
-  # \n
-  #     pactl load-module module-null-sink media.class=Audio/Sink sink_name=Main-Input channels=2\n
-  #     pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Sonobus-Output channels=1\n
+  #     ## Main Output/Volume\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Main-Output channels=2\n
+  #     \n
+  #     ## Sptoify\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Spotify-Input channels=2\n
+  #     ## Volume\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Spotify-Volume channels=2\n
+  #     \n
+  #     ## Mic/Volume\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Mic-Output channels=1\n
+  #     \n
+  #     ## Discord\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Discord-Output channels=2\n
+  #     ## Volume\n
+  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Discord-Volume channels=2      \n
   #   ";
   # };
 
