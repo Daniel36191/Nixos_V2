@@ -32,7 +32,7 @@
     lemonake.url = "github:passivelemon/lemonake"; ## For vr apps
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
     
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/04ac46c54357278fc68f0a95d26347ea0db99496";
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
@@ -46,6 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms.url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
+    millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
 
     ## System ##
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -76,6 +77,7 @@
       hyprdynamicmonitors,
       quickshell,
       dms,
+      millennium,
       agenix,
       # nixos-hardware,
       ...

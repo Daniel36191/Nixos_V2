@@ -1,5 +1,6 @@
 {
     pkgs,
+    inputs,
     ...
 }:
 let
@@ -56,7 +57,7 @@ in
   ###########
   ## Steam ##
   ###########
-
+  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
@@ -66,7 +67,7 @@ in
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = false;
-    package = pkgs.steam.override {
+    package = pkgs.steam-millennium.override {
       extraEnv = {
         MANGOHUD = true; ## Defaults mangohud on for every game
         OBS_VKCAPTURE = true;
