@@ -10,7 +10,7 @@
     ## Apps
     # ../nix-configs/vm.nix
     # ../nix-configs/containers.nix
-    # ../nix-configs/proxmox.nix
+    ../nix-configs/proxmox.nix
     ../nix-configs/vr.nix
     ../nix-configs/apps.nix
     # ../nix-configs/samba.nix
