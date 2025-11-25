@@ -122,6 +122,8 @@
           inherit system;
           config.allowUnfree = true;
         };
+
+        proxmoxOverlay = proxmox-nixos.overlays.${system};
       };
       commonModules = [
         nixpkgs-xr.nixosModules.nixpkgs-xr 

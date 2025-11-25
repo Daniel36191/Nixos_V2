@@ -10,7 +10,7 @@
     ## Apps
     # ../nix-configs/vm.nix
     # ../nix-configs/containers.nix
-    ../nix-configs/proxmox.nix
+    # ../nix-configs/proxmox.nix
     ../nix-configs/vr.nix
     ../nix-configs/apps.nix
     # ../nix-configs/samba.nix
@@ -59,6 +59,20 @@
   environment.shellAliases = {
       NIX_HOST = "export NIX_HOST=pc";
     };
+
+  ################
+  ## Networking ##
+  ################
+
+  networking = { 
+    networkmanager = {
+      insertNameservers = [
+        "192.168.0.141"
+        # "9.9.9.9"
+      ];
+    };
+    resolvconf.enable = false; ## Needed for insertNameservers to work?
+  };
 
 
   ##################
