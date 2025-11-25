@@ -59,6 +59,10 @@
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
     };
+    proxmox-nixos = {
+      url = "github:SaumonNet/proxmox-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -79,6 +83,7 @@
       dms,
       millennium,
       agenix,
+      proxmox-nixos,
       # nixos-hardware,
       ...
     }@inputs:
@@ -124,6 +129,7 @@
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
+        proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
       ];
     in
