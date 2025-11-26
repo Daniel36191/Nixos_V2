@@ -4,7 +4,7 @@
 }:
 {
   services.proxmox-ve = {
-    enable = false;
+    enable = true;
     ipAddress = "192.168.0.1";
   };
 
