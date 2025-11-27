@@ -39,8 +39,8 @@
   
   ## Enables VM connection
   programs.dconf.profiles.user.databases = [
-    { lockAll = true;
-  
+    {
+      lockAll = true;
       settings = {
         "org/virt-manager/virt-manager/connections" = {
           autoconnect = [ "qemu:///system" ];
