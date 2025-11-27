@@ -12,7 +12,7 @@ in
     # monado
     # wlx-overlay-s ## To See Monitor ## Old version
     # wayvr-dashboard ## App Launcher ## Old version
-    opencomposite # # Translation Layer
+    opencomposite ## Translation Layer
 
     inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
     inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
@@ -55,7 +55,7 @@ in
     defaultRuntime = true;
     openFirewall = true;
     package = (
-      pkgs-stable.wivrn.override {
+      pkgs.wivrn.override {
         cudaSupport = true;
       }
     );
@@ -106,6 +106,9 @@ in
   #   #   ]
   #   # }
   };
+
+
+
 
   ## To deal with flatpak steam
   services.flatpak.overrides = {
