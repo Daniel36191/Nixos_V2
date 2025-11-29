@@ -86,7 +86,7 @@ in
         playNext ## Add to queue
         # addToQueueTop  ## Also add to queue
 
-        # # Not working as of this time builds but no output
+        ## Not working as of this time builds but no output
         #   ({
         #     src = pkgs.fetchFromGitHub {
         #       owner = "adufr";

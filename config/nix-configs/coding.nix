@@ -19,7 +19,7 @@
     ## Language servers
     nixd ## Nix-lang interpiter
     nil ## Nix-lang server
-    nixfmt-rfc-style # # Nix-lang formattor
+    nixfmt-rfc-style ## Nix-lang formattor
     ];
 
     environment.variables = {
