@@ -23,7 +23,7 @@
     ];
 
     environment.variables = {
-        EDITOR = "${pkgs.micro/bin/micro}";
+        EDITOR = "${pkgs.micro}/bin/micro";
     };
 
 }
