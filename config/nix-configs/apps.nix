@@ -27,7 +27,8 @@ in
     nvitop ## btop for gpu
     lact ## Gpu Overclocking
     ncdu ## wiztree
-    xarchiver
+    # xarchiver ## Archive Manager
+    kdePackages.ark ## Archive Manager
     qutebrowser ## For Webapps
 
     ## Discord clients
@@ -45,20 +46,20 @@ in
     # cinny-desktop
 
 
-    ## File Man
-    kdePackages.dolphin
-    kdePackages.qtsvg
-    kdePackages.kio-fuse #to mount remote filesystems via FUSE
-    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-    ## Previews Check Arch Wiki for this: https://wiki.archlinux.org/title/Dolphin#File_previews
-    kdePackages.kdegraphics-thumbnailers ## Pics, PDF, & Blender??
-    kdePackages.ffmpegthumbs ## videos
-    icoutils ## ico
-    kdePackages.kdesdk-thumbnailers ## Extentions
-    kdePackages.kimageformats ## Gimp
-    kdePackages.qtimageformats ## Other Pics
-    resvg ## Svgs
-    kdePackages.taglib ## Audio
+    ## KDE Dolphin
+    # kdePackages.dolphin
+    # kdePackages.qtsvg
+    # kdePackages.kio-fuse #to mount remote filesystems via FUSE
+    # kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    # ## Previews Check Arch Wiki for this: https://wiki.archlinux.org/title/Dolphin#File_previews
+    # kdePackages.kdegraphics-thumbnailers ## Pics, PDF, & Blender??
+    # kdePackages.ffmpegthumbs ## videos
+    # icoutils ## ico
+    # kdePackages.kdesdk-thumbnailers ## Extentions
+    # kdePackages.kimageformats ## Gimp
+    # kdePackages.qtimageformats ## Other Pics
+    # resvg ## Svgs
+    # kdePackages.taglib ## Audio
 
 
 
@@ -95,15 +96,18 @@ in
   ## Thunar ## File Man
   ############
 
-  # programs.thunar = {
-  #   enable = true;
-  #   plugins = with pkgs.xfce; [
-  #     thunar-archive-plugin
-  #     thunar-volman
-  #   ];
-  # };
-  # ## Thunbnails
-  # services.tumbler.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman ## Mounting Drives
+      thunar-media-tags-plugin ## More Media Features
+      thunar-vcs-plugin ## Git Intergration
+    ];
+  };
+  services.tumbler.enable = true; ## Thunbnails
+  programs.xfconf.enable = true; ## Save Settings
+  services.gvfs.enable = true; ## Mount, trash
 
 
   ##############
