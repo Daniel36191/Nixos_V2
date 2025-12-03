@@ -18,7 +18,7 @@ environment.systemPackages = with pkgs; [
     ## Bootloader.
     loader = {
       timeout = 1;
-      efi.canTouchEfiVariables = true;
+      # efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         useOSProber = true;

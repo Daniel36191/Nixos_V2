@@ -3,16 +3,28 @@
   lib,
   ...
 }:
+let
+  folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
+    flavor = "macchiato";
+    accent = "blue";
+  };
+in
 {
+  home.packages = with pkgs; [
+    papirus-folders
+    folders-catppuccin
+  ];
+
   stylix.targets = {
     waybar.enable = false;
     rofi.enable = false;
     hyprland.enable = false;
   };
+
   gtk = {
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      package = folders-catppuccin;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
@@ -21,9 +33,10 @@
       gtk-application-prefer-dark-theme = 1;
     };
   };
+
   qt = {
     enable = true;
     style.name = lib.mkDefault "adwaita-dark";
-    platformTheme.name = lib.mkDefault "gtk3";
+    platformTheme.name = lib.mkDefault "kde6";
   };
 }

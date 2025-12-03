@@ -29,11 +29,6 @@ environment.systemPackages = with pkgs; [
     interval = "weekly";
   };
 
-  ## Gnome virtual file system
-  services = {
-    gvfs.enable = true;
-  };
-
   ## Printing
   services = {
     printing = {

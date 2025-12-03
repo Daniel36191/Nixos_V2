@@ -5,6 +5,7 @@
   ...
 }:
 let
+  # wivrn-fixed = pkgs.callPackage ../../custom-apps/wivrn/default.nix { };
 in
 {
   environment.systemPackages = with pkgs; [
@@ -52,13 +53,28 @@ in
   services.wivrn = {
     enable = true;
     autoStart = true;
+    highPriority = true;
     defaultRuntime = true;
     openFirewall = true;
-    package = (
-      pkgs.wivrn.override {
-        cudaSupport = true;
-      }
-    );
+    steam = {
+      package = pkgs.steam-millennium.override {
+        extraEnv = {
+          MANGOHUD = true; ## Defaults mangohud on for every game
+          OBS_VKCAPTURE = true;
+          RADV_TEX_ANISO = 16;
+        };
+        extraLibraries =
+          p: with p; [
+            atk
+          ];
+      };
+    };
+    # package = wivrn-fixed;
+    # package = (
+    #   pkgs.wivrn.override {
+    #     cudaSupport = true;
+    #   }
+    # );
 
   #   # Config for WiVRn (https://github.com/WiVRn/WiVRn/blob/master/docs/configuration.md)
   #   # config = {

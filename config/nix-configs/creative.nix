@@ -11,12 +11,12 @@
         # inputs.blender-cuda.packages.${pkgs.system}.default
         # gimp ## Image editing
         pinta ## Image editing
-        losslesscut-bin # # video editor
+        losslesscut-bin ## video editor
         # prusa-slicer
         orca-slicer ## Crashes on opening webgui
         # freecad-wayland
-        # handbrake # # video parser ## fails to build
-        soundconverter # # gnome sound transcoder
+        # handbrake ## video parser ## fails to build
+        soundconverter ## gnome sound transcoder
         yt-dlg ## yt dl
         godot
 

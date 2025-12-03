@@ -37,7 +37,7 @@ in
     satisfactorymodmanager
 
     ## Games
-    techmino # # tetris
+    techmino ## tetris
 
     ## Track IR
     # aitrack

@@ -16,17 +16,19 @@ in
     ###############
 
     librewolf
+    # google-chrome
+    
     rustdesk-flutter
-    nautilus # # File man
     gnome-calculator
-    baobab # # Disk usage analyzer
+    baobab ## Disk usage analyzer
     # gnome-disk-utility
     gparted
-    mission-center # # Task manager
-    nvitop # # btop for gpu
-    lact # # Gpu Overclocking
-    ncdu # # wiztree
-    xarchiver
+    mission-center ## Task manager
+    nvitop ## btop for gpu
+    lact ## Gpu Overclocking
+    ncdu ## wiztree
+    # xarchiver ## Archive Manager
+    kdePackages.ark ## Archive Manager
     qutebrowser ## For Webapps
 
     ## Discord clients
@@ -43,12 +45,30 @@ in
     # nheko
     # cinny-desktop
 
+
+    ## KDE Dolphin
+    # kdePackages.dolphin
+    # kdePackages.qtsvg
+    # kdePackages.kio-fuse #to mount remote filesystems via FUSE
+    # kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    # ## Previews Check Arch Wiki for this: https://wiki.archlinux.org/title/Dolphin#File_previews
+    # kdePackages.kdegraphics-thumbnailers ## Pics, PDF, & Blender??
+    # kdePackages.ffmpegthumbs ## videos
+    # icoutils ## ico
+    # kdePackages.kdesdk-thumbnailers ## Extentions
+    # kdePackages.kimageformats ## Gimp
+    # kdePackages.qtimageformats ## Other Pics
+    # resvg ## Svgs
+    # kdePackages.taglib ## Audio
+
+
+
   ];
   nixpkgs.config = {
     # cudaSupport = true;
     # cudnnSupport = true;
     permittedInsecurePackages = [
-      # "olm-3.2.16" # # For matrix clients
+      # "olm-3.2.16" ## For matrix clients
     ];
   };
 
@@ -76,44 +96,47 @@ in
   ## Thunar ## File Man
   ############
 
-  # programs.thunar = {
-  #   enable = true;
-  #   plugins = with pkgs.xfce; [
-  #     thunar-archive-plugin
-  #     thunar-volman
-  #   ];
-  # };
-  # ## Thunbnails
-  # services.tumbler.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman ## Mounting Drives
+      thunar-media-tags-plugin ## More Media Features
+      thunar-vcs-plugin ## Git Intergration
+    ];
+  };
+  services.tumbler.enable = true; ## Thunbnails
+  programs.xfconf.enable = true; ## Save Settings
+  services.gvfs.enable = true; ## Mount, trash
 
 
   ##############
   ## Nautilus ## File Man
   ##############
 
-  services = {
-    gnome.sushi.enable = true;
-    gvfs.enable = true;
-  };
-  programs.nautilus-open-any-terminal = {
-    enable = true;
-    terminal = "kitty";
-  };
-  # environment.variables = {
-  #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
+  # services = {
+  #   gnome.sushi.enable = true;
+  #   gvfs.enable = true;
   # };
-  nixpkgs.overlays = [
-    (final: prev: {
-      nautilus = prev.nautilus.overrideAttrs (nprev: {
-        buildInputs =
-          nprev.buildInputs
-          ++ (with pkgs.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
-      });
-    })
-  ];
+  # programs.nautilus-open-any-terminal = {
+  #   enable = true;
+  #   terminal = "kitty";
+  # };
+  # # environment.variables = {
+  # #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
+  # # };
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     nautilus = prev.nautilus.overrideAttrs (nprev: {
+  #       buildInputs =
+  #         nprev.buildInputs
+  #         ++ (with pkgs.gst_all_1; [
+  #           gst-plugins-good
+  #           gst-plugins-bad
+  #         ]);
+  #     });
+  #   })
+  # ];
 
 
 
