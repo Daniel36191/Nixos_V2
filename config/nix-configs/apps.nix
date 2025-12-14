@@ -17,6 +17,8 @@ in
 
     librewolf
     # google-chrome
+
+    bitwarden-desktop
     
     rustdesk-flutter
     gnome-calculator
