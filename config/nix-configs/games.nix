@@ -1,5 +1,6 @@
 {
     pkgs,
+    pkgs-stable,
     inputs,
     ...
 }:
@@ -35,7 +36,7 @@ in
 
     ## Modding
     r2modman
-    gale ## R2 but better
+    pkgs-stable.gale ## R2 but better
     bs-manager ## Beatsaber Modding
     satisfactorymodmanager
     ckan ## KSP
@@ -61,7 +62,7 @@ in
   ###########
   ## Steam ##
   ###########
-  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
+  # nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
@@ -71,7 +72,7 @@ in
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = false;
-    package = pkgs.steam-millennium.override {
+    package = pkgs.steam.override {
       extraEnv = {
         MANGOHUD = true; ## Defaults mangohud on for every game
         OBS_VKCAPTURE = true;

@@ -18,7 +18,7 @@ in
   };
 
   services.nix-serve = {
-    enable = false;
+    enable = true;
     package = pkgs.nix-serve-ng;
   };
 }
