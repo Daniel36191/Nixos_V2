@@ -32,7 +32,7 @@
     lemonake.url = "github:passivelemon/lemonake"; ## For vr apps
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
     
-    hyprland.url = "github:hyprwm/Hyprland/04ac46c54357278fc68f0a95d26347ea0db99496";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms.url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
-    millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
+    # millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
 
     ## System ##
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -54,7 +54,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -81,10 +81,10 @@
       hyprdynamicmonitors,
       quickshell,
       dms,
-      millennium,
+      # millennium,
       agenix,
       # proxmox-nixos,
-      # nixos-hardware,
+      nixos-hardware,
       ...
     }@inputs:
     let
@@ -187,7 +187,7 @@
                 users.${(import ./config/laptop/variables-laptop.nix).username} = import ./config/laptop/hm-main-laptop.nix;
               };
             }
-            # nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
+            nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             ./config/laptop/nix-main-laptop.nix
           ] ++ commonModules;
         };

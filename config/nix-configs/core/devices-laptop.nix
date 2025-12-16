@@ -5,7 +5,7 @@
 {
   imports = [
     ./framework/amd.nix
-    ./framework/workarounds.nix
+    # ./framework/workarounds.nix
   ];
 
   services = {
