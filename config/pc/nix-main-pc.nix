@@ -14,7 +14,7 @@
     ../nix-configs/vr.nix
     ../nix-configs/apps.nix
     # ../nix-configs/samba.nix
-    # ../nix-configs/tailscale.nix
+    ../nix-configs/tailscale.nix
     ../nix-configs/syncthing.nix
     ../nix-configs/games.nix
     ../nix-configs/creative.nix
@@ -66,15 +66,15 @@
   ## Networking ##
   ################
 
-  # networking = { 
-  #   networkmanager = {
-  #     insertNameservers = [
-  #       "192.168.0.141"
-  #       # "9.9.9.9"
-  #     ];
-  #   };
-  #   resolvconf.enable = false; ## Needed for insertNameservers to work?
-  # };
+  networking = { 
+    networkmanager = {
+      insertNameservers = [
+        "192.168.0.141"
+        # "9.9.9.9"
+      ];
+    };
+    resolvconf.enable = false; ## Needed for insertNameservers to work?
+  };
 
 
   ##################

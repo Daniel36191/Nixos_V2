@@ -5,6 +5,7 @@
   ...
 }:
 let
+  teamspeak-custom = pkgs.callPackage ../../custom-apps/teamspeak.nix { };
 in
 {
   imports = [
@@ -19,12 +20,13 @@ in
     # google-chrome
     
     rustdesk-flutter
-    gnome-calculator
+    kdePackages.kalk ## Calculator
     baobab ## Disk usage analyzer
     # gnome-disk-utility
     gparted
     mission-center ## Task manager
-    nvitop ## btop for gpu
+    # nvitop ## btop for gpu
+    nvtopPackages.nvidia
     lact ## Gpu Overclocking
     ncdu ## wiztree
     # xarchiver ## Archive Manager
@@ -39,7 +41,7 @@ in
     # })
     equibop
 
-    teamspeak6-client
+    teamspeak-custom
 
     ## Matrix Clients
     # nheko

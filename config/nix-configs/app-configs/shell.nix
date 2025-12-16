@@ -26,24 +26,24 @@
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
       hyprpicker = "hyprpicker -a";
 
-      
-      # sudonix = "sudo nixos-rebuild switch --flake .#default";
-      # updatenix = "sudo nix flake update && sudo nixos-rebuild switch --flake .#default --upgrade-all";
-
       sudonix = "nh os switch -H $NIX_HOST ./";
       updatenix = "nh os switch -H $NIX_HOST ./ --update";
       updateinput = "nh os switch -H $NIX_HOST ./ --update-input";
       cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
 
-      mi = "micro";
-      mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
 
       ## Alterntives
+      mi = "${pkgs.micro}/bin/micro";
       cat = "bat";
       ls = "eza --icons";
       tree = "eza --icons -T";
       ll = "eza -lh --icons --grid --group-directories-first";
       la = "eza -lah --icons --grid --group-directories-first";
+
+
+      ## Compatibility
+      mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
+      browser = "${pkgs.librewolf}/bin/librewolf";
     };
 
     ###############

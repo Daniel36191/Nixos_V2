@@ -9,7 +9,7 @@
     git
     github-desktop
 
-    mkcert ##Https Cert Maker for local addrs
+    mkcert ## Https Cert Maker for local addrs
 
     ## Code editors
     vscode

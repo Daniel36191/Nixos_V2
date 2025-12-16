@@ -16,6 +16,8 @@
     ../hm-configs/app-configs/rofi/config-emoji.nix
     ../hm-configs/app-configs/rofi/config-long.nix
     ../hm-configs/app-configs/vr/vr.nix
+    ../hm-configs/app-configs/qutebrowser/qutebrowser.nix
+    
     # ../hm-configs/app-configs/swaync.nix
     # ../hm-configs/app-configs/waybar.nix ##old waybar
     # ../hm-configs/app-configs/waybar/waybar.nix

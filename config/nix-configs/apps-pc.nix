@@ -18,4 +18,8 @@ in
         # "com.core447.StreamController"
     ];
   };
+    services.nix-serve = {
+    enable = true;
+    package = pkgs.nix-serve-ng;
+  };
 }
