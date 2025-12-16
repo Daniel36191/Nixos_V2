@@ -23,7 +23,6 @@ in
     # wineWowPackages.stable ## wine
     wine64
     winetricks
-    proton-ge-bin
     gamescope
     mangohud
     steamtinkerlaunch
