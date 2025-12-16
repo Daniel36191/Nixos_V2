@@ -73,6 +73,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     autoPatchelfHook
     copyDesktopItems
     makeWrapper
+    ffmpeg-full
   ];
 
   desktopItems = [

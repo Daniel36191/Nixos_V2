@@ -28,7 +28,7 @@
 
       sudonix = "nh os switch -H $NIX_HOST ./";
       updatenix = "nh os switch -H $NIX_HOST ./ --update";
-      updateinput = "nh os switch -H $NIX_HOST ./ --update-input";
+      updateinput = "flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
       cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
 
 

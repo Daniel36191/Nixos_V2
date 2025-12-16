@@ -4,10 +4,12 @@
   ...
 }:
 let
+  lulzbot-cura = pkgs.callPackage ../../custom-apps/lulzbot-cura.nix { };
 in
 {
     environment.systemPackages = with pkgs; [
         streamcontroller
+        lulzbot-cura
         # lan-mouse ## Software KVM
     ];
 
@@ -19,7 +21,7 @@ in
     ];
   };
     services.nix-serve = {
-    enable = true;
+    enable = false;
     package = pkgs.nix-serve-ng;
   };
 }

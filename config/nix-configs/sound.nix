@@ -26,6 +26,7 @@ in
     qpwgraph
     pulseaudioFull
     pavucontrol
+    vlc
 
     ## Plugins
     rnnoise-plugin
@@ -137,5 +138,4 @@ in
   #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Discord-Volume channels=2      \n
   #   ";
   # };
-
 }

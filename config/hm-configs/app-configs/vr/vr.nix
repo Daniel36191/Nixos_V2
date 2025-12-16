@@ -10,7 +10,9 @@ in
 	# home.file.".config/wlxoverlay/watch.ymal".text = lib.strings.concatStrings [ watch ];
 	# home.file.".config/wlxoverlay/wayvr.ymal".text = lib.strings.concatStrings [ wayvr ];
 
-	xdg.configFile."openvr/openvrpaths.vrpath".text = ''
+	xdg.configFile."openvr/openvrpaths.vrpath"= {
+    force = true;
+    text = ''
   {
     "config" :
     [
@@ -29,5 +31,6 @@ in
     "version" : 1
   }
 '';
+  };
 
 }

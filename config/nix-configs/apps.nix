@@ -43,6 +43,8 @@ in
 
     teamspeak-custom
 
+    sonobus
+
     ## Matrix Clients
     # nheko
     # cinny-desktop

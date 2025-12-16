@@ -22,9 +22,12 @@ in
     # wineWowPackages.stable ## wine
     wine64
     winetricks
+    proton-ge-bin
     gamescope
     mangohud
     steamtinkerlaunch
+    umu-launcher
+    
 
     ## Lossless Scaling on linux (only for vulkan)
     # lsfg-vk
@@ -33,8 +36,9 @@ in
     ## Modding
     r2modman
     gale ## R2 but better
-    # bs-manager ## Beatsaber Modding
+    bs-manager ## Beatsaber Modding
     satisfactorymodmanager
+    ckan ## KSP
 
     ## Games
     techmino ## tetris
