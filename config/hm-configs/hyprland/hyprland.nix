@@ -9,7 +9,7 @@
 {
   ## Wallpaper
   services.hyprpaper = {
-    enable = true;
+    enable = false;
     settings = {
       ipc = "off";
       splash = false;

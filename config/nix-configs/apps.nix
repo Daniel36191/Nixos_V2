@@ -18,6 +18,8 @@ in
 
     librewolf
     # google-chrome
+
+    bitwarden-desktop
     
     rustdesk-flutter
     kdePackages.kalk ## Calculator
