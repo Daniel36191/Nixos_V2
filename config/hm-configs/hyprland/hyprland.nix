@@ -8,20 +8,20 @@
 }:
 {
   ## Wallpaper
-  services.hyprpaper = {
-    enable = false;
-    settings = {
-      ipc = "off";
-      splash = false;
-      preload = [
-        ",../wallpapers/${wallpaper}"
-      ];
-
-      wallpapers = [
-        ",../wallpapers/${wallpaper}"
-      ];
-    };
-  };
+  # services.hyprpaper = {
+  #   enable = true;
+  #   settings = {
+  #     ipc = "off";
+  #     splash = false;
+  #     preload = [
+  #       ",../wallpapers/${wallpaper}"
+  #     ];
+  # 
+  #     wallpapers = [
+  #       ",../wallpapers/${wallpaper}"
+  #     ];
+  #   };
+  # };
 
   ## Hyprland Conf
   wayland.windowManager.hyprland = {

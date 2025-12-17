@@ -57,7 +57,7 @@ in
     defaultRuntime = true;
     openFirewall = true;
     steam = {
-      package = pkgs.steam-millennium.override {
+      package = pkgs.steam.override {
         extraEnv = {
           MANGOHUD = true; ## Defaults mangohud on for every game
           OBS_VKCAPTURE = true;
