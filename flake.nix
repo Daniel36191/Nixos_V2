@@ -32,7 +32,7 @@
     lemonake.url = "github:passivelemon/lemonake"; ## For vr apps
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
     
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/709855842068315bb2109d8f422a70c2b5ed1931"; ## Unstable Git For windwo rules, unpin for v0.53.*
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
