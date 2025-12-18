@@ -42,7 +42,7 @@
   ## Login Manager
   services = {
     greetd = {
-      enable = false;
+      enable = true;
       settings = {
         default_session = {
           user = username;
