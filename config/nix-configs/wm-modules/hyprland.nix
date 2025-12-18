@@ -4,6 +4,9 @@
   inputs,
   ...
 }:
+let
+  command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/start-hyprland";
+in
 {
   environment.systemPackages = with pkgs; [
     tuigreet
@@ -43,13 +46,14 @@
   services = {
     greetd = {
       enable = true;
+      useTextGreeter = true; ## For Tui Greet
       settings = {
         default_session = {
           user = username;
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${command}";
         };
         initial_session = {
-          command = "${inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland}/bin/hyprland";
+          command = "${command}";
           user = username;
         };
       };
