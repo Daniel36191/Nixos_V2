@@ -6,7 +6,7 @@
   username = "daniel";
   hostname = "nixos";
   firewall = false;
-  ssh-public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEQQnO5lpj2xCNojBg640rMHdez8eI+WTWdcDD/Emcj+ daniel@nixos-laptop";
+  ssh-public-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII9c9zTmuA1SpRohO5UF0cF2+npGnJWDUprgOufipDtc daniel@nixos-laptop";
 
   ## Theme
   wallpaper = "nixos-wallpaper-catppuccin-macchiato.png";
