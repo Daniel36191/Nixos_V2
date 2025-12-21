@@ -29,8 +29,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
-    lemonake.url = "github:passivelemon/lemonake"; ## For vr apps
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
+    lemonake = {
+      url = "github:passivelemon/lemonake"; ## For vr apps
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # nixpkgs-xr = {
+    #   url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     
     hyprland.url = "github:hyprwm/Hyprland/709855842068315bb2109d8f422a70c2b5ed1931"; ## Unstable Git For windwo rules, unpin for v0.53.*
     hyprsplit = {
@@ -75,7 +81,7 @@
       nix-flatpak,
       blender-cuda,
       lemonake,
-      nixpkgs-xr,
+      # nixpkgs-xr,
       nixpkgs-spotifyPin,
       hyprsplit,
       hyprdynamicmonitors,
@@ -103,14 +109,10 @@
         nix-host = host;
         inherit gitUsername gitEmail system keyboardLayout;
         inherit consoleKeyMap locale timeZone inputs;
-        inherit (hostVars) username hostname wallpaper firewall;
+        inherit (hostVars) username hostname wallpaper firewall ssh-public-key;
         
         ## Pinning Nixpkgs versions
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        nixpkgs-xr = import nixpkgs-xr {
           inherit system;
           config.allowUnfree = true;
         };
@@ -122,17 +124,26 @@
           inherit system;
           config.allowUnfree = true;
         };
-
-        # proxmoxOverlay = proxmox-nixos.overlays.${system};
       };
-      commonModules = [
-        nixpkgs-xr.nixosModules.nixpkgs-xr 
+
+      commonNixModules = [
+        { ## Overlays
+          nixpkgs.overlays = [
+            # proxmox-nixos.overlays.${system}
+            # nixpkgs-xr.overlays.default
+            # millennium.overlays.default
+          ];
+        }
+        # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
+      ];
+      commonHmModules = [
+        agenix.homeManagerModules.default
       ];
     in
     {
@@ -160,7 +171,7 @@
               };
             }
             ./config/pc/nix-main-pc.nix
-          ] ++ commonModules;
+          ] ++ commonNixModules;
         };
       };
 
@@ -189,7 +200,7 @@
             }
             nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             ./config/laptop/nix-main-laptop.nix
-          ] ++ commonModules;
+          ] ++ commonNixModules;
         };
       };
     };

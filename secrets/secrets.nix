@@ -9,6 +9,12 @@ let
 in
 {
   ## make new files/edit with agenixedit file.age
+
+  ## SSH
+  "ssh-pc.age".publicKeys = systems;
+  "ssh-laptop.age".publicKeys = systems;
+
+  ## Tailscale
   "tailscale-pc.age".publicKeys = systems;
   "tailscale-laptop.age".publicKeys = systems;
 }

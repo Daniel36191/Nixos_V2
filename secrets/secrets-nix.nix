@@ -11,5 +11,6 @@
 
   age.secrets = {
     "tailscale-${nix-host}".file = ./tailscale-${nix-host}.age;
+    "ssh-${nix-host}".file = ./ssh-${nix-host}.age;
   };
 }
