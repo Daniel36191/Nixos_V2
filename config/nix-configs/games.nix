@@ -1,6 +1,7 @@
 {
     pkgs,
     pkgs-stable,
+    username,
     inputs,
     ...
 }:
@@ -61,7 +62,6 @@ in
   ###########
   ## Steam ##
   ###########
-  # nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
@@ -89,7 +89,7 @@ in
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      proton-ge-rtsp-bin ## for VRC
+      inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp ## for VRC
       steamtinkerlaunch
       # proton-vkvr
     ];
@@ -100,4 +100,16 @@ in
       "vm.max_map_count" = 2147483642;
     };
    };
+
+  ################
+  ## Game Fixes ##
+  ################
+  system.activationScripts.vrcpics = let 
+    vrc-pics-path = "/home/${username}/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/Pictures/VRChat/";
+  in ''
+    if [[ -d ${vrc-pics-path} ]]; then
+      ln -sf ${vrc-pics-path} /home/${username}/Pictures  
+    fi
+    
+  '';
 }

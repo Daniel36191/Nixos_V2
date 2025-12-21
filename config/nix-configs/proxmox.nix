@@ -1,5 +1,4 @@
 {
-  proxmoxOverlay,
   ...
 }:
 {
@@ -7,9 +6,6 @@
     enable = true;
     ipAddress = "192.168.0.1";
   };
-
-  ## Add Packages from flake overlay
-  nixpkgs.overlays = [ proxmoxOverlay ];
 
   nix = {
     settings = {

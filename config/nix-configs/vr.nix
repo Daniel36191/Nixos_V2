@@ -5,7 +5,6 @@
   ...
 }:
 let
-  # wivrn-fixed = pkgs.callPackage ../../custom-apps/wivrn/default.nix { };
 in
 {
   environment.systemPackages = with pkgs; [
@@ -13,8 +12,8 @@ in
     # monado
     # wlx-overlay-s ## To See Monitor ## Old version
     # wayvr-dashboard ## App Launcher ## Old version
-    opencomposite ## Translation Layer
 
+    opencomposite ## Translation Layer
     inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
     inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
 
@@ -25,20 +24,13 @@ in
 
   ];
 
-  ##############
-  ## Envision ## NO, DO NOT USE SEE = https://lvra.gitlab.io/docs/distros/nixos/#envision
-  ##############
-  # programs.envision = {
-  #   enable = true;
-  #   openFirewall = true;
-  # };
-
   ############
   ## Monado ##
   ############
 
   services.monado = {
     enable = true;
+    package = pkgs.monado;
     defaultRuntime = false; # Register as default OpenXR runtime
   };
   systemd.user.services.monado.environment = {
@@ -52,10 +44,14 @@ in
 
   services.wivrn = {
     enable = true;
+    package = inputs.lemonake.packages.${pkgs.system}.wivrn.override { cudaSupport = true; };
     autoStart = true;
     highPriority = true;
     defaultRuntime = true;
     openFirewall = true;
+    extraServerFlags = [
+      "--early-active-runtime"
+    ];
     steam = {
       package = pkgs.steam.override {
         extraEnv = {
