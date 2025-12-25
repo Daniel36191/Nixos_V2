@@ -1,6 +1,0 @@
-Open nix-main and uncomment the ip and port of the serving device.
-Rebuild
-Git pull all the changes
-Run nix-serve  on Host  https://github.com/edolstra/nix-serve
-nix run github:edolstra/nix-serve
-Rebuild client

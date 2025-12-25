@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   inputs,
   pkgs-stable,
   ...
@@ -10,12 +11,12 @@ in
   environment.systemPackages = with pkgs; [
     monado-vulkan-layers
     # monado
-    # wlx-overlay-s ## To See Monitor ## Old version
+    wlx-overlay-s ## To See Monitor ## Old version
     # wayvr-dashboard ## App Launcher ## Old version
 
     opencomposite ## Translation Layer
-    inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
-    inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
+    # inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
+    # inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
 
     # slimevr ## slime vr :)
 
@@ -44,7 +45,7 @@ in
 
   services.wivrn = {
     enable = true;
-    package = inputs.lemonake.packages.${pkgs.system}.wivrn.override { cudaSupport = true; };
+    package = pkgs.wivrn.override { cudaSupport = true; };
     autoStart = true;
     highPriority = true;
     defaultRuntime = true;
@@ -52,19 +53,7 @@ in
     extraServerFlags = [
       "--early-active-runtime"
     ];
-    steam = {
-      package = pkgs.steam.override {
-        extraEnv = {
-          MANGOHUD = true; ## Defaults mangohud on for every game
-          OBS_VKCAPTURE = true;
-          RADV_TEX_ANISO = 16;
-        };
-        extraLibraries =
-          p: with p; [
-            atk
-          ];
-      };
-    };
+    steam.package = config.programs.steam.package;
     # package = wivrn-fixed;
     # package = (
     #   pkgs.wivrn.override {

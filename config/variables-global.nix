@@ -4,7 +4,7 @@
   ##########
 
   gitUsername = "Daniel36191";
-  gitEmail = "dmoeller38@outlook.com";
+  gitEmail = "dmoeller3998@gmail.com";
 
   ############
   ## System ##
