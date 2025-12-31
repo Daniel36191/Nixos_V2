@@ -21,14 +21,14 @@
   ];
 
   ## Place Settings File
-  home.file.".config/DankMaterialShell/settings.json".text = let
-  machine = if nix-host == "pc"
-    then
-       builtins.readFile ./pc.json
-    else
-      builtins.readFile ./laptop.json;
-  in
-  lib.strings.concatStrings [
-    machine
-  ];
+  # home.file.".config/DankMaterialShell/settings.json".text = let
+  # machine = if nix-host == "pc"
+  #   then
+  #      builtins.readFile ./pc.json
+  #   else
+  #     builtins.readFile ./laptop.json;
+  # in
+  # lib.strings.concatStrings [
+  #   machine
+  # ];
 }

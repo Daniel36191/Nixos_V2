@@ -56,7 +56,7 @@
         ids = [ "*" ];
         settings = {
           main = {
-            capslock = "leftmeta";
+            capslock = "layer(meta)";
           };
         };
       };

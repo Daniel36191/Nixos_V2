@@ -34,11 +34,17 @@
 
       ## Alterntives
       mi = "${pkgs.micro}/bin/micro";
-      cat = "bat";
-      ls = "eza --icons";
-      tree = "eza --icons -T";
-      ll = "eza -lh --icons --grid --group-directories-first";
-      la = "eza -lah --icons --grid --group-directories-first";
+      cat = "${pkgs.bat}/bin/bat";
+      ls = "${pkgs.eza}/bin/eza --icons";
+      tree = "${pkgs.eza}/bin/eza --icons -T";
+      ll = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first";
+      la = "${pkgs.eza}/bin/eza -lah --icons --grid --group-directories-first";
+      grep = "${pkgs.ripgrep}/bin/rg";
+      df = "${pkgs.dysk}/bin/dysk";
+      sleep = "${pkgs.timer}/bin/timer";
+
+      ## Aliases
+      size = "du -sh";
 
 
       ## Compatibility
@@ -53,6 +59,5 @@
     shellInit = ''
       NIX_HOST
     '';
-
   };
 }

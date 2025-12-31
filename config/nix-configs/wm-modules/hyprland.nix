@@ -10,7 +10,6 @@ in
 {
   environment.systemPackages = with pkgs; [
     tuigreet
-    lxqt.lxqt-policykit
     hyprpicker
     hyprpaper
     hyprsunset ## Orange Wash Screen

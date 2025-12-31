@@ -11,7 +11,7 @@
   ############
 
   system = "x86_64-linux";
-  keyboardLayout = "us";
+  keyboardLayout = "us"; ## OLD
   consoleKeyMap = "us";
   locale = "en_US.UTF-8";
   timeZone = "America/New_York";

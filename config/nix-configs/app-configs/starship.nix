@@ -33,6 +33,16 @@
         hostname = {
           ssh_symbol = " ";
         };
+        nix_shell = {
+          symbol = " ";
+        };
+        shlvl = {
+          disabled = false;
+          format = "[$symbol]($style)";
+          repeat = true;
+          symbol = "❯";
+          repeat_offset = 1;
+        };
         lua = {
           symbol = " ";
         };
@@ -44,9 +54,6 @@
         };
         nim = {
           symbol = "󰆥 ";
-        };
-        nix_shell = {
-          symbol = " ";
         };
         nodejs = {
           symbol = " ";

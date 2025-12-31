@@ -38,16 +38,16 @@
     };
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrains Mono";
+        package = pkgs.redhat-nerd;
+        name = "RedHatMonoNerdFont-Regular";
       };
       sansSerif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
+        package = pkgs.redhat-nerd;
+        name = "RedHatNerdFont-TextRegular";
       };
       serif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
+        package = pkgs.redhat-nerd;
+        name = "RedHatNerdFont-TextRegular";
       };
       sizes = {
         applications = 12;
@@ -64,6 +64,7 @@
 
   fonts = {
     packages = with pkgs; [
+      miracode
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
       font-awesome

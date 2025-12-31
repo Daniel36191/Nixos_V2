@@ -16,7 +16,7 @@ in
 
     opencomposite ## Translation Layer
     # inputs.lemonake.packages.${pkgs.system}.wlx-overlay-s
-    # inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
+    inputs.lemonake.packages.${pkgs.system}.wayvr-dashboard
 
     # slimevr ## slime vr :)
 
@@ -50,10 +50,13 @@ in
     highPriority = true;
     defaultRuntime = true;
     openFirewall = true;
+    steam.package = config.programs.steam.package;
     extraServerFlags = [
       "--early-active-runtime"
     ];
-    steam.package = config.programs.steam.package;
+    # config.json = {
+    #   openvr-compat-path = pkgs.xrizer;
+    # };
     # package = wivrn-fixed;
     # package = (
     #   pkgs.wivrn.override {

@@ -20,6 +20,7 @@
   hardware.nvidia-container-toolkit.enable = true; ## For Containers to use gpu
   hardware.nvidia = {
     modesetting.enable = true;
+    videoAcceleration = true;
     forceFullCompositionPipeline = false;
     powerManagement = {
       enable = false;

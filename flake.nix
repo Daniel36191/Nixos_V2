@@ -127,13 +127,8 @@
       };
 
       commonNixModules = [
-        { ## Overlays
-          nixpkgs.overlays = [
-            # proxmox-nixos.overlays.${system}
-            # nixpkgs-xr.overlays.default
-            # millennium.overlays.default
-          ];
-        }
+        
+
         # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
@@ -171,6 +166,7 @@
               };
             }
             ./config/pc/nix-main-pc.nix
+            ./overlays/overlays.nix
           ] ++ commonNixModules;
         };
       };
@@ -200,6 +196,7 @@
             }
             nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
             ./config/laptop/nix-main-laptop.nix
+            ./overlays/overlays.nix
           ] ++ commonNixModules;
         };
       };

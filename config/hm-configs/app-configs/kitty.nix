@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -7,6 +8,10 @@
     kitty = {
       enable = true;
       package = pkgs.kitty;
+      font = {
+        package = lib.mkDefault pkgs.red-hat-display-nerd;
+        name = lib.mkDefault "Miracode Nerd Font";
+      };
       settings = {
         scrollback_lines = 2000;
         wheel_scroll_min_lines = 1;

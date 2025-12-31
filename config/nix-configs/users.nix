@@ -52,6 +52,7 @@
         "libvirt-qemu"
         "kvm"
         "input"
+        "keyd"
         "disk"
         "scanner"
         "lp"
@@ -99,7 +100,7 @@
       enableDefaultConfig = false;
       matchBlocks = {
         "*" = {
-          port = 54321;
+          port = 22;
           identityFile = ssh-private.path;
           forwardAgent = false;
           addKeysToAgent = "yes";
@@ -117,6 +118,10 @@
           hostname = "github.com";
           port = 22;
           user = "git";
+        };
+        "lillypond.local" = {
+          hostname = "lillypond.local";
+          port = 54321;
         };
       };
     };

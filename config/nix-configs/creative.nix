@@ -4,6 +4,9 @@
     inputs,
     ...
 }:
+let
+    orca-beta = pkgs.callPackage ../../custom-apps/orca/orca-beta.nix { };
+in
 {
     environment.systemPackages = with pkgs; [
         obs-studio
@@ -13,7 +16,8 @@
         pinta ## Image editing
         losslesscut-bin ## video editor
         # prusa-slicer
-        orca-slicer ## Crashes on opening webgui
+        # orca-slicer ## Crashes on opening webgui
+        # orca-beta
         # freecad-wayland
         # handbrake ## video parser ## fails to build
         soundconverter ## gnome sound transcoder

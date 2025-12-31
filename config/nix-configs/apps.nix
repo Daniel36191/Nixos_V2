@@ -53,7 +53,7 @@ in
 
 
     ## KDE Dolphin
-    # kdePackages.dolphin
+    # # kdePackages.dolphin
     # kdePackages.qtsvg
     # kdePackages.kio-fuse #to mount remote filesystems via FUSE
     # kdePackages.kio-extras #extra protocols support (sftp, fish and more)
@@ -66,6 +66,14 @@ in
     # kdePackages.qtimageformats ## Other Pics
     # resvg ## Svgs
     # kdePackages.taglib ## Audio
+    # (kdePackages.dolphin.overrideAttrs (oldAttrs: {
+    # nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ makeWrapper ];
+    # postInstall = (oldAttrs.postInstall or "") + ''
+    #   wrapProgram $out/bin/dolphin \
+    #       --set XDG_CONFIG_DIRS "${libsForQt5.kservice}/etc/xdg:$XDG_CONFIG_DIRS" \
+    #       --run "${kdePackages.kservice}/bin/kbuildsycoca6 --noincremental ${libsForQt5.kservice}/etc/xdg/menus/applications.menu"
+    # '';
+    # }))
 
 
 
@@ -113,36 +121,36 @@ in
   };
   services.tumbler.enable = true; ## Thunbnails
   programs.xfconf.enable = true; ## Save Settings
-  services.gvfs.enable = true; ## Mount, trash
+  # services.gvfs.enable = true; ## Mount, trash
 
 
   ##############
   ## Nautilus ## File Man
   ##############
 
-  # services = {
-  #   gnome.sushi.enable = true;
-  #   gvfs.enable = true;
+  services = {
+    gnome.sushi.enable = true;
+    gvfs.enable = true;
+  };
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "kitty";
+  };
+  # environment.variables = {
+  #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
   # };
-  # programs.nautilus-open-any-terminal = {
-  #   enable = true;
-  #   terminal = "kitty";
-  # };
-  # # environment.variables = {
-  # #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
-  # # };
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     nautilus = prev.nautilus.overrideAttrs (nprev: {
-  #       buildInputs =
-  #         nprev.buildInputs
-  #         ++ (with pkgs.gst_all_1; [
-  #           gst-plugins-good
-  #           gst-plugins-bad
-  #         ]);
-  #     });
-  #   })
-  # ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      nautilus = prev.nautilus.overrideAttrs (nprev: {
+        buildInputs =
+          nprev.buildInputs
+          ++ (with pkgs.gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+      });
+    })
+  ];
 
 
 
