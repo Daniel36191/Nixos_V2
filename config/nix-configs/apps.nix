@@ -38,7 +38,7 @@ in
     ## Discord clients
     # vesktop
     # (discord.override {
-    #   withOpenASAR = true; ## can do this here too
+    #   withOpenASAR = true;
     #   withVencord = true;
     # })
     equibop
@@ -128,29 +128,29 @@ in
   ## Nautilus ## File Man
   ##############
 
-  services = {
-    gnome.sushi.enable = true;
-    gvfs.enable = true;
-  };
-  programs.nautilus-open-any-terminal = {
-    enable = true;
-    terminal = "kitty";
-  };
-  # environment.variables = {
-  #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
+  # services = {
+  #   gnome.sushi.enable = true;
+  #   gvfs.enable = true;
   # };
-  nixpkgs.overlays = [
-    (final: prev: {
-      nautilus = prev.nautilus.overrideAttrs (nprev: {
-        buildInputs =
-          nprev.buildInputs
-          ++ (with pkgs.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
-      });
-    })
-  ];
+  # programs.nautilus-open-any-terminal = {
+  #   enable = true;
+  #   terminal = "kitty";
+  # };
+  # # environment.variables = {
+  # #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
+  # # };
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     nautilus = prev.nautilus.overrideAttrs (nprev: {
+  #       buildInputs =
+  #         nprev.buildInputs
+  #         ++ (with pkgs.gst_all_1; [
+  #           gst-plugins-good
+  #           gst-plugins-bad
+  #         ]);
+  #     });
+  #   })
+  # ];
 
 
 
