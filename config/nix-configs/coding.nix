@@ -15,6 +15,7 @@
     vscode
     # zed-editor
     micro
+    jetbrains.idea
 
     ## Language servers
     nixd ## Nix-lang interpiter
