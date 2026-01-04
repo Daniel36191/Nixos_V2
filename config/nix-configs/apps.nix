@@ -1,5 +1,7 @@
 {
   pkgs,
+  lib,
+  config,
   inputs,
   pkgs-stable,
   ...
@@ -10,6 +12,7 @@ in
 {
   imports = [
     ./sys-apps.nix
+    ./nautilus.nix
   ];
   environment.systemPackages = with pkgs; [
     ###############
@@ -110,49 +113,18 @@ in
   ## Thunar ## File Man
   ############
 
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman ## Mounting Drives
-      thunar-media-tags-plugin ## More Media Features
-      thunar-vcs-plugin ## Git Intergration
-    ];
-  };
-  services.tumbler.enable = true; ## Thunbnails
-  programs.xfconf.enable = true; ## Save Settings
-  # services.gvfs.enable = true; ## Mount, trash
-
-
-  ##############
-  ## Nautilus ## File Man
-  ##############
-
-  # services = {
-  #   gnome.sushi.enable = true;
-  #   gvfs.enable = true;
-  # };
-  # programs.nautilus-open-any-terminal = {
+  # programs.thunar = {
   #   enable = true;
-  #   terminal = "kitty";
+  #   plugins = with pkgs.xfce; [
+  #     thunar-archive-plugin
+  #     thunar-volman ## Mounting Drives
+  #     thunar-media-tags-plugin ## More Media Features
+  #     thunar-vcs-plugin ## Git Intergration
+  #   ];
   # };
-  # # environment.variables = {
-  # #     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules"; ## Fixes Network tab not working
-  # # };
-  # nixpkgs.overlays = [
-  #   (final: prev: {
-  #     nautilus = prev.nautilus.overrideAttrs (nprev: {
-  #       buildInputs =
-  #         nprev.buildInputs
-  #         ++ (with pkgs.gst_all_1; [
-  #           gst-plugins-good
-  #           gst-plugins-bad
-  #         ]);
-  #     });
-  #   })
-  # ];
-
-
+  # services.tumbler.enable = true; ## Thunbnails
+  # programs.xfconf.enable = true; ## Save Settings
+  # services.gvfs.enable = true; ## Mount, trash
 
   ################
   ## KdeConnect ## (Connect Phone)

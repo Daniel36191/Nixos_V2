@@ -11,6 +11,8 @@
 
     mkcert ## Https Cert Maker for local addrs
 
+    termius
+
     ## Code editors
     vscode
     # zed-editor

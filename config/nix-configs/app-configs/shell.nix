@@ -45,6 +45,8 @@
 
       ## Aliases
       size = "du -sh";
+      log = "journalctl -xef -u";
+      logs = "journalctl -xe -u";
 
 
       ## Compatibility

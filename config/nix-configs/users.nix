@@ -123,10 +123,6 @@
           port = 22;
           user = "git";
         };
-        "lillypond.local" = {
-          hostname = "lillypond.local";
-          port = 54321;
-        };
       };
     };
   };
