@@ -11,9 +11,6 @@
   nix-host,
   ...
 }:
-let
-  "uwu nya uwu" = 12;
-in
 {
   ## Define users by nix
   users = {
@@ -65,6 +62,8 @@ in
         "dialout"
       ];
       openssh.authorizedKeys.keys = [ 
+        "${(import ../pc/variables-pc.nix).username}"
+        "${(import ../laptop/variables-laptop.nix).username}"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGNxyup7BAE63kcI0Ja8LNlibwi2p2NGA98W2qzlLdf flerouwu@hiroko"
       ];
     };
