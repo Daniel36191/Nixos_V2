@@ -11,6 +11,9 @@
   nix-host,
   ...
 }:
+let
+  "uwu nya uwu" = 12;
+in
 {
   ## Define users by nix
   users = {
@@ -61,6 +64,9 @@
         "video"
         "dialout"
       ];
+      openssh.authorizedKeys.keys = [ 
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGNxyup7BAE63kcI0Ja8LNlibwi2p2NGA98W2qzlLdf flerouwu@hiroko"
+      ];
     };
   };
   nix.settings.trusted-users = [
@@ -76,7 +82,7 @@
   ## SSH Server
   services.openssh = {
     enable = true;
-    ports = [ 54321 ];
+    ports = [ 22 ];
     authorizedKeysInHomedir = true;
     settings = {
       PasswordAuthentication = true;
