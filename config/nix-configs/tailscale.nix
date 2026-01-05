@@ -13,7 +13,8 @@
     extraUpFlags = [
       # "--advertise-exit-node"
       # "--accept-routes"
-      # "--auth-key=file:${config.age.secrets."tailscale-${nix-host}".path}"
+      # "--exit-node 100.100.57.77"
+      # "--auth-key file:${config.age.secrets."tailscale-${nix-host}".path}"
       # "--reset" ## For setting other flags
     ];
     authKeyFile = config.age.secrets."tailscale-${nix-host}".path;

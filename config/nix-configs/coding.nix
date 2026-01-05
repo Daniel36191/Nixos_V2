@@ -13,6 +13,8 @@
 
     termius
 
+    zellij
+
     ## Code editors
     vscode
     # zed-editor
@@ -23,10 +25,20 @@
     nixd ## Nix-lang interpiter
     nil ## Nix-lang server
     nixfmt-rfc-style ## Nix-lang formattor
+
+    ## Java
+    javaPackages.compiler.temurin-bin.jdk-21
+
     ];
 
     environment.variables = {
         EDITOR = "${pkgs.micro}/bin/micro";
     };
+
+    programs.java = {
+    	enable = false;
+    	# package = pkgs.javaPackages.compiler.temurin-bin.jre-21;
+    };
+    
 
 }
