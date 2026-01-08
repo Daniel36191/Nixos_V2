@@ -47,6 +47,7 @@
       size = "du -sh";
       log = "journalctl -xef -u";
       logs = "journalctl -xe -u";
+      scrcpy = "${pkgs.scrcpy}/bin/scrcpy --video-codec=h264 --video-encoder=OMX.google.h264.encoder --render-driver=opengl";
 
 
       ## Compatibility

@@ -17,6 +17,7 @@ in
     libnotify
     playerctl ## Media keys
     jq ## For volume script
+    imagemagick ## For boox script
 
     ## Clipboard
     grimblast

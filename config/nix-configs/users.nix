@@ -59,6 +59,7 @@
         "docker"
         "podman"
         "video"
+        "audio"
         "dialout"
       ];
       openssh.authorizedKeys.keys = [ 
