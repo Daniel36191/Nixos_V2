@@ -56,4 +56,11 @@
   in lib.strings.concatStrings [ volume-sh ];
   executable = true;
   };
+  
+  home.file.".config/hypr/scripts/boox.sh" = {
+    text = let
+    boox-sh = builtins.readFile ./boox.sh;
+  in lib.strings.concatStrings [ boox-sh ];
+  executable = true;
+  };
 }

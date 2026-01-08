@@ -11,7 +11,7 @@
       daemon.settings = {
         features.cdi = true;
       };
-      rootless.daemon.settings.features.cdi = true;
+      # rootless.daemon.settings.features.cdi = true;
     };
 
     # podman = {
@@ -25,7 +25,7 @@
     # podman-desktop
     # podman-compose
     docker-compose
-    nvidia-container-toolkit
+    # nvidia-container-toolkit
     docker-buildx
   ];
 }
