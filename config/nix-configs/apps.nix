@@ -47,12 +47,16 @@ in
     equibop
 
     teamspeak-custom
+    # teamspeak6-client
 
     sonobus
 
     ## Matrix Clients
     # nheko
     # cinny-desktop
+
+    waypipe
+    xwayland-satellite
 
 
     ## KDE Dolphin

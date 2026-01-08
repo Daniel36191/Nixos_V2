@@ -28,6 +28,7 @@
   libGL,
   xorg,
   ffmpeg-full,
+  libva,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -67,6 +68,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     xorg.libxshmfence
     xorg.libXtst
     ffmpeg-full
+    libva
   ];
 
   nativeBuildInputs = [
@@ -74,6 +76,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     copyDesktopItems
     makeWrapper
     ffmpeg-full
+    libva
   ];
 
   desktopItems = [
@@ -110,6 +113,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
           libGL
           libpulseaudio
           libvdpau
+          libva
           pipewire
         ]
       }"
