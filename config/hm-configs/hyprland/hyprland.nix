@@ -63,4 +63,9 @@
   in lib.strings.concatStrings [ boox-sh ];
   executable = true;
   };
+
+  home.file.".config/hypr/scripts/boox.png" = {
+    source = ./boox.png;
+    force = true;
+  };
 }

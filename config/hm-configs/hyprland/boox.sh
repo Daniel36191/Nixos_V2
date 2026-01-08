@@ -34,6 +34,8 @@ magick $inverted_file -fuzz 5% -transparent '#000000' $transparent_file
 
 wl-copy < $transparent_file
 
+notify-send -i /home/daniel/.config/hypr/scripts/boox.png "Screenshot Taken"
+
 rm -f "$inverted_file"
 
 ## Clean up
