@@ -6,6 +6,7 @@ rm "$TARGET_DIR"/* 2>/dev/null
 
 if ! adb devices | grep -q "device$"; then
     echo "Error: No device connected"
+    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "No Device Connected"
     exit 1
 fi
 
@@ -13,6 +14,7 @@ latest_file=$(adb shell "ls -t /sdcard/Pictures/Screenshots/*.png 2>/dev/null | 
 
 if [ -z "$latest_file" ]; then
     echo "No screenshots found"
+    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "None Found"
     exit 0
 fi
 
@@ -25,6 +27,7 @@ adb pull "$latest_file" "$TARGET_DIR/"
 
 if [ ! -f "$local_file" ]; then
     echo "Error: Failed to copy file"
+    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "Failed Copy"
     exit 1
 fi
 

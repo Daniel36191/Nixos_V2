@@ -15,7 +15,7 @@
       # "--accept-routes"
       # "--exit-node 100.100.57.77"
       # "--auth-key file:${config.age.secrets."tailscale-${nix-host}".path}"
-      # "--reset" ## For setting other flags
+      "--reset"
     ];
     authKeyFile = config.age.secrets."tailscale-${nix-host}".path;
   };
