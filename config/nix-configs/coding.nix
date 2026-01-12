@@ -9,7 +9,7 @@
     git
     github-desktop
 
-    mkcert ## Https Cert Maker for local addrs
+    filezilla ## Fstp client
 
     termius
 
@@ -36,8 +36,8 @@
     };
 
     programs.java = {
-    	enable = false;
-    	# package = pkgs.javaPackages.compiler.temurin-bin.jre-21;
+    	enable = true;
+    	package = pkgs.javaPackages.compiler.temurin-bin.jdk-21;
     };
     
 
