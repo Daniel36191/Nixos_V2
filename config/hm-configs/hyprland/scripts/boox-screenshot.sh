@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 TARGET_DIR="$HOME/Pictures/boox"
+NTFY_PIC="$HOME/.config/hypr/icons/boox-screenshot.png"
 mkdir -p "$TARGET_DIR"
 rm "$TARGET_DIR"/* 2>/dev/null
 
 if ! adb devices | grep -q "device$"; then
     echo "Error: No device connected"
-    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "No Device Connected"
+    notify-send -i $NTFY_PIC "No Device Connected"
     exit 1
 fi
 
@@ -14,7 +15,7 @@ latest_file=$(adb shell "ls -t /sdcard/Pictures/Screenshots/*.png 2>/dev/null | 
 
 if [ -z "$latest_file" ]; then
     echo "No screenshots found"
-    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "None Found"
+    notify-send -i $NTFY_PIC "None Found"
     exit 0
 fi
 
@@ -27,7 +28,7 @@ adb pull "$latest_file" "$TARGET_DIR/"
 
 if [ ! -f "$local_file" ]; then
     echo "Error: Failed to copy file"
-    notify-send -i /home/daniel/.config/hypr/scripts/boox.png "Failed Copy"
+    notify-send -i $NTFY_PIC "Failed Copy"
     exit 1
 fi
 
@@ -37,7 +38,7 @@ magick $inverted_file -fuzz 5% -transparent '#000000' $transparent_file
 
 wl-copy < $transparent_file
 
-notify-send -i /home/daniel/.config/hypr/scripts/boox.png "Screenshot Taken"
+notify-send -i $NTFY_PIC "Screenshot Taken"
 
 rm -f "$inverted_file"
 

@@ -49,23 +49,15 @@
       ];
   };
 
-  ## Volume script for config
-  home.file.".config/hypr/scripts/volume.sh" = {
-    text = let
-    volume-sh = builtins.readFile ./volume.sh;
-  in lib.strings.concatStrings [ volume-sh ];
-  executable = true;
-  };
-  
-  home.file.".config/hypr/scripts/boox.sh" = {
-    text = let
-    boox-sh = builtins.readFile ./boox.sh;
-  in lib.strings.concatStrings [ boox-sh ];
-  executable = true;
-  };
-
-  home.file.".config/hypr/scripts/boox.png" = {
-    source = ./boox.png;
+  home.file.".config/hypr/scripts" = {
+    source = ./scripts;
     force = true;
+    executable = true;
+    recursive = true;
+  };
+  home.file.".config/hypr/icons" = {
+    source = ./icons;
+    force = true;
+    recursive = true;
   };
 }
