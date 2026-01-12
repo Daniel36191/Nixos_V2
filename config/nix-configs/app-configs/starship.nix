@@ -41,7 +41,7 @@
           format = "[$symbol]($style)";
           repeat = true;
           symbol = "❯";
-          repeat_offset = 1;
+          repeat_offset = 0;
         };
         lua = {
           symbol = " ";

@@ -14,10 +14,10 @@ check_device() {
 push_files() {
     check_device
     
-    # Create directory if needed
     adb shell mkdir -p "$TARGET_DIR"
+    adb shell rm -rf "$TARGET_DIR/."
     
-    adb pull "$SOURCE_DIR/" "$TARGET_DIR/"
+    adb push "$SOURCE_DIR/." "$TARGET_DIR/"
     
     notify-send -i $NTFY_PIC "Pushed"
 }
@@ -25,7 +25,7 @@ push_files() {
 pull_files() {
     check_device
     mkdir -p "$SOURCE_DIR"
-    adb pull "$TARGET_DIR/" "$SOURCE_DIR/"
+    adb pull "$TARGET_DIR/." "$SOURCE_DIR/"
     notify-send -i $NTFY_PIC "Pulled"
 }
 
