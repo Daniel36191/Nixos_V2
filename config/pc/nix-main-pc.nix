@@ -69,8 +69,8 @@
   # networking = { 
   #   networkmanager = {
   #     insertNameservers = [
-  #       "192.168.0.141"
-  #       # "9.9.9.9"
+  #       # "192.168.0.141"
+  #       "1.1.1.1"
   #     ];
   #   };
   #   resolvconf.enable = false; ## Needed for insertNameservers to work?

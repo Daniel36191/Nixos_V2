@@ -49,6 +49,8 @@ in
     teamspeak-custom
     # teamspeak6-client
 
+    telegram-desktop
+
     sonobus
 
     ## Matrix Clients
@@ -100,6 +102,7 @@ in
 
   services.flatpak = {
     enable = true;
+    update.onActivation = true;
     remotes = [
       {
         name = "flathub";

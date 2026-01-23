@@ -1,7 +1,7 @@
 {
   config,
   nix-host,
-  firewall,
+  username,
   lib,
   ...
 }:
@@ -16,6 +16,9 @@
       # "--exit-node 100.100.57.77"
       # "--auth-key file:${config.age.secrets."tailscale-${nix-host}".path}"
       "--reset"
+    ];
+    extraSetFlags = [
+      "--operator=${username}"
     ];
     authKeyFile = config.age.secrets."tailscale-${nix-host}".path;
   };

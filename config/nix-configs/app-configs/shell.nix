@@ -63,4 +63,10 @@
       NIX_HOST
     '';
   };
+
+  programs.zoxide = {
+  	enable = true;
+  	enableBashIntegration = true;
+  	enableFishIntegration = true;
+  };
 }
