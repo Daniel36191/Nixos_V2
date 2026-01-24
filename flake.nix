@@ -41,7 +41,7 @@
     hyprland.url = "github:hyprwm/Hyprland/709855842068315bb2109d8f422a70c2b5ed1931"; ## Unstable Git For windwo rules, unpin for v0.53.*
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
+      # inputs.hyprland.follows = "hyprland";
     };
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";

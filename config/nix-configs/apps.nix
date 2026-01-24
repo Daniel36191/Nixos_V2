@@ -19,7 +19,7 @@ in
     ## User apps ##
     ###############
 
-    librewolf
+    librewolf-bin
     # google-chrome
 
     bitwarden-desktop

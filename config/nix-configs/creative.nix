@@ -23,6 +23,7 @@ in
         soundconverter ## gnome sound transcoder
         yt-dlg ## yt dl
         godot
+        android-tools
 
         ## VRC Creator
         pkgs-stable.unityhub
@@ -43,7 +44,4 @@ in
     # kernelModules = [ "v4l2loopback" ];
     # extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     };
-
-    ## Adb
-    programs.adb.enable = true;
 }
