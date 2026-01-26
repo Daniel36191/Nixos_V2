@@ -39,7 +39,6 @@
       LC_TIME = locale;
     };
   };
-
   users.users = {
     "${username}" = {
       homeMode = "755";

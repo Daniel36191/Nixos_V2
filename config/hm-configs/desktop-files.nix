@@ -66,4 +66,5 @@
     categories = [ "Game" "Simulation" ];
     mimeType = [ "x-scheme-handler/acmanager" ];
     };
+
 }
