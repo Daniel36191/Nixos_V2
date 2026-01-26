@@ -9,12 +9,16 @@ let
 in
 with lib;
 {
-  imports = [
-    ./scripts.nix
-  ];
   home.packages = with pkgs; [
     swaynotificationcenter
   ];
+
+  home.file."~/.config/waybar/scripts" = {
+    enable = true;
+    recursive = true;
+    source = ./scripts;
+    target = ".config/waybar/scripts";
+  };
   # Configure & Theme Waybar
   programs.waybar = {
     enable = true;

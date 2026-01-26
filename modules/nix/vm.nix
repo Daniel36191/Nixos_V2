@@ -32,7 +32,7 @@
   
   
     qemu = {
-    runAsRoot = true; # ths does noting
+    runAsRoot = true;
     };
   };
   users.groups.libvirtd.members = ["${username}"];

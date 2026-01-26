@@ -19,6 +19,8 @@ in
     ## User apps ##
     ###############
 
+    
+
     librewolf
     # google-chrome
 
@@ -37,6 +39,7 @@ in
     # xarchiver ## Archive Manager
     kdePackages.ark ## Archive Manager
     qutebrowser ## For Webapps
+
 
     ## Discord clients
     # vesktop

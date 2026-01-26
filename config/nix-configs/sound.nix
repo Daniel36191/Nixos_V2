@@ -1,8 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
-  pkgs-spotifyPin,
   # pkgs-stable,
   ...
 }:
@@ -42,83 +40,8 @@ in
     ];
   };
 
-  #############
-  ## Backend ##
-  #############
-  services.pipewire = {
-    enable = true;
-    package = pkgs.pipewire;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    extraConfig = {
-    };
+  
 
-    wireplumber = {
-      enable = true;
-      extraConfig = {
-        ## Take Calls On Pc (HFP)
-        "monitor.bluez.properties" = {
-          bluez5.roles = [ "a2dp_sink" "a2dp_source" "bap_sink" "bap_source" "hsp_hs" ];
-          bluez5.enable-msbc = true;
-          bluez5.hfphsp-backend = "native";
-        };
-      };
-    };
-  };
-  boot = {
-    kernelModules = [ "snd-seq-dummy" ]; ## Alsa Midi-Through-Port-0
-  };
-
-  # Enable sound with pulse
-  services.pulseaudio.enable = false;
-
-  ###############
-  ## Spicetify ##
-  ###############
-
-  programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-    in
-    {
-      enable = true;
-      spotifyPackage = pkgs-spotifyPin.spotify;
-
-      enabledExtensions = with spicePkgs.extensions; [
-        shuffle ## shuffle+ (special characters are sanitized out of extension names)
-        adblock
-        hidePodcasts
-        bookmark
-        trashbin
-        powerBar
-        playNext ## Add to queue
-        # addToQueueTop  ## Also add to queue
-
-        ## Not working as of this time builds but no output
-        #   ({
-        #     src = pkgs.fetchFromGitHub {
-        #       owner = "adufr";
-        #       repo = "spicetify-extensions";
-        #       rev = "develop";
-        #       hash = "sha256-YSGwhfvINQW3BPRBruV5/Nrmba4zfvNbctxymV/3NRw=";
-        #     };
-        #     name = "quick-add-to-playlist/dist/quick-add-to-playlist.js";
-        # })
-        #   # quickaddtoplaylist
-        #   # quickaddtoqueue
-
-      ];
-      enabledCustomApps = with spicePkgs.apps; [
-        newReleases
-      ];
-      enabledSnippets = with spicePkgs.snippets; [
-        pointer
-        oneko
-      ];
-      theme = lib.mkDefault spicePkgs.themes.comfy;
-    };
 
   ##################
   ## Audio Routes ##    Not working can't get systemd service to run them properly

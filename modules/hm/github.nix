@@ -4,7 +4,7 @@
   ...
 }:
 {
-  # Install & Configure Git
+  ## Install & Configure Git
   programs.git = {
     enable = true;
     settings.user = {

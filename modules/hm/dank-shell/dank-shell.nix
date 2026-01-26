@@ -1,7 +1,5 @@
 {
   inputs,
-  lib,
-  nix-host,
   pkgs,
   ...
 }:
@@ -16,7 +14,7 @@
     };
   };
   
-  home.packages = with pkgs; [
+  home.packages = [
   	inputs.dms.packages.${pkgs.system}.dms-shell
   ];
 
