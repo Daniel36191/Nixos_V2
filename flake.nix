@@ -154,7 +154,7 @@
       ########
 
       nixosConfigurations = {
-        "paaac" = nixpkgs.lib.nixosSystem {
+        "pc" = nixpkgs.lib.nixosSystem {
           specialArgs = let
             pcVars = import ./config/pc/variables-pc.nix;
           in commonArgs "pc" pcVars;
@@ -183,7 +183,7 @@
       ############
 
       nixosConfigurations = {
-        "lapaaatop" = nixpkgs.lib.nixosSystem {
+        "laptop" = nixpkgs.lib.nixosSystem {
           specialArgs = let
             laptopVars = import ./config/laptop/variables-laptop.nix;
           in commonArgs "laptop" laptopVars;
