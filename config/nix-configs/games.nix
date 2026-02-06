@@ -40,6 +40,7 @@ in
     bs-manager ## Beatsaber Modding
     satisfactorymodmanager
     ckan ## KSP
+    beammp-launcher
 
     ## Games
     techmino ## tetris
