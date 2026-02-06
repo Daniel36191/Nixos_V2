@@ -60,10 +60,9 @@
   ####################
   ## Profile Config ##
   ####################
-
-    environment.shellAliases = {
-      NIX_HOST = "export NIX_HOST=laptop";
-    };
+  environment.variables = {
+		NIX_HOST = "laptop";
+	};
 
   
   ##################

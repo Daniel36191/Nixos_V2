@@ -58,9 +58,9 @@
   ####################
   ## Profile Config ##
   ####################
-  environment.shellAliases = {
-      NIX_HOST = "export NIX_HOST=pc";
-    };
+  environment.variables = {
+		NIX_HOST = "pc";
+	};
 
   ################
   ## Networking ##

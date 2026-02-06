@@ -24,7 +24,7 @@
     ## Language servers
     nixd ## Nix-lang interpiter
     nil ## Nix-lang server
-    nixfmt-rfc-style ## Nix-lang formattor
+    nixfmt## Nix-lang formattor
 
     ## Java
     javaPackages.compiler.temurin-bin.jdk-21

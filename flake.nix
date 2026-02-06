@@ -48,7 +48,6 @@
     };
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";
-      inputs.hyprland.follows = "hyprland";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
