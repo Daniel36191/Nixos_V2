@@ -31,21 +31,24 @@
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
     lemonake = {
       url = "github:passivelemon/lemonake"; ## For vr apps
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # nixpkgs-xr = {
     #   url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     
-    hyprland.url = "github:hyprwm/Hyprland/709855842068315bb2109d8f422a70c2b5ed1931"; ## Unstable Git For windwo rules, unpin for v0.53.*
+    hyprland ={
+    	url = "github:hyprwm/Hyprland/main"; ## Unstable Git For windwo rules, unpin for v0.53.*
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
-      # inputs.hyprland.follows = "hyprland";
+      inputs.hyprland.follows = "hyprland";
     };
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";
-      # inputs.nixpkgs.follows = "hyprland";
+      inputs.hyprland.follows = "hyprland";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";

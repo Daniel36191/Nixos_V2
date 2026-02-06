@@ -19,7 +19,7 @@ in
     ## User apps ##
     ###############
 
-    librewolf-bin
+    pkgs-stable.librewolf-bin
     # google-chrome
 
     bitwarden-desktop
