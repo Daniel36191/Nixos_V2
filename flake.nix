@@ -53,7 +53,7 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms.url = "github:AvengeMedia/DankMaterialShell/11e23feb0e233147afbd5f15ea68043c4492029b"; ## Shell and theme
+    dms.url = "github:AvengeMedia/DankMaterialShell/d9a1089039e9f53ccf3004fbba04d13fca937fe2"; ## Shell and theme
     # millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
 
     ## System ##

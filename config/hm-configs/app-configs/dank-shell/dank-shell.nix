@@ -7,9 +7,9 @@
 }:
 {
   imports = [
-    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
-  programs.dank-material-shell = {
+  programs.dankMaterialShell = {
     enable = true;
     systemd = {
       enable = true;
