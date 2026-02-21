@@ -1,7 +1,7 @@
 {
     pkgs,
-    pkgs-stable,
     inputs,
+    pkgs-old,
     ...
 }:
 let
@@ -12,22 +12,22 @@ in
         obs-studio
         v4l-utils ## Obs virtual cam
         # inputs.blender-cuda.packages.${pkgs.system}.default
-        # gimp ## Image editing
-        pinta ## Image editing
-        losslesscut-bin ## video editor
+        # gimp
+        pinta
+        losslesscut-bin
         # prusa-slicer
         # orca-slicer ## Crashes on opening webgui
         # orca-beta
         # freecad-wayland
         # handbrake ## video parser ## fails to build
-        soundconverter ## gnome sound transcoder
-        yt-dlg ## yt dl
+        soundconverter
+        yt-dlg
         godot
         android-tools
 
         ## VRC Creator
-        pkgs-stable.unityhub
-        alcom ## vrc-get gui
+        pkgs-old.unityhub
+        alcom
     ];
     services.flatpak = {
         packages = [

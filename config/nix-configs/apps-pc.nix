@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   ...
 }:
 let
@@ -7,7 +8,7 @@ let
 in
 {
     environment.systemPackages = with pkgs; [
-        streamcontroller
+        pkgs-unstable.streamcontroller
         lulzbot-cura
         # lan-mouse ## Software KVM
     ];

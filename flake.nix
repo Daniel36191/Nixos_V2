@@ -6,8 +6,8 @@
     #############
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/25.05";
-    nixpkgs-old.url = "github:nixos/nixpkgs/24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-old.url = "github:nixos/nixpkgs/25.11";
 
 
     ##########
@@ -31,7 +31,7 @@
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
     lemonake = {
       url = "github:passivelemon/lemonake"; ## For vr apps
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-old";
     };
     # nixpkgs-xr = {
     #   url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
@@ -82,7 +82,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-stable,
+      nixpkgs-unstable,
       nixpkgs-old,
       home-manager,
       nix-flatpak,
@@ -128,7 +128,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgs-stable = import nixpkgs-stable {
+        pkgs-unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };

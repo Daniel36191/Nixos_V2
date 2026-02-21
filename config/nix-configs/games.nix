@@ -1,6 +1,5 @@
 {
     pkgs,
-    pkgs-stable,
     username,
     inputs,
     ...
@@ -19,13 +18,16 @@ in
     ## Runners
     lutris
     jdk17
+
+    ## Utils
+    mangohud
+    gamescope
+
     ## Wine
-    wineWowPackages.waylandFull ## wine for wayland
-    # wineWowPackages.stable ## wine
+    wineWowPackages.waylandFull
+    # wineWowPackages.stable
     wine64
     winetricks
-    gamescope
-    mangohud
     steamtinkerlaunch
     umu-launcher
     
@@ -36,14 +38,14 @@ in
 
     ## Modding
     r2modman
-    pkgs-stable.gale ## R2 but better
-    bs-manager ## Beatsaber Modding
+    gale
+    bs-manager
     satisfactorymodmanager
-    ckan ## KSP
+    ckan
     beammp-launcher
 
     ## Games
-    techmino ## tetris
+    techmino
 
     ## Tracking
     # aitrack

@@ -3,7 +3,6 @@
   inputs,
   lib,
   pkgs-spotifyPin,
-  # pkgs-stable,
   ...
 }:
 let

@@ -3,7 +3,6 @@
   lib,
   config,
   inputs,
-  pkgs-stable,
   ...
 }:
 let
@@ -19,18 +18,18 @@ in
     ## User apps ##
     ###############
 
-    pkgs-stable.librewolf-bin
+    librewolf-bin
     # google-chrome
 
     bitwarden-desktop
     
     rustdesk-flutter
-    kdePackages.kalk ## Calculator
-    baobab ## Disk usage analyzer
+    kdePackages.kalk
+    baobab
     # gnome-disk-utility
     gparted
-    mission-center ## Task manager
-    # nvitop ## btop for gpu
+    mission-center
+    # nvitop
     nvtopPackages.nvidia
     lact ## Gpu Overclocking
     ncdu ## wiztree

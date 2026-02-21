@@ -1,8 +1,8 @@
 {
   pkgs,
+  pkgs-unstable,
   config,
   inputs,
-  pkgs-stable,
   ...
 }:
 let
@@ -12,7 +12,7 @@ in
     monado-vulkan-layers
     # monado
 
-    wayvr
+    pkgs-unstable.wayvr
     # inputs.lemonake.packages.${pkgs.system}.wayvr
 
     opencomposite ## Translation Layer
