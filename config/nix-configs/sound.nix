@@ -77,7 +77,6 @@ in
   ###############
   ## Spicetify ##
   ###############
-
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
@@ -121,30 +120,79 @@ in
     };
 
   ##################
-  ## Audio Routes ##    Not working can't get systemd service to run them properly
+  ## Audio Routes ##
   ##################
+  services.pipewire.extraConfig.pipewire."10-virtual-audio" = let
+    virtualDevices = [      
+      ## General
+      { name = "General-Input"; channels = 2; type = "sink"; }
+      { name = "General-Volume"; channels = 2; type = "source"; volume = true; }
 
-  # systemd.user.services.loadAudioModules = {
-  #   description = "Load custom PulseAudio modules";
-  #   requisite = ["pulseaudio.service"];
-  #   wantedBy = ["pulseaudio.service"];
-  # 
-  #   script = "
-  #     ## Main Output/Volume\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Main-Output channels=2\n
-  #     \n
-  #     ## Sptoify\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Spotify-Input channels=2\n
-  #     ## Volume\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Spotify-Volume channels=2\n
-  #     \n
-  #     ## Mic/Volume\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Mic-Output channels=1\n
-  #     \n
-  #     ## Discord\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Sink sink_name=Discord-Output channels=2\n
-  #     ## Volume\n
-  #     exec-once = pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Discord-Volume channels=2      \n
-  #   ";
-  # };
+      ## Mic
+      { name = "Mic-Output"; channels = 1; type = "source"; volume = true; }
+
+      ## Spotify
+      { name = "Spotify-Input"; channels = 2; type = "sink"; }
+      { name = "Spotify-Volume"; channels = 2; type = "source"; volume = true; }
+      
+      ## Comms
+      { name = "Comms-Output"; channels = 2; type = "sink"; }
+      { name = "Comms-Volume"; channels = 2; type = "source"; volume = true; }
+    ];
+
+    sinkTemplate = {
+      factory = "adapter";
+      args = {
+        "factory.name" = "support.null-audio-sink";
+        "media.class" = "Audio/Sink";
+      };
+    };
+
+    sourceTemplate = {
+      factory = "adapter";
+      args = {
+        "factory.name" = "support.null-audio-sink";
+        "media.class" = "Audio/Source/Virtual";
+      };
+    };
+
+    mapDevice = device: let
+        baseTemplate = if device.type == "source" then sourceTemplate else sinkTemplate;
+        volumeArgs = if device.volume or false then {
+          "monitor.channel-volumes" = true;
+        } else {};
+      in baseTemplate // {
+        args = baseTemplate.args // {
+          "object.linger" = true;
+          "node.name" = device.name;
+          "node.description" = device.name;
+          "audio.channels" = device.channels;
+        } // volumeArgs;
+      };
+
+    mappedConfig = lib.lists.forEach virtualDevices mapDevice;
+
+  in {
+    "context.objects" = mappedConfig;
+  };
+
+
+  #############
+  ## Bespoke ##
+  #############
+  services.pipewire.extraConfig.pipewire."91-bespokesynth" = {
+    "node.rules" = [
+      {
+        matches = [
+          { "node.name" = "alsa_playback..BespokeSynth-wrapped"; }
+          { "node.name" = "alsa_capture..BespokeSynth-wrapped"; }
+        ];
+        actions = {
+          update-props = {
+            "stream.dont-remix" = true;
+          };
+        };
+      }
+    ];
+  };
 }

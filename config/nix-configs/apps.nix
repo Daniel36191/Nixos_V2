@@ -89,13 +89,6 @@ in
 
 
   ];
-  nixpkgs.config = {
-    # cudaSupport = true;
-    # cudnnSupport = true;
-    permittedInsecurePackages = [
-      "olm-3.2.16" ## For matrix clients
-    ];
-  };
 
 
   ##############

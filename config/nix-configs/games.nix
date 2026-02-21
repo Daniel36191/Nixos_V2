@@ -45,8 +45,9 @@ in
     ## Games
     techmino ## tetris
 
-    ## Track IR
+    ## Tracking
     # aitrack
+    # slimevr
     ];
 
     ##############
