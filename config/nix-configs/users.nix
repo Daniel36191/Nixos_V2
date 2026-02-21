@@ -122,6 +122,12 @@
           controlPersist = "no"; 
         };
 
+        "lillypond.local" = {
+          hostname = "lillypond.local";
+          port = 22;
+          user = "lillypond";
+        };
+
         "github.com" = {
           hostname = "github.com";
           port = 22;
