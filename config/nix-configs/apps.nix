@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   lib,
   config,
   inputs,
@@ -18,7 +19,7 @@ in
     ## User apps ##
     ###############
 
-    librewolf-bin
+    pkgs-unstable.librewolf
     # google-chrome
 
     bitwarden-desktop
@@ -53,7 +54,7 @@ in
     sonobus
 
     ## Matrix Clients
-    nheko
+    # nheko
     # cinny-desktop
 
     teams-for-linux
