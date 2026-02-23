@@ -118,6 +118,46 @@ in
       theme = lib.mkDefault spicePkgs.themes.comfy;
     };
 
+  #############
+  ## Bespoke ##
+  #############
+  services.pipewire.extraConfig.pipewire = {
+    "91-bespokesynth" = {
+      "node.rules" = [
+        {
+          matches = [
+            { "node.name" = "alsa_playback..BespokeSynth-wrapped"; }
+            { "node.name" = "alsa_capture..BespokeSynth-wrapped"; }
+          ];
+          actions = {
+            update-props = {
+              "stream.dont-remix" = true;
+              "node.autoconnect"= false;
+              "node.dont-reconnect" = true;
+            };
+          };
+        }
+      ];
+    };
+
+    "91-cava" = {
+      "node.rules" = [
+        {
+          matches = [
+            { "node.name" = "cava"; }
+          ];
+          actions = {
+            update-props = {
+              "stream.dont-remix" = true;
+              "node.autoconnect"= false;
+              "node.dont-reconnect" = true;
+            };
+          };
+        }
+      ];
+    };
+  };
+
   ##################
   ## Audio Routes ##
   ##################
@@ -173,25 +213,5 @@ in
 
   in {
     "context.objects" = mappedConfig;
-  };
-
-
-  #############
-  ## Bespoke ##
-  #############
-  services.pipewire.extraConfig.pipewire."91-bespokesynth" = {
-    "node.rules" = [
-      {
-        matches = [
-          { "node.name" = "alsa_playback..BespokeSynth-wrapped"; }
-          { "node.name" = "alsa_capture..BespokeSynth-wrapped"; }
-        ];
-        actions = {
-          update-props = {
-            "stream.dont-remix" = true;
-          };
-        };
-      }
-    ];
   };
 }

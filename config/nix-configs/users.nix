@@ -60,6 +60,14 @@
         "video"
         "audio"
         "dialout"
+        "pipewire"
+        "realtime"
+        "realtime"
+        "seat"
+        "tty"
+        "render"
+        "wayland"
+        "dbus"
       ];
       openssh.authorizedKeys.keys = [ 
         "${(import ../pc/variables-pc.nix).ssh-public-key}"
