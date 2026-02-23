@@ -55,7 +55,7 @@ in
     sonobus
 
     ## Matrix Clients
-    nheko
+    # nheko
     # cinny-desktop
 
     teams-for-linux

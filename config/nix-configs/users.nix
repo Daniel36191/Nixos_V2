@@ -73,6 +73,7 @@
         "${(import ../pc/variables-pc.nix).ssh-public-key}"
         "${(import ../laptop/variables-laptop.nix).ssh-public-key}"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEGNxyup7BAE63kcI0Ja8LNlibwi2p2NGA98W2qzlLdf flerouwu@hiroko"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond"
       ];
     };
   };
@@ -132,6 +133,12 @@
 
         "lillypond.local" = {
           hostname = "lillypond.local";
+          port = 22;
+          user = "lillypond";
+        };
+
+        "lillypond-tailscale" = {
+          hostname = "lillypond";
           port = 22;
           user = "lillypond";
         };

@@ -3,6 +3,10 @@
   ...
 }:
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsoup-2.74.3"
+    "olm-3.2.16"
+  ];
   ####################
   ## Port Forwading ##
   ####################
