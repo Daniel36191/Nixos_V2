@@ -14,6 +14,7 @@ in
         # inputs.blender-cuda.packages.${pkgs.system}.default
         # gimp
         pinta
+        krita
         losslesscut-bin
         # prusa-slicer
         # orca-slicer ## Crashes on opening webgui
