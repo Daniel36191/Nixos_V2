@@ -3,6 +3,7 @@
   lib,
   fetchFromGitHub,
   cmake,
+  ninja,
   pkg-config,
   freetype,
   curl,
@@ -82,31 +83,45 @@ let
       repo = "servus";
       rev = "master";
       sha256 = "sha256-YVyNyz+C1NPYtMhbFCOuiWiPvP89GEYBfbwNRUXf4MU="; # Replace with actual hash
+      fetchSubmodules = true;
     };
 
     sourceRoot = ".";
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
+    # dontUseCmakeConfigure = true;
+
+  nativeBuildInputs = [
+    cmake
+    ninja
+    pkg-config
+  ];
+
+  cmakeBuildDir = "Release";
+  cmakeBuildType = "Release";
 
     buildInputs = [
       curl
     ];
 
-    buildPhase = ''
-      mkdir Servus/build
-      cd Servus/build
-      cmake ..
-      # ninja
-    '';
+    # buildPhase = ''
+    #   mkdir Release
+    #   cd Release
+
+    #   type cmake
+
+    #   ls -al ..
+
+    #   cmake -GNinja -DCMAKE_INSTALL_PREFIX=$PWD/install -DCMAKE_BUILD_TYPE=Release ..
+
+    #   ninja all
+    #   ninja Servus-tests
+    # '';
   };
 
 in
 stdenv.mkDerivation rec {
   pname = "chataigne";
-  version = "1.9.25b13";
+  version = "1.10.2b2";
 
   src = fetchFromGitHub {
     owner = "benkuper";

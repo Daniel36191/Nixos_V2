@@ -19,13 +19,14 @@
     vscode
     # zed-editor
     micro
+    neovim
     jetbrains.idea
 
     ## Language servers
     nixd ## Nix-lang interpiter
     nil ## Nix-lang server
     nixfmt## Nix-lang formattor
-    black
+    black ## Python
 
     ## Java
     javaPackages.compiler.temurin-bin.jdk-21
