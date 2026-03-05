@@ -2,6 +2,7 @@
     pkgs,
     username,
     inputs,
+    pkgs-stable,
     ...
 }:
 let
@@ -24,9 +25,9 @@ in
     gamescope
 
     ## Wine
-    wineWowPackages.waylandFull
+    pkgs-stable.wineWowPackages.waylandFull
     # wineWowPackages.stable
-    wine64
+    pkgs-stable.wine64
     winetricks
     steamtinkerlaunch
     umu-launcher
