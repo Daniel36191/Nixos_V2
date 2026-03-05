@@ -1,7 +1,7 @@
 {
     pkgs,
     inputs,
-    pkgs-old,
+    pkgs-stable,
     ...
 }:
 let
@@ -27,7 +27,7 @@ in
         android-tools
 
         ## VRC Creator
-        pkgs-old.unityhub
+        pkgs-stable.unityhub
         alcom
     ];
     services.flatpak = {

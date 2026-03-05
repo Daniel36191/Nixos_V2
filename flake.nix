@@ -7,7 +7,7 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-old.url = "github:nixos/nixpkgs/25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
 
 
     ##########
@@ -31,7 +31,7 @@
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
     lemonake = {
       url = "github:passivelemon/lemonake"; ## For vr apps
-      inputs.nixpkgs.follows = "nixpkgs-old";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # nixpkgs-xr = {
     #   url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
@@ -53,7 +53,10 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms.url = "github:AvengeMedia/DankMaterialShell/d9a1089039e9f53ccf3004fbba04d13fca937fe2"; ## Shell and theme
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
 
     ## System ##
@@ -83,7 +86,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-old,
+      nixpkgs-stable,
       home-manager,
       nix-flatpak,
       blender-cuda,
@@ -124,7 +127,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgs-old = import nixpkgs-old {
+        pkgs-stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
