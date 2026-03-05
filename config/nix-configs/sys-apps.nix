@@ -36,6 +36,7 @@
 
     ## System
     ffmpeg
+    file
     
     ## File Manager
     unzip

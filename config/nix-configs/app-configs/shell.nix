@@ -42,6 +42,7 @@
       grep = "${pkgs.ripgrep}/bin/rg";
       df = "${pkgs.dysk}/bin/dysk";
       sleep = "${pkgs.timer}/bin/timer";
+      vim = "${pkgs.neovim}/bin/nvim";
 
       ## Aliases
       size = "du -sh";

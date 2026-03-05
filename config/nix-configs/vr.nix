@@ -15,7 +15,7 @@ in
     pkgs-unstable.wayvr
     # inputs.lemonake.packages.${pkgs.system}.wayvr
 
-    opencomposite ## Translation Layer
+    pkgs-unstable.opencomposite ## Translation Layer
     # slimevr ## slime vr :)
 
     ## Hotas remapping
@@ -29,7 +29,7 @@ in
 
   services.monado = {
     enable = true;
-    package = pkgs.monado;
+    package = pkgs-unstable.monado;
     defaultRuntime = false; # Register as default OpenXR runtime
   };
   systemd.user.services.monado.environment = {
@@ -43,7 +43,7 @@ in
 
   services.wivrn = {
     enable = true;
-    package = pkgs.wivrn.override { cudaSupport = true; };
+    package = pkgs-unstable.wivrn.override { cudaSupport = true; };
     autoStart = true;
     highPriority = true;
     defaultRuntime = true;

@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -11,7 +12,7 @@
       "x-scheme-handler/https" = "librewolf.desktop";
       "x-scheme-handler/about" = "librewolf.desktop";
       "x-scheme-handler/unknown" = "librewolf.desktop";
-      "inode/directory" = "org.gnome.Nautilus.desktop";
+      "inode/directory" = "${pkgs.nautilus}/share/applications/org.gnome.Nautilus.desktop";
       "x-scheme-handler/acmanager" = "assetto-corsa.desktop";
     };
   };
