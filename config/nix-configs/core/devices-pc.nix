@@ -1,11 +1,12 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
   ## Cpu
   services.auto-cpufreq = {
-    enable = true;
+    enable = !config.programs.dms-shell.enable;
     settings = {
       battery = {
         governor = "powersave";
