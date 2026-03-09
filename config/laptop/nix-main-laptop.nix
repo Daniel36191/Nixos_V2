@@ -34,6 +34,7 @@
     ../nix-configs/theme.nix ## blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
+    ../nix-configs/dms.nix
     ../nix-configs/wm-modules/hyprdynamicmonitors/monitors.nix
     # ../nix-configs/wm-modules/kde.nix
     

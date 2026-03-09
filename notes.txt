@@ -1,3 +1,7 @@
 Services:
 	## Journalctl ctl filters
 	journalctl -u home-manager-daniel.service -xe --since "5 minutes ago"
+
+Repl:
+	## Finding what set the option
+	:p options.services.power-profiles-daemon.enable.definitionsWithLocations
