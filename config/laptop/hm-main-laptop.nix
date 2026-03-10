@@ -11,6 +11,7 @@
     ../hm-configs/hyprland/hyprland.nix
     ../hm-configs/hyprland/wlogout.nix
     # ../hm-configs/hyprland/hyprlock.nix
+    ../hm-configs/bitwarden.nix
 
     ../hm-configs/app-configs/fastfetch/fastfetch.nix
     ../hm-configs/app-configs/rofi/rofi.nix
