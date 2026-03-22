@@ -25,6 +25,7 @@
     # ../hm-configs/app-configs/waybar/waybar.nix
     # ../hm-configs/app-configs/quickshell.nix
     # ../hm-configs/app-configs/hyprpanel/hyprpanel.nix
+    ../hm-configs/noctalia.nix
 
     ../hm-configs/app-configs/btop.nix
     ../hm-configs/app-configs/swappy.nix

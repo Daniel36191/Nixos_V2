@@ -54,26 +54,28 @@ environment.systemPackages = with pkgs; [
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth.enable = true;
+    plymouth.enable = true; ## Boot screen
   };
 
   ## Security / Polkit
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && (
-            action.id == "org.freedesktop.login1.reboot" ||
-            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-          )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    })
-  '';
+  security = {
+	  rtkit.enable = true;
+	  polkit.enable = true;
+	  polkit.extraConfig = ''
+	    polkit.addRule(function(action, subject) {
+	      if (
+	        subject.isInGroup("users")
+	          && (
+	            action.id == "org.freedesktop.login1.reboot" ||
+	            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+	            action.id == "org.freedesktop.login1.power-off" ||
+	            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+	          )
+	        )
+	      {
+	        return polkit.Result.YES;
+	      }
+	    })
+	  '';
+	};
 }

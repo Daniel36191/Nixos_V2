@@ -91,6 +91,9 @@ in
 
   ];
 
+  ## Run anything: https://github.com/nix-community/comma
+  programs.nix-index-database.comma.enable = true;
+
 
   ##############
   ## FlatPaks ##

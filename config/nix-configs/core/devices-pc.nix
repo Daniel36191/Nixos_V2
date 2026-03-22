@@ -41,14 +41,12 @@
     };
 
     "/media/archive" = {
-      device = "/dev/disk/by-uuid/c0543458-dc57-4e01-aeba-63c85cabc722";
-      fsType = "btrfs";
+      device = "/dev/disk/by-uuid/627038dc-7b4a-4469-8281-decae3b3cac4";
+      fsType = "ext4";
       options = [
-        "defaults"
-        "exec"
         "rw"
+        "defaults"
         "nofail"
-        "compress=zstd:10"
       ];
     };
   };

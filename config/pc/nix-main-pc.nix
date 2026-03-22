@@ -17,7 +17,7 @@
     ../nix-configs/coding.nix
     ../nix-configs/apps-pc.nix
     # ../nix-configs/apps-laptop.nix
-    # ../nix-configs/zerotier.nix
+    ../nix-configs/zerotier.nix
     ../nix-configs/office.nix
     # ../nix-configs/brightness.nix
     # ../nix-configs/clam-av.nix
@@ -31,7 +31,7 @@
     ../nix-configs/theme.nix ## blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
-    ../nix-configs/dms.nix
+    # ../nix-configs/dms.nix
     ../nix-configs/wm-modules/hyprdynamicmonitors/monitors.nix
     # ../nix-configs/wm-modules/kde.nix
 

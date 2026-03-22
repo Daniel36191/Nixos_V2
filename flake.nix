@@ -55,9 +55,23 @@
     };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ## System ##
     nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -74,11 +88,6 @@
     #   url = "github:SaumonNet/proxmox-nixos";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -97,11 +106,12 @@
       hyprdynamicmonitors,
       quickshell,
       dms,
+      noctalia,
       # millennium,
+      nix-index-database,
       agenix,
       # proxmox-nixos,
       nixos-hardware,
-      winapps,
       ...
     }@inputs:
     let
@@ -147,6 +157,7 @@
         agenix.nixosModules.default
         # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
+        nix-index-database.nixosModules.default
       ];
       commonHmModules = [
         agenix.homeManagerModules.default

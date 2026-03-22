@@ -8,7 +8,7 @@ let
 in
 {
     environment.systemPackages = with pkgs; [
-        pkgs-unstable.streamcontroller
+        streamcontroller
         lulzbot-cura
         # lan-mouse ## Software KVM
     ];

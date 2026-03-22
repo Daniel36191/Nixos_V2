@@ -17,4 +17,7 @@ in
   ## Tailscale
   "tailscale-pc.age".publicKeys = systems;
   "tailscale-laptop.age".publicKeys = systems;
+
+  ## Borg
+  "ssh-borg.age".publicKeys = systems;
 }
