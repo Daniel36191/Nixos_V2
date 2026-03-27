@@ -19,7 +19,7 @@ in
         # prusa-slicer
         # orca-slicer ## Crashes on opening webgui
         # orca-beta
-        # freecad-wayland
+        freecad
         # handbrake ## video parser ## fails to build
         soundconverter
         yt-dlg
