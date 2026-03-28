@@ -11,7 +11,7 @@
 
     # waypipe
     wayvnc
-    neofetch
+    # neofetch ## Rip
     wget
     appimage-run
 

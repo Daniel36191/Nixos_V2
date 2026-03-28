@@ -39,12 +39,13 @@
     # };
     
     hyprland ={
-      url = "github:hyprwm/Hyprland/main"; ## Unstable Git For windwo rules, unpin for v0.53.*
+      url = "github:hyprwm/Hyprland/v0.54.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprdynamicmonitors = {
       url = "github:fiffeek/hyprdynamicmonitors";

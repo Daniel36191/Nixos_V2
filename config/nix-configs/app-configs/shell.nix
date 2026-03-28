@@ -26,10 +26,10 @@
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
       hyprpicker = "hyprpicker -a";
 
-      sudonix = "nh os switch -H $NIX_HOST ./";
-      updatenix = "nh os switch -H $NIX_HOST ./ --update";
-      updateinput = "flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
-      cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
+      sudonix = "sudo -v && nh os switch -H $NIX_HOST ./";
+      updatenix = "sudo -v && nh os switch -H $NIX_HOST ./ --update";
+      updateinput = "sudo -v && flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
+      cleannix = "sudo -v && flatpak uninstall --unused && sudo nix-collect-garbage -d";
 
 
       ## Alterntives
