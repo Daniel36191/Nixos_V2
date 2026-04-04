@@ -29,7 +29,7 @@
     black ## Python
 
     ## Java
-    jdk21
+    jdk17
     
 
     ];
@@ -39,8 +39,8 @@
     };
 
     programs.java = {
-    	enable = true;
-    	package = pkgs.jdk21;
+        enable = true;
+        package = pkgs.jdk17;
     };
     
 

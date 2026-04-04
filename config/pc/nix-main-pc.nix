@@ -4,7 +4,7 @@
 {
   imports = [
     ## Apps
-    # ../nix-configs/vm.nix
+    ../nix-configs/vm.nix
     # ../nix-configs/containers.nix
     # ../nix-configs/proxmox.nix
     ../nix-configs/vr.nix
