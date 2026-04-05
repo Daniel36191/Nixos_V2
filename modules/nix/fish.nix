@@ -1,8 +1,22 @@
 {
   pkgs,
+  username,
   ...
 }:
+let
+in
 {
+  users.users."${username}" = {
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
+  };
+
+  environment = {
+    shells = with pkgs; [
+      bashInteractive
+      fish
+    ];
+  };
   programs.fish = {
     enable = true;
     interactiveShellInit = ''

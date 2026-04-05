@@ -2,17 +2,14 @@
   pkgs,
   ...
 }:
+let
+in
 {
   environment.systemPackages = with pkgs; [
-    ## Devices
     usb-modeswitch
   ];
 
-  #############
-  ## Devices ##
-  #############
-
-  ## Logitech wheel in pc mode
+  ## Logitech G920 Wheel
   services.udev.extraRules = ''
     # Logitech G920 Racing Wheel
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c261", RUN+="${pkgs.usb-modeswitch}/bin/usb_modeswitch -v 046d -p c261 -c /etc/usb_modeswitch.d/046d:c261"
@@ -27,13 +24,13 @@
     MessageContent="0f00010142"
   '';
 
-  ## Extra Logitech
+  ## Logitech
   hardware.logitech.wireless = {
     enable = false;
     enableGraphical = false;
   };
 
-  ## Scanners
+  ## Document Scanners
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
@@ -42,11 +39,10 @@
 
   ## Bluetooth
   hardware.bluetooth = {
-    ## Enable Backend
     enable = true;
     powerOnBoot = true;
   };
-  services.blueman.enable = true; ## Gui
+  services.blueman.enable = true;
 
   ## Rebind CapsLock to Super
   services.keyd = {

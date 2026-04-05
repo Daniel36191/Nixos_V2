@@ -2,10 +2,11 @@
   config,
   ...
 }:
+let
+in
 {
   imports = [
     ./framework/amd.nix
-    # ./framework/workarounds.nix
   ];
 
   services = {
@@ -32,5 +33,4 @@
   extraModulePackages = with config.boot.kernelPackages; [ framework-laptop-kmod ];
   kernelModules = [ "cros_ec" "cros_ec_lpcs" ];
   };
-
 }

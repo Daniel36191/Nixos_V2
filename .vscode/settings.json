@@ -1,6 +1,7 @@
 {
   "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix",
   "focusFolder.focusPaths": [
-    "/home/daniel/Nixos_V2/custom-apps/chataigne"
+    "/home/daniel/Nixos_V2/modules/home",
+    "/home/daniel/Nixos_V2/modules/nix"
   ]
 }

@@ -14,7 +14,8 @@
 
   ## Enables the amd cpu scaling https://www.kernel.org/doc/html/latest/admin-guide/pm/amd-pstate.html
   ## On recent AMD CPUs this can be more energy efficient.
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.cpu.amd.updateMicrocode = lib.mkForce config.hardware.enableRedistributableFirmware;
   boot = let
       kver = config.boot.kernelPackages.kernel.version;
   in

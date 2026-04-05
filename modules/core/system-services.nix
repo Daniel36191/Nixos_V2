@@ -50,6 +50,6 @@ environment.systemPackages = with pkgs; [
   };
 
   ## Location
-  location.provider = "geoclue2"; ## Auto
+  location.provider = "geoclue2";
 
 }
