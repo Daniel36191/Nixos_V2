@@ -13,7 +13,6 @@ in
     # monado
 
     pkgs-unstable.wayvr
-    # inputs.lemonake.packages.${pkgs.system}.wayvr
 
     pkgs-unstable.opencomposite ## Translation Layer
     # slimevr ## slime vr :)

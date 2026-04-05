@@ -1,15 +1,15 @@
 {
   pkgs,
   inputs,
+  nixpkgs-personal,
   ...
 }:
 let
-  lulzbot-cura = pkgs.callPackage ../../custom-apps/lulzbot-cura.nix { };
 in
 {
     environment.systemPackages = with pkgs; [
      framework-tool
-     lulzbot-cura
+     nixpkgs-personal.lulzbot-cura
     ];
 
     services.flatpak = {

@@ -1,13 +1,13 @@
 {
   pkgs,
   pkgs-unstable,
+  nixpkgs-personal,
   lib,
   config,
   inputs,
   ...
 }:
 let
-  teamspeak-custom = pkgs.callPackage ../../custom-apps/teamspeak.nix { };
 in
 {
   imports = [
@@ -47,7 +47,7 @@ in
     # })
     equibop
 
-    teamspeak-custom
+    nixpkgs-personal.teamspeak
     # teamspeak6-client
 
     telegram-desktop

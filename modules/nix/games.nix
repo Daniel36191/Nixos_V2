@@ -3,18 +3,17 @@
     username,
     inputs,
     pkgs-stable,
+    nixpkgs-personal,
     ...
 }:
 let
-    glfw-minecraft-wayland = pkgs.callPackage ../../custom-apps/glfw-minecraft-wayland/package.nix { };
-    # proton-vkvr = pkgs.callPackage ../../custom-apps/proton-vkvr.nix { };
 in
 {
     environment.systemPackages = with pkgs; [
     ## Minecraft
     prismlauncher
     # glfw3-minecraft
-    glfw-minecraft-wayland
+    nixpkgs-personal.glfw-minecraft-wayland
 
     ## Runners
     lutris
@@ -96,7 +95,7 @@ in
       proton-ge-bin
       inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp ## for VRC
       steamtinkerlaunch
-      # proton-vkvr
+      # nixpkgs-personal.proton-vkvr
     ];
   };
    boot = {

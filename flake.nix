@@ -8,6 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
+    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
 
 
     ##########
@@ -28,16 +29,7 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)
-    lemonake = {
-      url = "github:passivelemon/lemonake"; ## For vr apps
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    # nixpkgs-xr = {
-    #   url = "github:nix-community/nixpkgs-xr"; ## for proton-ge-rstp
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)  
     hyprland ={
       url = "github:hyprwm/Hyprland/main"; ## Unstable Git For windwo rules, unpin for v0.53.*
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,6 +88,7 @@
       nixpkgs,
       nixpkgs-unstable,
       nixpkgs-stable,
+      nixpkgs-personal,
       home-manager,
       nix-flatpak,
       blender-cuda,

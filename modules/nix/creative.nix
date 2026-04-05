@@ -2,10 +2,10 @@
     pkgs,
     inputs,
     pkgs-stable,
+    nixpkgs-personal,
     ...
 }:
 let
-    orca-beta = pkgs.callPackage ../../custom-apps/orca/orca-beta.nix { };
 in
 {
     environment.systemPackages = with pkgs; [
@@ -18,7 +18,7 @@ in
         losslesscut-bin
         # prusa-slicer
         # orca-slicer ## Crashes on opening webgui
-        # orca-beta
+        # nixpkgs-personal.orca-beta
         freecad
         # handbrake ## video parser ## fails to build
         soundconverter

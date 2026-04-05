@@ -3,13 +3,10 @@
   inputs,
   lib,
   pkgs-spotifyPin,
+  nixpkgs-personal,
   ...
 }:
 let
-  sendmidi = pkgs.callPackage ../../custom-apps/send-midi.nix { };
-  receivemidi = pkgs.callPackage ../../custom-apps/receive-midi.nix { };
-  bespokesynth = pkgs.callPackage ../../custom-apps/bespoke-synth/package.nix { };
-  chataigne = pkgs.callPackage ../../custom-apps/chataigne/chataigne.nix { };
 in
 {
   imports = [
@@ -18,10 +15,10 @@ in
 
   environment.systemPackages = with pkgs; [
     # bespokesynth
-    bespokesynth
-    # chataigne
-    sendmidi
-    receivemidi
+    nixpkgs-personal.bespokesynth
+    # nixpkgs-personal.chataigne
+    nixpkgs-personal.sendmidi
+    nixpkgs-personal.receivemidi
     qpwgraph
     pulseaudioFull
     pavucontrol
