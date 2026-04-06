@@ -2,12 +2,6 @@
   pkgs,
   config,
   options,
-  consoleKeyMap,
-  gitUsername,
-  timeZone,
-  locale,
-  username,
-  ssh-public-key,
   nix-host,
   ...
 }:
@@ -18,32 +12,32 @@
   };
 
   ## Locale Settings
-  console.keyMap = consoleKeyMap;
+  console.keyMap = "us";
   ## Set your time zone
-  time.timeZone = timeZone;
+  time.timeZone = "America/${config.usrConfig.timeZone}";
   ## Set time server
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   ## Select internationalisation properties
   i18n = {
-    defaultLocale = locale;
+    defaultLocale = config.usrConfig.locale;
     extraLocaleSettings = {
-      LC_ADDRESS = locale;
-      LC_IDENTIFICATION = locale;
-      LC_MEASUREMENT = locale;
-      LC_MONETARY = locale;
-      LC_NAME = locale;
-      LC_NUMERIC = locale;
-      LC_PAPER = locale;
-      LC_TELEPHONE = locale;
-      LC_TIME = locale;
+      LC_ADDRESS = config.usrConfig.locale;
+      LC_IDENTIFICATION = config.usrConfig.locale;
+      LC_MEASUREMENT = config.usrConfig.locale;
+      LC_MONETARY = config.usrConfig.locale;
+      LC_NAME = config.usrConfig.locale;
+      LC_NUMERIC = config.usrConfig.locale;
+      LC_PAPER = config.usrConfig.locale;
+      LC_TELEPHONE = config.usrConfig.locale;
+      LC_TIME = config.usrConfig.locale;
     };
   };
   users.users = {
-    "${username}" = {
+    "${config.usrConfig.username}" = {
       homeMode = "755";
       isNormalUser = true;
-      description = "${gitUsername}";
+      description = "${config.usrConfig.git.username}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -72,13 +66,12 @@
       openssh.authorizedKeys.keys = [ 
         "${(import ../pc/variables-pc.nix).ssh-public-key}"
         "${(import ../laptop/variables-laptop.nix).ssh-public-key}"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond"
-      ];
+      ] ++ config.usrConfig.ssh.authedKeys;
     };
   };
   nix.settings.trusted-users = [
     "root"
-    "${username}"
+    "${config.usrConfig.username}"
     ];
 
 
@@ -102,14 +95,14 @@
 
   age.secrets = {
     "ssh-${nix-host}" = {
-      path = "/home/${username}/.ssh/ssh-${nix-host}";
-      owner = username;
+      path = "/home/${config.usrConfig.username}/.ssh/ssh-${nix-host}";
+      owner = config.usrConfig.username;
       mode = "600";
     };
   };
 
   ## SSH Client
-  home-manager.users.${username} = let ssh-private = config.age.secrets."ssh-${nix-host}"; in { pkgs, config, ssh-public-key, ... }: {
+  home-manager.users.${config.usrConfig.username} = let ssh-private = config.age.secrets."ssh-${nix-host}"; in { pkgs, config, ssh-public-key, ... }: {
     home.file.".ssh/ssh-${nix-host}.pub" = { text = ssh-public-key; force = true; };
     programs.ssh = {
       enable = true;

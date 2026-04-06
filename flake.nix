@@ -76,10 +76,6 @@
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
     };
-    # proxmox-nixos = {
-    #   url = "github:SaumonNet/proxmox-nixos";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs =
@@ -92,8 +88,6 @@
       home-manager,
       nix-flatpak,
       blender-cuda,
-      lemonake,
-      # nixpkgs-xr,
       nixpkgs-spotifyPin,
       hyprsplit,
       hyprdynamicmonitors,
@@ -103,27 +97,19 @@
       # millennium,
       nix-index-database,
       agenix,
-      # proxmox-nixos,
       nixos-hardware,
       ...
     }@inputs:
-    let
-      inherit (import ./config/variables-global.nix)
-        gitUsername
-        gitEmail
-        system
-        keyboardLayout
-        consoleKeyMap
-        locale
-        timeZone
-        ;
-      
+    let      
+      system = "x86_64-linux";
+
+      usrConfig = (nixpkgs.lib.nixosSystem 
+        { system = "x86_64-linux"; modules = [./Baseplate/user-config.nix];}
+          ).config.usrConfig;
+
       ## Common function to create arguments for systems
       commonArgs = host: hostVars: {
         nix-host = host;
-        inherit gitUsername gitEmail system keyboardLayout;
-        inherit consoleKeyMap locale timeZone inputs;
-        inherit (hostVars) username hostname wallpaper firewall ssh-public-key;
         
         ## Pinning Nixpkgs versions
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
@@ -141,8 +127,7 @@
       };
 
       commonNixModules = [
-        
-
+        ./overlays/overlays.nix
         # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
@@ -151,9 +136,6 @@
         # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
         nix-index-database.nixosModules.default
-      ];
-      commonHmModules = [
-        agenix.homeManagerModules.default
       ];
     in
     {
@@ -164,24 +146,19 @@
 
       nixosConfigurations = {
         "pc" = nixpkgs.lib.nixosSystem {
-          specialArgs = let
-            pcVars = import ./config/pc/variables-pc.nix;
-          in commonArgs "pc" pcVars;
+          specialArgs = commonArgs;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = let
-                pcVars = import ./config/pc/variables-pc.nix;
-              in commonArgs "pc" pcVars;
+              home-manager.extraSpecialArgs = commonArgs;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${(import ./config/pc/variables-pc.nix).username} = import ./config/pc/hm-main-pc.nix;
+                users.${usrConfig.username} = import ./config/pc/hm-main-pc.nix;
               };
             }
-            ./config/pc/nix-main-pc.nix
-            ./overlays/overlays.nix
+            ./hosts/pc/pc-nix-main.nix
           ] ++ commonNixModules;
         };
       };
@@ -193,25 +170,20 @@
 
       nixosConfigurations = {
         "laptop" = nixpkgs.lib.nixosSystem {
-          specialArgs = let
-            laptopVars = import ./config/laptop/variables-laptop.nix;
-          in commonArgs "laptop" laptopVars;
+          specialArgs = commonArgs;
           modules = [
             {
               nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = let
-                laptopVars = import ./config/laptop/variables-laptop.nix;
-              in commonArgs "laptop" laptopVars;
+              home-manager.extraSpecialArgs = commonArgs;
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${(import ./config/laptop/variables-laptop.nix).username} = import ./config/laptop/hm-main-laptop.nix;
+                users.${usrConfig.username} = import ./config/laptop/hm-main-laptop.nix;
               };
             }
-            nixos-hardware.nixosModules.framework-13-7040-amd ## Install hardware for framework
-            ./config/laptop/nix-main-laptop.nix
-            ./overlays/overlays.nix
+            nixos-hardware.nixosModules.framework-13-7040-amd
+            ./hosts/laptop/laptop-hm-main.nix
           ] ++ commonNixModules;
         };
       };
