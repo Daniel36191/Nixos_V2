@@ -8,8 +8,8 @@ let
 in
 {
     environment.systemPackages = with pkgs; [
-     framework-tool
-     nixpkgs-personal.lulzbot-cura
+      framework-tool
+      nixpkgs-personal.lulzbot-cura
     ];
 
     services.flatpak = {
