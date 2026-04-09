@@ -10,15 +10,12 @@ let
     ;
 
     allowedSubFolders = "nix|home|core";
-    enabledModules = dir: lib.lists.forEach 
-      (filterdNixModules dir)
-      (f: builtins.head
-        (builtins.tail
-          (builtins.match ".*\/${baseNameOf ./.}\/modules\/(${allowedSubFolders})\/(.*)\.nix"
-            (toString f)
-          )
-        )
-      );
+    enabledModules2 = dir:
+      let
+        matched = f: builtins.match "${toString dir}\/(${allowedSubFolders})\/(.*)\.nix" (toString f);
+        validFiles = builtins.filter (f: matched f != null) (filterdNixModules dir);
+      in
+        map (f: builtins.head (builtins.tail (matched f))) validFiles;
 
 
 
@@ -40,7 +37,7 @@ let
 
     test2 = lib.setAttrByPath attrPath true;
 
-  in dir: enabledModules dir;
+  in dir: enabledModules2 dir;
 
 
 
