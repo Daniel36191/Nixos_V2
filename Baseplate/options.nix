@@ -24,7 +24,7 @@ with lib;
         host = mkOption {};
         sshPublicKey = mkOption {};
       };
-      enables = 
+      nixFiles = 
     in {
 
     };
