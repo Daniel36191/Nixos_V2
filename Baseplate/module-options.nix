@@ -1,10 +1,15 @@
+{
+  lib,
+  ...
+}:
 let
-  lib = (import <nixpkgs> {}).lib;
+  ## Config
+  moduleFolder = ../modules;
+  allowedSubFolders = "nix|home|core";
 
+  ## Function
   autoModules = dir:
     let
-      allowedSubFolders = "nix|home|core";
-
       nixFiles = lib.filter
         (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
         (lib.filesystem.listFilesRecursive dir);
@@ -31,5 +36,6 @@ let
 
     in
       lib.foldl' lib.recursiveUpdate {} attrSets;
-
-in { r = autoModules ./modules; }
+in {  
+  options.modules = autoModules moduleFolder;
+}
