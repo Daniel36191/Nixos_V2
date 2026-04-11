@@ -1,5 +1,5 @@
 {
-  username,
+  config,
   ...
 }:
 {
@@ -15,14 +15,14 @@
         "security" = "user";
       };
       "nixos" = {
-        "path" = "/home/${username}/Desktop/Share";
+        "path" = "/home/${config.mod.username}/Desktop/Share";
         "browseable" = "yes";
         "create mask" = "0644";
         "directory mask" = "0755";
         "read only" = "no";
         "guest ok" = "yes";
-        "valid users" = "${username}";
-        "force user" = "${username}";
+        "valid users" = "${config.mod.username}";
+        "force user" = "${config.mod.username}";
       };
     };
   };

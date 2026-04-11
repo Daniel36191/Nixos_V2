@@ -1,10 +1,8 @@
 {
+  config,
   ...
 }:
 let
-  inherit (import ../../variables.nix)
-  username
-    ;
 in
 {
   programs = {
@@ -26,7 +24,7 @@ in
         ];
         image = [
           {
-            path = "/home/${username}/.config/face.jpg";
+            path = "/home/${config.mod.username}/.config/face.jpg";
             size = 150;
             border_size = 4;
             border_color = "rgb(0C96F9)";
@@ -54,5 +52,4 @@ in
       };
     };
   };
-}
 }

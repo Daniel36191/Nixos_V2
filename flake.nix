@@ -103,9 +103,9 @@
     let      
       system = "x86_64-linux";
 
-      usrConfig = (nixpkgs.lib.nixosSystem 
+      mod = (nixpkgs.lib.nixosSystem 
         { system = "x86_64-linux"; modules = [./Baseplate/user-config.nix];}
-          ).config.usrConfig;
+          ).config.mod;
 
       ## Common function to create arguments for systems
       commonArgs = host: hostVars: {
@@ -157,7 +157,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${usrConfig.username} = import ./config/pc/hm-main-pc.nix;
+                users.${mod.username} = import ./config/pc/hm-main-pc.nix;
               };
             }
             ./hosts/pc/pc-nix-main.nix
@@ -181,7 +181,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${usrConfig.username} = import ./config/laptop/hm-main-laptop.nix;
+                users.${mod.username} = import ./config/laptop/hm-main-laptop.nix;
               };
             }
             nixos-hardware.nixosModules.framework-13-7040-amd

@@ -2,8 +2,7 @@
   lib,
   pkgs,
   inputs,
-  nix-host,
-  wallpaper,
+  config,
   ...
 }:
 {
@@ -32,16 +31,12 @@
     plugins = [
       inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
     ]
-    # ++ (lib.optionals (nix-host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
+    # ++ (lib.optionals (config.mod.host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
     ;
     extraConfig =
       let
         hyprland-main = builtins.readFile ./hyprland-main.conf;
-        hyprland-machine = if nix-host == "pc"
-          then
-             builtins.readFile ./hyprland-pc.conf
-          else
-            builtins.readFile ./hyprland-laptop.conf;
+        hyprland-machine = builtins.readFile ./hyprland-${config.mod.host}.conf;
       in
       lib.strings.concatStrings [
         hyprland-main

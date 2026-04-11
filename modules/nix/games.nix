@@ -1,6 +1,6 @@
 {
     pkgs,
-    username,
+    config,
     inputs,
     pkgs-stable,
     nixpkgs-personal,
@@ -109,10 +109,10 @@ in
   ## Game Fixes ##
   ################
   system.activationScripts.vrcpics = let 
-    vrc-pics-path = "/home/${username}/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/Pictures/VRChat/";
+    vrc-pics-path = "/home/${config.mod.username}/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/Pictures/VRChat/";
   in ''
     if [[ -d ${vrc-pics-path} ]]; then
-      ln -sf ${vrc-pics-path} /home/${username}/Pictures  
+      ln -sf ${vrc-pics-path} /home/${config.mod.username}/Pictures  
     fi
     
   '';

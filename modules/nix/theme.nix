@@ -1,6 +1,6 @@
 {
   pkgs,
-  wallpaper,
+  config,
   ...
 }:
 {
@@ -10,7 +10,7 @@
 
   stylix = {
     enable = true;
-    image = ../hm-configs/wallpapers/${wallpaper};
+    image = ../hm-configs/wallpapers/${config.mod.wallpaper};
     base16Scheme = {
       base00 = "24273a"; # base
       base01 = "1e2030"; # mantle

@@ -8,7 +8,7 @@ in
 {
   services.borgbackup = {
     repos = {
-      "${vars.hostname}" = {
+      "${config.mod.hostname}" = {
         path = "/media/archive";
         group = "borg";
         user = "borg";
@@ -30,10 +30,8 @@ in
     "borg" = {
       isSystemUser = true;
       createHome = false;
-      home = config.services.borgbackup.repos."${vars.hostname}".path;
+      home = config.services.borgbackup.repos."${config.mod.hostname}".path;
       openssh.authorizedKeys.keys = [ 
-        "${(import ../pc/variables-pc.nix).ssh-public-key}"
-        "${(import ../laptop/variables-laptop.nix).ssh-public-key}"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond"
       ];
     };

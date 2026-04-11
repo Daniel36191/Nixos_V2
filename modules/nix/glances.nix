@@ -1,5 +1,5 @@
 {
-  username,
+  config,
   ...
 }:
 let
@@ -12,7 +12,7 @@ in
     extraArgs = [
       "--webserver"
       "-C"
-      "/home/${username}/.config/glances/glances.conf"
-      ];
+      "/home/${config.mod.username}/.config/glances/glances.conf"
+    ];
   };
 }

@@ -1,6 +1,6 @@
 {
   pkgs,
-  username,
+  config,
   ...
 }:
 {
@@ -35,7 +35,7 @@
     runAsRoot = true; # ths does noting
     };
   };
-  users.groups.libvirtd.members = ["${username}"];
+  users.groups.libvirtd.members = ["${config.mod.username}"];
   
   ## Enables VM connection
   programs.dconf.profiles.user.databases = [

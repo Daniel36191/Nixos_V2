@@ -6,8 +6,8 @@
   programs.git = {
     enable = true;
     settings.user = {
-      Name = "${config.usrConfig.git.username}";
-      Email = "${config.usrConfig.git.email}";
+      Name = "${config.mod.git.username}";
+      Email = "${config.mod.git.email}";
     };
   };
   programs = {
@@ -15,8 +15,8 @@
   };
 
   ## SSH Client
-  home.file.".ssh/ssh-${config.hostConfig.host}.pub" = { 
-    text = config.hostConfig.sshPublicLey; force = true; 
+  home.file.".ssh/ssh-${config.mod.host}.pub" = { 
+    text = config.mod.sshPublicLey; force = true; 
   };
   programs.ssh = {
     enable = true;
@@ -24,7 +24,7 @@
     matchBlocks = {
       "*" = {
         port = 22;
-        identityFile = config.age.secrets."ssh-${config.hostConfig.host}".path;
+        identityFile = config.age.secrets."ssh-${config.mod.host}".path;
         forwardAgent = false;
         addKeysToAgent = "yes";
         compression = false;

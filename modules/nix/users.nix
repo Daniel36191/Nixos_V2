@@ -1,8 +1,6 @@
 {
-  pkgs,
   config,
   options,
-  nix-host,
   ...
 }:
 {
@@ -14,30 +12,30 @@
   ## Locale Settings
   console.keyMap = "us";
   ## Set your time zone
-  time.timeZone = "America/${config.usrConfig.timeZone}";
+  time.timeZone = "America/${config.mod.timeZone}";
   ## Set time server
   networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   ## Select internationalisation properties
   i18n = {
-    defaultLocale = config.usrConfig.locale;
+    defaultLocale = config.mod.locale;
     extraLocaleSettings = {
-      LC_ADDRESS = config.usrConfig.locale;
-      LC_IDENTIFICATION = config.usrConfig.locale;
-      LC_MEASUREMENT = config.usrConfig.locale;
-      LC_MONETARY = config.usrConfig.locale;
-      LC_NAME = config.usrConfig.locale;
-      LC_NUMERIC = config.usrConfig.locale;
-      LC_PAPER = config.usrConfig.locale;
-      LC_TELEPHONE = config.usrConfig.locale;
-      LC_TIME = config.usrConfig.locale;
+      LC_ADDRESS = config.mod.locale;
+      LC_IDENTIFICATION = config.mod.locale;
+      LC_MEASUREMENT = config.mod.locale;
+      LC_MONETARY = config.mod.locale;
+      LC_NAME = config.mod.locale;
+      LC_NUMERIC = config.mod.locale;
+      LC_PAPER = config.mod.locale;
+      LC_TELEPHONE = config.mod.locale;
+      LC_TIME = config.mod.locale;
     };
   };
   users.users = {
-    "${config.usrConfig.username}" = {
+    "${config.mod.username}" = {
       homeMode = "755";
       isNormalUser = true;
-      description = "${config.usrConfig.git.username}";
+      description = "${config.mod.git.username}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -64,13 +62,11 @@
         "dbus"
       ];
       openssh.authorizedKeys.keys = [ 
-        "${(import ../pc/variables-pc.nix).ssh-public-key}"
-        "${(import ../laptop/variables-laptop.nix).ssh-public-key}"
-      ] ++ config.usrConfig.ssh.authedKeys;
+      ] ++ config.mod.ssh.authedKeys;
     };
   };
   nix.settings.trusted-users = [
     "root"
-    "${config.usrConfig.username}"
+    "${config.mod.username}"
     ];
 }

@@ -5,9 +5,10 @@
 with lib;
 {  
   options = {
-    usrConfig = {
+    mod = {
       username = mkOption {};
       hostname = mkOption {};
+      wallpaper = mkOption {};
       git = {
         username = mkOption {};
         email = mkOption {};
@@ -16,13 +17,9 @@ with lib;
       firewall = mkOption {};
       timeZone = mkOption {};
       locale = mkOption {};
-    };
-    
 
-    hostConfig = {
       host = mkOption {};
       sshPublicKey = mkOption {};
     };
-
   };
 }

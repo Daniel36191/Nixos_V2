@@ -1,12 +1,12 @@
 {
   pkgs,
-  username,
+  config,
   ...
 }:
 let
 in
 {
-  users.users."${username}" = {
+  users.users."${config.mod.username}" = {
     shell = pkgs.fish;
     ignoreShellProgramCheck = true;
   };

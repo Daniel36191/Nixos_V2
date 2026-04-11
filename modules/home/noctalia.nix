@@ -1,8 +1,7 @@
 { 
   lib,
-  pkgs,
   inputs,
-  nix-host,
+  config,
   ...
 }:
 {
@@ -283,7 +282,7 @@
             {
               id = "NightLight";
             }
-          ] ++ lib.optional (if nix-host != "pc" then true else false) [
+          ] ++ lib.optional (if config.mod.host != "pc" then true else false) [
             {
               id = "PowerProfile";
             }
@@ -299,7 +298,7 @@
             id = "shortcuts-card";
           }
           {
-            enabled = if nix-host != "pc" then true else false;
+            enabled = if config.mod.host != "pc" then true else false;
             id = "brightness-card";
           }
           {

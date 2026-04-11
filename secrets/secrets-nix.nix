@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  nix-host,
+  config,
   ...
 }:
 {
@@ -10,8 +10,8 @@
   ];
 
   age.secrets = {
-    "tailscale-${nix-host}".file = ./tailscale-${nix-host}.age;
-    "ssh-${nix-host}".file = ./ssh-${nix-host}.age;
+    "tailscale-${config.mod.host}".file = ./tailscale-${config.mod.host}.age;
+    "ssh-${config.mod.host}".file = ./ssh-${config.mod.host}.age;
 
     "ssh-borg.age".file = ./ssh-borg.age;
   };

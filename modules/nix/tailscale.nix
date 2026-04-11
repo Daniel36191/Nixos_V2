@@ -1,7 +1,5 @@
 {
   config,
-  nix-host,
-  username,
   lib,
   ...
 }:
@@ -18,9 +16,9 @@
       "--reset"
     ];
     extraSetFlags = [
-      "--operator=${username}"
+      "--operator=${config.mod.username}"
     ];
-    authKeyFile = config.age.secrets."tailscale-${nix-host}".path;
+    authKeyFile = config.age.secrets."tailscale-${config.mod.host}".path;
   };
 
   ## For Exit Node

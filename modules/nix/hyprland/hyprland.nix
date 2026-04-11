@@ -1,6 +1,6 @@
 {
   pkgs,
-  username,
+  config,
   inputs,
   ...
 }:
@@ -12,7 +12,7 @@ in
     tuigreet
     hyprpicker
     hyprpaper
-    hyprsunset ## Orange Wash Screen
+    hyprsunset
 
     libnotify
     playerctl ## Media keys
@@ -49,12 +49,12 @@ in
       useTextGreeter = true; ## For Tui Greet
       settings = {
         default_session = {
-          user = username;
+          user = config.mod.username;
           command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${command}";
         };
         initial_session = {
           command = "${command}";
-          user = username;
+          user = config.mod.username;
         };
       };
     };

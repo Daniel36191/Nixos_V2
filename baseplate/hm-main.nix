@@ -3,8 +3,8 @@
   ...
 }:
 {
-  home.username = "${config.usrConfig.username}";
-  home.homeDirectory = "/home/${config.usrConfig.username}";
+  home.username = "${config.mod.username}";
+  home.homeDirectory = "/home/${config.mod.username}";
   home.stateVersion = "25.05";
 
   home.packages = [
