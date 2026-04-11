@@ -1,46 +1,38 @@
-{ lib, config, ... }:
 let
-  modulesFolder = ./modules;
-  allowedSubFolders = "nix|home|core";
+  lib = (import <nixpkgs> {}).lib;
 
-  getNixFiles = dir:
-    lib.filter
-      (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
-      (lib.filesystem.listFilesRecursive dir);
-
-  matchFile = dir: f: builtins.match
-    "${toString dir}/(${allowedSubFolders})/(.+)\\.nix"
-    (toString f);
-
-  getModulePaths = dir:
-    lib.lists.concatMap
-      (f: let m = matchFile dir f; in if m == null then [] else [ (builtins.elemAt m 1) ])
-      (getNixFiles dir);
-
-  toAttrPath = path:
+  autoModules = dir:
     let
-      parts = lib.splitString "/" path;
-      len = builtins.length parts;
-      last = builtins.elemAt parts (len - 1);
-      secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
-      dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
+      allowedSubFolders = "nix|home|core";
+
+      nixFiles = lib.filter
+        (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
+        (lib.filesystem.listFilesRecursive dir);
+
+      matchFile = f: builtins.match
+        "${toString dir}/(${allowedSubFolders})/(.+)\\.nix"
+        (toString f);
+
+      modulePaths = lib.lists.concatMap
+        (f: let m = matchFile f; in if m == null then [] else [ (builtins.elemAt m 1) ])
+        nixFiles;
+
+      toAttrPath = path:
+        let
+          parts = lib.splitString "/" path;
+          len = builtins.length parts;
+          last = builtins.elemAt parts (len - 1);
+          secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
+          dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
+        in
+          dedupedParts ++ [ "enable" ];
+
+      attrSets = map (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; })) modulePaths;
+
     in
-      dedupedParts ++ [ "enable" ];
-
-  autoOptions = dir:
-    lib.foldl' lib.recursiveUpdate {}
-      (map
-        (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; }))
-        (getModulePaths dir));
-
-  autoImports = dir:
-    lib.lists.concatMap
-      (p: lib.optional
-        (lib.attrByPath (toAttrPath p) false config)
-        (dir + "/${p}.nix"))
-      (getModulePaths dir);
+      lib.foldl' lib.recursiveUpdate {} attrSets;
 
 in {
-  options = autoOptions modulesFolder;
-  imports = autoImports modulesFolder;
+  r = autoImport ./modules;
+  r1 = autoModules ./modules;
 }
