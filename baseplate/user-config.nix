@@ -2,7 +2,7 @@
   ...
 }:
 {  
-  options.usrConfig = {
+  usrConfig = {
 
     ##########
     ## User ##

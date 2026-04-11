@@ -3,6 +3,10 @@
   ...
 }:
 {
+  imports = [
+    ./options.nix
+    ./module-options.nix
+  ];
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
     "olm-3.2.16"

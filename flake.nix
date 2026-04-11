@@ -127,7 +127,9 @@
       };
 
       commonNixModules = [
-        ./overlays/overlays.nix
+        ./baseplate/nix-main.nix
+        ./baseplate/options.nix
+        ./baseplate/user-config.nix
         # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak

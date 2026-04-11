@@ -3,54 +3,6 @@
 }:
 {
   imports = [
-    ## Apps
-    # ../nix-configs/vm.nix
-    # ../nix-configs/containers.nix
-    # ../nix-configs/proxmox.nix
-    ../nix-configs/vr.nix
-    ../nix-configs/apps.nix
-    # ../nix-configs/samba.nix
-    ../nix-configs/tailscale.nix
-    ../nix-configs/syncthing.nix
-    ../nix-configs/games.nix
-    ../nix-configs/creative.nix
-    ../nix-configs/coding.nix
-    ../nix-configs/apps-pc.nix
-    # ../nix-configs/apps-laptop.nix
-    ../nix-configs/zerotier.nix
-    ../nix-configs/office.nix
-    # ../nix-configs/brightness.nix
-    # ../nix-configs/clam-av.nix
-    # ../nix-configs/glances.nix
-
-    ## App Configs
-    ../nix-configs/app-configs/starship.nix
-    ../nix-configs/app-configs/fish.nix
-    ../nix-configs/app-configs/shell.nix ## fix the cleannix command to use nh
-
-    ## Theme
-    ../nix-configs/theme.nix ## blacklist libreofficr from stylix
-    ../nix-configs/sound.nix
-    ../nix-configs/wm-modules/hyprland.nix
-    ../nix-configs/dms.nix
-    ../nix-configs/wm-modules/hyprdynamicmonitors/monitors.nix
-    # ../nix-configs/wm-modules/kde.nix
-
-    ## Core
-    ../nix-main.nix
-    ../nix-configs/users.nix
-    ../nix-configs/defaults.nix
-    ../nix-configs/core/devices.nix
-    ../nix-configs/core/devices-pc.nix
-    ../nix-configs/core/boot.nix
-    ../nix-configs/core/core-services.nix
-    ../../secrets/secrets-nix.nix
-
-    ## To Be Cleaned
-    ../../modules/nvidia-drivers.nix
-
-    ## No Touch
-    ../nix-configs/core/hardware-pc.nix
   ];
 
   ####################

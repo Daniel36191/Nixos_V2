@@ -19,16 +19,10 @@ with lib;
     };
     
 
-    hostConfig = let
-      extra = {
-        host = mkOption {};
-        sshPublicKey = mkOption {};
-      };
-      nixFiles = 
-    in {
-
+    hostConfig = {
+      host = mkOption {};
+      sshPublicKey = mkOption {};
     };
-
 
   };
 }

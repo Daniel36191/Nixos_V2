@@ -1,8 +1,10 @@
 { lib, config, ... }:
 let
+  ## Config
   modulesFolder = ./modules;
   allowedSubFolders = "nix|home|core";
 
+  ## Functions
   getNixFiles = dir:
     lib.filter
       (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
@@ -41,6 +43,7 @@ let
       (getModulePaths dir);
 
 in {
+  ## Outputs
   options = autoOptions modulesFolder;
   imports = autoImports modulesFolder;
 }
