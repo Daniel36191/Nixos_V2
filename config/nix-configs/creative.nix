@@ -17,7 +17,7 @@ in
         krita
         losslesscut-bin
         # prusa-slicer
-        # orca-slicer ## Crashes on opening webgui
+        orca-slicer ## Crashes on opening webgui
         # orca-beta
         freecad
         # handbrake ## video parser ## fails to build
