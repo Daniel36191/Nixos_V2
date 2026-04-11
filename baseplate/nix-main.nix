@@ -6,6 +6,7 @@
   imports = [
     ./options.nix
     ./module-options.nix
+    ./user-config.nix
   ];
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
@@ -27,6 +28,7 @@
       54321
     ];
   };
+
 
   ###########
   ## Nixos ##

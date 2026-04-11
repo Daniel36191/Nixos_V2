@@ -1,30 +1,21 @@
 {
-    pkgs,
-    username,
-    ...
+  config,
+  ...
 }:
 {
-  ## Home Manager Settings
-  home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
+  home.username = "${config.usrConfig.username}";
+  home.homeDirectory = "/home/${config.usrConfig.username}";
   home.stateVersion = "25.05";
 
-  ## Scripts
   home.packages = [
-    (import ../scripts/task-waybar.nix { inherit pkgs; })
-    (import ../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../scripts/web-search.nix { inherit pkgs; })
-    (import ../scripts/rofi-launcher.nix { inherit pkgs; })
-    (import ../scripts/screenshootin.nix { inherit pkgs; })
   ];
 
   ## Wallpapers
   home.file."Pictures/Wallpapers" = {
-    source = ./hm-configs/wallpapers;
+    source = ../extra-files/wallpapers;
     recursive = true;
   };
 
-  ## Create XDG Dirs (Pictures, Desktop, Docs, etc)
   xdg = {
     userDirs = {
       enable = true;

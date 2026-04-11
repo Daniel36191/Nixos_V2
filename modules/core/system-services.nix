@@ -7,8 +7,8 @@
 {
   ## Networking
   networking = {
-   networkmanager.enable = true;
-   hostName = hostname;
+  networkmanager.enable = true;
+  hostName = hostname;
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -34,7 +34,6 @@ environment.systemPackages = with pkgs; [
     printing = {
       enable = true;
       drivers = [
-        # pkgs.hplipWithPlugin
       ];
     };
   ipp-usb.enable = true;
