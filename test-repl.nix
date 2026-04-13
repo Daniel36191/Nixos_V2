@@ -1,38 +1,40 @@
 let
   lib = (import <nixpkgs> {}).lib;
+  ## Config;
+  allowedSubFolders = "nix|home|core";
 
-  autoModules = dir:
+  ## Functions
+  getNixFiles = dir:
+    lib.filter
+      (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
+      (lib.filesystem.listFilesRecursive dir);
+
+  matchFile = dir: f: builtins.match
+    "${toString dir}/(${allowedSubFolders})/(.+)\\.nix"
+    (toString f);
+
+  getModulePaths = dir:
+    lib.lists.concatMap
+      (f: let m = matchFile dir f; in if m == null then [] else [ (builtins.elemAt m 1) ])
+      (getNixFiles dir);
+
+  toAttrPath = path:
     let
-      allowedSubFolders = "nix|home|core";
-
-      nixFiles = lib.filter
-        (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
-        (lib.filesystem.listFilesRecursive dir);
-
-      matchFile = f: builtins.match
-        "${toString dir}/(${allowedSubFolders})/(.+)\\.nix"
-        (toString f);
-
-      modulePaths = lib.lists.concatMap
-        (f: let m = matchFile f; in if m == null then [] else [ (builtins.elemAt m 1) ])
-        nixFiles;
-
-      toAttrPath = path:
-        let
-          parts = lib.splitString "/" path;
-          len = builtins.length parts;
-          last = builtins.elemAt parts (len - 1);
-          secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
-          dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
-        in
-          dedupedParts ++ [ "enable" ];
-
-      attrSets = map (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; })) modulePaths;
-
+      parts = lib.splitString "/" path;
+      len = builtins.length parts;
+      last = builtins.elemAt parts (len - 1);
+      secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
+      dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
     in
-      lib.foldl' lib.recursiveUpdate {} attrSets;
+      dedupedParts ++ [ "enable" ];
 
+  autoOptions = dir:
+    lib.foldl' lib.recursiveUpdate {}
+      (map
+        (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; }))
+        (getModulePaths dir));
 in {
-  r = autoImport ./modules;
-  r1 = autoModules ./modules;
+  ## Outputs
+  r = autoOptions ./modules;
+  f = lib.removeSuffix ".nix" (baseNameOf __curPos.file);
 }

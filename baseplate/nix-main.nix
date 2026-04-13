@@ -1,13 +1,9 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
-  imports = [
-    ./options.nix
-    ./module-options.nix
-    ./user-config.nix
-  ];
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
     "olm-3.2.16"
@@ -33,6 +29,10 @@
   ###########
   ## Nixos ##
   ###########
+
+  environment.variables = {
+		NIX_HOST = config.mod.host;
+	};
 
   nix = {
     settings = {

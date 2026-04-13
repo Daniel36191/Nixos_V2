@@ -1,16 +1,21 @@
 {
+  config,
+  lib,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
-  programs.zoxide = {
-    enable = true;
-    flags = [
-      "--no-cmd" ## Remove z command
-      "--cmd cd"	## Replace cd command
-    ];
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
+  config = lib.mkIf mod.enable {
+    programs.zoxide = {
+      enable = true;
+      flags = [
+        "--no-cmd" ## Remove z command
+        "--cmd cd"	## Replace cd command
+      ];
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+    };
+  }
 }

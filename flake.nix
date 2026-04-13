@@ -104,13 +104,11 @@
       system = "x86_64-linux";
 
       mod = (nixpkgs.lib.nixosSystem 
-        { system = "x86_64-linux"; modules = [./Baseplate/user-config.nix];}
+        { inherit system; modules = [./Baseplate/user-config.nix];}
           ).config.mod;
 
       ## Common function to create arguments for systems
-      commonArgs = host: hostVars: {
-        nix-host = host;
-        
+      commonArgs = {        
         ## Pinning Nixpkgs versions
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
           inherit system;
@@ -127,8 +125,10 @@
       };
 
       commonNixModules = [
+        ./baseplate/module-options.nix
         ./baseplate/nix-main.nix
         ./baseplate/options.nix
+        ./baseplate/overlays.nix
         ./baseplate/user-config.nix
         # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
@@ -138,6 +138,10 @@
         # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
         nix-index-database.nixosModules.default
+      ];
+
+      commonHmModules = [
+        ./baseplate/hm-main.nix
       ];
     in
     {
@@ -157,7 +161,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${mod.username} = import ./config/pc/hm-main-pc.nix;
+                users.${mod.username}= { imports = [
+                  ./config/pc/hm-main-pc.nix
+                ] ++ commonHmModules;};
               };
             }
             ./hosts/pc/pc-nix-main.nix

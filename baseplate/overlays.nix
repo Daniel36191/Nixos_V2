@@ -2,6 +2,6 @@
   ...
 }:{
   nixpkgs.overlays = [
-    (import ./red-hat-fonts.nix)
+    (import ../modules/overlays/red-hat-fonts.nix)
   ];
 }

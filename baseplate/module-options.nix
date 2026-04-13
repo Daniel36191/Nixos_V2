@@ -1,7 +1,10 @@
-{ lib, config, ... }:
+{ 
+  lib,
+  ...
+}:
 let
   ## Config
-  modulesFolder = ./modules;
+  modulesFolder = ../modules;
   allowedSubFolders = "nix|home|core";
 
   ## Functions
@@ -34,16 +37,7 @@ let
       (map
         (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; }))
         (getModulePaths dir));
-
-  autoImports = dir:
-    lib.lists.concatMap
-      (p: lib.optional
-        (lib.attrByPath (toAttrPath p) false config)
-        (dir + "/${p}.nix"))
-      (getModulePaths dir);
-
 in {
   ## Outputs
-  options = autoOptions modulesFolder;
-  imports = autoImports modulesFolder;
+  options.modules = autoOptions modulesFolder;
 }

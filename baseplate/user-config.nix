@@ -1,9 +1,8 @@
 {
   ...
 }:
-{  
+{
   mod = {
-
     ##########
     ## User ##
     ##########
@@ -15,12 +14,11 @@
       email = "dmoeller3998@gmail.com";
     };
 
-
     ############
     ## System ##
     ############
     ssh.authedKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond" ## Make this into a imported value
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond" # # Make this into a imported value
     ];
     firewall = false;
     timeZone = "New_York";
