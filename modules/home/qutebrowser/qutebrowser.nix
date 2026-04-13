@@ -1,10 +1,16 @@
 {
+  config,
   lib,
+  pkgs,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+
   config = builtins.readFile ./config.yml;
 in
 {
-  home.file.".config/qutebrowser/autoconfig.yml".text = lib.strings.concatStrings [ config ];
+  config = lib.mkIf mod.enable {
+    home.file.".config/qutebrowser/autoconfig.yml".text = lib.strings.concatStrings [ config ];
+  };
 }

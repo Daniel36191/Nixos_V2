@@ -1,8 +1,12 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+
   desktopConfig = [
     {
       name = "Soundcloud";
@@ -35,8 +39,9 @@ let
       value = mkDesktopEntry cfg;
     }) desktopConfig
   );
-
 in
 {
-  xdg.desktopEntries = desktopEntries;
+  config = lib.mkIf mod.enable {
+    xdg.desktopEntries = desktopEntries;
+  };
 }

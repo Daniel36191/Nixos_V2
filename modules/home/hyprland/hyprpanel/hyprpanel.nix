@@ -1,19 +1,24 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+
   config = builtins.readFile ./config.json;
   theme = builtins.readFile ./theme.json;
 in
 {
-  programs.hyprpanel = {
-    enable = true;
+  config = lib.mkIf mod.enable {
+    programs.hyprpanel = {
+      enable = true;
+    };
+    # home.packages = with pkgs; [
+    #   hyprpanel
+    # ];
+    # home.file.".config/hyprpanel/config.json".text = lib.strings.concatStrings [ config ];
+    # home.file.".config/hyprpanel/theme.json".text = lib.strings.concatStrings [ theme ];
   };
-  # home.packages = with pkgs; [
-  #   hyprpanel
-  # ];
-  # home.file.".config/hyprpanel/config.json".text = lib.strings.concatStrings [ config ];
-  # home.file.".config/hyprpanel/theme.json".text = lib.strings.concatStrings [ theme ];
 }

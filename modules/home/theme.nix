@@ -1,42 +1,47 @@
 {
-  pkgs,
+  config,
   lib,
+  pkgs,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+
   folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
     flavor = "macchiato";
     accent = "blue";
   };
 in
 {
-  home.packages = with pkgs; [
-    papirus-folders
-    folders-catppuccin
-  ];
+  config = lib.mkIf mod.enable {
+    home.packages = with pkgs; [
+      papirus-folders
+      folders-catppuccin
+    ];
 
-  stylix.targets = {
-    waybar.enable = false;
-    rofi.enable = false;
-    hyprland.enable = false;
-  };
+    stylix.targets = {
+      waybar.enable = false;
+      rofi.enable = false;
+      hyprland.enable = false;
+    };
 
-  gtk = {
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = folders-catppuccin;
+    gtk = {
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = folders-catppuccin;
+      };
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+      gtk4.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
     };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
 
-  qt = {
-    enable = true;
-    style.name = lib.mkDefault "adwaita-dark";
-    platformTheme.name = lib.mkDefault "kde6";
+    qt = {
+      enable = true;
+      style.name = lib.mkDefault "adwaita-dark";
+      platformTheme.name = lib.mkDefault "kde6";
+    };
   };
 }
