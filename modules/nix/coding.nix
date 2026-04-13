@@ -1,45 +1,51 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
+let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+in
 {
-  environment.systemPackages = with pkgs; [
-    ## Git tools
-    lazygit
-    git
-    github-desktop
+  config = lib.mkIf mod.enable {
+    environment.systemPackages = with pkgs; [
+      ## Git tools
+      lazygit
+      git
+      github-desktop
 
-    filezilla # # Fstp client
+      filezilla # # Fstp client
 
-    termius
+      termius
 
-    zellij
+      zellij
 
-    ## Code editors
-    vscode
-    # zed-editor
-    micro
-    neovim
-    jetbrains.idea
+      ## Code editors
+      vscode
+      # zed-editor
+      micro
+      neovim
+      jetbrains.idea
 
-    ## Language servers
-    nixd # # Nix-lang interpiter
-    nil # # Nix-lang server
-    nixfmt # # Nix-lang formattor
-    black # # Python
+      ## Language servers
+      nixd # # Nix-lang interpiter
+      nil # # Nix-lang server
+      nixfmt # # Nix-lang formattor
+      black # # Python
 
-    ## Java
-    jdk21
+      ## Java
+      jdk21
 
-  ];
+    ];
 
-  environment.variables = {
-    EDITOR = "${pkgs.micro}/bin/micro";
+    environment.variables = {
+      EDITOR = "${pkgs.micro}/bin/micro";
+    };
+
+    programs.java = {
+      enable = true;
+      package = pkgs.jdk21;
+    };
   };
-
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk21;
-  };
-
 }

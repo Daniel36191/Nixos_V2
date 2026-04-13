@@ -1,42 +1,47 @@
 {
-  pkgs,
   config,
+  lib,
+  pkgs,
   ...
 }:
 let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+
 in
 {
-  users.users."${config.mod.username}" = {
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  };
+  config = lib.mkIf mod.enable {
+    users.users."${config.mod.username}" = {
+      shell = pkgs.fish;
+      ignoreShellProgramCheck = true;
+    };
 
-  environment = {
-    shells = with pkgs; [
-      bashInteractive
-      fish
+    environment = {
+      shells = with pkgs; [
+        bashInteractive
+        fish
+      ];
+    };
+    programs.fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+      '';
+    };
+
+    ## Plugins
+    environment.systemPackages = with pkgs; [
+      fishPlugins.done
     ];
-  };
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-    '';
-  };
 
-  ## Plugins
-  environment.systemPackages = with pkgs; [
-    fishPlugins.done
-  ];
-
-  ## Set as default
-  programs.bash = {
-    interactiveShellInit = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
+    ## Set as default
+    programs.bash = {
+      interactiveShellInit = ''
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+      '';
+    };
   };
 }

@@ -1,16 +1,23 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
+let
+  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+in
 {
-  # services.clight = {
-  #   enable = true;
-  #   settings = {
-  #     backlight.no_auto_calibration = true; ## Should dissable autodim but doesn't
-  #   };
-  # };
-  environment.systemPackages = with pkgs; [
-    # clight-gui
-    brightnessctl
-  ];
+  config = lib.mkIf mod.enable {
+    # services.clight = {
+    #   enable = true;
+    #   settings = {
+    #     backlight.no_auto_calibration = true; ## Should dissable autodim but doesn't
+    #   };
+    # };
+    environment.systemPackages = with pkgs; [
+      # clight-gui
+      brightnessctl
+    ];
+  };
 }
