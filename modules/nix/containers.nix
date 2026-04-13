@@ -4,11 +4,9 @@
   pkgs,
   ...
 }:
-let 
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
-in 
+let
+in
 {
-  config = lib.mkIf mod.enable {
     virtualisation = {
       containers.enable = true;
       docker = {
@@ -26,12 +24,11 @@ in
       # };
     };
 
-    environment.systemPackages = with pkgs; [
-      # podman-desktop
-      # podman-compose
-      docker-compose
-      # nvidia-container-toolkit
-      docker-buildx
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    # podman-desktop
+    # podman-compose
+    docker-compose
+    # nvidia-container-toolkit
+    docker-buildx
+  ];
 }
