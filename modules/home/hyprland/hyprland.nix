@@ -15,7 +15,7 @@
   #     preload = [
   #       ",../wallpapers/${wallpaper}"
   #     ];
-  # 
+  #
   #     wallpapers = [
   #       ",../wallpapers/${wallpaper}"
   #     ];

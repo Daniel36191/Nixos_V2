@@ -61,12 +61,13 @@
         "wayland"
         "dbus"
       ];
-      openssh.authorizedKeys.keys = [ 
-      ] ++ config.mod.ssh.authedKeys;
+      openssh.authorizedKeys.keys = [
+      ]
+      ++ config.mod.ssh.authedKeys;
     };
   };
   nix.settings.trusted-users = [
     "root"
     "${config.mod.username}"
-    ];
+  ];
 }

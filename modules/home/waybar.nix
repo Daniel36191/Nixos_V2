@@ -50,7 +50,7 @@ with lib;
           on-click-middle = "${pkgs.bash} -c pkill waybar && hyprctl dispatch exec waybar";
         };
         "clock" = {
-          format = '' {:L%I:%M %p}'';
+          format = " {:L%I:%M %p}";
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%B %Y }</big>\n<tt><small>{calendar}</small></tt>";
         };

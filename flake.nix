@@ -10,14 +10,12 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
 
-
     ##########
     ## Pins ##
     ##########
 
-    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; ## spotify version 1.2.48.405.gf2c48e6f
-    # nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb ## Now playing bugged 
-
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; # # spotify version 1.2.48.405.gf2c48e6f
+    # nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb ## Now playing bugged
 
     ############
     ## Inputs ##
@@ -29,9 +27,9 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; ## Blender-bin (now with cuda)  
-    hyprland ={
-      url = "github:hyprwm/Hyprland/main"; ## Unstable Git For windwo rules, unpin for v0.53.*
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; # # Blender-bin (now with cuda)
+    hyprland = {
+      url = "github:hyprwm/Hyprland/main"; # # Unstable Git For windwo rules, unpin for v0.53.*
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprsplit = {
@@ -46,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell"; ## Shell and theme
+      url = "github:AvengeMedia/DankMaterialShell"; # # Shell and theme
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
@@ -71,7 +69,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; ## For Framework
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # # For Framework
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -100,15 +98,17 @@
       nixos-hardware,
       ...
     }@inputs:
-    let      
+    let
       system = "x86_64-linux";
 
-      mod = (nixpkgs.lib.nixosSystem 
-        { inherit system; modules = [./Baseplate/user-config.nix];}
-          ).config.mod;
+      mod =
+        (nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./Baseplate/user-config.nix ];
+        }).config.mod;
 
       ## Common function to create arguments for systems
-      commonArgs = {        
+      commonArgs = {
         ## Pinning Nixpkgs versions
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
           inherit system;
@@ -161,16 +161,19 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${mod.username}= { imports = [
-                  ./config/pc/hm-main-pc.nix
-                ] ++ commonHmModules;};
+                users.${mod.username} = {
+                  imports = [
+                    ./config/pc/hm-main-pc.nix
+                  ]
+                  ++ commonHmModules;
+                };
               };
             }
             ./hosts/pc/pc-nix-main.nix
-          ] ++ commonNixModules;
+          ]
+          ++ commonNixModules;
         };
       };
-
 
       ############
       ## Laptop ##
@@ -192,7 +195,8 @@
             }
             nixos-hardware.nixosModules.framework-13-7040-amd
             ./hosts/laptop/laptop-hm-main.nix
-          ] ++ commonNixModules;
+          ]
+          ++ commonNixModules;
         };
       };
     };

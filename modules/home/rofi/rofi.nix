@@ -15,7 +15,7 @@
         location = 0;
         font = "JetBrainsMono Nerd Font Mono 12";
         drun-display-format = "{icon} {name}";
-        display-drun  = " Apps";
+        display-drun = " Apps";
         display-filebrowser = " File";
       };
       theme =

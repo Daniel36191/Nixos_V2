@@ -14,6 +14,6 @@ in
   # home.packages = with pkgs; [
   #   hyprpanel
   # ];
-	# home.file.".config/hyprpanel/config.json".text = lib.strings.concatStrings [ config ];
-	# home.file.".config/hyprpanel/theme.json".text = lib.strings.concatStrings [ theme ];
+  # home.file.".config/hyprpanel/config.json".text = lib.strings.concatStrings [ config ];
+  # home.file.".config/hyprpanel/theme.json".text = lib.strings.concatStrings [ theme ];
 }

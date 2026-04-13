@@ -1,7 +1,6 @@
-self: pkgs:
-{
+self: pkgs: {
   redhat-nerd = pkgs.redhat-official-fonts.overrideAttrs (old: {
-    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
       pkgs.nerd-font-patcher
     ];
     postInstall = ''

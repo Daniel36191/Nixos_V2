@@ -5,10 +5,10 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [    
+  environment.systemPackages = with pkgs; [
     nautilus
-    turtle ## git for nautilus
-    code-nautilus ## open in code
+    turtle # # git for nautilus
+    code-nautilus # # open in code
     nautilus-python
   ];
   services = {
@@ -40,7 +40,7 @@
   # environment.sessionVariables = {
   #   NAUTILUS_4_EXTENSION_DIR = "${config.system.path}/lib/nautilus/extensions-4";
   # };
-  # environment.pathsToLink = [ 
-  #  "/share/nautilus-python/extensions" 
-  # ]; 
+  # environment.pathsToLink = [
+  #  "/share/nautilus-python/extensions"
+  # ];
 }

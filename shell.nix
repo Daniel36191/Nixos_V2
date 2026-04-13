@@ -1,10 +1,11 @@
-{ pkgs ? import <nixpkgs> {} }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 
 pkgs.mkShell {
   buildInputs = with pkgs; [
-    nix-prefetch-scripts ## Every Prefetch
+    nix-prefetch-scripts # # Every Prefetch
   ];
 
-  shellHook = ''
-  '';
+  shellHook = "";
 }

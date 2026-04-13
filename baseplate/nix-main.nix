@@ -25,14 +25,13 @@
     ];
   };
 
-
   ###########
   ## Nixos ##
   ###########
 
   environment.variables = {
-		NIX_HOST = config.mod.host;
-	};
+    NIX_HOST = config.mod.host;
+  };
 
   nix = {
     settings = {

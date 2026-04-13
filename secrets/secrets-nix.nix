@@ -6,7 +6,7 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    inputs.agenix.packages.${system}.default ## Cli tool
+    inputs.agenix.packages.${system}.default # # Cli tool
   ];
 
   age.secrets = {

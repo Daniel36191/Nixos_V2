@@ -17,7 +17,6 @@ in
     updateinput = "flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
     cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
 
-
     ## Alterntives
     mi = "${pkgs.micro}/bin/micro";
     cat = "${pkgs.bat}/bin/bat";
@@ -37,7 +36,6 @@ in
     scrcpy = "${pkgs.scrcpy}/bin/scrcpy --video-codec=h264 
       --video-encoder=OMX.google.h264.encoder --render-driver=opengl";
     stopwatch = "${pkgs.clock-rs}/bin/clock-rs stopwatch";
-
 
     ## Compatibility
     mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=

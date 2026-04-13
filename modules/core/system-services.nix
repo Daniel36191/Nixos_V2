@@ -7,16 +7,16 @@
 {
   ## Networking
   networking = {
-  networkmanager.enable = true;
-  hostName = hostname;
+    networkmanager.enable = true;
+    hostName = hostname;
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  firewall.enable = firewall;
-};
-environment.systemPackages = with pkgs; [
-  networkmanagerapplet
-];
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    firewall.enable = firewall;
+  };
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+  ];
 
   ## Device dection
   services.libinput = {
@@ -36,7 +36,7 @@ environment.systemPackages = with pkgs; [
       drivers = [
       ];
     };
-  ipp-usb.enable = true;
+    ipp-usb.enable = true;
   };
 
   ## Avahi Dns services

@@ -6,27 +6,26 @@
 let
 in
 {
-    environment.systemPackages = with pkgs; [
-        pdfarranger
-        onlyoffice-desktopeditors
-        obsidian ## Notes
-    ];
+  environment.systemPackages = with pkgs; [
+    pdfarranger
+    onlyoffice-desktopeditors
+    obsidian # # Notes
+  ];
 
-    fonts.packages = with pkgs; [
-      corefonts
-    ];
+  fonts.packages = with pkgs; [
+    corefonts
+  ];
 
-    services.flatpak = {
+  services.flatpak = {
     packages = [
-        "com.tdameritrade.ThinkOrSwim"
+      "com.tdameritrade.ThinkOrSwim"
     ];
   };
 
-
-    #################
-    ## Thunderbird ## (E-Mail)
-    #################
-      programs.thunderbird = {
-       enable = true;
-      };
+  #################
+  ## Thunderbird ## (E-Mail)
+  #################
+  programs.thunderbird = {
+    enable = true;
+  };
 }

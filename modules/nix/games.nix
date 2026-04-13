@@ -1,15 +1,15 @@
 {
-    pkgs,
-    config,
-    inputs,
-    pkgs-stable,
-    nixpkgs-personal,
-    ...
+  pkgs,
+  config,
+  inputs,
+  pkgs-stable,
+  nixpkgs-personal,
+  ...
 }:
 let
 in
 {
-    environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     ## Minecraft
     prismlauncher
     # glfw3-minecraft
@@ -30,7 +30,6 @@ in
     winetricks
     steamtinkerlaunch
     umu-launcher
-    
 
     ## Lossless Scaling on linux (only for vulkan)
     # lsfg-vk
@@ -50,18 +49,17 @@ in
     ## Tracking
     # aitrack
     # slimevr
+  ];
+
+  ##############
+  ## FlatPaks ##
+  ##############
+
+  services.flatpak = {
+    packages = [
+      "org.vinegarhq.Sober" # # roblox
     ];
-
-    ##############
-    ## FlatPaks ##
-    ##############
-
-    services.flatpak = {
-      packages = [
-        "org.vinegarhq.Sober" ## roblox
-      ];
-    };
-
+  };
 
   ###########
   ## Steam ##
@@ -71,13 +69,13 @@ in
     enable = true;
     gamescopeSession.enable = true;
     protontricks.enable = true;
-    extest.enable = true; ## For wayland and controlers
+    extest.enable = true; # # For wayland and controlers
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = false;
     package = pkgs.steam.override {
       extraEnv = {
-        MANGOHUD = true; ## Defaults mangohud on for every game
+        MANGOHUD = true; # # Defaults mangohud on for every game
         OBS_VKCAPTURE = true;
         RADV_TEX_ANISO = 16;
       };
@@ -93,27 +91,29 @@ in
     ];
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp ## for VRC
+      inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp # # for VRC
       steamtinkerlaunch
       # nixpkgs-personal.proton-vkvr
     ];
   };
-   boot = {
+  boot = {
     ## Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
-   };
+  };
 
   ################
   ## Game Fixes ##
   ################
-  system.activationScripts.vrcpics = let 
-    vrc-pics-path = "/home/${config.mod.username}/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/Pictures/VRChat/";
-  in ''
-    if [[ -d ${vrc-pics-path} ]]; then
-      ln -sf ${vrc-pics-path} /home/${config.mod.username}/Pictures  
-    fi
-    
-  '';
+  system.activationScripts.vrcpics =
+    let
+      vrc-pics-path = "/home/${config.mod.username}/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/Pictures/VRChat/";
+    in
+    ''
+      if [[ -d ${vrc-pics-path} ]]; then
+        ln -sf ${vrc-pics-path} /home/${config.mod.username}/Pictures  
+      fi
+
+    '';
 }

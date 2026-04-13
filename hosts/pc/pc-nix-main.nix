@@ -10,7 +10,7 @@
   ## Networking ##
   ################
 
-  # networking = { 
+  # networking = {
   #   networkmanager = {
   #     insertNameservers = [
   #       # "192.168.0.141"
@@ -19,7 +19,6 @@
   #   };
   #   resolvconf.enable = false; ## Needed for insertNameservers to work?
   # };
-
 
   ##################
   ## Boot Entries ##

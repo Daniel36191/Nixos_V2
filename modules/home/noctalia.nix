@@ -1,4 +1,4 @@
-{ 
+{
   lib,
   inputs,
   config,
@@ -282,7 +282,8 @@
             {
               id = "NightLight";
             }
-          ] ++ lib.optional (if config.mod.host != "pc" then true else false) [
+          ]
+          ++ lib.optional (if config.mod.host != "pc" then true else false) [
             {
               id = "PowerProfile";
             }

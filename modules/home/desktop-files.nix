@@ -63,8 +63,11 @@
     exec = "steam steam://rungameid/244210 %u";
     icon = "steam_icon_244210";
     comment = "Assetto Corsa Racing Simulator";
-    categories = [ "Game" "Simulation" ];
+    categories = [
+      "Game"
+      "Simulation"
+    ];
     mimeType = [ "x-scheme-handler/acmanager" ];
-    };
+  };
 
 }

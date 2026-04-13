@@ -16,19 +16,20 @@
   ## On recent AMD CPUs this can be more energy efficient.
 
   hardware.cpu.amd.updateMicrocode = lib.mkForce config.hardware.enableRedistributableFirmware;
-  boot = let
+  boot =
+    let
       kver = config.boot.kernelPackages.kernel.version;
-  in
-  lib.mkMerge [
-    (lib.mkIf ((lib.versionAtLeast kver "5.17") && (lib.versionOlder kver "6.1")) {
-      kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
-      kernelModules = [ "amd-pstate" ];
-    })
-    (lib.mkIf ((lib.versionAtLeast kver "6.1") && (lib.versionOlder kver "6.3")) {
-      kernelParams = [ "amd_pstate=passive" ];
-    })
-    (lib.mkIf (lib.versionAtLeast kver "6.3") {
-      kernelParams = [ "amd_pstate=active" ];
-    })
-  ];
+    in
+    lib.mkMerge [
+      (lib.mkIf ((lib.versionAtLeast kver "5.17") && (lib.versionOlder kver "6.1")) {
+        kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
+        kernelModules = [ "amd-pstate" ];
+      })
+      (lib.mkIf ((lib.versionAtLeast kver "6.1") && (lib.versionOlder kver "6.3")) {
+        kernelParams = [ "amd_pstate=passive" ];
+      })
+      (lib.mkIf (lib.versionAtLeast kver "6.3") {
+        kernelParams = [ "amd_pstate=active" ];
+      })
+    ];
 }

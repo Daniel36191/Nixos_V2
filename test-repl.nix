@@ -1,24 +1,29 @@
 let
-  lib = (import <nixpkgs> {}).lib;
+  lib = (import <nixpkgs> { }).lib;
   ## Config;
   allowedSubFolders = "nix|home|core";
 
   ## Functions
-  getNixFiles = dir:
-    lib.filter
-      (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null)
-      (lib.filesystem.listFilesRecursive dir);
+  getNixFiles =
+    dir:
+    lib.filter (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null) (
+      lib.filesystem.listFilesRecursive dir
+    );
 
-  matchFile = dir: f: builtins.match
-    "${toString dir}/(${allowedSubFolders})/(.+)\\.nix"
-    (toString f);
+  matchFile = dir: f: builtins.match "${toString dir}/(${allowedSubFolders})/(.+)\\.nix" (toString f);
 
-  getModulePaths = dir:
-    lib.lists.concatMap
-      (f: let m = matchFile dir f; in if m == null then [] else [ (builtins.elemAt m 1) ])
-      (getNixFiles dir);
+  getModulePaths =
+    dir:
+    lib.lists.concatMap (
+      f:
+      let
+        m = matchFile dir f;
+      in
+      if m == null then [ ] else [ (builtins.elemAt m 1) ]
+    ) (getNixFiles dir);
 
-  toAttrPath = path:
+  toAttrPath =
+    path:
     let
       parts = lib.splitString "/" path;
       len = builtins.length parts;
@@ -26,14 +31,17 @@ let
       secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
       dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
     in
-      dedupedParts ++ [ "enable" ];
+    dedupedParts ++ [ "enable" ];
 
-  autoOptions = dir:
-    lib.foldl' lib.recursiveUpdate {}
-      (map
-        (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; }))
-        (getModulePaths dir));
-in {
+  autoOptions =
+    dir:
+    lib.foldl' lib.recursiveUpdate { } (
+      map (p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; })) (
+        getModulePaths dir
+      )
+    );
+in
+{
   ## Outputs
   r = autoOptions ./modules;
   f = lib.removeSuffix ".nix" (baseNameOf __curPos.file);

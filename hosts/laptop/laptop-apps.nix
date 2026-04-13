@@ -7,12 +7,12 @@
 let
 in
 {
-    environment.systemPackages = with pkgs; [
-      framework-tool
-      nixpkgs-personal.lulzbot-cura
-    ];
+  environment.systemPackages = with pkgs; [
+    framework-tool
+    nixpkgs-personal.lulzbot-cura
+  ];
 
-    services.flatpak = {
+  services.flatpak = {
     packages = [
     ];
   };

@@ -7,20 +7,20 @@
 let
 in
 {
-    environment.systemPackages = with pkgs; [
-        streamcontroller
-        nixpkgs-personal.lulzbot-cura
-        # lan-mouse ## Software KVM
-    ];
+  environment.systemPackages = with pkgs; [
+    streamcontroller
+    nixpkgs-personal.lulzbot-cura
+    # lan-mouse ## Software KVM
+  ];
 
-    services.udev.packages = [ pkgs.streamdeck-ui ]; ## For Stream Controller
+  services.udev.packages = [ pkgs.streamdeck-ui ]; # # For Stream Controller
 
-    services.flatpak = {
+  services.flatpak = {
     packages = [
-        # "com.core447.StreamController"
+      # "com.core447.StreamController"
     ];
   };
-    services.nix-serve = {
+  services.nix-serve = {
     enable = false;
     package = pkgs.nix-serve-ng;
   };

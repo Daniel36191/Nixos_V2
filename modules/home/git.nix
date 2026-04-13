@@ -15,8 +15,9 @@
   };
 
   ## SSH Client
-  home.file.".ssh/ssh-${config.mod.host}.pub" = { 
-    text = config.mod.sshPublicLey; force = true; 
+  home.file.".ssh/ssh-${config.mod.host}.pub" = {
+    text = config.mod.sshPublicLey;
+    force = true;
   };
   programs.ssh = {
     enable = true;
@@ -34,7 +35,7 @@
         userKnownHostsFile = "~/.ssh/known_hosts";
         controlMaster = "no";
         controlPath = "~/.ssh/master-%r@%n:%p";
-        controlPersist = "no"; 
+        controlPersist = "no";
       };
 
       "lillypond.local" = {

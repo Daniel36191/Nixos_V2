@@ -16,19 +16,17 @@
     appimage-run
 
     ## Alternitives
-    eza ## ls
-    bat ## cat
-    nh ## nixos ...
-    uutils-coreutils-noprefix ## most coreutils
-
-
+    eza # # ls
+    bat # # cat
+    nh # # nixos ...
+    uutils-coreutils-noprefix # # most coreutils
 
     ###################
     ## GUI sys tools ##
     ###################
 
-    imv ## Immage viewer
-    mpv ## Video viewer
+    imv # # Immage viewer
+    mpv # # Video viewer
 
     #################
     ## Dependencys ##
@@ -37,7 +35,7 @@
     ## System
     ffmpeg
     file
-    
+
     ## File Manager
     unzip
     unrar

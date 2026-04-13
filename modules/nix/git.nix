@@ -11,7 +11,7 @@
       PasswordAuthentication = true;
       AllowUsers = null;
       X11Forwarding = false;
-      PermitRootLogin = "yes"; ## "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "yes"; # # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       PubkeyAuthentication = "yes";
     };
   };

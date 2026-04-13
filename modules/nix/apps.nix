@@ -23,7 +23,7 @@ in
     # google-chrome
 
     bitwarden-desktop
-    
+
     rustdesk-flutter
     kdePackages.kalk
     baobab
@@ -32,11 +32,11 @@ in
     mission-center
     # nvitop
     nvtopPackages.nvidia
-    lact ## Gpu Overclocking
-    ncdu ## wiztree
+    lact # # Gpu Overclocking
+    ncdu # # wiztree
     # xarchiver ## Archive Manager
-    kdePackages.ark ## Archive Manager
-    qutebrowser ## For Webapps
+    kdePackages.ark # # Archive Manager
+    qutebrowser # # For Webapps
     remmina
 
     ## Discord clients
@@ -63,7 +63,6 @@ in
     waypipe
     xwayland-satellite
 
-
     ## KDE Dolphin
     # # kdePackages.dolphin
     # kdePackages.qtsvg
@@ -87,13 +86,10 @@ in
     # '';
     # }))
 
-
-
   ];
 
   ## Run anything: https://github.com/nix-community/comma
   programs.nix-index-database.comma.enable = true;
-
 
   ##############
   ## FlatPaks ##
@@ -113,7 +109,6 @@ in
       "com.github.tchx84.Flatseal"
     ];
   };
-
 
   ############
   ## Thunar ## File Man
