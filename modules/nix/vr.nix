@@ -2,11 +2,11 @@
   config,
   lib,
   pkgs,
-  unstable,
+  pkgs-unstable,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
@@ -17,7 +17,7 @@ in
 
       pkgs-unstable.wayvr
 
-      pkgs-unstable.opencomposite # # Translation Layer
+      pkgs-unstable.opencomposite # Translation Layer
       # slimevr ## slime vr :)
 
       ## Hotas remapping

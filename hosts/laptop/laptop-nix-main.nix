@@ -28,10 +28,10 @@
     ## App Configs
     ../nix-configs/app-configs/starship.nix
     ../nix-configs/app-configs/fish.nix
-    ../nix-configs/app-configs/shell.nix # # fix the cleannix command to use nh
+    ../nix-configs/app-configs/shell.nix # fix the cleannix command to use nh
 
     ## Theme
-    ../nix-configs/theme.nix # # blacklist libreofficr from stylix
+    ../nix-configs/theme.nix # blacklist libreofficr from stylix
     ../nix-configs/sound.nix
     ../nix-configs/wm-modules/hyprland.nix
     ../nix-configs/dms.nix

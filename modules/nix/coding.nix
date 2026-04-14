@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -15,7 +15,7 @@ in
       git
       github-desktop
 
-      filezilla # # Fstp client
+      filezilla # Fstp client
 
       termius
 
@@ -29,10 +29,10 @@ in
       jetbrains.idea
 
       ## Language servers
-      nixd # # Nix-lang interpiter
-      nil # # Nix-lang server
-      nixfmt # # Nix-lang formattor
-      black # # Python
+      nixd # Nix-lang interpiter
+      nil # Nix-lang server
+      nixfmt # Nix-lang formattor
+      black # Python
 
       ## Java
       jdk21

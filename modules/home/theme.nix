@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
   folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
     flavor = "macchiato";

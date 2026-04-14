@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  pkgs,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -17,14 +17,14 @@ in
         PasswordAuthentication = true;
         AllowUsers = null;
         X11Forwarding = false;
-        PermitRootLogin = "yes"; # # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+        PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
         PubkeyAuthentication = "yes";
       };
     };
 
     age.secrets = {
-      "ssh-${config.mod.host}" = {
-        path = "/home/${config.mod.username}/.ssh/ssh-${config.mod.host}";
+      "ssh-${var.host}" = {
+        path = "/home/${config.mod.username}/.ssh/ssh-${var.host}";
         owner = config.mod.username;
         mode = "600";
       };

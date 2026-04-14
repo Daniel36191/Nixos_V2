@@ -44,28 +44,28 @@ in
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
+  };
 
-    security = {
-      rtkit.enable = true;
-      polkit = {
-        enable = true;
-        extraConfig = ''
-          polkit.addRule(function(action, subject) {
-            if (
-              subject.isInGroup("users")
-                && (
-                  action.id == "org.freedesktop.login1.reboot" ||
-                  action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-                  action.id == "org.freedesktop.login1.power-off" ||
-                  action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-                )
+  security = {
+    rtkit.enable = true;
+    polkit = {
+      enable = true;
+      extraConfig = ''
+        polkit.addRule(function(action, subject) {
+          if (
+            subject.isInGroup("users")
+              && (
+                action.id == "org.freedesktop.login1.reboot" ||
+                action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+                action.id == "org.freedesktop.login1.power-off" ||
+                action.id == "org.freedesktop.login1.power-off-multiple-sessions"
               )
-            {
-              return polkit.Result.YES;
-            }
-          })
-        '';
-      };
+            )
+          {
+            return polkit.Result.YES;
+          }
+        })
+      '';
     };
   };
 }

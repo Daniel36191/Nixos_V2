@@ -2,18 +2,18 @@
   config,
   lib,
   pkgs,
-  vars,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
   config = lib.mkIf mod.enable {
     services.borgbackup = {
       repos = {
-        "${config.mod.hostname}" = {
+        "${var.hostname}" = {
           path = "/media/archive";
           group = "borg";
           user = "borg";
@@ -35,7 +35,7 @@ in
       "borg" = {
         isSystemUser = true;
         createHome = false;
-        home = config.services.borgbackup.repos."${config.mod.hostname}".path;
+        home = config.services.borgbackup.repos."${var.hostname}".path;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv464AZB6omIM7lrgKqZKnK62iP72YOrcYsV9pplsyF lillypond@lillypond"
         ];

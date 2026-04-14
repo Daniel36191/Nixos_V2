@@ -5,10 +5,6 @@
 let
 in
 {
-  imports = [
-    ./framework/amd.nix
-  ];
-
   services = {
     ## To update bios and hardware controlers
     fwupd.enable = true;

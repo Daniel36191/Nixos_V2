@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  pkgs,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -23,7 +23,7 @@ in
       extraSetFlags = [
         "--operator=${config.mod.username}"
       ];
-      authKeyFile = config.age.secrets."tailscale-${config.mod.host}".path;
+      authKeyFile = config.age.secrets."tailscale-${var.host}".path;
     };
 
     ## For Exit Node

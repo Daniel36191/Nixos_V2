@@ -3,26 +3,26 @@
   lib,
   pkgs,
   inputs,
-  spotifyPin,
-  personal,
+  pkgs-spotifyPin,
+  pkgs-personal,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
+  imports = [
+    inputs.spicetify-nix.nixosModules.default
+  ];
   config = lib.mkIf mod.enable {
-    imports = [
-      inputs.spicetify-nix.nixosModules.default
-    ];
 
     environment.systemPackages = with pkgs; [
       # bespokesynth
-      nixpkgs-personal.bespokesynth
-      # nixpkgs-personal.chataigne
-      nixpkgs-personal.sendmidi
-      nixpkgs-personal.receivemidi
+      pkgs-personal.bespokesynth
+      # pkgs-personal.chataigne
+      pkgs-personal.sendmidi
+      pkgs-personal.receivemidi
       qpwgraph
       pulseaudioFull
       pavucontrol
@@ -31,8 +31,8 @@ in
       ## Plugins
       rnnoise-plugin
       # lsp-plugins ## A lot of plugins
-      speech-denoiser # # rnnoise
-      cardinal # # Custom .desktop file in desktop-files.nix
+      speech-denoiser # rnnoise
+      cardinal # Custom .desktop file in desktop-files.nix
       # rPackages.sparta
     ];
 
@@ -74,7 +74,7 @@ in
       };
     };
     boot = {
-      kernelModules = [ "snd-seq-dummy" ]; # # Alsa Midi-Through-Port-0
+      kernelModules = [ "snd-seq-dummy" ]; # Alsa Midi-Through-Port-0
     };
 
     # Enable sound with pulse
@@ -92,13 +92,13 @@ in
         spotifyPackage = pkgs-spotifyPin.spotify;
 
         enabledExtensions = with spicePkgs.extensions; [
-          shuffle # # shuffle+ (special characters are sanitized out of extension names)
+          shuffle # shuffle+ (special characters are sanitized out of extension names)
           adblock
           hidePodcasts
           bookmark
           trashbin
           powerBar
-          playNext # # Add to queue
+          playNext # Add to queue
           # addToQueueTop  ## Also add to queue
 
           ## Not working as of this time builds but no output

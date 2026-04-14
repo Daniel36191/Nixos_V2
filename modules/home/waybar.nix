@@ -5,15 +5,12 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in
 with lib;
 {
   config = mkIf mod.enable {
-    imports = [
-      ./scripts.nix
-    ];
     home.packages = with pkgs; [
       swaynotificationcenter
     ];

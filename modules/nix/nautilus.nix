@@ -5,14 +5,14 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
     environment.systemPackages = with pkgs; [
       nautilus
-      turtle # # git for nautilus
-      code-nautilus # # open in code
+      turtle # git for nautilus
+      code-nautilus # open in code
       nautilus-python
     ];
     services = {

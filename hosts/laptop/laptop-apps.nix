@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  nixpkgs-personal,
+  pkgs-pkgs-personal,
   ...
 }:
 let
@@ -9,7 +9,7 @@ in
 {
   environment.systemPackages = with pkgs; [
     framework-tool
-    nixpkgs-personal.lulzbot-cura
+    pkgs-personal.lulzbot-cura
   ];
 
   services.flatpak = {

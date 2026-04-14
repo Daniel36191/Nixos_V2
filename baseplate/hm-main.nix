@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  host,
   ...
 }:
 let
@@ -12,7 +13,9 @@ let
 in
 {
   ## Import Modules
-  imports = importsModules;
+  imports = (importsModules ../modules/home) ++ [
+    ../hosts/${host}/${host}-hm-main.nix
+  ];
 
   home.username = "${config.mod.username}";
   home.homeDirectory = "/home/${config.mod.username}";

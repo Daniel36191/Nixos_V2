@@ -3,10 +3,11 @@
   lib,
   pkgs,
   inputs,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -35,12 +36,12 @@ in
       plugins = [
         inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
       ]
-      # ++ (lib.optionals (config.mod.host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
+      # ++ (lib.optionals (var.host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
       ;
       extraConfig =
         let
           hyprland-main = builtins.readFile ./hyprland-main.conf;
-          hyprland-machine = builtins.readFile ./hyprland-${config.mod.host}.conf;
+          hyprland-machine = builtins.readFile ./hyprland-${var.host}.conf;
         in
         lib.strings.concatStrings [
           hyprland-main

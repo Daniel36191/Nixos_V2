@@ -4,18 +4,18 @@
   pkgs,
   inputs,
   stable,
-  personal,
+  pkgs-personal,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
   config = lib.mkIf mod.enable {
     environment.systemPackages = with pkgs; [
       obs-studio
-      v4l-utils # # Obs virtual cam
+      v4l-utils # Obs virtual cam
       # inputs.blender-cuda.packages.${pkgs.system}.default
       # gimp
       pinta
@@ -23,7 +23,7 @@ in
       losslesscut-bin
       # prusa-slicer
       # orca-slicer ## Crashes on opening webgui
-      # nixpkgs-personal.orca-beta
+      # pkgs-personal.orca-beta
       freecad
       # handbrake ## video parser ## fails to build
       soundconverter
@@ -41,7 +41,7 @@ in
         "io.github.nate_xyz.Paleta"
         "com.prusa3d.PrusaSlicer"
         "fr.handbrake.ghb"
-        "org.vinegarhq.Vinegar" # # roblox editor
+        "org.vinegarhq.Vinegar" # roblox editor
       ];
     };
 

@@ -2,10 +2,11 @@
   config,
   lib,
   pkgs,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -21,7 +22,7 @@ in
     };
 
     ## SSH Client
-    home.file.".ssh/ssh-${config.mod.host}.pub" = {
+    home.file.".ssh/ssh-${var.host}.pub" = {
       text = config.mod.sshPublicLey;
       force = true;
     };
@@ -31,7 +32,7 @@ in
       matchBlocks = {
         "*" = {
           port = 22;
-          identityFile = config.age.secrets."ssh-${config.mod.host}".path;
+          identityFile = config.age.secrets."ssh-${var.host}".path;
           forwardAgent = false;
           addKeysToAgent = "yes";
           compression = false;

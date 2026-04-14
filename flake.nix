@@ -1,52 +1,31 @@
 {
   description = "NixOS";
   inputs = {
-    #############
-    ## Nixpkgs ##
-    #############
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
-
-    ##########
-    ## Pins ##
-    ##########
-
-    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696"; # # spotify version 1.2.48.405.gf2c48e6f
-    # nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb"; ## spotify version 1.2.60.564.gcc6305cb ## Now playing bugged
-
-    ############
-    ## Inputs ##
-    ############
-
-    ## Apps ##
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender"; # # Blender-bin (now with cuda)
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
     hyprland = {
-      url = "github:hyprwm/Hyprland/main"; # # Unstable Git For windwo rules, unpin for v0.53.*
+      url = "github:hyprwm/Hyprland/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprdynamicmonitors = {
-      url = "github:fiffeek/hyprdynamicmonitors";
-    };
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell"; # # Shell and theme
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    dms.url = "github:AvengeMedia/DankMaterialShell";
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,20 +35,16 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # millennium.url = "git+https://github.com/SteamClientHomebrew/Millennium"; ## Custom Steam Client
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ## System ##
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; # # For Framework
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -92,7 +67,6 @@
       quickshell,
       dms,
       noctalia,
-      # millennium,
       nix-index-database,
       agenix,
       nixos-hardware,
@@ -101,15 +75,10 @@
     let
       system = "x86_64-linux";
 
-      mod =
-        (nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./Baseplate/user-config.nix ];
-        }).config.mod;
+      var = import ./baseplate/user-config.nix;
 
-      ## Common function to create arguments for systems
       commonArgs = {
-        ## Pinning Nixpkgs versions
+        inherit inputs var;
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
           inherit system;
           config.allowUnfree = true;
@@ -122,20 +91,19 @@
           inherit system;
           config.allowUnfree = true;
         };
+        pkgs-personal = import nixpkgs-personal {
+          inherit system;
+        };
       };
 
       commonNixModules = [
         ./baseplate/module-options.nix
         ./baseplate/nix-main.nix
-        ./baseplate/options.nix
         ./baseplate/overlays.nix
-        ./baseplate/user-config.nix
-        # nixpkgs-xr.nixosModules.nixpkgs-xr
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
-        # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
         nix-index-database.nixosModules.default
       ];
@@ -143,61 +111,54 @@
       commonHmModules = [
         ./baseplate/hm-main.nix
       ];
+
+      mkHost =
+        host: extraNixModules: extraHmImports:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = commonArgs // {
+            inherit host;
+          };
+          modules = [
+            {
+              nixpkgs.config.allowUnfree = true;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                users.${var.username}.imports = commonHmModules ++ extraHmImports;
+              };
+            }
+          ]
+          ++ commonNixModules
+          ++ extraNixModules;
+        };
+
     in
     {
-
-      ########
-      ## Pc ##
-      ########
-
       nixosConfigurations = {
-        "pc" = nixpkgs.lib.nixosSystem {
-          specialArgs = commonArgs;
-          modules = [
-            {
-              nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = commonArgs;
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.${mod.username} = {
-                  imports = [
-                    ./config/pc/hm-main-pc.nix
-                  ]
-                  ++ commonHmModules;
-                };
-              };
-            }
-            ./hosts/pc/pc-nix-main.nix
-          ]
-          ++ commonNixModules;
-        };
-      };
+        pc =
+          mkHost "pc"
+            [
+              # Nix Modules
+              ./hosts/pc/pc-nix-main.nix
+            ]
+            [
+              # Hm Modules
+              ./config/pc/hm-main-pc.nix
+            ];
 
-      ############
-      ## Laptop ##
-      ############
-
-      nixosConfigurations = {
-        "laptop" = nixpkgs.lib.nixosSystem {
-          specialArgs = commonArgs;
-          modules = [
-            {
-              nixpkgs.config.allowUnfree = true;
-              home-manager.extraSpecialArgs = commonArgs;
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users.${mod.username} = import ./config/laptop/hm-main-laptop.nix;
-              };
-            }
-            nixos-hardware.nixosModules.framework-13-7040-amd
-            ./hosts/laptop/laptop-hm-main.nix
-          ]
-          ++ commonNixModules;
-        };
+        laptop =
+          mkHost "laptop"
+            [
+              # Nix Modules
+              nixos-hardware.nixosModules.framework-13-7040-amd
+              ./hosts/laptop/laptop-nix-main.nix
+            ]
+            [
+              # Hm Modules
+              ./config/laptop/hm-main-laptop.nix
+            ];
       };
     };
 }

@@ -2,6 +2,8 @@
   pkgs,
   config,
   lib,
+  host,
+  var,
   ...
 }:
 let
@@ -13,7 +15,16 @@ let
 in
 {
   ## Import Modules
-  imports = importsModules;
+  imports =
+    (importsModules ../modules/nix)
+    ++ (importsModules ../modules/core)
+    ++ [
+      ../hosts/${host}/${host}-nix-main.nix
+      ../hosts/${host}/${host}-hardware.nix
+      ../hosts/${host}/${host}-devices.nix
+      ../hosts/${host}/${host}-config.nix
+      ../hosts/${host}/${host}-apps.nix
+    ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
@@ -41,7 +52,7 @@ in
   ###########
 
   environment.variables = {
-    NIX_HOST = config.mod.host;
+    NIX_HOST = var.host;
   };
 
   nix = {

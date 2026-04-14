@@ -2,21 +2,17 @@
   config,
   lib,
   pkgs,
-  unstable,
-  personal,
+  pkgs-unstable,
+  pkgs-personal,
   inputs,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
   config = lib.mkIf mod.enable {
-    imports = [
-      ./sys-apps.nix
-      ./nautilus.nix
-    ];
     environment.systemPackages = with pkgs; [
       ###############
       ## User apps ##
@@ -35,11 +31,11 @@ in
       mission-center
       # nvitop
       nvtopPackages.nvidia
-      lact # # Gpu Overclocking
-      ncdu # # wiztree
+      lact # Gpu Overclocking
+      ncdu # wiztree
       # xarchiver ## Archive Manager
-      kdePackages.ark # # Archive Manager
-      qutebrowser # # For Webapps
+      kdePackages.ark # Archive Manager
+      qutebrowser # For Webapps
       remmina
 
       ## Discord clients
@@ -50,7 +46,7 @@ in
       # })
       equibop
 
-      nixpkgs-personal.teamspeak
+      pkgs-personal.teamspeak
       # teamspeak6-client
 
       telegram-desktop
@@ -67,11 +63,11 @@ in
       xwayland-satellite
 
       ## KDE Dolphin
-      # # kdePackages.dolphin
+      ## kdePackages.dolphin
       # kdePackages.qtsvg
       # kdePackages.kio-fuse #to mount remote filesystems via FUSE
       # kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-      # ## Previews Check Arch Wiki for this: https://wiki.archlinux.org/title/Dolphin#File_previews
+      ### Previews Check Arch Wiki for this: https://wiki.archlinux.org/title/Dolphin#File_previews
       # kdePackages.kdegraphics-thumbnailers ## Pics, PDF, & Blender??
       # kdePackages.ffmpegthumbs ## videos
       # icoutils ## ico

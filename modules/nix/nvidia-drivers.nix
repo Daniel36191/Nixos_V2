@@ -16,7 +16,7 @@
     ];
   };
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia-container-toolkit.enable = true; # # For Containers to use gpu
+  hardware.nvidia-container-toolkit.enable = true; # For Containers to use gpu
   hardware.nvidia = {
     modesetting.enable = true;
     videoAcceleration = true;

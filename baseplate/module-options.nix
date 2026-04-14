@@ -47,5 +47,5 @@ let
 in
 {
   ## Outputs
-  options.modules = autoOptions modulesFolder;
+  options.mod = autoOptions modulesFolder;
 }

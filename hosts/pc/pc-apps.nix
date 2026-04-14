@@ -1,7 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
-  nixpkgs-personal,
+  pkgs-pkgs-personal,
   ...
 }:
 let
@@ -9,11 +9,11 @@ in
 {
   environment.systemPackages = with pkgs; [
     streamcontroller
-    nixpkgs-personal.lulzbot-cura
+    pkgs-personal.lulzbot-cura
     # lan-mouse ## Software KVM
   ];
 
-  services.udev.packages = [ pkgs.streamdeck-ui ]; # # For Stream Controller
+  services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
 
   services.flatpak = {
     packages = [

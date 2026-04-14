@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
@@ -13,8 +13,8 @@ in
     programs.zoxide = {
       enable = true;
       flags = [
-        "--no-cmd" # # Remove z command
-        "--cmd cd" # # Replace cd command
+        "--no-cmd" # Remove z command
+        "--cmd cd" # Replace cd command
       ];
       enableBashIntegration = true;
       enableFishIntegration = true;

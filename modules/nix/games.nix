@@ -4,11 +4,11 @@
   pkgs,
   inputs,
   stable,
-  personal,
+  pkgs-personal,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
@@ -17,7 +17,7 @@ in
       ## Minecraft
       prismlauncher
       # glfw3-minecraft
-      nixpkgs-personal.glfw-minecraft-wayland
+      pkgs-personal.glfw-minecraft-wayland
 
       ## Runners
       lutris
@@ -61,7 +61,7 @@ in
 
     services.flatpak = {
       packages = [
-        "org.vinegarhq.Sober" # # roblox
+        "org.vinegarhq.Sober" # roblox
       ];
     };
 
@@ -73,13 +73,13 @@ in
       enable = true;
       gamescopeSession.enable = true;
       protontricks.enable = true;
-      extest.enable = true; # # For wayland and controlers
+      extest.enable = true; # For wayland and controlers
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = false;
       package = pkgs.steam.override {
         extraEnv = {
-          MANGOHUD = true; # # Defaults mangohud on for every game
+          MANGOHUD = true; # Defaults mangohud on for every game
           OBS_VKCAPTURE = true;
           RADV_TEX_ANISO = 16;
         };
@@ -95,9 +95,9 @@ in
       ];
       extraCompatPackages = with pkgs; [
         proton-ge-bin
-        inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp # # for VRC
+        inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp # for VRC
         steamtinkerlaunch
-        # nixpkgs-personal.proton-vkvr
+        # pkgs-personal.proton-vkvr
       ];
     };
     boot = {

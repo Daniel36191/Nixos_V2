@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 
 in
 {
@@ -14,7 +14,7 @@ in
     environment.systemPackages = with pkgs; [
       pdfarranger
       onlyoffice-desktopeditors
-      obsidian # # Notes
+      obsidian # Notes
     ];
 
     fonts.packages = with pkgs; [

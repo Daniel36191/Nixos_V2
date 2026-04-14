@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -22,17 +22,17 @@ in
       appimage-run
 
       ## Alternitives
-      eza # # ls
-      bat # # cat
-      nh # # nixos ...
-      uutils-coreutils-noprefix # # most coreutils
+      eza # ls
+      bat # cat
+      nh # nixos ...
+      uutils-coreutils-noprefix # most coreutils
 
       ###################
       ## GUI sys tools ##
       ###################
 
-      imv # # Immage viewer
-      mpv # # Video viewer
+      imv # Immage viewer
+      mpv # Video viewer
 
       #################
       ## Dependencys ##

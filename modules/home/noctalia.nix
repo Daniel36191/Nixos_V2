@@ -3,10 +3,11 @@
   lib,
   pkgs,
   inputs,
+  var,
   ...
 }:
 let
-  mod = config.modules.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
   config = lib.mkIf mod.enable {
@@ -288,7 +289,7 @@ in
                 id = "NightLight";
               }
             ]
-            ++ lib.optional (if config.mod.host != "pc" then true else false) [
+            ++ lib.optional (if var.host != "pc" then true else false) [
               {
                 id = "PowerProfile";
               }
@@ -304,7 +305,7 @@ in
               id = "shortcuts-card";
             }
             {
-              enabled = if config.mod.host != "pc" then true else false;
+              enabled = if var.host != "pc" then true else false;
               id = "brightness-card";
             }
             {
