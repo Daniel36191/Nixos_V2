@@ -1,8 +1,19 @@
 {
   config,
+  lib,
   ...
 }:
+let
+  importsModules =
+    dir:
+    lib.filter (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null) (
+      lib.filesystem.listFilesRecursive dir
+    );
+in
 {
+  ## Import Modules
+  imports = importsModules;
+
   home.username = "${config.mod.username}";
   home.homeDirectory = "/home/${config.mod.username}";
   home.stateVersion = "25.05";

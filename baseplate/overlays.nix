@@ -1,8 +1,10 @@
 {
+  lib,
   ...
 }:
+let
+  importOverlays = dir: map import (lib.filesystem.listFilesRecursive dir);
+in
 {
-  nixpkgs.overlays = [
-    (import ../modules/overlays/red-hat-fonts.nix)
-  ];
+  nixpkgs.overlays = importOverlays ../modules/overlays;
 }

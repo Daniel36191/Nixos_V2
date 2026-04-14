@@ -1,9 +1,20 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
+let
+  importsModules =
+    dir:
+    lib.filter (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null) (
+      lib.filesystem.listFilesRecursive dir
+    );
+in
 {
+  ## Import Modules
+  imports = importsModules;
+
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
     "olm-3.2.16"
