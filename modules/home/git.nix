@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  pkgs,
-  var,
+  host,
   ...
 }:
 let
@@ -22,8 +21,8 @@ in
     };
 
     ## SSH Client
-    home.file.".ssh/ssh-${var.host}.pub" = {
-      text = config.mod.sshPublicLey;
+    home.file.".ssh/ssh-${host}.pub" = {
+      text = config.hostConf.sshPublicKey;
       force = true;
     };
     programs.ssh = {
@@ -32,7 +31,7 @@ in
       matchBlocks = {
         "*" = {
           port = 22;
-          identityFile = config.age.secrets."ssh-${var.host}".path;
+          identityFile = config.age.secrets."ssh-${host}".path;
           forwardAgent = false;
           addKeysToAgent = "yes";
           compression = false;

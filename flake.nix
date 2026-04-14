@@ -110,10 +110,12 @@
 
       commonHmModules = [
         ./baseplate/hm-main.nix
+        ./baseplate/module-options.nix
+        inputs.stylix.homeModules.stylix
       ];
 
       mkHost =
-        host: extraNixModules: extraHmImports:
+        host: extraNixModules: extraHmImports: 
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = commonArgs // {
@@ -126,12 +128,16 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${var.username}.imports = commonHmModules ++ extraHmImports;
+                extraSpecialArgs = commonArgs // {
+                  inherit host;
+                };
+                users.${var.username}.imports = commonHmModules ++ extraHmImports ++ [];
               };
             }
           ]
           ++ commonNixModules
-          ++ extraNixModules;
+          ++ extraNixModules
+          ++ [];
         };
 
     in
@@ -141,11 +147,9 @@
           mkHost "pc"
             [
               # Nix Modules
-              ./hosts/pc/pc-nix-main.nix
             ]
             [
               # Hm Modules
-              ./config/pc/hm-main-pc.nix
             ];
 
         laptop =
@@ -153,11 +157,9 @@
             [
               # Nix Modules
               nixos-hardware.nixosModules.framework-13-7040-amd
-              ./hosts/laptop/laptop-nix-main.nix
             ]
             [
               # Hm Modules
-              ./config/laptop/hm-main-laptop.nix
             ];
       };
     };

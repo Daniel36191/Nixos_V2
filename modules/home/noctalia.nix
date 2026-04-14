@@ -10,10 +10,10 @@ let
   mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
   config = lib.mkIf mod.enable {
-    imports = [
-      inputs.noctalia.homeModules.default
-    ];
     programs.noctalia-shell = {
       enable = true;
       settings = lib.mkForce {

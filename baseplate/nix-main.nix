@@ -52,7 +52,7 @@ in
   ###########
 
   environment.variables = {
-    NIX_HOST = var.host;
+    NIX_HOST = host;
   };
 
   nix = {
