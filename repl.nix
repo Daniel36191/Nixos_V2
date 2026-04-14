@@ -2,9 +2,7 @@
 let
   pkgs = (import <nixpkgs> { });
   lib = pkgs.lib;
-  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
 in
 {
-  r = modFor ./modules;
-
+  r = "Hiiii repl~";
 }
