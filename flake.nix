@@ -88,6 +88,8 @@
     #   url = "github:SaumonNet/proxmox-nixos";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs =
@@ -112,6 +114,7 @@
       agenix,
       # proxmox-nixos,
       nixos-hardware,
+      vscode-server,
       ...
     }@inputs:
     let
@@ -158,6 +161,7 @@
         # proxmox-nixos.nixosModules.proxmox-ve
         hyprdynamicmonitors.nixosModules.default
         nix-index-database.nixosModules.default
+        vscode-server.nixosModules.default
       ];
       commonHmModules = [
         agenix.homeManagerModules.default

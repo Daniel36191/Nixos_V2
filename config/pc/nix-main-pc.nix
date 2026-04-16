@@ -60,6 +60,11 @@
 		NIX_HOST = "pc";
 	};
 
+	services.vscode-server = {
+	    enable = true;
+	    enableFHS = true;
+	  };
+
   ################
   ## Networking ##
   ################
