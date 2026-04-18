@@ -1,12 +1,13 @@
 {
   config,
+  fun,
   lib,
   pkgs,
   pkgs-unstable,
   ...
 }:
 let
-  mod = config.mod.${lib.removeSuffix ".nix" (baseNameOf __curPos.file)};
+   mod = fun.getMod config __curPos.file;
 
 in
 {

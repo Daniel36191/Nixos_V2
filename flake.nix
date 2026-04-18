@@ -74,11 +74,13 @@
     }@inputs:
     let
       system = "x86_64-linux";
+      lib = nixpkgs.lib;
 
       var = import ./baseplate/user-config.nix;
+      fun = import ./baseplate/module-functions.nix {inherit lib; dir = ./modules; };
 
       commonArgs = {
-        inherit inputs var;
+        inherit inputs var fun;
         pkgs-spotifyPin = import nixpkgs-spotifyPin {
           inherit system;
           config.allowUnfree = true;
