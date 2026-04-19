@@ -5,15 +5,15 @@
   ...
 }:
 {
-environment.systemPackages = with pkgs; [
-  grub2
-];
- boot = {
+  environment.systemPackages = with pkgs; [
+    grub2
+  ];
+  boot = {
+
     ## Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ ];
     kernelModules = [ "snd-seq-dummy" ];
-
 
     ## Bootloader.
     loader = {
@@ -25,25 +25,29 @@ environment.systemPackages = with pkgs; [
         efiSupport = true;
         device = "nodev";
         ## Custom Theme
-        theme = lib.mkForce (pkgs.stdenv.mkDerivation {
-          pname = "distro-grub-themes";
-          version = "3.1";
-          src = pkgs.fetchFromGitHub {
-            owner = "AdisonCavani";
-            repo = "distro-grub-themes";
-            rev = "v3.1";
-            hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-          };
-          installPhase = "cp -r customize/nixos $out";
-        });
+        theme = lib.mkForce (
+          pkgs.stdenv.mkDerivation {
+            pname = "distro-grub-themes";
+            version = "3.1";
+            src = pkgs.fetchFromGitHub {
+              owner = "AdisonCavani";
+              repo = "distro-grub-themes";
+              rev = "v3.1";
+              hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+            };
+            installPhase = "cp -r customize/nixos $out";
+          }
+        );
       };
     };
 
-    ## Make /tmp a tmpfs
+    ## Disk/Fs
     tmp = {
-      useTmpfs = false;
+      useTmpfs = true;
       tmpfsSize = "30%";
     };
+    runMountFileChecks = true;
+    fsCheck = true;
 
     ## Appimage Support
     binfmt.registrations.appimage = {
@@ -54,28 +58,28 @@ environment.systemPackages = with pkgs; [
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    plymouth.enable = true; ## Boot screen
+    plymouth.enable = true; # # Boot screen
   };
 
   ## Security / Polkit
   security = {
-	  rtkit.enable = true;
-	  polkit.enable = true;
-	  polkit.extraConfig = ''
-	    polkit.addRule(function(action, subject) {
-	      if (
-	        subject.isInGroup("users")
-	          && (
-	            action.id == "org.freedesktop.login1.reboot" ||
-	            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-	            action.id == "org.freedesktop.login1.power-off" ||
-	            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-	          )
-	        )
-	      {
-	        return polkit.Result.YES;
-	      }
-	    })
-	  '';
-	};
+    rtkit.enable = true;
+    polkit.enable = true;
+    polkit.extraConfig = ''
+      	    polkit.addRule(function(action, subject) {
+      	      if (
+      	        subject.isInGroup("users")
+      	          && (
+      	            action.id == "org.freedesktop.login1.reboot" ||
+      	            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+      	            action.id == "org.freedesktop.login1.power-off" ||
+      	            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+      	          )
+      	        )
+      	      {
+      	        return polkit.Result.YES;
+      	      }
+      	    })
+      	  '';
+  };
 }
