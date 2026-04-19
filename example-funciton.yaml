@@ -1,0 +1,150 @@
+Nix function that does this:
+
+input:
+```List
+nix-repl> lib.filesystem.listFilesRecursive ./modules
+[
+  /home/daniel/Nixos_V2/modules/core/boot.nix
+  /home/daniel/Nixos_V2/modules/core/devices.nix
+  /home/daniel/Nixos_V2/modules/core/kernal.nix
+  /home/daniel/Nixos_V2/modules/core/system-services.nix
+  /home/daniel/Nixos_V2/modules/home/bitwarden.nix
+  /home/daniel/Nixos_V2/modules/home/btop.nix
+  /home/daniel/Nixos_V2/modules/home/desktop-files.nix
+  /home/daniel/Nixos_V2/modules/home/fastfetch/fastfetch.nix
+  /home/daniel/Nixos_V2/modules/home/fastfetch/nixos.png
+  /home/daniel/Nixos_V2/modules/home/git.nix
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprland-laptop.conf
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprland-main.conf
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprland-pc.conf
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprland.nix
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprlock.nix
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprpanel/config.json
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprpanel/hyprpanel.nix
+  /home/daniel/Nixos_V2/modules/home/hyprland/hyprpanel/theme.json
+  /home/daniel/Nixos_V2/modules/home/hyprland/icons/boox-screenshot.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/icons/sync.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/scripts/boox-screenshot.sh
+  /home/daniel/Nixos_V2/modules/home/hyprland/scripts/boox-sync.sh
+  /home/daniel/Nixos_V2/modules/home/hyprland/scripts/volume.sh
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/hibernate.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/lock.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/logout.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/reboot.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/shutdown.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/suspend.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout-icons/windwos.png
+  /home/daniel/Nixos_V2/modules/home/hyprland/wlogout.nix
+  /home/daniel/Nixos_V2/modules/home/kitty.nix
+  /home/daniel/Nixos_V2/modules/home/noctalia.nix
+  /home/daniel/Nixos_V2/modules/home/quickshell.nix
+  /home/daniel/Nixos_V2/modules/home/qutebrowser/config.yml
+  /home/daniel/Nixos_V2/modules/home/qutebrowser/qutebrowser.nix
+  /home/daniel/Nixos_V2/modules/home/rofi/config-emoji.nix
+  /home/daniel/Nixos_V2/modules/home/rofi/config-long.nix
+  /home/daniel/Nixos_V2/modules/home/rofi/rofi.nix
+  /home/daniel/Nixos_V2/modules/home/swappy.nix
+  /home/daniel/Nixos_V2/modules/home/swaync.nix
+  /home/daniel/Nixos_V2/modules/home/theme.nix
+  /home/daniel/Nixos_V2/modules/home/user-defaults.nix
+  /home/daniel/Nixos_V2/modules/home/waybar.nix
+  /home/daniel/Nixos_V2/modules/home/webapps.nix
+  /home/daniel/Nixos_V2/modules/nix/aliases.nix
+  /home/daniel/Nixos_V2/modules/nix/amd-drivers.nix
+  /home/daniel/Nixos_V2/modules/nix/amd-framework.nix
+  /home/daniel/Nixos_V2/modules/nix/apps.nix
+  /home/daniel/Nixos_V2/modules/nix/borg.nix
+  /home/daniel/Nixos_V2/modules/nix/brightness.nix
+  /home/daniel/Nixos_V2/modules/nix/coding.nix
+  /home/daniel/Nixos_V2/modules/nix/containers.nix
+  /home/daniel/Nixos_V2/modules/nix/creative.nix
+  /home/daniel/Nixos_V2/modules/nix/defaults.nix
+  /home/daniel/Nixos_V2/modules/nix/dms.nix
+  /home/daniel/Nixos_V2/modules/nix/fish.nix
+  /home/daniel/Nixos_V2/modules/nix/games.nix
+  /home/daniel/Nixos_V2/modules/nix/git.nix
+  /home/daniel/Nixos_V2/modules/nix/glances.nix
+  /home/daniel/Nixos_V2/modules/nix/hyprland/hyprdynamicmonitors/config.toml
+  /home/daniel/Nixos_V2/modules/nix/hyprland/hyprdynamicmonitors/hyprdynamicmonitors.nix
+  /home/daniel/Nixos_V2/modules/nix/hyprland/hyprland.nix
+  /home/daniel/Nixos_V2/modules/nix/nautilus.nix
+  /home/daniel/Nixos_V2/modules/nix/nvidia-drivers.nix
+  /home/daniel/Nixos_V2/modules/nix/office.nix
+  /home/daniel/Nixos_V2/modules/nix/samba.nix
+  /home/daniel/Nixos_V2/modules/nix/sound.nix
+  /home/daniel/Nixos_V2/modules/nix/starship.nix
+  /home/daniel/Nixos_V2/modules/nix/syncthing.nix
+  /home/daniel/Nixos_V2/modules/nix/sys-apps.nix
+  /home/daniel/Nixos_V2/modules/nix/tailscale.nix
+  /home/daniel/Nixos_V2/modules/nix/theme.nix
+  /home/daniel/Nixos_V2/modules/nix/users.nix
+  /home/daniel/Nixos_V2/modules/nix/vm.nix
+  /home/daniel/Nixos_V2/modules/nix/vr.nix
+  /home/daniel/Nixos_V2/modules/nix/zerotier.nix
+  /home/daniel/Nixos_V2/modules/nix/zoxide.nix
+  /home/daniel/Nixos_V2/modules/overlays/red-hat-fonts.nix
+]
+```
+
+Output:
+```nix
+aliases = lib.mkEnableOption { default = false; };
+amd-drivers = lib.mkEnableOption { default = false; };
+amd-framework = lib.mkEnableOption { default = false; };
+apps = lib.mkEnableOption { default = false; };
+bitwarden = lib.mkEnableOption { default = false; };
+boot = lib.mkEnableOption { default = false; };
+borg = lib.mkEnableOption { default = false; };
+brightness = lib.mkEnableOption { default = false; };
+btop = lib.mkEnableOption { default = false; };
+coding = lib.mkEnableOption { default = false; };
+containers = lib.mkEnableOption { default = false; };
+creative = lib.mkEnableOption { default = false; };
+defaults = lib.mkEnableOption { default = false; };
+desktop-files = lib.mkEnableOption { default = false; };
+devices = lib.mkEnableOption { default = false; };
+dms = lib.mkEnableOption { default = false; };
+fastfetch = lib.mkEnableOption { default = false; };
+fish = lib.mkEnableOption { default = false; };
+games = lib.mkEnableOption { default = false; };
+git = lib.mkEnableOption { default = false; };
+glances = lib.mkEnableOption { default = false; };
+kernal = lib.mkEnableOption { default = false; };
+kitty = lib.mkEnableOption { default = false; };
+nautilus = lib.mkEnableOption { default = false; };
+noctalia = lib.mkEnableOption { default = false; };
+nvidia-drivers = lib.mkEnableOption { default = false; };
+office = lib.mkEnableOption { default = false; };
+quickshell = lib.mkEnableOption { default = false; };
+qutebrowser = lib.mkEnableOption { default = false; };
+samba = lib.mkEnableOption { default = false; };
+sound = lib.mkEnableOption { default = false; };
+starship = lib.mkEnableOption { default = false; };
+swappy = lib.mkEnableOption { default = false; };
+swaync = lib.mkEnableOption { default = false; };
+syncthing = lib.mkEnableOption { default = false; };
+sys-apps = lib.mkEnableOption { default = false; };
+system-services = lib.mkEnableOption { default = false; };
+tailscale = lib.mkEnableOption { default = false; };
+theme = lib.mkEnableOption { default = false; };
+user-defaults = lib.mkEnableOption { default = false; };
+users = lib.mkEnableOption { default = false; };
+vm = lib.mkEnableOption { default = false; };
+vr = lib.mkEnableOption { default = false; };
+waybar = lib.mkEnableOption { default = false; };
+webapps = lib.mkEnableOption { default = false; };
+zerotier = lib.mkEnableOption { default = false; };
+zoxide = lib.mkEnableOption { default = false; };
+hyprland = {
+  enable = lib.mkEnableOption { default = false; };
+  hyprdynamicmonitors = lib.mkEnableOption { default = false; };
+  hyprlock = lib.mkEnableOption { default = false; };
+  hyprpanel = lib.mkEnableOption { default = false; };
+  wlogout = lib.mkEnableOption { default = false; };
+};
+rofi = {
+  enable = lib.mkEnableOption { default = false; };
+  config-emoji = lib.mkEnableOption { default = false; };
+  config-long = lib.mkEnableOption { default = false; };
+};
+```

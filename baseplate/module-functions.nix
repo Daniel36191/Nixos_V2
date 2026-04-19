@@ -10,13 +10,15 @@ let
 
   matchFile = f: builtins.match "${toString dir}/(nix|home|core)/(.+)\\.nix" (toString f);
 
-  getModulePaths = lib.lists.concatMap (
-    f:
-    let
-      m = matchFile f;
-    in
-    if m == null then [ ] else [ (builtins.elemAt m 1) ]
-  ) getNixFiles;
+  getModulePaths = lib.lists.unique (
+    lib.lists.concatMap (
+      f:
+      let
+        m = matchFile f;
+      in
+      if m == null then [ ] else [ (builtins.elemAt m 1) ]
+    ) getNixFiles
+  );
 
   toAttrPath =
     path:
@@ -27,12 +29,25 @@ let
       secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
       dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
     in
-    dedupedParts ++ [ "enable" ];
+    [ "mod" ] ++ dedupedParts;
 
   autoOptions = lib.foldl' lib.recursiveUpdate { } (
-    map (
-      p: lib.setAttrByPath (toAttrPath p) (lib.mkEnableOption "" // { default = false; })
-    ) getModulePaths
+    map
+      (
+        p: lib.setAttrByPath (toAttrPath p ++ [ "enable" ]) (lib.mkEnableOption "" // { default = false; })
+      )
+      (
+        lib.lists.unique (
+          map (
+            p:
+            let
+              parts = lib.splitString "/" p;
+              stripped = lib.tail parts;
+            in
+            lib.concatStringsSep "/" stripped
+          ) getModulePaths
+        )
+      )
   );
 
   configSelf =
@@ -41,7 +56,7 @@ let
       m = matchFile file;
       path = builtins.elemAt m 1;
     in
-    lib.attrByPath (lib.init (toAttrPath path)) { } config;
+    lib.attrByPath (toAttrPath path) { } config;
 in
 {
   inherit autoOptions configSelf;

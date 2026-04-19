@@ -7,7 +7,7 @@
   ...
 }:
 let
-   mod = fun.getMod config __curPos.file;
+  mod = fun.configSelf config __curPos.file;
 
   command = "${
     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland

@@ -6,7 +6,7 @@
   ...
 }:
 let
-   mod = fun.getMod config __curPos.file;
+  mod = fun.configSelf config __curPos.file;
 
   folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
     flavor = "macchiato";

@@ -6,7 +6,7 @@
   ...
 }:
 let
-   mod = fun.getMod config __curPos.file;
+  mod = fun.configSelf config __curPos.file;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in
 with lib;

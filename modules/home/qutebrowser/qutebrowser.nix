@@ -6,7 +6,7 @@
   ...
 }:
 let
-   mod = fun.getMod config __curPos.file;
+  mod = fun.configSelf config __curPos.file;
 
   config = builtins.readFile ./config.yml;
 in
