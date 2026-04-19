@@ -72,19 +72,12 @@ generateModuleOptions = files:
     str     = builtins.toString path;
     relPath = builtins.elemAt (builtins.split "/modules/" str) 2;
     segs    = lib.splitString "/" relPath;
-
-    # Drop the section (core/home/nix/overlays)
     rest    = builtins.tail segs;
-
-    # For every segment except the last (dirs), keep as-is.
-    # For the last segment (the .nix file), remove .nix and check if it
-    # matches its parent dir — if so, use "enable".
-    dirs    = lib.init rest;                             # all but last
+    dirs    = lib.init rest;
     file    = lib.last rest;
     stem    = lib.removeSuffix ".nix" file;
     parent  = if dirs == [] then null else lib.last dirs;
     key     = if stem == parent then "enable" else stem;
-
     parts   = dirs ++ [ key ];
   in
     "config.mod.${lib.concatStringsSep "." parts}";
