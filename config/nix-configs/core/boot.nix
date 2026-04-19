@@ -46,8 +46,6 @@
       useTmpfs = true;
       tmpfsSize = "30%";
     };
-    runMountFileChecks = true;
-    fsCheck = true;
 
     ## Appimage Support
     binfmt.registrations.appimage = {
