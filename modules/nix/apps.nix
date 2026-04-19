@@ -9,7 +9,7 @@
   ...
 }:
 let
-  mod = fun.configSelf config __curPos.file;
+    mod = fun.configSelf __curPos.file;
 
 in
 {

@@ -7,7 +7,7 @@ let
 in
 {
   options = {
-    mod = fun.autoOptions.mod;
+    mod = fun.generateModuleOptions;
     hostConf = {
       sshPublicKey = lib.mkOption {};
     };

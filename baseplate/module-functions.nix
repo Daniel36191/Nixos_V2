@@ -1,63 +1,70 @@
 {
   lib,
-  dir,
+  modulesFolder,
   ...
 }:
 let
-  getNixFiles = lib.filter (f: builtins.match ".*\\.nix" (baseNameOf (toString f)) != null) (
-    lib.filesystem.listFilesRecursive dir
-  );
-
-  matchFile = f: builtins.match "${toString dir}/(nix|home|core)/(.+)\\.nix" (toString f);
-
-  getModulePaths = lib.lists.unique (
-    lib.lists.concatMap (
-      f:
-      let
-        m = matchFile f;
-      in
-      if m == null then [ ] else [ (builtins.elemAt m 1) ]
-    ) getNixFiles
-  );
-
-  toAttrPath =
-    path:
+  generateModuleOptions =
     let
-      parts = lib.splitString "/" path;
-      len = builtins.length parts;
-      last = builtins.elemAt parts (len - 1);
-      secondLast = if len >= 2 then builtins.elemAt parts (len - 2) else null;
-      dedupedParts = if len >= 2 && last == secondLast then lib.init parts else parts;
-    in
-    [ "mod" ] ++ dedupedParts;
+      mkOpt = lib.mkEnableOption "";
 
-  autoOptions = lib.foldl' lib.recursiveUpdate { } (
-    map
-      (
-        p: lib.setAttrByPath (toAttrPath p ++ [ "enable" ]) (lib.mkEnableOption "" // { default = false; })
-      )
-      (
-        lib.lists.unique (
-          map (
-            p:
-            let
-              parts = lib.splitString "/" p;
-              stripped = lib.tail parts;
-            in
-            lib.concatStringsSep "/" stripped
-          ) getModulePaths
-        )
-      )
-  );
+      allFiles = lib.filesystem.listFilesRecursive modulesFolder;
 
-  configSelf =
-    config: file:
-    let
-      m = matchFile file;
-      path = builtins.elemAt m 1;
+      nixFiles = builtins.filter (p: lib.hasSuffix ".nix" (toString p)) allFiles;
+
+      parseFile =
+        path:
+        let
+          str = toString path;
+          relPath = builtins.elemAt (builtins.split "/modules/" str) 2;
+          segs = lib.splitString "/" relPath;
+          rest = builtins.tail segs; # drop section
+          stem = lib.removeSuffix ".nix" (lib.last rest);
+          group = if builtins.length rest > 1 then builtins.head rest else null;
+        in
+        {
+          inherit stem group;
+          depth = builtins.length rest;
+        };
+
+      parsed = map parseFile nixFiles;
+
+      flatStems = lib.unique (map (p: p.stem) (builtins.filter (p: p.depth == 1) parsed));
+
+      flatEntries = builtins.listToAttrs (
+        map (stem: {
+          name = stem;
+          value = {
+            enable = mkOpt;
+          };
+        }) flatStems
+      );
+
+      groupedParsed = builtins.filter (p: p.depth > 1) parsed;
+      groupNames = lib.unique (map (p: p.group) groupedParsed);
+
+      buildGroup =
+        groupName:
+        let
+          stems = lib.unique (map (p: p.stem) (builtins.filter (p: p.group == groupName) groupedParsed));
+
+          subAttrs = builtins.listToAttrs (
+            map (stem: {
+              name = if stem == groupName then "enable" else stem;
+              value = if stem == groupName then mkOpt else { enable = mkOpt; };
+            }) stems
+          );
+        in
+        {
+          name = groupName;
+          value = subAttrs;
+        };
+
+      groupEntries = builtins.listToAttrs (map buildGroup groupNames);
+
     in
-    lib.attrByPath (toAttrPath path) { } config;
+    flatEntries // groupEntries;
 in
 {
-  inherit autoOptions configSelf;
+  inherit generateModuleOptions;
 }

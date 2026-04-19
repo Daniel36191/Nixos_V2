@@ -75,9 +75,10 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
+      modulesFolder = ./modules;
 
       var = import ./baseplate/user-config.nix;
-      fun = import ./baseplate/module-functions.nix {inherit lib; dir = ./modules; };
+      fun = import ./baseplate/module-functions.nix {inherit lib; inherit modulesFolder;};
 
       commonArgs = {
         inherit inputs var fun;
