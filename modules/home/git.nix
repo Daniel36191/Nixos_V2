@@ -24,7 +24,7 @@ in
 
     ## SSH Client
     home.file.".ssh/ssh-${host}.pub" = {
-      text = config.hostConf.sshPublicKey;
+      text = osConfig.hostConf.sshPublicKey;
       force = true;
     };
     programs.ssh = {
@@ -33,7 +33,7 @@ in
       matchBlocks = {
         "*" = {
           port = 22;
-          identityFile = config.age.secrets."ssh-${host}".path;
+          identityFile = osConfig.age.secrets."ssh-${host}".path;
           forwardAgent = false;
           addKeysToAgent = "yes";
           compression = false;

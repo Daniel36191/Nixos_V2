@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  var,
+  host,
   ...
 }:
 {
@@ -10,8 +10,8 @@
   ];
 
   age.secrets = {
-    "tailscale-${var.host}".file = ./tailscale-${var.host}.age;
-    "ssh-${var.host}".file = ./ssh-${var.host}.age;
+    "tailscale-${host}".file = ./tailscale-${host}.age;
+    "ssh-${host}".file = ./ssh-${host}.age;
 
     "ssh-borg.age".file = ./ssh-borg.age;
   };

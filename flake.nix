@@ -122,6 +122,7 @@
         ./baseplate/module-options.nix
         ./baseplate/nix-main.nix
         ./baseplate/overlays.nix
+        ./secrets/secrets-nix.nix
         inputs.stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager

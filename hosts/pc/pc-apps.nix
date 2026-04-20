@@ -1,7 +1,7 @@
 {
   pkgs,
   pkgs-unstable,
-  pkgs-pkgs-personal,
+  pkgs-personal,
   ...
 }:
 let
