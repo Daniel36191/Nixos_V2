@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  var,
   ...
 }:
 let
@@ -21,14 +22,14 @@ in
           "security" = "user";
         };
         "nixos" = {
-          "path" = "/home/${config.mod.username}/Desktop/Share";
+          "path" = "/home/${var.username}/Desktop/Share";
           "browseable" = "yes";
           "create mask" = "0644";
           "directory mask" = "0755";
           "read only" = "no";
           "guest ok" = "yes";
-          "valid users" = "${config.mod.username}";
-          "force user" = "${config.mod.username}";
+          "valid users" = "${var.username}";
+          "force user" = "${var.username}";
         };
       };
     };

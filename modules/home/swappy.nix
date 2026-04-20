@@ -3,6 +3,7 @@
   lib,
   osConfig,
   pkgs,
+  var,
   ...
 }:
 let
@@ -12,7 +13,7 @@ in
   config = lib.mkIf mod.enable {
     home.file.".config/swappy/config".text = ''
       [Default]
-      save_dir=/home/${config.mod.username}/Pictures/Screenshots
+      save_dir=/home/${var.username}/Pictures/Screenshots
       save_filename_format=swappy-%Y%m%d-%H%M%S.png
       show_panel=false
       line_size=5

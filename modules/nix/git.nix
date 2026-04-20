@@ -24,8 +24,8 @@ in
 
     age.secrets = {
       "ssh-${var.host}" = {
-        path = "/home/${config.mod.username}/.ssh/ssh-${var.host}";
-        owner = config.mod.username;
+        path = "/home/${var.username}/.ssh/ssh-${var.host}";
+        owner = var.username;
         mode = "600";
       };
     };

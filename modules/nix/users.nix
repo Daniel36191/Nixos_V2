@@ -3,6 +3,7 @@
   lib,
   pkgs,
   options,
+  var,
   ...
 }:
 let
@@ -18,30 +19,30 @@ in
     ## Locale Settings
     console.keyMap = "us";
     ## Set your time zone
-    time.timeZone = "America/${config.mod.timeZone}";
+    time.timeZone = "America/${var.timeZone}";
     ## Set time server
     networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
     ## Select internationalisation properties
     i18n = {
-      defaultLocale = config.mod.locale;
+      defaultLocale = var.locale;
       extraLocaleSettings = {
-        LC_ADDRESS = config.mod.locale;
-        LC_IDENTIFICATION = config.mod.locale;
-        LC_MEASUREMENT = config.mod.locale;
-        LC_MONETARY = config.mod.locale;
-        LC_NAME = config.mod.locale;
-        LC_NUMERIC = config.mod.locale;
-        LC_PAPER = config.mod.locale;
-        LC_TELEPHONE = config.mod.locale;
-        LC_TIME = config.mod.locale;
+        LC_ADDRESS = var.locale;
+        LC_IDENTIFICATION = var.locale;
+        LC_MEASUREMENT = var.locale;
+        LC_MONETARY = var.locale;
+        LC_NAME = var.locale;
+        LC_NUMERIC = var.locale;
+        LC_PAPER = var.locale;
+        LC_TELEPHONE = var.locale;
+        LC_TIME = var.locale;
       };
     };
     users.users = {
-      "${config.mod.username}" = {
+      "${var.username}" = {
         homeMode = "755";
         isNormalUser = true;
-        description = "${config.mod.git.username}";
+        description = "${var.git.username}";
         extraGroups = [
           "networkmanager"
           "wheel"
@@ -69,12 +70,12 @@ in
         ];
         openssh.authorizedKeys.keys = [
         ]
-        ++ config.mod.ssh.authedKeys;
+        ++ var.ssh.authedKeys;
       };
     };
     nix.settings.trusted-users = [
       "root"
-      "${config.mod.username}"
+      "${var.username}"
     ];
   };
 }

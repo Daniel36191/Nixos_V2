@@ -3,6 +3,7 @@
   lib,
   osConfig,
   host,
+  var,
   ...
 }:
 let
@@ -13,8 +14,8 @@ in
     programs.git = {
       enable = true;
       settings.user = {
-        Name = "${config.mod.git.username}";
-        Email = "${config.mod.git.email}";
+        Name = "${var.git.username}";
+        Email = "${var.git.email}";
       };
     };
     programs = {

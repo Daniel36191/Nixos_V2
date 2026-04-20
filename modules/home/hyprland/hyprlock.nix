@@ -3,6 +3,7 @@
   lib,
   osConfig,
   pkgs,
+  var,
   ...
 }:
 let
@@ -30,7 +31,7 @@ in
           ];
           image = [
             {
-              path = "/home/${config.mod.username}/.config/face.jpg";
+              path = "/home/${var.username}/.config/face.jpg";
               size = 150;
               border_size = 4;
               border_color = "rgb(0C96F9)";

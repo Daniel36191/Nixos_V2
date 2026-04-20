@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  var,
   ...
 }:
 let
@@ -16,7 +17,7 @@ in
       extraArgs = [
         "--webserver"
         "-C"
-        "/home/${config.mod.username}/.config/glances/glances.conf"
+        "/home/${var.username}/.config/glances/glances.conf"
       ];
     };
   };

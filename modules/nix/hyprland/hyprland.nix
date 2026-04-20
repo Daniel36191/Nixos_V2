@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  var,
   ...
 }:
 let
@@ -55,12 +56,12 @@ in
         useTextGreeter = true; # For Tui Greet
         settings = {
           default_session = {
-            user = config.mod.username;
+            user = var.username;
             command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${command}";
           };
           initial_session = {
             command = "${command}";
-            user = config.mod.username;
+            user = var.username;
           };
         };
       };

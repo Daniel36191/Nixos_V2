@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  var,
   ...
 }:
 let
@@ -10,7 +11,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    users.users."${config.mod.username}" = {
+    users.users."${var.username}" = {
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;
     };

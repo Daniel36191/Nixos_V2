@@ -2,6 +2,7 @@
   config,
   lib,
   host,
+  var,
   ...
 }:
 let

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  var,
   ...
 }:
 let
@@ -39,7 +40,7 @@ in
         runAsRoot = true; # ths does noting
       };
     };
-    users.groups.libvirtd.members = [ "${config.mod.username}" ];
+    users.groups.libvirtd.members = [ "${var.username}" ];
 
     ## Enables VM connection
     programs.dconf.profiles.user.databases = [

@@ -21,7 +21,7 @@ in
         "--reset"
       ];
       extraSetFlags = [
-        "--operator=${config.mod.username}"
+        "--operator=${var.username}"
       ];
       authKeyFile = config.age.secrets."tailscale-${var.host}".path;
     };
