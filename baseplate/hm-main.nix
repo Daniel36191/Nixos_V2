@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   host,
   var,
@@ -18,8 +17,8 @@ in
     ../hosts/${host}/${host}-hm-main.nix
   ];
 
-  home.username = "${config.mod.username}";
-  home.homeDirectory = "/home/${config.mod.username}";
+  home.username = "${var.username}";
+  home.homeDirectory = "/home/${var.username}";
   home.stateVersion = "25.05";
 
   home.packages = [
