@@ -10,71 +10,101 @@
     sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINUbaQCPcnGcg26JmKGXEDUGDywf95UhziIQ7YIXkzYC daniel@nixos-pc";
   };
 
+  #############
+  ## Modules ##
+  #############
+  mod = {
+    ##########
+    ## Uses ##
+    ##########
+    coding.enable = true;
+    creative.enable = true;
+    office.enable = true;
+    games.enable = true;
+    vr.enable = true;
+    containers.enable = false;
+    vm.enable = false;
 
-#############
-## Modules ##
-#############
-  # mod = {
-  #   aliases = true;
-  #   amd-drivers = true;
-  #   amd-framework = true;
-  #   apps = true;
-  #   bitwarden = true;
-  #   boot = true;
-  #   borg = true;
-  #   brightness = true;
-  #   btop = true;
-  #   coding = true;
-  #   containers = true;
-  #   creative = true;
-  #   defaults = true;
-  #   desktop-files = true;
-  #   devices = true;
-  #   dms = true;
-  #   fastfetch = true;
-  #   fish = true;
-  #   games = true;
-  #   git = true;
-  #   glances = true;
-  #   hyprland = {
-  #     enable = true;
-  #     hyprdynamicmonitors = {
-  #       monitors = true;
-  #     };
-  #     hyprlock = true;
-  #     hyprpanel = true;
-  #     wlogout = true;
-  #   };
-  #   kernal = true;
-  #   kitty = true;
-  #   nautilus = true;
-  #   noctalia = true;
-  #   nvidia-drivers = true;
-  #   office = true;
-  #   quickshell = true;
-  #   qutebrowser = true;
-  #   rofi = {
-  #     enable = true;
-  #     config-emoji = true;
-  #     config-long = true;
-  #   };
-  #   samba = true;
-  #   sound = true;
-  #   starship = true;
-  #   swappy = true;
-  #   swaync = true;
-  #   syncthing = true;
-  #   sys-apps = true;
-  #   system-services = true;
-  #   tailscale = true;
-  #   theme = true;
-  #   user-defaults = true;
-  #   users = true;
-  #   vm = true;
-  #   vr = true;
-  #   waybar = true;
-  #   webapps = true;
-  #   zerotier = true;
-  #   zoxide = true;
-  # };
+    ##########
+    ## Apps ##
+    ##########
+    apps.enable = true;
+    sys-apps.enable = true;
+    bitwarden.enable = true;
+    git.enable = true;
+    swappy.enable = true;
+    qutebrowser.enable = true;
+    swaync.enable = false;
+    nautilus.enable = true;
+    syncthing.enable = true;
+
+    #########
+    ## Cli ##
+    #########
+    kitty.enable = true;
+    glances.enable = false;
+    zoxide.enable = true;
+    btop.enable = true;
+    fastfetch.enable = true;
+    fish.enable = true;
+    starship.enable = true;
+    aliases.enable = true;
+
+    #############
+    ## Desktop ##
+    #############
+    hyprland = {
+      enable = true;
+      hyprdynamicmonitors.enable = true;
+      hyprlock.enable = false;
+      wlogout.enable = false;
+    };
+    rofi = {
+      config-emoji.enable = true;
+      config-long.enable = true;
+    };
+    theme.enable = true;
+
+    ############
+    ## Shells ##
+    ############
+    dms.enable = true;
+    noctalia.enable = false;
+    waybar.enable = false;
+    hyprpanel.enable = false;
+
+    ##############
+    ## Services ##
+    ##############
+    tailscale.enable = true;
+    zerotier.enable = true;
+    borg.enable = false;
+    samba.enable = false;
+
+    ###############
+    ## Functions ##
+    ###############
+    desktop-files.enable = true;
+    webapps.enable = true;
+
+    ##########
+    ## Core ##
+    ##########
+    boot.enable = true;
+    kernal.enable = true;
+    devices.enable = true;
+    system-services.enable = true;
+    sound.enable = true;
+    user-defaults.enable = true;
+    users.enable = true;
+    defaults.enable = true;
+
+    ##############
+    ## Hardware ##
+    ##############
+    brightness.enable = false;
+    nvidia-drivers.enable = true;
+    amd-framework.enable = false;
+    amd-drivers.enable = false;
+  };
 }

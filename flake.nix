@@ -1,26 +1,36 @@
 {
   description = "NixOS";
+
   inputs = {
+    #############
+    ## Nixpkgs ##
+    #############
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
+
+    ##########
+    ## Pins ##
+    ##########
     nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
+
+    #############
+    ## Desktop ##
+    #############
     hyprland = {
       url = "github:hyprwm/Hyprland/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,20 +45,26 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ###########
+    ## Tools ##
+    ###########
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.darwin.follows = "";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.darwin.follows = "";
-    };
   };
 
   outputs =
@@ -58,10 +74,10 @@
       nixpkgs-unstable,
       nixpkgs-stable,
       nixpkgs-personal,
+      nixpkgs-spotifyPin,
       home-manager,
       nix-flatpak,
       blender-cuda,
-      nixpkgs-spotifyPin,
       hyprsplit,
       hyprdynamicmonitors,
       quickshell,
@@ -78,7 +94,10 @@
       modulesFolder = ./modules;
 
       var = import ./baseplate/user-config.nix;
-      fun = import ./baseplate/module-functions.nix {inherit lib; inherit modulesFolder;};
+      fun = import ./baseplate/module-functions.nix {
+        inherit lib;
+        inherit modulesFolder;
+      };
 
       commonArgs = {
         inherit inputs var fun;
@@ -118,7 +137,7 @@
       ];
 
       mkHost =
-        host: extraNixModules: extraHmImports: 
+        host: extraNixModules: extraHmImports:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = commonArgs // {
@@ -134,13 +153,13 @@
                 extraSpecialArgs = commonArgs // {
                   inherit host;
                 };
-                users.${var.username}.imports = commonHmModules ++ extraHmImports ++ [];
+                users.${var.username}.imports = commonHmModules ++ extraHmImports ++ [ ];
               };
             }
           ]
           ++ commonNixModules
           ++ extraNixModules
-          ++ [];
+          ++ [ ];
         };
 
     in

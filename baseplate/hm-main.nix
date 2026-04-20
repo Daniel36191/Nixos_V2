@@ -18,7 +18,7 @@ in
   ];
 
   home.username = "${var.username}";
-  home.homeDirectory = "/home/${var.username}";
+  home.homeDirectory = lib.mkForce "/home/${var.username}";
   home.stateVersion = "25.05";
 
   home.packages = [

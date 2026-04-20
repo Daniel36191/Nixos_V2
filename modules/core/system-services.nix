@@ -1,18 +1,17 @@
 {
   pkgs,
-  hostname,
-  firewall,
+  var,
   ...
 }:
 {
   ## Networking
   networking = {
     networkmanager.enable = true;
-    hostName = hostname;
+    hostName = var.hostname;
 
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
-    firewall.enable = firewall;
+    firewall.enable = var.firewall;
   };
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
