@@ -17,7 +17,7 @@ in
 
       # waypipe
       wayvnc
-      neofetch
+      fastfetch
       wget
       appimage-run
 

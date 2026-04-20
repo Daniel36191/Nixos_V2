@@ -20,8 +20,8 @@ in
       # bespokesynth
       pkgs-personal.bespokesynth
       # pkgs-personal.chataigne
-      pkgs-personal.sendmidi
-      pkgs-personal.receivemidi
+      pkgs-personal.send-midi
+      pkgs-personal.receive-midi
       qpwgraph
       pulseaudioFull
       pavucontrol

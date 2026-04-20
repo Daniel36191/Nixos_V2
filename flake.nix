@@ -8,7 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
-    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
+    nixpkgs-personal.url = "path:/home/daniel/nixpkgs-personal";
 
     ##########
     ## Pins ##
@@ -56,6 +56,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    lemonake = {
+      url = "github:passivelemon/lemonake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -86,6 +90,7 @@
       nix-index-database,
       agenix,
       nixos-hardware,
+      lemonake,
       ...
     }@inputs:
     let
@@ -113,8 +118,10 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgs-personal = import nixpkgs-personal {
+        pkgs-personal = nixpkgs-personal.legacyPackages.${system};
+        stable = import nixpkgs-stable {
           inherit system;
+          config.allowUnfree = true;
         };
       };
 

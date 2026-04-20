@@ -47,7 +47,6 @@ in
       package = pkgs-unstable.wivrn.override { cudaSupport = true; };
       autoStart = true;
       highPriority = true;
-      defaultRuntime = true;
       openFirewall = true;
       steam.package = config.programs.steam.package;
       extraServerFlags = [
