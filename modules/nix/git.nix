@@ -2,6 +2,7 @@
   config,
   lib,
   var,
+  host,
   ...
 }:
 let
@@ -23,8 +24,8 @@ in
     };
 
     age.secrets = {
-      "ssh-${var.host}" = {
-        path = "/home/${var.username}/.ssh/ssh-${var.host}";
+      "ssh-${host}" = {
+        path = "/home/${var.username}/.ssh/ssh-${host}";
         owner = var.username;
         mode = "600";
       };

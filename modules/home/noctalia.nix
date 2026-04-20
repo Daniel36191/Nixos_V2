@@ -1,10 +1,8 @@
 {
-  config,
   lib,
   osConfig,
-  pkgs,
   inputs,
-  var,
+  host,
   ...
 }:
 let
@@ -290,7 +288,7 @@ in
                 id = "NightLight";
               }
             ]
-            ++ lib.optional (if var.host != "pc" then true else false) [
+            ++ lib.optional (if host != "pc" then true else false) [
               {
                 id = "PowerProfile";
               }
@@ -306,7 +304,7 @@ in
               id = "shortcuts-card";
             }
             {
-              enabled = if var.host != "pc" then true else false;
+              enabled = if host != "pc" then true else false;
               id = "brightness-card";
             }
             {

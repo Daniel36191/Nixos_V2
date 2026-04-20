@@ -16,7 +16,7 @@ in
 
     stylix = {
       enable = true;
-      image = ../hm-configs/wallpapers/${var.wallpaper};
+      image = ../../extra-files/wallpapers/${var.wallpaper};
       base16Scheme = {
         base00 = "24273a"; # base
         base01 = "1e2030"; # mantle

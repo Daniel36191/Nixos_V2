@@ -133,7 +133,7 @@
       commonHmModules = [
         ./baseplate/hm-main.nix
         ./baseplate/module-options.nix
-        inputs.stylix.homeModules.stylix
+        # inputs.stylix.homeModules.stylix
       ];
 
       mkHost =

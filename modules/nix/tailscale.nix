@@ -2,6 +2,7 @@
   config,
   lib,
   var,
+  host,
   ...
 }:
 let
@@ -23,7 +24,7 @@ in
       extraSetFlags = [
         "--operator=${var.username}"
       ];
-      authKeyFile = config.age.secrets."tailscale-${var.host}".path;
+      authKeyFile = config.age.secrets."tailscale-${host}".path;
     };
 
     ## For Exit Node

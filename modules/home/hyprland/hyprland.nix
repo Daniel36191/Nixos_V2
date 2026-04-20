@@ -1,10 +1,9 @@
 {
-  config,
   lib,
   osConfig,
   pkgs,
   inputs,
-  var,
+  host,
   ...
 }:
 let
@@ -37,12 +36,12 @@ in
       plugins = [
         inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
       ]
-      # ++ (lib.optionals (var.host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
+      # ++ (lib.optionals (host == "pc") [ inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit ])
       ;
       extraConfig =
         let
           hyprland-main = builtins.readFile ./hyprland-main.conf;
-          hyprland-machine = builtins.readFile ./hyprland-${var.host}.conf;
+          hyprland-machine = builtins.readFile ./hyprland-${host}.conf;
         in
         lib.strings.concatStrings [
           hyprland-main
