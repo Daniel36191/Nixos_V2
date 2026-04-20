@@ -1,6 +1,5 @@
 {
   config,
-  fun,
   lib,
   ...
 }:

@@ -1,14 +1,14 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   inputs,
   var,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.hyprland;
 in
 {
   config = lib.mkIf mod.enable {

@@ -1,12 +1,12 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.theme;
 
   folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
     flavor = "macchiato";

@@ -1,12 +1,12 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   host,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.git;
 in
 {
   config = lib.mkIf mod.enable {

@@ -1,12 +1,12 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.hyprland.hyprpanel;
 
   config = builtins.readFile ./config.json;
   theme = builtins.readFile ./theme.json;

@@ -1,12 +1,11 @@
 {
   config,
-  fun,
   lib,
   var,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = config.mod.nix.tailscale;
 in
 {
   config = lib.mkIf mod.enable {

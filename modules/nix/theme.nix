@@ -1,12 +1,11 @@
 {
   config,
-  fun,
   lib,
   pkgs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file config;
+  mod = config.mod.nix.theme;
 in
 {
   config = lib.mkIf mod.enable {

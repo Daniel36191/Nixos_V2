@@ -1,12 +1,12 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.hyprland.wlogout;
 in
 {
   config = lib.mkIf mod.enable {

@@ -1,13 +1,13 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   inputs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.quickshell;
 in
 {
   config = lib.mkIf mod.enable {

@@ -1,6 +1,5 @@
 {
   config,
-  fun,
   lib,
   pkgs,
   pkgs-unstable,
@@ -9,8 +8,7 @@
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
-
+  mod = config.mod.nix.apps;
 in
 {
   config = lib.mkIf mod.enable {

@@ -1,14 +1,14 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   inputs,
   var,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.noctalia;
 in
 {
   imports = [

@@ -1,12 +1,12 @@
 {
   config,
-  fun,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = osConfig.mod.home.kitty;
 in
 {
   config = lib.mkIf mod.enable {

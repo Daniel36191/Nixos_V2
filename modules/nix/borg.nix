@@ -1,13 +1,12 @@
 {
   config,
-  fun,
   lib,
   pkgs,
   var,
   ...
 }:
 let
-    mod = fun.configSelf __curPos.file;
+  mod = config.mod.nix.borg;
 
 in
 {
