@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.hyprland.wlogout;
+  mod = osConfig.mod.hyprland.wlogout;
 in
 {
   config = lib.mkIf mod.enable {

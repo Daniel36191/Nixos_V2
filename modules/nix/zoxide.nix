@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.zoxide;
+  mod = config.mod.zoxide;
 in
 {
   config = lib.mkIf mod.enable {

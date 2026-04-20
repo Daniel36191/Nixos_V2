@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.containers;
+  mod = config.mod.containers;
 in
 {
   config = lib.mkIf mod.enable {

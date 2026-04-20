@@ -8,7 +8,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.creative;
+  mod = config.mod.creative;
 in
 {
   config = lib.mkIf mod.enable {

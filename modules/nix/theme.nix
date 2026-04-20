@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.theme;
+  mod = config.mod.theme;
 in
 {
   config = lib.mkIf mod.enable {

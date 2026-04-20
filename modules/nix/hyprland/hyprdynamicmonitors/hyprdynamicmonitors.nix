@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.hyprland.hyprdynamicmonitors;
+  mod = config.mod.hyprland.hyprdynamicmonitors;
 in
 {
   config = lib.mkIf mod.enable {

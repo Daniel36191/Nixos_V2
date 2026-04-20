@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.samba;
+  mod = config.mod.samba;
 in
 {
   config = lib.mkIf mod.enable {

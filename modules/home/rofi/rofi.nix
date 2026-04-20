@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.rofi;
+  mod = osConfig.mod.rofi;
 in
 {
   config = lib.mkIf mod.enable {

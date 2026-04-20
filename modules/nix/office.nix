@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.office;
+  mod = config.mod.office;
 
 in
 {

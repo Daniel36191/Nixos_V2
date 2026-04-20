@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.hyprland.hyprpanel;
+  mod = osConfig.mod.hyprland.hyprpanel;
 
   config = builtins.readFile ./config.json;
   theme = builtins.readFile ./theme.json;

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.fastfetch;
+  mod = osConfig.mod.fastfetch;
 in
 {
   config = lib.mkIf mod.enable {

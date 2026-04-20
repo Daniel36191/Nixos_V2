@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.dms;
+  mod = config.mod.dms;
 in
 {
   config = lib.mkIf mod.enable {

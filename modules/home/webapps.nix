@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.webapps;
+  mod = osConfig.mod.webapps;
 
   desktopConfig = [
     {

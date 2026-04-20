@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.swappy;
+  mod = osConfig.mod.swappy;
 in
 {
   config = lib.mkIf mod.enable {

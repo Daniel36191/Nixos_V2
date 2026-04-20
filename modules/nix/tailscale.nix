@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.tailscale;
+  mod = config.mod.tailscale;
 in
 {
   config = lib.mkIf mod.enable {

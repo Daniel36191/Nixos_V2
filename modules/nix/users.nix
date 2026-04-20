@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.users;
+  mod = config.mod.users;
 in
 {
   config = lib.mkIf mod.enable {

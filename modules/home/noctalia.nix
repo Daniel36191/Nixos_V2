@@ -8,7 +8,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.noctalia;
+  mod = osConfig.mod.noctalia;
 in
 {
   imports = [

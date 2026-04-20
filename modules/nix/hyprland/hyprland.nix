@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.hyprland;
+  mod = config.mod.hyprland;
 
   command = "${
     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland

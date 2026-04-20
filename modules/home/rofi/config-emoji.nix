@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.rofi.config-emoji;
+  mod = osConfig.mod.rofi.config-emoji;
 in
 {
   config = lib.mkIf mod.enable {

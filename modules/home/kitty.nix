@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.kitty;
+  mod = osConfig.mod.kitty;
 in
 {
   config = lib.mkIf mod.enable {

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.brightness;
+  mod = config.mod.brightness;
 in
 {
   config = lib.mkIf mod.enable {

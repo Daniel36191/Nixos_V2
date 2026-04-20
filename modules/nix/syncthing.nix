@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.syncthing;
+  mod = config.mod.syncthing;
 in
 {
   config = lib.mkIf mod.enable {

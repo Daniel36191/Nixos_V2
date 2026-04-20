@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.hyprland;
+  mod = osConfig.mod.hyprland;
 
 in
 {

@@ -8,7 +8,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.apps;
+  mod = config.mod.apps;
 in
 {
   config = lib.mkIf mod.enable {

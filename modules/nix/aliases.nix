@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.aliases;
+  mod = config.mod.aliases;
 in
 {
   config = lib.mkIf mod.enable {

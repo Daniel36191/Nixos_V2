@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.swaync;
+  mod = osConfig.mod.swaync;
 in
 {
   config = lib.mkIf mod.enable {

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.git;
+  mod = config.mod.git;
 in
 {
   config = lib.mkIf mod.enable {

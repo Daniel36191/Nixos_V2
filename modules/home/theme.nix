@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.theme;
+  mod = osConfig.mod.theme;
 
   folders-catppuccin = pkgs.catppuccin-papirus-folders.override {
     flavor = "macchiato";

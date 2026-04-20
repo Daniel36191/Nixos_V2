@@ -8,7 +8,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.games;
+  mod = config.mod.games;
 in
 {
   config = lib.mkIf mod.enable {

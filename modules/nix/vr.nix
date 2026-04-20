@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.vr;
+  mod = config.mod.vr;
 in
 {
   config = lib.mkIf mod.enable {

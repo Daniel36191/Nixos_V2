@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.user-defaults;
+  mod = osConfig.mod.user-defaults;
 
 in
 {

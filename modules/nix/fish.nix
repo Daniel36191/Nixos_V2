@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.fish;
+  mod = config.mod.fish;
 
 in
 {

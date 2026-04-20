@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.qutebrowser;
+  mod = osConfig.mod.qutebrowser;
 
   config = builtins.readFile ./config.yml;
 in

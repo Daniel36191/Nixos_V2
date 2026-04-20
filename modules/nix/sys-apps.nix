@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.sys-apps;
+  mod = config.mod.sys-apps;
 in
 {
   config = lib.mkIf mod.enable {

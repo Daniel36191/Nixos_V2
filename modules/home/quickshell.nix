@@ -7,7 +7,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.quickshell;
+  mod = osConfig.mod.quickshell;
 in
 {
   config = lib.mkIf mod.enable {

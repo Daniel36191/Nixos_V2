@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.zerotier;
+  mod = config.mod.zerotier;
 
 in
 {

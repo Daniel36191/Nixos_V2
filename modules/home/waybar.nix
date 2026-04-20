@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.waybar;
+  mod = osConfig.mod.waybar;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
 in
 with lib;

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.bitwarden;
+  mod = osConfig.mod.bitwarden;
 
 in
 {

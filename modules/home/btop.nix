@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.btop;
+  mod = osConfig.mod.btop;
 in
 {
   config = lib.mkIf mod.enable {

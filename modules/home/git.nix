@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.git;
+  mod = osConfig.mod.git;
 in
 {
   config = lib.mkIf mod.enable {

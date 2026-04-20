@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.starship;
+  mod = config.mod.starship;
 in
 {
   config = lib.mkIf mod.enable {

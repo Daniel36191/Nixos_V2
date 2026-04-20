@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = osConfig.mod.home.desktop-files;
+  mod = osConfig.mod.desktop-files;
 in
 {
   config = lib.mkIf mod.enable {

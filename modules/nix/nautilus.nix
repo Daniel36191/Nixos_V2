@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.nautilus;
+  mod = config.mod.nautilus;
 in
 {
   config = lib.mkIf mod.enable {

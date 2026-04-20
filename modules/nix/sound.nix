@@ -8,7 +8,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.sound;
+  mod = config.mod.sound;
 in
 {
   imports = [

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.borg;
+  mod = config.mod.borg;
 
 in
 {

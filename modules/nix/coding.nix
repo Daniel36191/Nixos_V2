@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.coding;
+  mod = config.mod.coding;
 in
 {
   config = lib.mkIf mod.enable {

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  mod = config.mod.nix.glances;
+  mod = config.mod.glances;
 in
 {
   config = lib.mkIf mod.enable {
