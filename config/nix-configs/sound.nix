@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs-spotifyPin,
+  pkgs-personoal,
   ...
 }:
 let
@@ -18,7 +19,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # bespokesynth
-    bespokesynth
+    pkgs-personoal.bespoke-synth
     # chataigne
     sendmidi
     receivemidi
@@ -26,6 +27,8 @@ in
     pulseaudioFull
     pavucontrol
     vlc
+    pkgs-personoal.audio-man
+
 
     ## Plugins
     rnnoise-plugin

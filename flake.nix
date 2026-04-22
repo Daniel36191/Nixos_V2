@@ -8,6 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
+    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
 
 
     ##########
@@ -97,6 +98,7 @@
       nixpkgs,
       nixpkgs-unstable,
       nixpkgs-stable,
+      nixpkgs-personal,
       home-manager,
       nix-flatpak,
       blender-cuda,
@@ -146,6 +148,7 @@
           inherit system;
           config.allowUnfree = true;
         };
+        pkgs-personoal = nixpkgs-personal.packages.${system};
       };
 
       commonNixModules = [
