@@ -49,7 +49,10 @@
     ###########
     ## Tools ##
     ###########
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix ={
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
