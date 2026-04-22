@@ -21,6 +21,28 @@
         "type": "github"
       }
     },
+    "ags": {
+      "inputs": {
+        "astal": "astal",
+        "nixpkgs": [
+          "nixpkgs-personal",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775689345,
+        "narHash": "sha256-tM3s7CX+tgxlYW0Sk3nzVThg2MHn08foIuMxABupxIs=",
+        "owner": "aylur",
+        "repo": "ags",
+        "rev": "bbee2f18939f1ec7ff720e717cf305e73635628f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aylur",
+        "repo": "ags",
+        "type": "github"
+      }
+    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
@@ -51,6 +73,28 @@
       "original": {
         "owner": "hyprwm",
         "repo": "aquamarine",
+        "type": "github"
+      }
+    },
+    "astal": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-personal",
+          "ags",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773914523,
+        "narHash": "sha256-GOL+bR30FPImAzy4NNsTMY1gpoINMsLTXR0WJBRSq30=",
+        "owner": "aylur",
+        "repo": "astal",
+        "rev": "41b50290c6a1cdce7b482897c22fe49286912b9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aylur",
+        "repo": "astal",
         "type": "github"
       }
     },
@@ -853,11 +897,12 @@
     },
     "nixpkgs-personal": {
       "inputs": {
+        "ags": "ags",
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1776650047,
-        "narHash": "sha256-EllU9SzGvyciGtQ5pCl0orNaktTAoedy4v7EM2w4Z20=",
+        "lastModified": 1776878479,
+        "narHash": "sha256-3IYtiyQp+D5XEYneMtyUE7KPFhx5VO/6DI6yBPMNCqc=",
         "path": "/home/daniel/nixpkgs-personal",
         "type": "path"
       },
@@ -868,17 +913,17 @@
     },
     "nixpkgs-spotifyPin": {
       "locked": {
-        "lastModified": 1735021538,
-        "narHash": "sha256-JpbXCLrmjhmsy9qkYkq5Pr3U5aZVuXjQGUnv5tAyMZs=",
+        "lastModified": 1776548001,
+        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6eb01a67e1fc558644daed33eaeb937145e17696",
+        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "6eb01a67e1fc558644daed33eaeb937145e17696",
         "type": "github"
       }
     },

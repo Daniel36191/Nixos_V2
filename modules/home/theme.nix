@@ -27,6 +27,9 @@ in
     };
 
     gtk = {
+      gtk4 = {
+        theme = config.gtk.theme;
+      };
       iconTheme = {
         name = "Papirus-Dark";
         package = folders-catppuccin;

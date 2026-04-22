@@ -13,7 +13,7 @@
     ##########
     ## Pins ##
     ##########
-    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/6eb01a67e1fc558644daed33eaeb937145e17696";
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/nixos-unstable";
 
     #############
     ## Desktop ##
@@ -98,7 +98,7 @@
       lib = nixpkgs.lib;
       modulesFolder = ./modules;
 
-      var = import ./baseplate/user-config.nix;
+      var = import ./baseplate/vars.nix;
       fun = import ./baseplate/module-functions.nix {
         inherit lib;
         inherit modulesFolder;
@@ -118,11 +118,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgs-personal = nixpkgs-personal.legacyPackages.${system};
-        stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        pkgs-personal = nixpkgs-personal.packages.${system};
       };
 
       commonNixModules = [

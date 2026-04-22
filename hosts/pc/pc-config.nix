@@ -60,6 +60,7 @@
       wlogout.enable = false;
     };
     rofi = {
+    	enable = true;
       config-emoji.enable = true;
       config-long.enable = true;
     };
@@ -76,7 +77,7 @@
     ##############
     ## Services ##
     ##############
-    tailscale.enable = true;
+    tailscale.enable = false;
     zerotier.enable = true;
     borg.enable = false;
     samba.enable = false;

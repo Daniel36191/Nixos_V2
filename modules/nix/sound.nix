@@ -18,7 +18,7 @@ in
 
     environment.systemPackages = with pkgs; [
       # bespokesynth
-      pkgs-personal.bespokesynth
+      pkgs-personal.bespoke-synth
       # pkgs-personal.chataigne
       pkgs-personal.send-midi
       pkgs-personal.receive-midi
@@ -26,6 +26,7 @@ in
       pulseaudioFull
       pavucontrol
       vlc
+      pkgs-personal.audio-man
 
       ## Plugins
       rnnoise-plugin

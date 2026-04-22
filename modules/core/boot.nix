@@ -12,6 +12,7 @@ in
   boot = {
     loader = {
       timeout = 1;
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         useOSProber = true;
@@ -33,7 +34,7 @@ in
         );
       };
     };
-
+    
     plymouth.enable = true;
 
     binfmt.registrations.appimage = {
