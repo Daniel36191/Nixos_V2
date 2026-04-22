@@ -18,8 +18,8 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    # bespokesynth
-    pkgs-personoal.bespoke-synth
+    bespokesynth
+    # pkgs-personoal.bespoke-synth
     # chataigne
     sendmidi
     receivemidi
@@ -27,7 +27,7 @@ in
     pulseaudioFull
     pavucontrol
     vlc
-    pkgs-personoal.audio-man
+    # pkgs-personoal.audio-man
 
 
     ## Plugins
