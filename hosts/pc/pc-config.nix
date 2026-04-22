@@ -60,7 +60,7 @@
       wlogout.enable = false;
     };
     rofi = {
-    	enable = true;
+      enable = true;
       config-emoji.enable = true;
       config-long.enable = true;
     };
