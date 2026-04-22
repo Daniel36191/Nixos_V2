@@ -8,7 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
-    nixpkgs-personal.url = "path:/home/daniel/nixpkgs-personal";
+    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
 
     ##########
     ## Pins ##
@@ -49,7 +49,10 @@
     ###########
     ## Tools ##
     ###########
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix ={
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
