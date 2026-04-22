@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  pkgs-pkgs-personal,
+  pkgs-personal,
   ...
 }:
 let

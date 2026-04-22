@@ -19,7 +19,7 @@
     coding.enable = true;
     creative.enable = true;
     office.enable = true;
-    games.enable = false;
+    games.enable = true;
     vr.enable = false;
     containers.enable = false;
     vm.enable = false;

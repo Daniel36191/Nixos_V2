@@ -8,7 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
-    nixpkgs-personal.url = "path:/home/daniel/nixpkgs-personal";
+    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
 
     ##########
     ## Pins ##
