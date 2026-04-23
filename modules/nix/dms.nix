@@ -12,8 +12,17 @@ in
     programs.dms-shell = {
       enable = true;
 
-      enableDynamicTheming = false;
-      enableClipboardPaste = false;
+      systemd = {
+        enable = true;
+        restartIfChanged = true;
+      };
+
+      enableDynamicTheming = true;
+      enableClipboardPaste = true;
+      enableSystemMonitoring = true;
+      enableVPN = true;
+      enableAudioWavelength = true;
+      enableCalendarEvents = true;
     };
   };
 }
