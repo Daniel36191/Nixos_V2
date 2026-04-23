@@ -42,8 +42,7 @@ in
       stopwatch = "${pkgs.clock-rs}/bin/clock-rs stopwatch";
 
       ## Compatibility
-      mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=
-        /run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
+      mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
       browser = "${pkgs.librewolf}/bin/librewolf";
     };
   };
