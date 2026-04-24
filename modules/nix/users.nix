@@ -47,6 +47,7 @@ in
           "networkmanager"
           "wheel"
           "libvirtd"
+          "libvirt"
           "libvirt-qemu"
           "kvm"
           "input"
