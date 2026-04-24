@@ -76,7 +76,7 @@
     ##############
     ## Services ##
     ##############
-    tailscale.enable = false;
+    tailscale.enable = true;
     zerotier.enable = true;
     borg.enable = false;
     samba.enable = false;
