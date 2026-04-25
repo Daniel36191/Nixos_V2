@@ -45,6 +45,11 @@ in
           controlPath = "~/.ssh/master-%r@%n:%p";
           controlPersist = "no";
         };
+        "github.com" = {
+          hostname = "github.com";
+          port = 22;
+          user = "git";
+        };
 
         "lillypond.local" = {
           hostname = "lillypond.local";
@@ -58,11 +63,6 @@ in
           user = "lillypond";
         };
 
-        "github.com" = {
-          hostname = "github.com";
-          port = 22;
-          user = "git";
-        };
       };
     };
   };
