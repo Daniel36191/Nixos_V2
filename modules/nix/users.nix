@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  inputs,
   options,
   var,
   ...
@@ -70,6 +70,7 @@ in
           "dbus"
         ];
         openssh.authorizedKeys.keys = [
+          inputs.lillypond.pulicSSHKey
         ]
         ++ var.ssh.authedKeys;
       };

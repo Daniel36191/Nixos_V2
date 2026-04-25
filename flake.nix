@@ -1,6 +1,5 @@
 {
   description = "NixOS";
-
   inputs = {
     #############
     ## Nixpkgs ##
@@ -9,6 +8,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
+
+    ## Home-Server
+    lillypond.url = "github:Daniel36191/Home-Server";
 
     ##########
     ## Pins ##
