@@ -35,6 +35,7 @@ in
 
       ## Aliases
       size = "du -sh";
+      img2text = "${pkgs.tesseract}/bin/tesseract stdin stdout";
       log = "journalctl -xef -u";
       logs = "journalctl -xe -u";
       scrcpy = "${pkgs.scrcpy}/bin/scrcpy --video-codec=h264 

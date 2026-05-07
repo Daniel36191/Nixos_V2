@@ -53,6 +53,13 @@ in
       pulse.enable = true;
       jack.enable = true;
       extraConfig = {
+        pipewire = {
+          "00-allowed-rates" = {
+            "context.properties" = {
+              "default.clock.allowed-rates" = [ 44100 48000 96000 ];
+            };
+          };
+        };
       };
 
       wireplumber = {
