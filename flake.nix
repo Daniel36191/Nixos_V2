@@ -181,7 +181,7 @@
 
     in
     {
-      pulicSSHKeys = fun.hostSSHKeys;
+      publicSSHKeys = fun.hostSSHKeys;
       nixosConfigurations = {
         pc =
           mkHost "pc"
