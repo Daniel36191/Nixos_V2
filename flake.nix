@@ -107,11 +107,13 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       modulesFolder = ./modules;
+      hostsFolder = ./hosts;
 
       var = import ./baseplate/vars.nix;
-      fun = import ./baseplate/module-functions.nix {
+      fun = import ./baseplate/functions.nix {
         inherit lib;
         inherit modulesFolder;
+        inherit hostsFolder;
       };
 
       commonArgs = {
@@ -179,6 +181,7 @@
 
     in
     {
+      pulicSSHKeys = fun.hostSSHKeys;
       nixosConfigurations = {
         pc =
           mkHost "pc"

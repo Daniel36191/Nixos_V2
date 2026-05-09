@@ -1,16 +1,19 @@
 {
   lib,
   modulesFolder,
+  hostsFolder,
   ...
 }:
 let
+
+  allFiles = d: lib.filesystem.listFilesRecursive d;
+
+  ## Automatic Options ##
   generateModuleOptions =
     let
       mkOpt = lib.mkEnableOption "";
 
-      allFiles = lib.filesystem.listFilesRecursive modulesFolder;
-
-      nixFiles = builtins.filter (p: lib.hasSuffix ".nix" (toString p)) allFiles;
+      nixFiles = builtins.filter (p: lib.hasSuffix ".nix" (toString p)) (allFiles modulesFolder);
 
       parseFile =
         path:
@@ -64,7 +67,12 @@ let
 
     in
     flatEntries // groupEntries;
+
+  ## All User SSH Keys ##
+  nixConfigFiles = builtins.filter (p: lib.hasSuffix "config.nix" (toString p)) (allFiles hostsFolder);
+  hostSSHKeys = lib.forEach nixConfigFiles (p: (import p { }).hostConf.sshPublicKey);
 in
 {
   inherit generateModuleOptions;
+  inherit hostSSHKeys;
 }

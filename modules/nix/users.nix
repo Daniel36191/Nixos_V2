@@ -4,6 +4,7 @@
   inputs,
   options,
   var,
+  fun,
   ...
 }:
 let
@@ -70,14 +71,10 @@ in
           "dbus"
         ];
         openssh.authorizedKeys.keys = let
-          ## Imports all keys from host-config files.
-          hostSshKeys = dir: map (f: (import f {}).hostConf.sshPublicKey)
-            (builtins.filter (f: lib.hasSuffix "-config.nix" (baseNameOf f))
-            (lib.filesystem.listFilesRecursive dir));
         in [
           inputs.lillypond.pulicSSHKey
         ]
-        ++ (hostSshKeys ../../hosts)
+        ++ fun.hostSSHKeys
         ++ var.ssh.authedKeys;
       };
     };
