@@ -36,6 +36,7 @@
     swaync.enable = false;
     nautilus.enable = true;
     syncthing.enable = true;
+    spotify.enable = true;
 
     #########
     ## Cli ##
