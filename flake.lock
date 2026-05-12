@@ -1424,17 +1424,17 @@
     },
     "nixpkgs-spotifyPin": {
       "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
+        "lastModified": 1778162808,
+        "narHash": "sha256-7wtinppklfyHs/ZqUaWmj/RGSHFk85pPpa3TBgrpUcU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
+        "rev": "00148f722d6c0d912ae1398292ca5915d99be9b5",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "rev": "00148f722d6c0d912ae1398292ca5915d99be9b5",
         "type": "github"
       }
     },
