@@ -14,12 +14,12 @@ in
       windows = "bash --norc ( trap 'hyprctl reload;' INT
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
-      hyprpicker = "hyprpicker -a";
+      hyprpicker = "${pkgs.hyprpicker} -a";
 
-      sudonix = "nh os switch -H $NIX_HOST ./";
-      updatenix = "nh os switch -H $NIX_HOST ./ --update";
-      updateinput = "flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
-      cleannix = "flatpak uninstall --unused && sudo nix-collect-garbage -d";
+      sudonix = "sudo -v && ${pkgs.nh}/bin/nh os switch -H $NIX_HOST ~/Nixos_V2";
+      updatenix = "sudo -v && ${pkgs.nh}/bin/nh os switch -H $NIX_HOST ./ --update";
+      updateinput = "sudo -v && flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
+      cleannix = "sudo -v && flatpak uninstall --unused && sudo nix-collect-garbage -d";
 
       ## Alterntives
       mi = "${pkgs.micro}/bin/micro";
