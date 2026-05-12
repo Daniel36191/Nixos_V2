@@ -102,10 +102,9 @@ in
           shuffle # shuffle+ (special characters are sanitized out of extension names)
           adblock
           hidePodcasts
-          bookmark
-          trashbin
           powerBar
           playNext # Add to queue
+          allOfArtist # auto makes playlist of all artist's songs
           # addToQueueTop  ## Also add to queue
 
           ## Not working as of this time builds but no output

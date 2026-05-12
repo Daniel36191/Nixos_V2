@@ -33,6 +33,7 @@ in
       nil # Nix-lang server
       nixfmt # Nix-lang formattor
       black # Python
+      hyprls # Hyprland
 
       ## Java
       jdk21
