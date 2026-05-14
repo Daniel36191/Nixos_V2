@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   pkgs-personal,
+  var,
   ...
 }:
 let
@@ -55,7 +56,11 @@ in
         pipewire = {
           "00-allowed-rates" = {
             "context.properties" = {
-              "default.clock.allowed-rates" = [ 44100 48000 96000 ];
+              "default.clock.allowed-rates" = [
+                44100
+                48000
+                96000
+              ];
             };
           };
         };
@@ -85,8 +90,6 @@ in
 
     # Enable sound with pulse
     services.pulseaudio.enable = false;
-
-    
 
     #############
     ## Bespoke ##
@@ -125,6 +128,35 @@ in
             };
           }
         ];
+      };
+    };
+    systemd.user.services.midi-watcher = {
+      enable = true;
+      wantedBy = [ "default.target" ];
+      description = "Midi Watcher";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart =
+          let
+            midi-watcher = pkgs.writeShellScriptBin "midi-watcher" ''
+              ${pkgs-personal.receive-midi}/bin/receivemidi dev "Midi Through Port-0" cc | while IFS= read -r line; do
+                if [[ $line =~ control-change[[:space:]]+([0-9]+)[[:space:]]+([0-9]+) ]]; then
+                  cc_num="''${BASH_REMATCH[1]}"
+                  value="''${BASH_REMATCH[2]}"
+                  
+                  if (( cc_num >= 10 && cc_num <= 20 )); then
+                    echo "$value" > "/tmp/midi_cc''${cc_num}.value"
+                  fi
+                fi
+              done
+            '';
+          in
+          ''
+            ${midi-watcher}/bin/midi-watcher
+          '';
+        Restart = "always";
+        RestartSec = "5s";
+        User = "${var.username}";
       };
     };
 

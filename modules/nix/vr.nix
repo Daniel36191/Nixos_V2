@@ -11,12 +11,13 @@ in
 {
   config = lib.mkIf mod.enable {
     environment.systemPackages = with pkgs; [
-      monado-vulkan-layers
+      pkgs-unstable.monado-vulkan-layers
       # monado
 
       pkgs-unstable.wayvr
 
       pkgs-unstable.opencomposite # Translation Layer
+      pkgs-unstable.xrizer
       # slimevr ## slime vr :)
 
       ## Hotas remapping
