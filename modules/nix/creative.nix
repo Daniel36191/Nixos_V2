@@ -30,8 +30,15 @@ in
       godot
       android-tools
 
-      ## VRC Creator
-      pkgs-stable.unityhub
+      # Older editor versions do not support OpenSSL 3.
+      # Fix for infinite project importing: https://discussions.unity.com/t/linux-editor-stuck-on-loading-because-of-bee-backend-w-workaround/854480
+      (pkgs.unityhub.override {
+        extraLibs =
+          pkgs: with pkgs; [
+            openssl_1_1
+          ];
+      })
+      ## VCC
       alcom
     ];
     services.flatpak = {
@@ -46,8 +53,11 @@ in
 
     boot = {
       ## This is for OBS Virtual Cam Support ## broken due to lack of vmlinux avalbility
-      # kernelModules = [ "v4l2loopback" ];
-      # extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+      kernelModules = [ "v4l2loopback" ];
+      extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+      extraModprobeConfig = ''
+        options v4l2loopback exclusive_caps=1
+      '';
     };
   };
 }

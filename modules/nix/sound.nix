@@ -27,6 +27,7 @@ in
       pavucontrol
       vlc
       pkgs-personal.audio-man
+      spotify-player
 
       ## Plugins
       rnnoise-plugin

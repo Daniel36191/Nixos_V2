@@ -24,4 +24,6 @@ in
     enable = false;
     package = pkgs.nix-serve-ng;
   };
+
+  services.lact.enable = true;
 }

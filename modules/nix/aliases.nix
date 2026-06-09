@@ -24,14 +24,17 @@ in
       ## Alterntives
       mi = "${pkgs.micro}/bin/micro";
       cat = "${pkgs.bat}/bin/bat";
-      ls = "${pkgs.eza}/bin/eza --icons";
-      tree = "${pkgs.eza}/bin/eza --icons -T";
-      ll = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first";
-      la = "${pkgs.eza}/bin/eza -lah --icons --grid --group-directories-first";
       grep = "${pkgs.ripgrep}/bin/rg";
       df = "${pkgs.dysk}/bin/dysk";
       sleep = "${pkgs.timer}/bin/timer";
       vim = "${pkgs.neovim}/bin/nvim";
+
+      ## ls
+      ls = "${pkgs.eza}/bin/eza --icons";
+      ll = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first";
+      la = "${pkgs.eza}/bin/eza -lah --icons --grid --group-directories-first";
+      tree = "${pkgs.eza}/bin/eza --icons -T";
+      links = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first --hyperlink";
 
       ## Aliases
       size = "du -sh";

@@ -56,6 +56,12 @@ in
           port = 22;
           user = "lillypond";
         };
+        
+        "root.lillypond.local" = {
+          hostname = "lillypond.local";
+          port = 22;
+          user = "root";
+        };
 
         "lillypond-tailscale" = {
           hostname = "lillypond";

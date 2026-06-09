@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }:
 let
@@ -18,6 +19,8 @@ in
       filezilla # Fstp client
 
       termius
+
+      pkgs-unstable.devenv
 
       zellij
 

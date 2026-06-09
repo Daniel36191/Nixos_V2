@@ -30,7 +30,6 @@ in
       mission-center
       # nvitop
       nvtopPackages.nvidia
-      lact # Gpu Overclocking
       ncdu # wiztree
       # xarchiver ## Archive Manager
       kdePackages.ark # Archive Manager

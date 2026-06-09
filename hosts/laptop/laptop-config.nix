@@ -23,6 +23,7 @@
     vr.enable = false;
     containers.enable = false;
     vm.enable = false;
+    ml.enable = false;
 
     ##########
     ## Apps ##

@@ -29,6 +29,7 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "libsoup-2.74.3"
     "olm-3.2.16"
+    "openssl-1.1.1w"
   ];
   ####################
   ## Port Forwading ##
@@ -68,6 +69,7 @@ in
         "https://cache.nixos.org"
         "https://devenv.cachix.org"
         "https://passivelemon.cachix.org"
+        "https://llama-cpp.cachix.org"
         # "https://192.168.0.248:5000"
       ];
       trusted-public-keys = [
@@ -75,6 +77,7 @@ in
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
         "passivelemon.cachix.org-1:ScYjLCvvLi70S95SMMr8lMilpZHuafLP3CK/nZ9AaXM="
+        "llama-cpp.cachix.org-1:H75X+w83wUKTIPSO1KWy9ADUrzThyGs8P5tmAbkWhQc="
       ];
     };
     gc = {
