@@ -22,7 +22,7 @@
     games.enable = true;
     vr.enable = false;
     containers.enable = false;
-    vm.enable = true;
+    vm.enable = false;
 
     ##########
     ## Apps ##

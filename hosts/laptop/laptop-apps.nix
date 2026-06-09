@@ -10,10 +10,10 @@ in
   environment.systemPackages = with pkgs; [
     framework-tool
     pkgs-personal.lulzbot-cura
-    streamcontroller
+    # streamcontroller
   ];
 
-  services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
+  # services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
 
   services.flatpak = {
     packages = [
