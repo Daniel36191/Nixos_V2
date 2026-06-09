@@ -131,7 +131,7 @@ in
       };
     };
     systemd.user.services.midi-watcher = {
-      enable = true;
+      enable = false;
       wantedBy = [ "default.target" ];
       description = "Midi Watcher";
       serviceConfig = {

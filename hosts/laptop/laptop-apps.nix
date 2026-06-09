@@ -11,6 +11,8 @@ in
     framework-tool
     pkgs-personal.lulzbot-cura
     streamcontroller
+    cage
+    gsettings-desktop-schemas
   ];
 
   services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
@@ -20,8 +22,8 @@ in
     ];
   };
 
-  services.nix-serve = {
-    enable = true;
-    package = pkgs.nix-serve-ng;
-  };
+  # services.nix-serve = {
+  #   enable = true;
+  #   package = pkgs.nix-serve-ng;
+  # };
 }

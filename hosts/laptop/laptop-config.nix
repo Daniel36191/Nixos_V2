@@ -35,7 +35,7 @@
     qutebrowser.enable = true;
     swaync.enable = false;
     nautilus.enable = true;
-    syncthing.enable = true;
+    syncthing.enable = false;
     spotify.enable = true;
 
     #########

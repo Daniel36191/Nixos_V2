@@ -32,7 +32,9 @@ in
       nixd # Nix-lang interpiter
       nil # Nix-lang server
       nixfmt # Nix-lang formattor
-      black # Python
+      black # Python formatter
+      python313Packages.python-lsp-server
+      python313Packages.python-lsp-black
       hyprls # Hyprland
 
       ## Java

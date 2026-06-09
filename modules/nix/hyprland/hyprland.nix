@@ -12,6 +12,22 @@ let
   command = "${
     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
   }/bin/start-hyprland";
+
+  cage-kitty = pkgs.writeShellScriptBin "cage-kitty" ''
+    exec ${pkgs.cage}/bin/cage -s -- ${pkgs.kitty}/bin/kitty
+  '';
+
+  cage-kitty-session =
+    (pkgs.writeTextDir "share/wayland-sessions/cage-kitty.desktop" ''
+      [Desktop Entry]
+      Name=Cage + Kitty
+      Comment=Kitty terminal in a minimal Cage compositor
+      Exec=${cage-kitty}/bin/cage-kitty
+      Type=Application
+    '').overrideAttrs
+      (_: {
+        passthru.providedSessions = [ "cage-kitty" ];
+      });
 in
 {
   config = lib.mkIf mod.enable {
@@ -32,6 +48,8 @@ in
       wl-clipboard
       cliphist
 
+      cage-kitty
+
     ];
 
     ## Portals
@@ -50,6 +68,7 @@ in
     };
 
     ## Login Manager
+    services.displayManager.sessionPackages = [ cage-kitty-session ];
     services = {
       greetd = {
         enable = true;
@@ -59,10 +78,10 @@ in
             user = var.username;
             command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${command}";
           };
-          initial_session = {
-            command = "${command}";
-            user = var.username;
-          };
+          # initial_session = {
+          #   command = "${command}";
+          #   user = var.username;
+          # };
         };
       };
     };

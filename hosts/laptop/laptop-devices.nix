@@ -22,6 +22,12 @@ in
     '';
   };
 
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "powersave";  # Use powersave governor by default
+    powertop.enable = true;  # Auto-tune power settings
+  };
+
   ## Needed for desktop environments to detect/manage display brightness
   hardware.sensor.iio.enable = true;
 

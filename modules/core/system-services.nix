@@ -1,6 +1,7 @@
 {
   pkgs,
   var,
+  lib,
   ...
 }:
 {
@@ -29,25 +30,31 @@
   };
 
   ## Printing
-  services = {
-    printing = {
-      enable = true;
-      drivers = [
-      ];
-    };
-    ipp-usb.enable = true;
-  };
+  # services = {
+  #   printing = {
+  #     enable = true;
+  #     drivers = [
+  #     ];
+  #   };
+  #   ipp-usb.enable = true;
+  # };
 
   ## Avahi Dns services
-  services = {
-    avahi = {
-      enable = true;
-      # nssmdns4 = true;
-      openFirewall = true;
-    };
-  };
+  # services = {
+  #   avahi = {
+  #     enable = true;
+  #     # nssmdns4 = true;
+  #     openFirewall = true;
+  #   };
+  # };
 
   ## Location
   location.provider = "geoclue2";
+  services.geoclue2.enable = lib.mkForce false;
+
+  services.journald.extraConfig = ''
+    SystemMaxUse=100M
+    RuntimeMaxUse=50M
+  '';
 
 }
