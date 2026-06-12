@@ -26,6 +26,7 @@ in
           powerBar
           playNext # Add to queue
           allOfArtist # auto makes playlist of all artist's songs
+          aiBandBlocker # This is just sad
           # addToQueueTop  ## Also add to queue
 
           ## Not working as of this time builds but no output
