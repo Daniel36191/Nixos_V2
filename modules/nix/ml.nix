@@ -2,11 +2,18 @@
   config,
   lib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 let
   mod = config.mod.ml;
+  conf = config.mod;
+  pkg =
+    if conf.nvidia-drivers.enable then
+      pkgs.ollama-cuda
+    else if conf.amd-drivers.enable then
+      pkgs.ollama-rocm
+    else
+      pkgs.ollama-vulkan;
 in
 {
   config = lib.mkIf mod.enable {
@@ -18,16 +25,9 @@ in
 
     services.ollama = {
       enable = true;
-      package = pkgs.ollama-cuda;
+      package = pkg;
       host = "0.0.0.0";
       openFirewall = true;
     };
-
-    # services.llama-cpp = {
-    #   enable = true;
-    #   package = pkgs-stable.llama-cpp.override { cudaSupport = true; };
-    #   port = 11568;
-    #   host = "0.0.0.0";
-    # };
   };
 }
