@@ -15,7 +15,7 @@
     ##########
     ## Pins ##
     ##########
-    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/00148f722d6c0d912ae1398292ca5915d99be9b5";
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb";
 
     #############
     ## Desktop ##

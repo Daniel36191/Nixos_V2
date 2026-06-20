@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-spotifyPin,
+  pkgs-unstable,
   lib,
   inputs,
   config,
@@ -17,7 +17,7 @@ in
       in
       {
         enable = true;
-        spotifyPackage = pkgs-spotifyPin.spotify;
+        spotifyPackage = pkgs-unstable.spotify;
 
         enabledExtensions = with spicePkgs.extensions; [
           shuffle # shuffle+ (special characters are sanitized out of extension names)
