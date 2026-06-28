@@ -1,5 +1,5 @@
 {
-  config,
+  pkgs,
   lib,
   osConfig,
   host,
@@ -51,12 +51,19 @@ in
           user = "git";
         };
 
+        "ssh.lillypond.name" = {
+          hostname = "ssh.lillypond.name";
+          port = 2222;
+          user = "forgejo";
+          # proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        };
+
         "lillypond.local" = {
           hostname = "lillypond.local";
           port = 22;
           user = "lillypond";
         };
-        
+
         "root.lillypond.local" = {
           hostname = "lillypond.local";
           port = 22;
