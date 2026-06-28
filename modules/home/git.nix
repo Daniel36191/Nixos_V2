@@ -55,7 +55,6 @@ in
           hostname = "ssh.lillypond.name";
           port = 2222;
           user = "forgejo";
-          # proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
         };
 
         "lillypond.local" = {
