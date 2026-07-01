@@ -7,15 +7,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
-    nixpkgs-personal.url = "github:Daniel36191/nixpkgs-personal";
+    nixpkgs-personal.url = "git+https://git.lillypond.name/dmoeller/nixpkgs-personal";
 
     ## Home-Server
-    lillypond.url = "github:Daniel36191/Home-Server";
+    lillypond.url = "git+https://git.lillypond.name/dmoeller/Home-Server";
 
     ##########
     ## Pins ##
     ##########
-    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/00148f722d6c0d912ae1398292ca5915d99be9b5";
+    nixpkgs-spotifyPin.url = "github:nixos/nixpkgs/da5ad661ba4e5ef59ba743f0d112cbc30e474f32";
 
     #############
     ## Desktop ##

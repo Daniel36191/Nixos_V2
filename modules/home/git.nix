@@ -1,5 +1,5 @@
 {
-  config,
+  pkgs,
   lib,
   osConfig,
   host,
@@ -54,6 +54,12 @@ in
           hostname = "github.com";
           port = 22;
           user = "git";
+        };
+
+        "ssh.lillypond.name" = {
+          hostname = "ssh.lillypond.name";
+          port = 2222;
+          user = "forgejo";
         };
 
         "lillypond.local" = {
