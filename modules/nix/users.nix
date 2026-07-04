@@ -69,13 +69,16 @@ in
           "render"
           "wayland"
           "dbus"
+          "adbusers"
         ];
-        openssh.authorizedKeys.keys = let
-        in [
-          inputs.lillypond.pulicSSHKey
-        ]
-        ++ fun.hostSSHKeys
-        ++ var.ssh.authedKeys;
+        openssh.authorizedKeys.keys =
+          let
+          in
+          [
+            inputs.lillypond.pulicSSHKey
+          ]
+          ++ fun.hostSSHKeys
+          ++ var.ssh.authedKeys;
       };
     };
     nix.settings.trusted-users = [
