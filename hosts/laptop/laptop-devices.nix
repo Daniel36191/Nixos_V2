@@ -25,6 +25,19 @@ in
   ## Needed for desktop environments to detect/manage display brightness
   hardware.sensor.iio.enable = true;
 
+  ## Fake printer
+  services.printing.cups-pdf = {
+    enable = true;
+    instances = {
+      pdf = {
+        settings = {
+          Out = "\${HOME}/cups-pdf";
+          UserUMask = "0033";
+        };
+      };
+    };
+  };
+
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ framework-laptop-kmod ];
     kernelModules = [
