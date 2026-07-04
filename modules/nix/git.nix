@@ -25,7 +25,7 @@ in
 
     age.secrets = {
       "ssh-${host}" = {
-        path = "/home/${var.username}/.ssh/ssh-${host}";
+        path = "/home/${var.username}/.ssh/id_ed25519";
         owner = var.username;
         mode = "600";
       };

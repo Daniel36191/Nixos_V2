@@ -23,7 +23,7 @@ in
     };
 
     ## SSH Client
-    home.file.".ssh/ssh-${host}.pub" = {
+    home.file.".ssh/id_ed25519.pub" = {
       text = osConfig.hostConf.sshPublicKey;
       force = true;
     };
@@ -55,6 +55,9 @@ in
           hostname = "ssh.lillypond.name";
           port = 2222;
           user = "forgejo";
+          extraOptions = {
+            WarnWeakCrypto = "no";
+          };
         };
 
         "lillypond.local" = {
