@@ -13,9 +13,14 @@ in
   config = lib.mkIf mod.enable {
     programs.git = {
       enable = true;
+      # signing = {
+      #   key = osConfig.age.secrets."ssh-${host}".path;
+      #   signByDefault = true;
+      # };
       settings.user = {
         Name = "${var.git.username}";
         Email = "${var.git.email}";
+        # gpg.format = "ssh";
       };
     };
     programs = {
@@ -76,6 +81,12 @@ in
           hostname = "lillypond";
           port = 22;
           user = "lillypond";
+        };
+
+        "mule.local" = {
+          hostname = "192.168.1.59";
+          port = 22;
+          user = "beachmule";
         };
 
       };

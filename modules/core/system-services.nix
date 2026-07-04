@@ -32,7 +32,13 @@
   services = {
     printing = {
       enable = true;
-      drivers = [
+      drivers = with pkgs; [
+        cups-filters
+        cups-browsed
+        gutenprint
+        gutenprintBin
+        splix
+        hplip
       ];
     };
     ipp-usb.enable = true;

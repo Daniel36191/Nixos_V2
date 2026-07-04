@@ -21,7 +21,7 @@
     office.enable = true;
     games.enable = true;
     vr.enable = false;
-    containers.enable = false;
+    containers.enable = true;
     vm.enable = false;
     ml.enable = false;
 
