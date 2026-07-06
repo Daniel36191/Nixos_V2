@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # dms.url = "github:AvengeMedia/DankMaterialShell";
-    dms.url = "git+https://git.lillypond.name/dmoeller/DankMaterialShell";
+    dms.url = "git+https://git.lillypond.name/dmoeller/DankMaterialShell?rev=5bd857ab4a28209802bb99b4555f903f5ff9c18b";
     dms-plugin-registry = {
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
