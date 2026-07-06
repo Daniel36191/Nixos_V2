@@ -607,17 +607,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1783308517,
-        "narHash": "sha256-EUIe+GF4Bz9XTjAaybo54Reb+BEtrBT9BMZ8K9hPi+c=",
-        "ref": "refs/heads/master",
-        "rev": "5bd857ab4a28209802bb99b4555f903f5ff9c18b",
-        "revCount": 4062,
-        "type": "git",
-        "url": "https://git.lillypond.name/dmoeller/DankMaterialShell"
+        "lastModified": 1783376149,
+        "narHash": "sha256-8OtuiFN++vFAgzsSuqI+5zsriTbkwZS9575p/ulxuP0=",
+        "owner": "AvengeMedia",
+        "repo": "DankMaterialShell",
+        "rev": "8a1acb63c9b06a4eac276c96e7ac2a1f7de6bf7e",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "https://git.lillypond.name/dmoeller/DankMaterialShell"
+        "owner": "AvengeMedia",
+        "repo": "DankMaterialShell",
+        "type": "github"
       }
     },
     "dms-plugin-registry": {

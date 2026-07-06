@@ -37,8 +37,7 @@
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # dms.url = "github:AvengeMedia/DankMaterialShell";
-    dms.url = "git+https://git.lillypond.name/dmoeller/DankMaterialShell";
+    dms.url = "github:AvengeMedia/DankMaterialShell";
     dms-plugin-registry = {
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
