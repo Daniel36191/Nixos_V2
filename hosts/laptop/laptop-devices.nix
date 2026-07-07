@@ -47,7 +47,7 @@ in
     ];
 
     ## Prevent USB autosuspend on Bluetooth adapters
-    boot.extraModprobeConfig = ''
+    extraModprobeConfig = ''
       options btusb enable_autosuspend=0
     '';
   };
