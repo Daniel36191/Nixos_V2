@@ -77,8 +77,8 @@ in
               "bap_sink"
               "bap_source"
             ];
-            bluez5.enable-msbc = true;
-            bluez5.hfphsp-backend = "native";
+            bluez5.enable-msbc = false;
+            bluez5.hfphsp-backend = "none";
           };
         };
       };

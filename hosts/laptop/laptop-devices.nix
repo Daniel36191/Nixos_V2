@@ -40,9 +40,15 @@ in
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ framework-laptop-kmod ];
+
     kernelModules = [
       "cros_ec"
       "cros_ec_lpcs"
     ];
+
+    ## Prevent USB autosuspend on Bluetooth adapters
+    boot.extraModprobeConfig = ''
+      options btusb enable_autosuspend=0
+    '';
   };
 }
