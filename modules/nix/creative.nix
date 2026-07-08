@@ -24,6 +24,7 @@ in
       # orca-slicer ## Crashes on opening webgui
       # pkgs-personal.orca-beta
       freecad
+      kicad
       # handbrake ## video parser ## fails to build
       soundconverter
       yt-dlg
@@ -44,6 +45,7 @@ in
     services.flatpak = {
       packages = [
         "org.gimp.GIMP"
+        "com.orcaslicer.OrcaSlicer"
         "io.github.nate_xyz.Paleta"
         "com.prusa3d.PrusaSlicer"
         "fr.handbrake.ghb"
