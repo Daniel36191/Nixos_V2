@@ -10,6 +10,8 @@ in
   environment.systemPackages = with pkgs; [
     framework-tool
     pkgs-personal.lulzbot-cura
+    orca-slicer
+    kicad
     # streamcontroller
   ];
 
