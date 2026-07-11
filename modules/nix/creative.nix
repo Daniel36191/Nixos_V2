@@ -5,6 +5,7 @@
   inputs,
   pkgs-stable,
   pkgs-personal,
+  pkgs-unstable,
   ...
 }:
 let
@@ -23,7 +24,7 @@ in
       # prusa-slicer
       # orca-slicer ## Crashes on opening webgui
       # pkgs-personal.orca-beta
-      freecad
+      pkgs-unstable.freecad
       kicad
       # handbrake ## video parser ## fails to build
       soundconverter

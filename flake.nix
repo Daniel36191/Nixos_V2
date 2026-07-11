@@ -5,7 +5,7 @@
     ## Nixpkgs ##
     #############
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/39f795bd0c4f118ecdfa92f9e9f838f6481539c2";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "git+https://git.lillypond.name/dmoeller/nixpkgs-personal";
 

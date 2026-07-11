@@ -11,6 +11,7 @@ in
     streamcontroller
     pkgs-personal.lulzbot-cura
     # lan-mouse ## Software KVM
+    songrec
   ];
 
   services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller

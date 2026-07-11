@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   ...
 }:
 let
@@ -11,13 +11,13 @@ in
 {
   config = lib.mkIf mod.enable {
     environment.systemPackages = with pkgs; [
-      pkgs-unstable.monado-vulkan-layers
+      monado-vulkan-layers
       # monado
 
-      pkgs-unstable.wayvr
+      wayvr
 
-      pkgs-unstable.opencomposite # Translation Layer
-      pkgs-unstable.xrizer
+      opencomposite # Translation Layer
+      xrizer
       # slimevr ## slime vr :)
 
       ## Hotas remapping
@@ -31,7 +31,7 @@ in
 
     services.monado = {
       enable = true;
-      package = pkgs-unstable.monado;
+      package = pkgs.monado;
       defaultRuntime = false; # Register as default OpenXR runtime
     };
     systemd.user.services.monado.environment = {
@@ -45,7 +45,7 @@ in
 
     services.wivrn = {
       enable = true;
-      package = pkgs-unstable.wivrn.override { cudaSupport = true; };
+      package = pkgs.wivrn.override { cudaSupport = true; };
       autoStart = true;
       highPriority = true;
       openFirewall = true;
