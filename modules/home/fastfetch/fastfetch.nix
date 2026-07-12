@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   osConfig,
-  pkgs,
   ...
 }:
 let
@@ -22,10 +20,6 @@ in
         };
 
         logo = {
-          source = ./nixos.png;
-          type = "kitty-direct";
-          height = 15;
-          width = 30;
           padding = {
             top = 3;
             left = 3;
@@ -44,11 +38,29 @@ in
           }
           {
             type = "gpu";
-            key = "│ 󰍛 ";
+            key = "│  ";
           }
           {
             type = "memory";
-            key = "│ 󰑭 ";
+            key = "│  ";
+          }
+          {
+            type = "board";
+            key = "│ 󰌢 ";
+          }
+          {
+            type = "custom";
+            format = "└────────────────────────────────────────────────────┘";
+          }
+          "break"
+          {
+            type = "custom";
+            format = "┌───────────────────────Storage──────────────────────┐";
+          }
+          {
+            type = "disk";
+            key = "│  ";
+            showRemovable = false;
           }
           {
             type = "custom";
@@ -60,33 +72,28 @@ in
             format = "┌──────────────────────Software──────────────────────┐";
           }
           {
-            type = "custom";
-            format = " OS -> NixOS 25.05";
+            type = "os";
+            key = "┌ 󱄅 ";
           }
           {
             type = "kernel";
-            key = "│ ├ ";
+            key = "├  ";
           }
           {
             type = "packages";
-            key = "│ ├󰏖 ";
+            key = "├ 󰏖 ";
+          }
+          {
+            type = "wm";
+            key = "├ 󱂬 ";
           }
           {
             type = "shell";
-            key = "└ └ ";
-          }
-          "break"
-          {
-            type = "wm";
-            key = " WM";
-          }
-          {
-            type = "wmtheme";
-            key = "│ ├󰉼 ";
+            key = "├  ";
           }
           {
             type = "terminal";
-            key = "└ └ ";
+            key = "└  ";
           }
           {
             type = "custom";
@@ -99,19 +106,18 @@ in
           }
           {
             type = "command";
-            key = "│  ";
-            text = # bash
-              ''
-                birth_install=$(stat -c %W /)
-                current=$(date +%s)
-                delta=$((current - birth_install))
-                delta_days=$((delta / 86400))
-                echo $delta_days days
-              '';
+            key = "│ 󰃰 ";
+            text = ''
+              birth_install=$(stat -c %W /)
+              current=$(date +%s)
+              delta=$((current - birth_install))
+              delta_days=$((delta / 86400))
+              echo $delta_days days
+            '';
           }
           {
             type = "uptime";
-            key = "│  ";
+            key = "│ 󰅐 ";
           }
           {
             type = "custom";
