@@ -44,6 +44,7 @@ in
       scrcpy = "${pkgs.scrcpy}/bin/scrcpy --video-codec=h264 
         --video-encoder=OMX.google.h264.encoder --render-driver=opengl";
       stopwatch = "${pkgs.clock-rs}/bin/clock-rs stopwatch";
+      olaplay = "${pkgs.mpv}/bin/mpv --audio-channels=stereo --ad-lavc-downmix=yes";
 
       ## Compatibility
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";

@@ -50,6 +50,8 @@ in
           controlPath = "~/.ssh/master-%r@%n:%p";
           controlPersist = "no";
         };
+
+        ## Git Servers
         "github.com" = {
           hostname = "github.com";
           port = 22;
@@ -64,32 +66,8 @@ in
             WarnWeakCrypto = "no";
           };
         };
-
-        "lillypond.local" = {
-          hostname = "lillypond.local";
-          port = 22;
-          user = "lillypond";
-        };
-
-        "root.lillypond.local" = {
-          hostname = "lillypond.local";
-          port = 22;
-          user = "root";
-        };
-
-        "lillypond-tailscale" = {
-          hostname = "lillypond";
-          port = 22;
-          user = "lillypond";
-        };
-
-        "mule.local" = {
-          hostname = "192.168.1.59";
-          port = 22;
-          user = "beachmule";
-        };
-
-      };
+      }
+      // var.ssh.matchBlocks;
     };
   };
 }
