@@ -25,7 +25,7 @@ in
       # orca-slicer ## Crashes on opening webgui
       # pkgs-personal.orca-beta
       pkgs-unstable.freecad
-      kicad
+      # kicad ## Broken link for symbols
       # handbrake ## video parser ## fails to build
       soundconverter
       yt-dlg
@@ -50,7 +50,8 @@ in
         "io.github.nate_xyz.Paleta"
         "com.prusa3d.PrusaSlicer"
         "fr.handbrake.ghb"
-        "org.vinegarhq.Vinegar" # roblox editor
+        "org.vinegarhq.Vinegar"
+        "org.kicad.KiCad"
       ];
     };
 
