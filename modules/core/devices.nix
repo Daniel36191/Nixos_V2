@@ -43,11 +43,8 @@ in
     powerOnBoot = true;
     settings = {
       General = {
-        IdleTimeout = 0;
-        FastConnectable = true;
-        ReconnectAttempts = 7;
-        ReconnectIntervals = "1,2,4,8,16,32,64";
-        Enable = "a2dp_source,a2dp_sink,avrcp_target,avrcp_controller";
+        Experimental = true;
+        SecureConnections = "off";
       };
     };
   };
