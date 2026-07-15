@@ -20,6 +20,9 @@ in
       # Ethernet expansion card support
       ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0bda", ATTR{idProduct}=="8156", ATTR{power/autosuspend}="20"
     '';
+
+		## Check systemd-inhibit before acting on lid close for idle inhibitors
+    logind.settings.Login.LidSwitchIgnoreInhibited = "no";
   };
 
   ## Needed for desktop environments to detect/manage display brightness
