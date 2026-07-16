@@ -186,20 +186,20 @@
         pc =
           mkHost "pc"
             [
-              # Nix Modules
+              ## Nix Modules
             ]
             [
-              # Hm Modules
+              ## Hm Modules
             ];
 
         laptop =
           mkHost "laptop"
             [
-              # Nix Modules
+              ## Nix Modules
               nixos-hardware.nixosModules.framework-13-7040-amd
             ]
             [
-              # Hm Modules
+              ## Hm Modules
             ];
       };
     };
