@@ -1,9 +1,8 @@
 {
   pkgs,
-  config,
+  inputs,
   lib,
   host,
-  var,
   ...
 }:
 let
@@ -57,6 +56,7 @@ in
   };
 
   nix = {
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
       auto-optimise-store = true;
       experimental-features = [
