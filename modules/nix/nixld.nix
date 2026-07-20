@@ -53,6 +53,21 @@ in
         mesa
         libxkbcommon
         libGL
+        libX11
+        libXext
+        libXcursor
+        libXi
+        libXrandr
+        libXrender
+        libXfixes
+        libXcomposite
+        libXinerama
+        libXxf86vm
+        libXtst
+        libxcb
+        vulkan-loader
+        alsa-lib
+        libpulseaudio
       ];
     };
   };
