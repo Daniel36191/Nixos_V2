@@ -3,7 +3,6 @@
   lib,
   pkgs,
   inputs,
-  pkgs-stable,
   pkgs-unstable,
   pkgs-personal,
   var,

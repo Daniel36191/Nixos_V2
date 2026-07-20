@@ -24,6 +24,7 @@
     containers.enable = true;
     vm.enable = true;
     ml.enable = true;
+    nixld.enable = true;
 
     ##########
     ## Apps ##
