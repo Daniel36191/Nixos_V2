@@ -4,6 +4,7 @@
   pkgs,
   inputs,
   pkgs-stable,
+  pkgs-unstable,
   pkgs-personal,
   var,
   ...
@@ -28,10 +29,10 @@ in
       gamescope
 
       ## Wine
-      pkgs-stable.wineWowPackages.waylandFull
+      pkgs-unstable.wineWowPackages.unstableFull
       # wineWowPackages.stable
-      pkgs-stable.wine64
-      winetricks
+      pkgs-unstable.wine64
+      pkgs-unstable.winetricks
       steamtinkerlaunch
       umu-launcher
 
