@@ -83,6 +83,7 @@
     zerotier.enable = true;
     borg.enable = false;
     samba.enable = false;
+    diskHealth.enable = true;
 
     ###############
     ## Functions ##
