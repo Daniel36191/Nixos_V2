@@ -20,7 +20,8 @@ in
       fastfetch
       wget
       appimage-run
-      tldr ## breaf man pages
+      tldr # # breaf man pages
+      iotop-c
 
       ## Alternitives
       eza # ls
