@@ -16,9 +16,9 @@ in
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
 
       ## Nix
-      sudonix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST ~/Nixos_V2 ./";
-      updatenix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST ~/Nixos_V2 ./ --update";
-      updateinput = "sudo -v && ${flatpak}/bin/flatpak update && ${nh}/bin/nh os switch -H $NIX_HOST ~/Nixos_V2 ./ --update-input";
+      sudonix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./";
+      updatenix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./ --update";
+      updateinput = "sudo -v && ${flatpak}/bin/flatpak update && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./ --update-input";
       cleannix = "sudo -v && ${flatpak}/bin/flatpak uninstall --unused && ${nh}/bin/nh clean all -v --optimise";
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
 
