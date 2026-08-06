@@ -31,7 +31,7 @@ in
 
       ## Plugins
       rnnoise-plugin
-      # lsp-plugins ## A lot of plugins
+      # lsp-plugins # A lot of plugins
       speech-denoiser # rnnoise
       cardinal # Custom .desktop file in desktop-files.nix
       # rPackages.sparta
