@@ -24,6 +24,7 @@
     containers.enable = true;
     vm.enable = false;
     ml.enable = false;
+    nixld.enable = false;
 
     ##########
     ## Apps ##
@@ -82,6 +83,7 @@
     zerotier.enable = false;
     borg.enable = false;
     samba.enable = false;
+    diskHealth.enable = true;
 
     ###############
     ## Functions ##

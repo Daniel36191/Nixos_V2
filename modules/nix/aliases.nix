@@ -9,46 +9,48 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.shellAliases = {
+    environment.shellAliases = with pkgs; {
+      ## Testing
       vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
       windows = "bash --norc ( trap 'hyprctl reload;' INT
           hyprctl keyword monitor \"DP-1, disable\" && lan-mouse -f cli )";
-      agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
-      hyprpicker = "${pkgs.hyprpicker} -a";
 
-      sudonix = "sudo -v && ${pkgs.nh}/bin/nh os switch -H $NIX_HOST ~/Nixos_V2";
-      updatenix = "sudo -v && ${pkgs.nh}/bin/nh os switch -H $NIX_HOST ./ --update";
-      updateinput = "sudo -v && flatpak update && nh os switch -H $NIX_HOST ./ --update-input";
-      cleannix = "sudo -v && flatpak uninstall --unused && sudo nix-collect-garbage -d";
+      ## Nix
+      sudonix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./";
+      updatenix = "sudo -v && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./ --update";
+      updateinput = "sudo -v && ${flatpak}/bin/flatpak update && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./ --update-input";
+      cleannix = "sudo -v && ${flatpak}/bin/flatpak uninstall --unused && ${nh}/bin/nh clean all -v --optimise";
+      agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
 
       ## Alterntives
-      mi = "${pkgs.micro}/bin/micro";
-      cat = "${pkgs.bat}/bin/bat";
-      grep = "${pkgs.ripgrep}/bin/rg";
-      df = "${pkgs.dysk}/bin/dysk";
-      sleep = "${pkgs.timer}/bin/timer";
-      vim = "${pkgs.neovim}/bin/nvim";
+      mi = "${micro}/bin/micro";
+      cat = "${bat}/bin/bat";
+      grep = "${ripgrep}/bin/rg";
+      df = "${dysk}/bin/dysk";
+      sleep = "${timer}/bin/timer";
+      vim = "${neovim}/bin/nvim";
 
       ## ls
-      ls = "${pkgs.eza}/bin/eza --icons";
-      ll = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first";
-      la = "${pkgs.eza}/bin/eza -lah --icons --grid --group-directories-first";
-      tree = "${pkgs.eza}/bin/eza --icons -T";
-      links = "${pkgs.eza}/bin/eza -lh --icons --grid --group-directories-first --hyperlink";
+      ls = "${eza}/bin/eza --icons";
+      ll = "${eza}/bin/eza -lh --icons --grid --group-directories-first";
+      la = "${eza}/bin/eza -lah --icons --grid --group-directories-first";
+      tree = "${eza}/bin/eza --icons -T";
+      links = "${eza}/bin/eza -lh --icons --grid --group-directories-first --hyperlink";
 
       ## Aliases
-      size = "du -sh";
-      img2text = "${pkgs.tesseract}/bin/tesseract stdin stdout";
-      log = "journalctl -xef -u";
-      logs = "journalctl -xe -u";
-      scrcpy = "${pkgs.scrcpy}/bin/scrcpy --video-codec=h264 
+      size = "${uutils-coreutils-noprefix}/bin/du -sh";
+      img2text = "${tesseract}/bin/tesseract stdin stdout";
+      log = "${systemd}/bin/journalctl -xef -u";
+      logs = "${systemd}/bin/journalctl -xe -u";
+      scrcpy = "${scrcpy}/bin/scrcpy --video-codec=h264 
         --video-encoder=OMX.google.h264.encoder --render-driver=opengl";
-      stopwatch = "${pkgs.clock-rs}/bin/clock-rs stopwatch";
-      olaplay = "${pkgs.mpv}/bin/mpv --audio-channels=stereo --ad-lavc-downmix=yes";
+      stopwatch = "${clock-rs}/bin/clock-rs stopwatch";
+      olaplay = "${mpv}/bin/mpv --audio-channels=stereo --ad-lavc-downmix=yes";
+      hyprpicker = "${hyprpicker}/bin/hyprpicker -a";
 
       ## Compatibility
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
-      browser = "${pkgs.librewolf}/bin/librewolf";
+      browser = "${librewolf}/bin/librewolf";
     };
   };
 }

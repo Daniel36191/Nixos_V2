@@ -32,6 +32,8 @@ in
       docker-compose
       # nvidia-container-toolkit
       docker-buildx
+
+      distrobox
     ];
   };
 }
