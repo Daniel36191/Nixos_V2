@@ -39,6 +39,7 @@
     nautilus.enable = true;
     syncthing.enable = true;
     spotify.enable = true;
+    waydroid.enable = false;
 
     #########
     ## Cli ##
