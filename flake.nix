@@ -69,6 +69,7 @@
       url = "github:passivelemon/lemonake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-xl.url = "github:passivelemon/nix-xl";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -101,6 +102,7 @@
       agenix,
       nixos-hardware,
       lemonake,
+      nix-xl,
       ...
     }@inputs:
     let
@@ -145,12 +147,14 @@
         hyprdynamicmonitors.nixosModules.default
         nix-index-database.nixosModules.default
         dms-plugin-registry.nixosModules.default
+
       ];
 
       commonHmModules = [
         ./baseplate/hm-main.nix
         ./baseplate/module-options.nix
         # inputs.stylix.homeModules.stylix
+        nix-xl.homeModules.nix-xl
       ];
 
       mkHost =

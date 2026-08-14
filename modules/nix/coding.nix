@@ -14,7 +14,7 @@ in
       ## Git tools
       lazygit
       git
-      github-desktop
+      gitnuro
 
       filezilla # Fstp client
 
@@ -26,6 +26,7 @@ in
 
       ## Code editors
       vscode
+      pkgs-unstable.gram
       # zed-editor
       micro
       neovim
