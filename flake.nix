@@ -70,6 +70,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-xl.url = "github:passivelemon/nix-xl";
+    nixgl.url = "github:nix-community/nixGL";
+    gram-extensions.url = "git+https://codeberg.org/niklaskorz/nix-gram-extensions.git";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
@@ -103,6 +105,8 @@
       nixos-hardware,
       lemonake,
       nix-xl,
+      nixgl,
+      gram-extensions,
       ...
     }@inputs:
     let

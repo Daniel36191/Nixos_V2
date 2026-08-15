@@ -40,7 +40,8 @@
     syncthing.enable = true;
     spotify.enable = true;
     waydroid.enable = false;
-    lite-xl.enable = false;
+    # lite-xl.enable = false;
+    gram.enable = true;
 
     #########
     ## Cli ##

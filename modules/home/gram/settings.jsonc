@@ -1,0 +1,73 @@
+// Gram settings
+//
+// For information on how to configure Gram, see the Gram
+// documentation: gram://docs/configuring-gram
+//
+// To see all of Gram's default settings without changing your
+// custom settings, run `gram: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "extend_comment_on_newline": false,
+  "restore_on_startup": "last_workspace",
+  "always_treat_brackets_as_autoclosed": false,
+  "colorize_brackets": true,
+  "indent_guides": {
+    "background_coloring": "indent_aware",
+    "coloring": "indent_aware",
+    "active_line_width": 2,
+    "line_width": 2,
+  },
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "show_whitespaces": "none",
+  "tabs": {
+    "file_icons": true,
+  },
+  "terminal": {
+    "font_weight": 500.0,
+  },
+  "ui_font_weight": 500.0,
+  "buffer_font_weight": 500.0,
+  "minimap": {
+    "show": "auto",
+  },
+  "active_pane_modifiers": {
+    "border_size": 0.0,
+  },
+  "buffer_line_height": "comfortable",
+  "buffer_font_family": "RedHatMono Nerd Font",
+  "debugger": {
+    "save_breakpoints": false,
+  },
+  "git_panel": {
+    "status_style": "label_color",
+    "sort_by_path": false,
+    "collapse_untracked_diff": false,
+    "tree_view": false,
+    "dock": "left",
+  },
+  "project_panel": {
+    "file_icons": true,
+    "folder_icons": true,
+  },
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Macchiato",
+  },
+  "ui_font_size": 17.0,
+  "buffer_font_size": 15.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Rosé Pine Dawn",
+    "dark": "Catppuccin Mocha",
+  },
+
+  // Nix Fixes
+  "node": {
+    "path": "/run/current-system/sw/bin/node",
+    "npm_path": "/run/current-system/sw/bin/npm",
+  },
+}
