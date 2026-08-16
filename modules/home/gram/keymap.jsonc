@@ -83,5 +83,22 @@
     "bindings": {
       "f3": "editor::Format"
     }
+  },
+  {
+    "context": "(Editor && (showing_code_actions || showing_completions))",
+    "bindings": {
+      "ctrl-p": null
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "(FileFinder || FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-p": null
+    }
   }
 ]
