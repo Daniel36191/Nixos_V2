@@ -95,7 +95,7 @@ in
       ];
       extraCompatPackages = with pkgs; [
         proton-ge-bin
-        inputs.lemonake.packages.${pkgs.system}.proton-ge-rtsp # for VRC
+        inputs.lemonake.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge-rtsp # for VRC
         steamtinkerlaunch
         # pkgs-personal.proton-vkvr
       ];
@@ -116,7 +116,7 @@ in
       in
       ''
         if [[ -d ${vrc-pics-path} ]]; then
-          ln -sf ${vrc-pics-path} /home/${var.username}/Pictures  
+          ln -sf ${vrc-pics-path} /home/${var.username}/Pictures
         fi
 
       '';

@@ -3,13 +3,14 @@
   config,
   lib,
   pkgs-unstable,
+  pkgs,
   inputs,
   ...
 }:
 let
   mod = osConfig.mod.gram;
 
-  gram-extensions = inputs.gram-extensions.packages.${pkgs-unstable.stdenv.hostPlatform.system};
+  gram-extensions = inputs.gram-extensions.packages.${pkgs.stdenv.hostPlatform.system};
   extensions = with gram-extensions; [
     catppuccin
     catppuccin-icons

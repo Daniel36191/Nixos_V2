@@ -16,7 +16,7 @@ in
     environment.systemPackages = with pkgs; [
       obs-studio
       v4l-utils # Obs virtual cam
-      # inputs.blender-cuda.packages.${pkgs.system}.default
+      # inputs.blender-cuda.packages.${pkgs.stdenv.hostPlatform.system}.default
       # gimp
       pinta
       krita

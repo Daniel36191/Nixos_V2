@@ -11,12 +11,12 @@ in
 {
   config = lib.mkIf mod.enable {
     environment.systemPackages = with pkgs; [
-      inputs.hyprdynamicmonitors.packages.${pkgs.system}.default
+      inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.hyprdynamicmonitors = {
       enable = true;
-      package = inputs.hyprdynamicmonitors.packages.${pkgs.system}.default;
+      package = inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default;
       mode = "user";
       configFile = ./config.toml;
       configPath = "~/.config/hyprdynamicmonitors/config.toml";
