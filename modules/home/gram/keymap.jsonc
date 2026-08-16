@@ -77,5 +77,11 @@
     "bindings": {
       "ctrl-shift-e": null
     }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "f3": "editor::Format"
+    }
   }
 ]

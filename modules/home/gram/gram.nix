@@ -9,10 +9,11 @@
 let
   mod = osConfig.mod.gram;
 
-  gram-extensions = inputs.gram-extensions.packages.${pkgs-unstable.system};
+  gram-extensions = inputs.gram-extensions.packages.${pkgs-unstable.stdenv.hostPlatform.system};
   extensions = with gram-extensions; [
     catppuccin
     catppuccin-icons
+    git-firefly
   ];
   extensions-dir = gram-extensions.linkGramExtensions extensions;
 in
@@ -21,6 +22,9 @@ in
     home.packages = with pkgs-unstable; [
       gram
       nodejs
+      vscode-json-languageserver
+      prettier
+      package-version-server
     ];
     xdg.dataFile."gram/extensions/installed" = {
       enable = true;

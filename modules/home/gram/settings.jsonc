@@ -64,10 +64,50 @@
     "light": "Rosé Pine Dawn",
     "dark": "Catppuccin Mocha",
   },
+  "editor": {
+    "document_highlight": {
+      "bracket_background": "#80808080"
+    }
+  },
 
   // Nix Fixes
   "node": {
     "path": "/run/current-system/sw/bin/node",
     "npm_path": "/run/current-system/sw/bin/npm",
+  },
+
+  "languages": {
+    "Nix": {
+      "language_servers": ["nixd", "!nil"],
+      "inlay_hints": {
+        "enabled": true,
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        "show_other_hints": true
+      },
+    },
+  },
+  "lsp": {
+    "nixd": {
+      "binary": {
+        "path": "nixd"
+      },
+      "settings": {
+        "nixd": {
+          "formatting": {
+            "command": ["nixfmt"]
+          },
+          "options": {
+            // Home manage doesn't work here still
+            // "nixos": {
+            //   "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2/flake.nix\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options"
+            // },
+            // "home_manager": {
+            //   "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2/flake.nix\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options.home-manager.users.type.getSubOptions []"
+            // },
+          },
+        },
+      },
+    },
   },
 }
