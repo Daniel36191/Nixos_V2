@@ -16,7 +16,8 @@ in
     pkgs-unstable.razergenie
   ];
 
-  services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
+  ## For Stream Controller
+  services.udev.packages = [ pkgs.streamdeck-ui ];\
 
   services.flatpak = {
     packages = [
@@ -29,12 +30,4 @@ in
   };
 
   services.lact.enable = true;
-
-  hardware.openrazer = {
-    enable = true;
-    packages.daemon = pkgs-unstable.python314Packages.openrazer-daemon;
-    users = [
-      "daniel"
-    ];
-  };
 }
