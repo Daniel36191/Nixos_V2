@@ -42,6 +42,7 @@
     waydroid.enable = false;
     # lite-xl.enable = false;
     gram.enable = true;
+    input-remapper.enable = true;
 
     #########
     ## Cli ##

@@ -12,6 +12,8 @@ in
     pkgs-personal.lulzbot-cura
     # lan-mouse ## Software KVM
     songrec
+    pkgs-unstable.razer-cli
+    pkgs-unstable.razergenie
   ];
 
   services.udev.packages = [ pkgs.streamdeck-ui ]; # For Stream Controller
@@ -27,4 +29,12 @@ in
   };
 
   services.lact.enable = true;
+
+  hardware.openrazer = {
+    enable = true;
+    packages.daemon = pkgs-unstable.python314Packages.openrazer-daemon;
+    users = [
+      "daniel"
+    ];
+  };
 }
