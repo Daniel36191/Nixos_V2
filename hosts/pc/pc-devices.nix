@@ -25,6 +25,10 @@
     motherboard = "amd";
   };
 
+  hardware.block.scheduler = {
+    "sdb" = "none";
+  };
+
   fileSystems = {
     "/media/fat" = {
       device = "/dev/disk/by-uuid/01DA383CA1F608A0";
