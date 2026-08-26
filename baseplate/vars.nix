@@ -26,6 +26,12 @@
         user = "lillypond";
       };
 
+      "lillylake.local" = {
+        hostname = "lillylake.local";
+        port = 22;
+        user = "lillylake";
+      };
+
       "root.lillypond.local" = {
         hostname = "lillypond.local";
         port = 22;

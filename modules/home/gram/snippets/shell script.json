@@ -1,0 +1,16 @@
+{
+  "shebang": {
+    "prefix": "shebang",
+    "body": [
+      "#!/usr/bin/env bash"
+    ],
+    "description": "shebang"
+  },
+  "shebang-nix-repl":{
+    "prefix": "shebang-nix-repl",
+    "body":[
+      "#! /usr/bin/env -S nix repl --extra-experimental-features \"nix-command flakes\" --file"
+    ],
+    "description": "shebang-nix-repl"
+  }
+}

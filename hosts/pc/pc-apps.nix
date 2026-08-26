@@ -17,7 +17,7 @@ in
   ];
 
   ## For Stream Controller
-  services.udev.packages = [ pkgs.streamdeck-ui ];\
+  services.udev.packages = [ pkgs.streamdeck-ui ];
 
   services.flatpak = {
     packages = [

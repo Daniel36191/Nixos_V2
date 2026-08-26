@@ -9,7 +9,7 @@ let
 
   timer = lib.getExe (
     pkgs.writeShellScriptBin "timer" ''
-      ${pkgs.clock-rs}/bin/clock-rs -c '#89B4FA' timer -kS "$1" && paplay ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/service-logout.oga
+      ${pkgs.clock-rs}/bin/clock-rs -c '#89B4FA' timer -kM "$1" && paplay ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/service-logout.oga
     ''
   );
 in
@@ -48,7 +48,7 @@ in
       img2text = "${tesseract}/bin/tesseract stdin stdout";
       log = "${systemd}/bin/journalctl -xef -u";
       logs = "${systemd}/bin/journalctl -xe -u";
-      scrcpy = "${scrcpy}/bin/scrcpy --video-codec=h264 
+      scrcpy = "${scrcpy}/bin/scrcpy --video-codec=h264
         --video-encoder=OMX.google.h264.encoder --render-driver=opengl";
       stopwatch = "${clock-rs}/bin/clock-rs stopwatch";
       timer = timer;

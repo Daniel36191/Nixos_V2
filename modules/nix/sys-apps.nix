@@ -22,6 +22,7 @@ in
       appimage-run
       tldr # # breaf man pages
       iotop-c
+      sshfs
 
       ## Alternitives
       eza # ls
