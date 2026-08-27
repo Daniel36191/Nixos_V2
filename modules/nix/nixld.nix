@@ -11,7 +11,7 @@ in
   config = lib.mkIf mod.enable {
     programs.nix-ld = {
       enable = true;
-      libraries = with pkgs; [
+      libraries = with unstable; [
         ## Core
         stdenv.cc.cc.lib # libstdc++, libgcc_s
         zlib

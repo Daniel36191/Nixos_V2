@@ -16,7 +16,7 @@ in
   ];
   config = lib.mkIf mod.enable {
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       # bespokesynth
       pkgs-personal.bespoke-synth
       # pkgs-personal.chataigne
@@ -142,7 +142,7 @@ in
                 if [[ $line =~ control-change[[:space:]]+([0-9]+)[[:space:]]+([0-9]+) ]]; then
                   cc_num="''${BASH_REMATCH[1]}"
                   value="''${BASH_REMATCH[2]}"
-                  
+
                   if (( cc_num >= 10 && cc_num <= 20 )); then
                     echo "$value" > "/tmp/midi_cc''${cc_num}.value"
                   fi

@@ -12,7 +12,7 @@ in
 with lib;
 {
   config = mkIf mod.enable {
-    home.packages = with pkgs; [
+    home.packages = with unstable; [
       swaynotificationcenter
     ];
     # Configure & Theme Waybar

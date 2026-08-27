@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 let
@@ -10,7 +9,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       monado-vulkan-layers
       # monado
 

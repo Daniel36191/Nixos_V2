@@ -75,7 +75,7 @@ in
           let
           in
           [
-            inputs.lillypond.pulicSSHKey
+            inputs.lillypond.sshPublicKeys
           ]
           ++ fun.hostSSHKeys
           ++ var.ssh.authedKeys;

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     inputs.agenix.packages.${stdenv.hostPlatform.system}.default # Cli tool
   ];
 

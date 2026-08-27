@@ -69,7 +69,7 @@ in
     ###########
 
     fonts = {
-      packages = with pkgs; [
+      packages = with unstable; [
         miracode
         noto-fonts-color-emoji
         noto-fonts-cjk-sans

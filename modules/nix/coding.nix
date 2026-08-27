@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
+  unstable,
   ...
 }:
 let
@@ -10,7 +10,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       ## Git tools
       lazygit
       git
@@ -20,13 +20,13 @@ in
 
       termius
 
-      pkgs-unstable.devenv
+      unstable.devenv
 
       zellij
 
       ## Code editors
       vscode
-      pkgs-unstable.gram
+      unstable.gram
       # zed-editor
       micro
       neovim

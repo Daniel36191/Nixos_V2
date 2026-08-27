@@ -15,7 +15,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       tuigreet
       hyprpicker
       hyprpaper
@@ -38,11 +38,11 @@ in
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = with pkgs; [
+      extraPortals = with unstable; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal
       ];
-      configPackages = with pkgs; [
+      configPackages = with unstable; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
         xdg-desktop-portal

@@ -28,7 +28,7 @@ in
 
     gtk = {
       gtk4 = {
-        theme = config.gtk.theme;
+        theme = lib.mkForce config.gtk.theme;
       };
       iconTheme = {
         name = "Papirus-Dark";

@@ -3,7 +3,7 @@
 }:
 
 pkgs.mkShell {
-  buildInputs = with pkgs; [
+  buildInputs = with unstable; [
     nix-prefetch-scripts # Every Prefetch
   ];
 

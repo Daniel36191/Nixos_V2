@@ -4,9 +4,8 @@
     #############
     ## Nixpkgs ##
     #############
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/39f795bd0c4f118ecdfa92f9e9f838f6481539c2";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "git+https://git.lillypond.name/dmoeller/nixpkgs-personal";
 
     ## Home-Server
@@ -88,7 +87,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-stable,
       nixpkgs-personal,
       nixpkgs-spotifyPin,
       home-manager,
@@ -128,11 +126,7 @@
           inherit system;
           config.allowUnfree = true;
         };
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-unstable = import nixpkgs-unstable {
+        unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         };

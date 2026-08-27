@@ -1,11 +1,7 @@
 {
   config,
   lib,
-  pkgs,
-  inputs,
-  pkgs-stable,
-  pkgs-personal,
-  pkgs-unstable,
+  unstable,
   ...
 }:
 let
@@ -13,7 +9,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       obs-studio
       v4l-utils # Obs virtual cam
       # inputs.blender-cuda.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -24,7 +20,7 @@ in
       # prusa-slicer
       # orca-slicer ## Crashes on opening webgui
       # pkgs-personal.orca-beta
-      pkgs-unstable.freecad
+      unstable.freecad
       # kicad ## Broken link for symbols
       # handbrake ## video parser ## fails to build
       soundconverter
@@ -34,9 +30,9 @@ in
 
       # Older editor versions do not support OpenSSL 3.
       # Fix for infinite project importing: https://discussions.unity.com/t/linux-editor-stuck-on-loading-because-of-bee-backend-w-workaround/854480
-      (pkgs.unityhub.override {
+      (unityhub.override {
         extraLibs =
-          pkgs: with pkgs; [
+          pkgs: with unstable; [
             openssl_1_1
           ];
       })

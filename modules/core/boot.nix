@@ -34,7 +34,7 @@ in
         );
       };
     };
-    
+
     plymouth.enable = true;
 
     binfmt.registrations.appimage = {

@@ -3,7 +3,7 @@
   lib,
   pkgs,
   inputs,
-  pkgs-unstable,
+  unstable,
   pkgs-personal,
   var,
   ...
@@ -13,7 +13,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       ## Minecraft
       prismlauncher
       # glfw3-minecraft
@@ -28,10 +28,10 @@ in
       gamescope
 
       ## Wine
-      pkgs-unstable.wineWowPackages.unstableFull
+      unstable.wineWowPackages.unstableFull
       # wineWowPackages.stable
-      pkgs-unstable.wine64
-      pkgs-unstable.winetricks
+      unstable.wine64
+      unstable.winetricks
       steamtinkerlaunch
       umu-launcher
 
@@ -88,12 +88,12 @@ in
             atk
           ];
       };
-      extraPackages = with pkgs; [
+      extraPackages = with unstable; [
         gamescope
         mangohud
         gamemode
       ];
-      extraCompatPackages = with pkgs; [
+      extraCompatPackages = with unstable; [
         proton-ge-bin
         inputs.lemonake.packages.${pkgs.stdenv.hostPlatform.system}.proton-ge-rtsp # for VRC
         steamtinkerlaunch

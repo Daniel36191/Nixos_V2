@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  unstable,
   ...
 }:
 let
@@ -26,7 +26,7 @@ in
       # };
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       # podman-desktop
       # podman-compose
       docker-compose

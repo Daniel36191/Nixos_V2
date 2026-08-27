@@ -15,7 +15,7 @@ in
       openFirewall = true;
       useRoutingFeatures = "both";
       extraUpFlags = [
-        # "--advertise-exit-node"
+        "--advertise-exit-node"
         # "--accept-routes"
         # "--exit-node 100.100.57.77"
         # "--auth-key file:${config.age.secrets."tailscale-${nix-host}".path}"
@@ -28,10 +28,10 @@ in
     };
 
     ## For Exit Node
-    # boot.kernel.sysctl = {
-    #   "net.ipv4.ip_forward" = 1;
-    #   "net.ipv6.conf.all.forwarding" = 1;
-    # };
+    boot.kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
+    };
 
     ## Use nftables for tailscale
     networking.nftables.enable = lib.mkDefault true;
@@ -45,5 +45,6 @@ in
       # Allow the Tailscale UDP port through the firewall
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
+
   };
 }
