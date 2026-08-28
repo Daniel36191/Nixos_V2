@@ -15,7 +15,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       tuigreet
       hyprpicker
       hyprpaper
@@ -38,11 +38,11 @@ in
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = with unstable; [
+      extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal
       ];
-      configPackages = with unstable; [
+      configPackages = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
         xdg-desktop-portal
@@ -53,7 +53,8 @@ in
     services = {
       greetd = {
         enable = true;
-        useTextGreeter = true; # For Tui Greet
+        ## For Tui Greet
+        useTextGreeter = true;
         settings = {
           default_session = {
             user = var.username;
@@ -67,7 +68,7 @@ in
       };
     };
 
-    ## Keyring
+    ## Keyring1
     services.gnome.gnome-keyring.enable = true;
     security.pam.services = {
       greetd.enableGnomeKeyring = true;

@@ -10,7 +10,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       libvirt
       qemu
       virt-viewer

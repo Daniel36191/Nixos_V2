@@ -28,8 +28,8 @@ in
       gamescope
 
       ## Wine
-      unstable.wineWowPackages.unstableFull
-      # wineWowPackages.stable
+      unstable.wineWow64Packages.unstableFull
+      # wineWow64Packages.stable
       unstable.wine64
       unstable.winetricks
       steamtinkerlaunch

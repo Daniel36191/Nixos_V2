@@ -26,6 +26,8 @@ in
       hyprland.enable = false;
     };
 
+    home.pointerCursor.enable = true;
+
     gtk = {
       gtk4 = {
         theme = lib.mkForce config.gtk.theme;

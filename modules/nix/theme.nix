@@ -10,6 +10,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
+
     ############
     ## Stylix ##
     ############
@@ -69,7 +70,7 @@ in
     ###########
 
     fonts = {
-      packages = with unstable; [
+      packages = with pkgs; [
         miracode
         noto-fonts-color-emoji
         noto-fonts-cjk-sans

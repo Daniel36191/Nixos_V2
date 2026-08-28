@@ -21,7 +21,7 @@ in
     #     configDir = "/home/${username}/.config/syncthing";
     #   };
     # };
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       syncthing
     ];
 

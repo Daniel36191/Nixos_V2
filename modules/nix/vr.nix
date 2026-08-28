@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  unstable,
   ...
 }:
 let
@@ -30,7 +30,7 @@ in
 
     services.monado = {
       enable = true;
-      package = pkgs.monado;
+      package = unstable.monado;
       defaultRuntime = false; # Register as default OpenXR runtime
     };
     systemd.user.services.monado.environment = {
@@ -44,7 +44,7 @@ in
 
     services.wivrn = {
       enable = true;
-      package = pkgs.wivrn.override { cudaSupport = true; };
+      package = unstable.wivrn.override { cudaSupport = true; };
       autoStart = true;
       highPriority = true;
       openFirewall = true;

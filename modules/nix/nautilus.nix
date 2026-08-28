@@ -9,7 +9,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       nautilus
       turtle # git for nautilus
       code-nautilus # open in code

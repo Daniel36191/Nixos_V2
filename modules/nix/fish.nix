@@ -17,7 +17,7 @@ in
     };
 
     environment = {
-      shells = with unstable; [
+      shells = with pkgs; [
         bashInteractive
         fish
       ];
@@ -30,7 +30,7 @@ in
     };
 
     ## Plugins
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       fishPlugins.done
     ];
 

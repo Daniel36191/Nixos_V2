@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -11,13 +10,13 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       pdfarranger
       onlyoffice-desktopeditors
       obsidian # Notes
     ];
 
-    fonts.packages = with unstable; [
+    fonts.packages = with pkgs; [
       corefonts
     ];
 

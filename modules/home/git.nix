@@ -35,7 +35,7 @@ in
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         "*" = {
           port = 22;
           identityFile = osConfig.age.secrets."ssh-${host}".path;
@@ -62,9 +62,7 @@ in
           hostname = "ssh.lillypond.name";
           port = 2222;
           user = "forgejo";
-          extraOptions = {
-            WarnWeakCrypto = "no";
-          };
+          WarnWeakCrypto = "no";
         };
       }
       // var.ssh.matchBlocks;

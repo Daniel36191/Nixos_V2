@@ -17,7 +17,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with unstable; [
+    environment.systemPackages = with pkgs; [
       llmfit
       python314Packages.huggingface-hub
       python314Packages.hf-transfer

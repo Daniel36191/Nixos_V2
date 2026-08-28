@@ -1,10 +1,8 @@
 {
   config,
   lib,
-  inputs,
   options,
   var,
-  fun,
   ...
 }:
 let
@@ -71,14 +69,6 @@ in
           "dbus"
           "adbusers"
         ];
-        openssh.authorizedKeys.keys =
-          let
-          in
-          [
-            inputs.lillypond.sshPublicKeys
-          ]
-          ++ fun.hostSSHKeys
-          ++ var.ssh.authedKeys;
       };
     };
     nix.settings.trusted-users = [
