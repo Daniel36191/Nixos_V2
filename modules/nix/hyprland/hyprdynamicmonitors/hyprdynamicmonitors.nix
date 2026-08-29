@@ -10,7 +10,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = [
       inputs.hyprdynamicmonitors.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 

@@ -76,7 +76,7 @@
     ## Shells ##
     ############
     dms.enable = true;
-    noctalia.enable = false;
+    # noctalia.enable = false;
     waybar.enable = false;
     hyprpanel.enable = false;
 

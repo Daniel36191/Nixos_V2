@@ -10,6 +10,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
+
     ############
     ## Stylix ##
     ############

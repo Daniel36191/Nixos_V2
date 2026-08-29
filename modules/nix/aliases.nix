@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  unstable,
   ...
 }:
 let
@@ -15,7 +16,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.shellAliases = with pkgs; {
+    environment.shellAliases = with unstable; {
       ## Testing
       vnc = "hyprctl output create headless VNC-1 && wayvnc -o VNC-1 192.168.8.194";
       windows = "bash --norc ( trap 'hyprctl reload;' INT
@@ -54,7 +55,7 @@ in
       timer = timer;
       olaplay = "${mpv}/bin/mpv --audio-channels=stereo --ad-lavc-downmix=yes";
       hyprpicker = "${hyprpicker}/bin/hyprpicker -a";
-      gping = "${pkgs.gping}/bin/gping -b 200";
+      gping = "${gping}/bin/gping -b 200";
 
       ## Compatibility
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";

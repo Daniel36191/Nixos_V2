@@ -5,8 +5,8 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
-    inputs.agenix.packages.${stdenv.hostPlatform.system}.default # Cli tool
+  environment.systemPackages = [
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default # Cli tool
   ];
 
   age.secrets = {

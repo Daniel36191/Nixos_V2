@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-unstable,
+  unstable,
   host,
   ...
 }:
@@ -13,10 +13,10 @@ in
     services.scrutiny = {
       ## No Ui
       enable = false;
-      package = pkgs-unstable.scrutiny;
+      package = unstable.scrutiny;
       collector = {
         enable = true;
-        package = pkgs-unstable.scrutiny-collector;
+        package = unstable.scrutiny-collector;
         settings = {
           host.id =
             lib.toUpper (builtins.substring 0 1 host)

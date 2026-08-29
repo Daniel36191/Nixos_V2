@@ -25,11 +25,6 @@ in
       ../hosts/${host}/${host}-apps.nix
     ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "libsoup-2.74.3"
-    "olm-3.2.16"
-    "openssl-1.1.1w"
-  ];
   ####################
   ## Port Forwading ##
   ####################
@@ -56,7 +51,7 @@ in
   };
 
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs-unstable}" ];
     settings = {
       auto-optimise-store = true;
       experimental-features = [

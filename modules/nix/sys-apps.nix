@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  unstable,
   ...
 }:
 let
@@ -9,7 +9,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
 
       ###################
       ## CLI sys tools ##

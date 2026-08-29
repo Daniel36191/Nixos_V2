@@ -1,10 +1,8 @@
 {
   config,
   lib,
-  pkgs,
-  pkgs-unstable,
+  unstable,
   pkgs-personal,
-  inputs,
   ...
 }:
 let
@@ -12,12 +10,12 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
       ###############
       ## User apps ##
       ###############
 
-      pkgs-unstable.librewolf
+      librewolf
       # google-chrome
 
       bitwarden-desktop

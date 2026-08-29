@@ -33,6 +33,7 @@ in
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       xwayland.enable = true;
       systemd.enable = true;
+      configType = "hyprlang";
       plugins = [
         inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
       ]

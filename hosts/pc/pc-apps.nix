@@ -1,19 +1,19 @@
 {
   pkgs,
-  pkgs-unstable,
+  unstable,
   pkgs-personal,
   ...
 }:
 let
 in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     streamcontroller
     pkgs-personal.lulzbot-cura
     # lan-mouse ## Software KVM
     songrec
-    pkgs-unstable.razer-cli
-    pkgs-unstable.razergenie
+    unstable.razer-cli
+    unstable.razergenie
   ];
 
   ## For Stream Controller

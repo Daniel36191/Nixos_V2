@@ -4,9 +4,8 @@
     #############
     ## Nixpkgs ##
     #############
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/39f795bd0c4f118ecdfa92f9e9f838f6481539c2";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     nixpkgs-personal.url = "git+https://git.lillypond.name/dmoeller/nixpkgs-personal";
 
     ## Home-Server
@@ -21,16 +20,16 @@
     ## Desktop ##
     #############
     hyprland = {
-      url = "github:hyprwm/Hyprland/main";
+      url = "github:hyprwm/Hyprland/v0.54.1-b";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
     hyprsplit = {
-      url = "github:shezdy/hyprsplit";
+      url = "github:shezdy/hyprsplit/legacy";
       inputs.hyprland.follows = "hyprland";
     };
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
@@ -77,7 +76,7 @@
       inputs.darwin.follows = "";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -88,7 +87,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nixpkgs-stable,
       nixpkgs-personal,
       nixpkgs-spotifyPin,
       home-manager,
@@ -122,22 +120,7 @@
         inherit hostsFolder;
       };
 
-      commonArgs = {
-        inherit inputs var fun;
-        pkgs-spotifyPin = import nixpkgs-spotifyPin {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-unstable = import nixpkgs-unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        pkgs-personal = nixpkgs-personal.packages.${system};
-      };
+      ########## -- ##########
 
       commonNixModules = [
         ./baseplate/module-options.nix
@@ -161,6 +144,32 @@
         nix-xl.homeModules.nix-xl
       ];
 
+      permittedInsecurePackages = [
+        "openssl-1.1.1w"
+        "electron-39.8.10"
+      ];
+
+      ########## -- ##########
+
+      commonArgs = {
+        inherit inputs var fun;
+        pkgs-spotifyPin = import nixpkgs-spotifyPin {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = permittedInsecurePackages;
+          };
+        };
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = permittedInsecurePackages;
+          };
+        };
+        pkgs-personal = nixpkgs-personal.packages.${system};
+      };
+
       mkHost =
         host: extraNixModules: extraHmImports:
         nixpkgs.lib.nixosSystem {
@@ -170,7 +179,10 @@
           };
           modules = [
             {
-              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config = {
+                allowUnfree = true;
+                permittedInsecurePackages = permittedInsecurePackages;
+              };
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;

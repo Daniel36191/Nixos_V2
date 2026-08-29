@@ -53,7 +53,8 @@ in
     services = {
       greetd = {
         enable = true;
-        useTextGreeter = true; # For Tui Greet
+        ## For Tui Greet
+        useTextGreeter = true;
         settings = {
           default_session = {
             user = var.username;
@@ -67,7 +68,7 @@ in
       };
     };
 
-    ## Keyring
+    ## Keyring1
     services.gnome.gnome-keyring.enable = true;
     security.pam.services = {
       greetd.enableGnomeKeyring = true;

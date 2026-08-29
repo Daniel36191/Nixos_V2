@@ -3,6 +3,8 @@
   lib,
   var,
   host,
+  inputs,
+  fun,
   ...
 }:
 let
@@ -21,6 +23,18 @@ in
         PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
         PubkeyAuthentication = "yes";
       };
+    };
+
+    users.users."${var.username}".openssh = {
+      authorizedKeys.keys =
+        let
+        in
+        [
+
+        ]
+        ++ fun.hostSSHKeys
+        ++ var.ssh.authedKeys
+        ++ inputs.lillypond.sshPublicKeys;
     };
 
     age.secrets = {

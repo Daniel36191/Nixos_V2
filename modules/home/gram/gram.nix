@@ -2,7 +2,7 @@
   osConfig,
   config,
   lib,
-  pkgs-unstable,
+  unstable,
   pkgs,
   inputs,
   ...
@@ -20,7 +20,7 @@ let
 in
 {
   config = lib.mkIf mod.enable {
-    home.packages = with pkgs-unstable; [
+    home.packages = with unstable; [
       gram
       nodejs
       vscode-json-languageserver

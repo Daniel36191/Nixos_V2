@@ -1,13 +1,13 @@
 {
   pkgs,
-  inputs,
+  unstable,
   pkgs-personal,
   ...
 }:
 let
 in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with unstable; [
     framework-tool
     pkgs-personal.lulzbot-cura
     # streamcontroller
