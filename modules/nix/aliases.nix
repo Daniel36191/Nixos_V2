@@ -10,7 +10,13 @@ let
 
   timer = lib.getExe (
     pkgs.writeShellScriptBin "timer" ''
-      ${pkgs.clock-rs}/bin/clock-rs -c '#89B4FA' timer -kM "$1" && paplay ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/service-logout.oga
+      ${unstable.clock-rs}/bin/clock-rs -c '#89B4FA' timer -kM "$1" && paplay ${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/service-logout.oga
+    ''
+  );
+
+  sendnix = lib.getExe (
+    pkgs.writeShellScriptBin "sendnix" ''
+      sudo -v && ${unstable.nh}/bin/nh os switch -H "$1" --log-format bar-with-logs --target-host "$1".local ./
     ''
   );
 in
@@ -28,6 +34,7 @@ in
       updateinput = "sudo -v && ${flatpak}/bin/flatpak update && ${nh}/bin/nh os switch -H $NIX_HOST --keep-going --log-format bar-with-logs ./ --update-input";
       cleannix = "sudo -v && ${flatpak}/bin/flatpak uninstall --unused && ${nh}/bin/nh clean all -v --optimise";
       agenixedit = "sudo EDITOR=$EDITOR agenix --identity /etc/ssh/ssh_host_ed25519_key -e";
+      sendnix = sendnix;
 
       ## Alterntives
       mi = "${micro}/bin/micro";

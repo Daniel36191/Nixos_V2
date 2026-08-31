@@ -33,6 +33,7 @@ in
       kdePackages.ark # Archive Manager
       qutebrowser # For Webapps
       remmina
+      netscanner
 
       ## Discord clients
       # vesktop
