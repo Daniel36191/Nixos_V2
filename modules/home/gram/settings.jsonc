@@ -90,23 +90,24 @@
   "lsp": {
     "nixd": {
       "binary": {
-        "path": "nixd"
+        "path": "/run/current-system/sw/bin/nixd"
       },
       "settings": {
-        "nixd": {
-          "formatting": {
-            "command": ["nixfmt"]
-          },
-          "options": {
-            // Home manage doesn't work here still
-            // "nixos": {
-            //   "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2/flake.nix\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options"
-            // },
-            // "home_manager": {
-            //   "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2/flake.nix\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options.home-manager.users.type.getSubOptions []"
-            // },
-          },
+        "formatting": {
+          "command": ["nixfmt"]
         },
+        // Follow https://codeberg.org/GramEditor/gram/issues/225 for these not working
+        // "nixpkgs": {
+        //   "expr": "import (builtins.getFlake \"/home/daniel/Nixos_V2\").inputs.nixpkgs { }"
+        // },
+        // "options": {
+        //   "nixos": {
+        //     "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options"
+        //   },
+        //   "home_manager": {
+        //     "expr": "(builtins.getFlake \"/home/daniel/Nixos_V2\").nixosConfigurations.${builtins.getEnv \"NIX_HOST\"}.options.home-manager.users.type.getSubOptions []"
+        //   }
+        }
       },
     },
   },
