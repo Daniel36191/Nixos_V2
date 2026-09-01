@@ -63,7 +63,7 @@ in
       olaplay = "${mpv}/bin/mpv --audio-channels=stereo --ad-lavc-downmix=yes";
       hyprpicker = "${hyprpicker}/bin/hyprpicker -a";
       gping = "${gping}/bin/gping -b 200";
-      crosshair = "${wl-crosshair}/bin/wlcrosshair ${./crosshair.png}";
+      crosshair = "${wl-crosshair}/bin/wl-crosshair ${./crosshair.png}";
 
       ## Compatibility
       mesalaunch = "__EGL_VENDOR_LIBRARY_FILENAMES=/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
